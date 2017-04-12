@@ -68,3 +68,10 @@ Zainstalować i odpalić serwer w celu przetestowania paczki dystrybucyjnej
 Równie dobrze może to być dowolny serwer www np. wbudowany serwer ``php``.
 
     $  php -S localhost:8080 -t build
+
+
+Struktura
+=========
+
+https://marmelab.com/blog/2015/12/17/react-directory-structure.html
+
