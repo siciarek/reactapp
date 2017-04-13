@@ -79,3 +79,7 @@ https://marmelab.com/blog/2015/12/17/react-directory-structure.html
 
 https://medium.com/@dabit3/beginner-s-guide-to-react-router-53094349669
 
+Przykładowe użycie redux
+========================
+
+http://redux.js.org/docs/basics/ExampleTodoList.html

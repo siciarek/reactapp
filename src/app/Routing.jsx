@@ -11,7 +11,7 @@ class Routing extends Component {
         <Route path="/" component={App}/>
         <Route path="/about" component={About}/>
         <Route path="/user" component={User}/>
-        <Route path="/user/:id" component={User}/>
+        <Route path="/:id/user" component={User}/>
         <Route path="*" component={NotFound}/>
       </Router>
     );
