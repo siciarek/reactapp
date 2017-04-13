@@ -83,3 +83,9 @@ Przykładowe użycie redux
 ========================
 
 http://redux.js.org/docs/basics/ExampleTodoList.html
+
+https://www.codementor.io/reactjs/tutorial/intro-to-react-redux-pros
+
+https://facebook.github.io/flux/docs/in-depth-overview.html#content
+
+http://jpsierens.com/simple-react-redux-application/
