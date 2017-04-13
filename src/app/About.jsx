@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import './resources/css/App.css';
 import Header from './Header';
 
-class App extends Component {
+class About extends Component {
   render() {
     return (
 
       <div className="App">
-        <Header />
+        <Header title="O nas" />
         <p className="App-intro">
-          I do not want to get started. I am working at the brand new app structure.
+          To jest strona informacyjna o aplikacji.
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default About;

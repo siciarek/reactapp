@@ -46,7 +46,9 @@ Odpalić skrypt ``start``.
 
 Jeżeli nie jesteśmy zadowoleni z tego co mamy w przygotowanych skryptach ``test``, ``start`` lub ``build`` a czujemy
 się na siłach konfigurować wszystko sami możemy użyć komendy ``eject`` po której wszystkie moduły zostaną dodane bezpośrednio
-do pliku ``package.json``, utworzone zostaną wszystkie skrypty konfiguracyjne (katalog ``config``) oraz skrypty wykonywalne (katalog ``scripts``). Polecenie ``eject`` można wykonać tylko raz.
+do pliku ``package.json``, utworzone zostaną wszyhttps://medium.com/@dabit3/beginner-s-guide-to-react-router-53094349669
+
+stkie skrypty konfiguracyjne (katalog ``config``) oraz skrypty wykonywalne (katalog ``scripts``). Polecenie ``eject`` można wykonać tylko raz.
 
 Poniżej różnica między plikami ``package.json`` przed i po wykonaniu ppolecenia ``npm run eject``:
 
@@ -74,4 +76,6 @@ Struktura
 =========
 
 https://marmelab.com/blog/2015/12/17/react-directory-structure.html
+
+https://medium.com/@dabit3/beginner-s-guide-to-react-router-53094349669
 
