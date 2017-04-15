@@ -9,18 +9,28 @@ class Tweets extends React.Component {
     this.props.dispatch(fetchTweets())
   }
 
-  update() {
-    this.props.dispatch(updateTweet('5783d9ed917a640100f1890f', Math.random()))
+  update(id, text) {
+    let val = prompt("Please enter new value", text);
+
+    if (val !== null && val !== text) {
+      this.props.dispatch(updateTweet(id, val))
+    }
   }
 
   render() {
-    const tweets = this.props.tweets;
+    const items = this.props.tweets;
+    const style = {
+      cursor: 'pointer',
+    }
 
-    if (!tweets.length) {
+    if (!items.length) {
       return <button onClick={this.fetch.bind(this)}>load tweets</button>
     }
 
-    const mappedTweets = tweets.map(tweet => <li onClick={this.update.bind(this)} key={tweet.id}>{tweet.text}</li>)
+    const mappedTweets = items.map((item) => {
+        return <li key={item.id} onClick={this.update.bind(this, item.id, item.text)} style={style}>{item.text}</li>
+      }
+    )
 
     return (
       <ul>
