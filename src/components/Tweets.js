@@ -10,8 +10,7 @@ class Tweets extends React.Component {
   }
 
   update() {
-    console.log(this)
-    this.props.dispatch(updateTweet('5783d9ed917a640100f1890f', 'XXXX'))
+    this.props.dispatch(updateTweet('5783d9ed917a640100f1890f', Math.random()))
   }
 
   render() {
