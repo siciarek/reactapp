@@ -1,3 +1,12 @@
+import {
+  FETCH_TWEETS,
+  FETCH_TWEETS_FULLFILLED,
+  FETCH_TWEETS_REJECTED,
+  ADD_TWEET,
+  UPDATE_TWEET,
+  DELETE_TWEET,
+} from '../actions/actionTypes'
+
 export default function reducer(state = {
   tweets: [],
   fetching: false,
@@ -6,26 +15,27 @@ export default function reducer(state = {
 }, action) {
 
   switch (action.type) {
-    case 'FETCH_TWEETS': {
+    case FETCH_TWEETS: {
       return {...state, fetching: true}
     }
-    case 'FETCH_TWEETS_REJECTED': {
+    case FETCH_TWEETS_REJECTED: {
       return {...state, fetching: false, error: action.payload}
     }
-    case 'FETCH_TWEETS_FULLFILLED': {
+    case FETCH_TWEETS_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        tweets: action.payload}
+        tweets: action.payload
+      }
     }
-    case 'ADD_TWEET': {
+    case ADD_TWEET: {
       return {
         ...state,
         tweets: [...state.tweets, action.payload]
       }
     }
-    case 'UPDATE_TWEET': {
+    case UPDATE_TWEET: {
       const {id} = action.payload
       const newTweets = [...state.tweets]
       const tweetToUpdate = newTweets.findIndex(tweet => tweet.id === id)
@@ -36,7 +46,7 @@ export default function reducer(state = {
         tweets: newTweets
       }
     }
-    case 'DELETE_TWEET': {
+    case DELETE_TWEET: {
       return {
         ...state,
         tweets: state.tweets.filter(tweet => tweet.id !== action.payload)

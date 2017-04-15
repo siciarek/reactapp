@@ -1,0 +1,14 @@
+/* Tweets types */
+export const FETCH_TWEETS = 'FETCH_TWEETS';
+export const FETCH_TWEETS_FULLFILLED = 'FETCH_TWEETS_FULLFILLED';
+export const FETCH_TWEETS_REJECTED = 'FETCH_TWEETS_REJECTED';
+export const ADD_TWEET = 'ADD_TWEET';
+export const UPDATE_TWEET = 'UPDATE_TWEET';
+export const DELETE_TWEET = 'DELETE_TWEET';
+
+/* User types */
+export const FETCH_USER = 'FETCH_USER'
+export const FETCH_USER_FULLFILLED = 'FETCH_USER_FULLFILLED'
+export const FETCH_USER_REJECTED = 'FETCH_USER_REJECTED'
+export const SET_USER_NAME = 'SET_USER_NAME'
+export const SET_USER_AGE = 'SET_USER_AGE'

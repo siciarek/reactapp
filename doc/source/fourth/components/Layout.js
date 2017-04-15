@@ -21,7 +21,6 @@ class Layout extends React.Component {
     }
 
     const mappedTweets = tweets
-    .slice(0, 12) // zdalne dane są popsute, tylko kilka pierwszych rekordów ma odp wartośc
     .map(tweet => <li key={tweet.id}>{tweet.text}</li>)
 
     return (

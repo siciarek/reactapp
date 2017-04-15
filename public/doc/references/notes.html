@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="polish">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Spostrzerzenia i notatki przy nauce react redux &#8212; Thinking in react 1.0 - dokumentacja</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="prev" title="3. Redux" href="store.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Nawigacja</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="store.html" title="3. Redux"
+             accesskey="P">wstecz</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Thinking in react 1.0 - dokumentacja</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="spostrzerzenia-i-notatki-przy-nauce-react-redux">
+<h1>4. Spostrzerzenia i notatki przy nauce react redux<a class="headerlink" href="#spostrzerzenia-i-notatki-przy-nauce-react-redux" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li>Sam <code class="docutils literal"><span class="pre">react</span></code> polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim a konkretna implementacja robiona jest przy użyciu języka Babel.</li>
+<li>Dane do komponentów przekazujemy jako atrybuty (tak jak w xml)</li>
+<li>Piszemy wyłącznie w ES</li>
+<li>Plik konfiguracyjny</li>
+<li>jeżeli odwołujemy się przy imporcie do katalogu, to kod jest reprezentowany przez plik <code class="docutils literal"><span class="pre">index.js</span></code> wewnątrz tegoż katalogu.</li>
+<li>Komponenty zawierają fragmenty wizualne</li>
+<li>Typizacja wejść funkcji : <a class="reference external" href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html">https://facebook.github.io/react/docs/typechecking-with-proptypes.html</a></li>
+<li>Stan aplikacji to jeden duży obiek javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji. obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.</li>
+<li>Grube sprawy jak wyciąganie rekordów z webserwisów odbywają się w &#8220;akcjach&#8221;</li>
+<li>Co to jest <code class="docutils literal"><span class="pre">EventEmiter</span></code></li>
+</ul>
+</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="cm">/* global config file */</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">apiUrl</span><span class="o">:</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
+<span class="p">};</span>
+
+<span class="cm">/* import wszystkich funkcji */</span>
+<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">user</span> <span class="nx">from</span> <span class="s1">&#39;../userActions&#39;</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">setUserName</span><span class="p">(</span><span class="s1">&#39;Jon&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="struktura">
+<h2>4.1. Struktura<a class="headerlink" href="#struktura" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p><a class="reference external" href="https://marmelab.com/blog/2015/12/17/react-directory-structure.html">https://marmelab.com/blog/2015/12/17/react-directory-structure.html</a></p>
+<p><a class="reference external" href="https://medium.com/&#64;dabit3/beginner-s-guide-to-react-router-53094349669">https://medium.com/&#64;dabit3/beginner-s-guide-to-react-router-53094349669</a></p>
+</div>
+<div class="section" id="przykladowe-uzycie-redux">
+<h2>4.2. Przykładowe użycie redux<a class="headerlink" href="#przykladowe-uzycie-redux" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p><a class="reference external" href="http://redux.js.org/docs/basics/ExampleTodoList.html">http://redux.js.org/docs/basics/ExampleTodoList.html</a></p>
+<p><a class="reference external" href="https://www.codementor.io/reactjs/tutorial/intro-to-react-redux-pros">https://www.codementor.io/reactjs/tutorial/intro-to-react-redux-pros</a></p>
+<p><a class="reference external" href="https://facebook.github.io/flux/docs/in-depth-overview.html#content">https://facebook.github.io/flux/docs/in-depth-overview.html#content</a></p>
+<p><a class="reference external" href="http://jpsierens.com/simple-react-redux-application/">http://jpsierens.com/simple-react-redux-application/</a></p>
+<div class="section" id="swietne-wideo">
+<h3>4.2.1. Świetne wideo<a class="headerlink" href="#swietne-wideo" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=MhkGQAoc7bc&amp;list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b">https://www.youtube.com/watch?v=MhkGQAoc7bc&amp;list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b</a></p>
+</div>
+</div>
+<div class="section" id="smart-and-dumb-component">
+<h2>4.3. Smart and dumb Component<a class="headerlink" href="#smart-and-dumb-component" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p><a class="reference external" href="https://jaketrent.com/post/smart-dumb-components-react/">https://jaketrent.com/post/smart-dumb-components-react/</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Spis treści</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Spostrzerzenia i notatki przy nauce react redux</a><ul>
+<li><a class="reference internal" href="#struktura">4.1. Struktura</a></li>
+<li><a class="reference internal" href="#przykladowe-uzycie-redux">4.2. Przykładowe użycie redux</a><ul>
+<li><a class="reference internal" href="#swietne-wideo">4.2.1. Świetne wideo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smart-and-dumb-component">4.3. Smart and dumb Component</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Poprzedni temat</h4>
+  <p class="topless"><a href="store.html"
+                        title="poprzedni rozdział">3. Redux</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Nawigacja</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Indeks ogólny"
+             >indeks</a></li>
+        <li class="right" >
+          <a href="store.html" title="3. Redux"
+             >wstecz</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Thinking in react 1.0 - dokumentacja</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015, Gdynia.
+      Utworzone przy pomocy <a href="http://sphinx-doc.org/">Sphinx</a>'a 1.5.5.
+    </div>
+  </body>
+</html>

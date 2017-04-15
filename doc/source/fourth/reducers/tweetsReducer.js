@@ -17,7 +17,8 @@ export default function reducer(state = {
         ...state,
         fetching: false,
         fetched: true,
-        tweets: action.payload}
+        tweets: action.payload
+      }
     }
     case 'ADD_TWEET': {
       return {
