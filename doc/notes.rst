@@ -10,6 +10,7 @@ Spostrzerzenia przy nauce react redux
     * Typizacja wejść funkcji : https://facebook.github.io/react/docs/typechecking-with-proptypes.html
     * Stan aplikacji to jeden duży obiek javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji.
       obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.
+    * Grube sprawy jak wyciąganie rekordów z webserwisów odbywają się w "akcjach"
 
 
 ..code-block:: ecmascript

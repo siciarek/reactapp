@@ -89,3 +89,5 @@ https://www.codementor.io/reactjs/tutorial/intro-to-react-redux-pros
 https://facebook.github.io/flux/docs/in-depth-overview.html#content
 
 http://jpsierens.com/simple-react-redux-application/
+
+https://www.youtube.com/watch?v=Td-2D-_7Y2E
