@@ -28,7 +28,9 @@ class Tweets extends React.Component {
     }
 
     const mappedTweets = items.map((item) => {
-        return <li key={item.id} onClick={this.update.bind(this, item.id, item.text)} style={style}>{item.text}</li>
+        return <li key={item.id} onClick={this.update.bind(this, item.id, item.text)} style={style}>
+          {item.text}
+        </li>
       }
     )
 
