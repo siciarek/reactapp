@@ -7,18 +7,14 @@ class Spinner extends React.Component {
 
   render() {
 
-    const show = this.props.fetching
-
-    const spinnerClassName = 'spinner modal-backdrop fade in';
-    let className = spinnerClassName + ' hidden'
-
-    if(show === true) {
-      className = spinnerClassName
+    const style = {
+      display: this.props.fetching === true ? 'block' : 'none',
     }
 
     return (
-      <div className={className}>
-        <i className="fa fa-spinner fa-spin"></i>
+      <div className="spinner modal-backdrop fade in" style={style}>
+        <i className="fa fa-spinner fa-spin">
+        </i>
       </div>
     )
   }
@@ -26,6 +22,6 @@ class Spinner extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.user.fetching
+    fetching: (store.user.fetching || store.tweets.fetching),
   }
 })(Spinner);

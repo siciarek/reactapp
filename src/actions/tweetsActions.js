@@ -1,10 +1,12 @@
 import axios from 'axios'
 import config from '../config'
 
-import {FETCH_TWEETS_FULLFILLED, FETCH_TWEETS_REJECTED, ADD_TWEET, UPDATE_TWEET, DELETE_TWEET} from './actionTypes'
+import {FETCH_TWEETS, FETCH_TWEETS_FULLFILLED, FETCH_TWEETS_REJECTED, ADD_TWEET, UPDATE_TWEET, DELETE_TWEET} from './actionTypes'
 
 export const fetchTweets = () => {
   return (dispatch) => {
+    dispatch({type: FETCH_TWEETS})
+
     axios.get(config.tweetsUrl)
     .then((response) => {
       dispatch({
