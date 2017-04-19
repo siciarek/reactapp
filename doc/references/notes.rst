@@ -60,3 +60,14 @@ Smart and dumb Component
 ========================
 
 https://jaketrent.com/post/smart-dumb-components-react/
+
+
+Material
+========
+
+https://github.com/callemall/material-ui
+http://www.material-ui.com/
+
+Auth
+====
+
