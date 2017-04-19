@@ -1,37 +1,37 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {fetchTweets, updateTweet} from '../actions/tweetsActions'
-import Header from "./Header";
+import {fetchUsers, updateUser} from '../actions/userActions'
+import Header from './Header'
 
-class Tweets extends React.Component {
+class User extends React.Component {
 
   fetch() {
-    this.props.dispatch(fetchTweets())
+    this.props.dispatch(fetchUsers())
   }
 
   update(id, text) {
     let val = prompt("Please enter new value", text);
 
     if (val !== null && val !== text) {
-      this.props.dispatch(updateTweet(id, val))
+      this.props.dispatch(updateUser(id, val))
     }
   }
 
   render() {
-    const items = this.props.tweets;
+    const items = this.props.users;
     const style = {
       cursor: 'pointer',
     }
 
     let mappedItems = (
-      <button className={'btn-success btn-lg btn'} onClick={this.fetch.bind(this)}>load tweets</button>
+      <button className={'btn-success btn-lg btn'} onClick={this.fetch.bind(this)}>load users</button>
     )
 
     if (items.length > 0) {
       const temp = items.map((item) => {
-          return <li key={item.id} onClick={this.update.bind(this, item.id, item.title)} style={style}>
-            {item.title}
+          return <li key={item.id} onClick={this.update.bind(this, item.id, item.name)} style={style}>
+            {item.name}
           </li>
         }
       )
@@ -45,7 +45,7 @@ class Tweets extends React.Component {
 
     return (
       <div>
-        <Header title="Tweets"/>
+        <Header title="Users"/>
         {mappedItems}
       </div>
     )
@@ -54,6 +54,6 @@ class Tweets extends React.Component {
 
 export default connect((store) => {
   return {
-    tweets: store.tweets.tweets,
+    users: store.user.users,
   }
-})(Tweets);
+})(User);

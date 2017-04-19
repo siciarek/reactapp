@@ -9,31 +9,34 @@ export const fetchTweets = () => {
     .then((response) => {
       dispatch({
         type: FETCH_TWEETS_FULLFILLED,
-        payload: response.data.slice(0, 12), // fix zdalnych danych, tylko 12 pierwszych rekordów ma właściwą strukturę.
+        payload: response.data,
       })
     })
     .catch((err) => {
-      dispatch({type: FETCH_TWEETS_REJECTED, payload: err})
+      dispatch({
+        type: FETCH_TWEETS_REJECTED,
+        payload: err
+      })
     })
   }
 }
 
-export const addTweet = (id, text) => {
+export const addTweet = (id, title) => {
   return {
     type: ADD_TWEET,
     payload: {
       id,
-      text,
+      title,
     },
   }
 }
 
-export const updateTweet = (id, text) => {
+export const updateTweet = (id, title) => {
   return {
     type: UPDATE_TWEET,
     payload: {
       id,
-      text,
+      title,
     },
   }
 }

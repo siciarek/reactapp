@@ -16,10 +16,17 @@ export default function reducer(state = {
 
   switch (action.type) {
     case FETCH_TWEETS: {
-      return {...state, fetching: true}
+      return {
+        ...state,
+        fetching: true
+      }
     }
     case FETCH_TWEETS_REJECTED: {
-      return {...state, fetching: false, error: action.payload}
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
+      }
     }
     case FETCH_TWEETS_FULLFILLED: {
       return {
@@ -37,13 +44,13 @@ export default function reducer(state = {
     }
     case UPDATE_TWEET: {
       const {id} = action.payload
-      const newTweets = [...state.tweets]
-      const tweetToUpdate = newTweets.findIndex(tweet => tweet.id === id)
-      newTweets[tweetToUpdate] = action.payload
+      const items = [...state.tweets]
+      const index = items.findIndex(item => item.id === id)
+      items[index] = action.payload
 
       return {
         ...state,
-        tweets: newTweets
+        tweets: items
       }
     }
     case DELETE_TWEET: {
