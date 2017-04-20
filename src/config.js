@@ -3,7 +3,7 @@
 export default {
   "env": "dev",
   "appName": "Songbook",
-  "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc ligula, varius a condimentum blandit, porta vel tortor. Duis ultrices finibus turpis.",
+  "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.",
   "tweetsUrl": "https://jsonplaceholder.typicode.com/posts",
   "userUrl": "https://jsonplaceholder.typicode.com/users/1",
   "usersUrl": "https://jsonplaceholder.typicode.com/users",

@@ -24,11 +24,11 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {isMenuOpened: false};
   }
 
-  handleToggle = () => {
-    this.setState({open: !this.state.open});
+  toggleMenu = () => {
+    this.setState({isMenuOpened: !this.state.isMenuOpened});
   }
 
   render() {
@@ -41,11 +41,11 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <div>
-          <AppBar title={config.appName} onLeftIconButtonTouchTap={this.handleToggle}/>
+          <AppBar title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
           <div style={container}>
             {this.props.children}
           </div>
-          <SideMenu opened={this.state.open}/>
+          <SideMenu opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
         </div>
       </MuiThemeProvider>
     );
