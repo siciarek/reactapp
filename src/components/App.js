@@ -32,19 +32,11 @@ class App extends Component {
   }
 
   render() {
-
-    const container = {
-      fontFamily: 'Roboto, sans-serif',
-      margin: 32
-    }
-
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <div>
           <AppBar title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
-          <div style={container}>
-            {this.props.children}
-          </div>
+          {this.props.children}
           <SideMenu opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
         </div>
       </MuiThemeProvider>

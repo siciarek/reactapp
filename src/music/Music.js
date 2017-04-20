@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchUsers, updateUser} from '../actions/userActions'
-import Header from './Header'
+import Header from '../components/Header'
 
-class User extends React.Component {
+class Music extends React.Component {
 
   fetch() {
     this.props.dispatch(fetchUsers())
@@ -49,7 +49,7 @@ class User extends React.Component {
 
     return (
       <div style={style}>
-        <Header title="Users"/>
+        <Header title="Music"/>
         {mappedItems}
       </div>
     )
@@ -60,4 +60,4 @@ export default connect((store) => {
   return {
     users: store.user.users,
   }
-})(User);
+})(Music);
