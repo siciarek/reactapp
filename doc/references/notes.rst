@@ -67,6 +67,7 @@ Material
 
 https://github.com/callemall/material-ui
 http://www.material-ui.com/
+https://github.com/callemall/material-ui/tree/master/docs
 
 Auth
 ====

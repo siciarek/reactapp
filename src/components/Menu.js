@@ -1,9 +1,15 @@
 import React from 'react'
-import {Link, withRouter} from 'react-router'
+import {withRouter} from 'react-router'
 import config from '../config'
-import {Nav, Navbar, NavItem} from 'react-bootstrap'
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import FontIcon from 'material-ui/FontIcon';
 
 class Menu extends React.Component {
+
+  handleClose(a) {
+    console.log(a.close())
+  }
 
   render() {
 
@@ -11,26 +17,29 @@ class Menu extends React.Component {
     const path = router.getCurrentLocation().pathname
 
     return (
-      <Navbar inverse staticTop collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">
-              <i className="fa-bullseye fa">
-              </i>
-              &nbsp;
-              {config.appName}
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Toggle/>
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} className={path === '/' ? 'active' : null} onClick={ () => {router.push('/')} }>Home</NavItem>
-            <NavItem eventKey={2} className={path === '/users' ? 'active' : null} onClick={ () => {router.push('/users')} }>Users</NavItem>
-            <NavItem eventKey={3} className={path === '/tweets' ? 'active' : null} onClick={ () => {router.push('/tweets')} }>Tweets</NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Drawer open={this.props.opened}>
+        <div className="drawer">
+          <h3>{config.appName}</h3>
+        </div>
+        <MenuItem onTouchTap={ () => {router.push('/')}}       primaryText={'Home'} leftIcon={
+          <FontIcon className="material-icons">home</FontIcon>
+        }/>
+        <MenuItem onTouchTap={ () => {router.push('/users')}}  primaryText={'Authors'}leftIcon={
+          <FontIcon className="material-icons">face</FontIcon>
+        }/>
+        <MenuItem onTouchTap={ () => {router.push('/tweets')}} primaryText={'Artists'}leftIcon={
+          <FontIcon className="material-icons">mic</FontIcon>
+        }/>
+        <MenuItem onTouchTap={ () => {router.push('/tweets')}} primaryText={'Lyrics'}leftIcon={
+          <FontIcon className="material-icons">library_books</FontIcon>
+        }/>
+        <MenuItem onTouchTap={ () => {router.push('/tweets')}} primaryText={'Music'}leftIcon={
+          <FontIcon className="material-icons">volume_up</FontIcon>
+        }/>
+        <MenuItem onTouchTap={ () => {router.push('/tweets')}} primaryText={'Videos'}leftIcon={
+          <FontIcon className="material-icons">video_label</FontIcon>
+        }/>
+      </Drawer>
     );
 
   }

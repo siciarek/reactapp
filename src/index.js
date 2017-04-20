@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import store from './store'
 import routes from './routes'
 
+
 ReactDom.render(
   <Provider store={store}>
     {routes}
