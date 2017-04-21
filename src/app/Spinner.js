@@ -26,16 +26,18 @@ class Spinner extends React.Component {
 
   render() {
 
+    const size = 60
+
     const style = {
       display: this.props.fetching === true ? 'block' : 'none',
       position: 'absolute',
-      top: this.state.height / 2 - 30,
-      left: this.state.width / 2 - 30,
+      top: (this.state.height - size) / 2,
+      left: (this.state.width - size) / 2,
     }
 
     return (
       <div className="spinner" style={style}>
-        <CircularProgress size={60} color="#cacaca"/>
+        <CircularProgress size={size} color="#cacaca"/>
       </div>
     )
   }

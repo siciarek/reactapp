@@ -12,10 +12,6 @@ import ListItemIcon from 'material-ui/svg-icons/av/mic'
 
 
 class ArtistList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  }
 
   componentDidMount() {
     this.props.dispatch(fetchArtistList())

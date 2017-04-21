@@ -14,9 +14,7 @@ import ListItemIcon from 'material-ui/svg-icons/action/face'
 
 class AuthorList extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
+  componentDidMount() {
     this.props.dispatch(fetchAuthorList())
   }
 

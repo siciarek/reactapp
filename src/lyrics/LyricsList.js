@@ -12,10 +12,6 @@ import ListItemIcon from 'material-ui/svg-icons/av/library-books'
 
 
 class LyricsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  }
 
   componentDidMount() {
     this.props.dispatch(fetchLyricsList())
@@ -37,9 +33,7 @@ class LyricsList extends React.Component {
       })
 
       items = (
-        <List>
-          {temp}
-        </List>
+        <List>{temp}</List>
       )
     }
 
@@ -58,4 +52,4 @@ export default connect((store) => {
     fetching: store.lyrics.fetching,
     items: store.lyrics.items,
   }
-})(LyricsList);
+})(LyricsList)
