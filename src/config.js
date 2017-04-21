@@ -7,4 +7,6 @@ export default {
   "tweetsUrl": "https://jsonplaceholder.typicode.com/posts",
   "userUrl": "https://jsonplaceholder.typicode.com/users/1",
   "usersUrl": "https://jsonplaceholder.typicode.com/users",
+  "lyricsUrl": "http://localhost:4000/index.php/lyrics",
+  "artistsUrl": "http://localhost:4000/index.php/artists",
 }

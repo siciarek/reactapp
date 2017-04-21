@@ -16,8 +16,7 @@ class Menu extends React.Component {
 
   render() {
 
-    const router = this.props.router
-    const path = router.getCurrentLocation().pathname
+    // const path = router.getCurrentLocation().pathname
 
     return (
       <Drawer docked={false}

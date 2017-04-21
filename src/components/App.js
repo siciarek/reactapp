@@ -19,12 +19,20 @@ import './App.css'
 // import RaisedButton from 'material-ui/RaisedButton';
 // import FlatButton from 'material-ui/FlatButton';
 // import {fullWhite} from 'material-ui/styles/colors';
+import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+
+import FontIcon from 'material-ui/FontIcon';
+const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
+const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
+const nearbyIcon = <IconLocationOn />;
+
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {isMenuOpened: false};
+    this.state = {isMenuOpened: false,};
   }
 
   toggleMenu = () => {
@@ -32,6 +40,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
         <div>
@@ -39,6 +48,7 @@ class App extends Component {
           {this.props.children}
           <SideMenu opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
         </div>
+
       </MuiThemeProvider>
     );
   }

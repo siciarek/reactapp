@@ -24,3 +24,32 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     color: whitesmoke !important;
 }
+
+.container {
+    padding: 24px
+}
+
+pre.song {
+    font-family: 'Roboto', sans-serif;
+    line-height: 150%;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+h2.page-header {
+    color: teal;
+    border-bottom: 1px solid teal;
+    padding-bottom: 12px
+}
+
+.button-fixed-bottom-right {
+    margin: 0px;
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+};

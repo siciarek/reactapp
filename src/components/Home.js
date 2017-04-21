@@ -1,7 +1,6 @@
 import React from 'react'
 import config from '../config'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class Home extends React.Component {
 
@@ -10,7 +9,7 @@ class Home extends React.Component {
     return (
       <Card>
         <CardMedia overlay={<CardTitle title={config.appName} subtitle="Just sing a song" />}>
-          <img src="/images/microphone.jpg" />
+          <img src="/images/microphone.jpg" alt="Mircorphone"/>
         </CardMedia>
         <CardText>
           {config.appDescription}
