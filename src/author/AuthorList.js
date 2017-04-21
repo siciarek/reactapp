@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {Link} from 'react-router'
-import Header from '../components/Header'
+import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 
@@ -13,12 +13,10 @@ import ListItemIcon from 'material-ui/svg-icons/action/face'
 
 
 class AuthorList extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {open: false};
-  }
-
-  componentDidMount() {
     this.props.dispatch(fetchAuthorList())
   }
 
@@ -33,7 +31,7 @@ class AuthorList extends React.Component {
       const temp = this.props.items.map((item) => {
         return <ListItem
           leftIcon={<ListItemIcon />}
-          containerElement={<Link to={'/authors/' + item.id}/>}
+          containerElement={<Link to={`authors/${item.id}`}/>}
           key={item.id}
           primaryText={item.name}
         />

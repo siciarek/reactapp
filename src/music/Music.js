@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {fetchUsers, updateUser} from '../actions/userActions'
-import Header from '../components/Header'
+import Header from '../app/Header'
 
 class Music extends React.Component {
 

@@ -25,6 +25,10 @@ Spostrzerzenia i notatki przy nauce react redux
     import * as user from '../userActions'
     user.setUserName('Jon')
 
+Docs
+====
+
+http://redux.js.org/
 
 Struktura
 =========
@@ -56,3 +60,15 @@ Smart and dumb Component
 ========================
 
 https://jaketrent.com/post/smart-dumb-components-react/
+
+
+Material
+========
+
+https://github.com/callemall/material-ui
+http://www.material-ui.com/
+https://github.com/callemall/material-ui/tree/master/docs
+
+Auth
+====
+

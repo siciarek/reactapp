@@ -7,8 +7,8 @@ import {
 } from './Lyrics'
 
 export default function reducer(state = {
-  song: {},
-  songs: [],
+  current: {},
+  items: [],
   fetching: false,
   fetched: false,
   error: null,
@@ -39,7 +39,7 @@ export default function reducer(state = {
         ...state,
         fetching: false,
         fetched: true,
-        songs: action.payload
+        items: action.payload
       }
     }
     case FETCH_LYRICS_ITEM_FULLFILLED: {
@@ -47,7 +47,7 @@ export default function reducer(state = {
         ...state,
         fetching: false,
         fetched: true,
-        song: action.payload
+        current: action.payload
       }
     }
     default:

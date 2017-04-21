@@ -7,7 +7,7 @@ import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ItemHeaderIcon from 'material-ui/svg-icons/action/face'
 
 import {fetchArtistItem} from './ArtistActions'
-import Header from '../components/Header'
+import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 

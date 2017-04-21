@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {Link} from 'react-router'
 import {fetchLyricsList} from './LyricsActions'
-import Header from '../components/Header'
+import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 
@@ -23,16 +23,15 @@ class LyricsList extends React.Component {
 
   render() {
 
-      let items = (
-        <div>
-        </div>
-      )
+    let items = (
+      <div>
+      </div>
+    )
 
-
-    if (this.props.songs.length > 0) {
-      const temp = this.props.songs.map((item) => {
+    if (this.props.items.length > 0) {
+      const temp = this.props.items.map((item) => {
         return <ListItem leftIcon={<ListItemIcon />}
-                         containerElement={<Link to={'/lyrics/' + item.id}/>}
+                         containerElement={<Link to={`/lyrics/${item.id}`}/>}
                          key={item.id}
                          primaryText={item.title}/>
       })
@@ -57,6 +56,6 @@ class LyricsList extends React.Component {
 export default connect((store) => {
   return {
     fetching: store.lyrics.fetching,
-    songs: store.lyrics.songs,
+    items: store.lyrics.items,
   }
 })(LyricsList);

@@ -1,14 +1,14 @@
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
-import PageNotFound from './app/PageNotFound'
+import PageNotFound from './pages/PageNotFound'
 
-import App from './components/App'
-import Home from './components/Home'
+import App from './App'
+import Home from './pages/Home'
 
-import {LyricsList, LyricsItem} from './lyrics/Lyrics'
-import {AuthorList, AuthorItem} from './author/Author'
-import {ArtistList, ArtistItem} from './artist/Artist'
+import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
+import {AuthorList, AuthorItem} from '../author/Author'
+import {ArtistList, ArtistItem} from '../artist/Artist'
 
 export default (
   <Router history={browserHistory}>

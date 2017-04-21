@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {Link} from 'react-router'
 import {fetchArtistList} from './ArtistActions'
-import Header from '../components/Header'
+import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 
@@ -32,7 +32,7 @@ class ArtistList extends React.Component {
       const temp = this.props.items.map((item) => {
         return <ListItem
           leftIcon={<ListItemIcon />}
-          containerElement={<Link to={'/artists/' + item.id}/>}
+          containerElement={<Link to={`/artists/${item.id}`}/>}
           key={item.id}
           primaryText={item.name}
         />

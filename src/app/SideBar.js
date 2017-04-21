@@ -8,7 +8,7 @@ import Divider from 'material-ui/Divider';
 
 import config from '../config'
 
-class Menu extends React.Component {
+class SideBar extends React.Component {
 
   setRoute(route) {
     this.props.router.push(route)
@@ -27,6 +27,7 @@ class Menu extends React.Component {
               }}
       >
         <AppBar title={config.appName} showMenuIconButton={false} onTouchTap={() => this.props.toggleView()}/>
+
         <MenuItem primaryText={'Home'} onTouchTap={() => this.setRoute('/')} leftIcon={
           <FontIcon className="material-icons">home</FontIcon>
         }/>
@@ -53,14 +54,6 @@ class Menu extends React.Component {
   }
 }
 
-const MainMenu = withRouter(Menu);
+const MainMenu = withRouter(SideBar);
 
 export default MainMenu
-
-
-/*
-Do zaznaczenia:
- rightIcon={
- <FontIcon className="material-icons">checked</FontIcon>
- }
- */

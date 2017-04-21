@@ -29,20 +29,22 @@ class Spinner extends React.Component {
     const style = {
       display: this.props.fetching === true ? 'block' : 'none',
       position: 'absolute',
-      top: this.state.height / 2 - 40,
-      left: this.state.width / 2 - 40,
+      top: this.state.height / 2 - 30,
+      left: this.state.width / 2 - 30,
     }
 
     return (
       <div className="spinner" style={style}>
-        <CircularProgress size={80} thickness={10} color="#cacaca"/>
+        <CircularProgress size={60} color="#cacaca"/>
       </div>
     )
   }
 }
 
 export default connect((store) => {
+  window.xstore = store
+  const fetching = store.lyrics.fetching||store.artist.fetching||store.author.fetching
   return {
-    fetching: (store.lyrics.fetching),
+    fetching: fetching,
   }
 })(Spinner);

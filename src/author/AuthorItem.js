@@ -4,18 +4,18 @@ import {Link} from 'react-router'
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import ItemHeaderIcon from 'material-ui/svg-icons/action/face'
 
 import {fetchAuthorItem} from './AuthorActions'
-import Header from '../components/Header'
 
+import Header from '../app/Header'
 import Spinner from '../app/Spinner'
 
 class AuthorItem extends React.Component {
 
   listRoute = '/authors'
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     this.props.dispatch(fetchAuthorItem(this.props.params.id))
   }
 
