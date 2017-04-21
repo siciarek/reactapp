@@ -1,5 +1,5 @@
 import React from 'react'
-import config from '../../config'
+import config from '../config'
 import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class Home extends React.Component {

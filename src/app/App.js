@@ -11,7 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 import SideBar from './SideBar'
-import config from '../config'
+import config from './config'
 import './App.css'
 
 class App extends Component {

@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import Divider from 'material-ui/Divider';
 
-import config from '../config'
+import config from './config'
 
 class SideBar extends React.Component {
 
