@@ -8,5 +8,6 @@ export default {
   "userUrl": "https://jsonplaceholder.typicode.com/users/1",
   "usersUrl": "https://jsonplaceholder.typicode.com/users",
   "lyricsUrl": "http://localhost:4000/index.php/lyrics",
-  "artistsUrl": "http://localhost:4000/index.php/artists",
+  "authorUrl": "http://localhost:4000/index.php/authors",
+  "artistUrl": "http://localhost:4000/index.php/artists",
 }

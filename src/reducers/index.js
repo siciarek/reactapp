@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
 
-import tweets from './tweetsReducer'
-import user from './userReducer'
 import lyrics from '../lyrics/lyricsReducer'
+import author from '../author/authorReducer'
+import artist from '../artist/artistReducer'
 
 export default combineReducers({
+  artist,
+  author,
   lyrics,
-  tweets,
-  user,
 })

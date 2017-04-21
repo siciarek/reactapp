@@ -23,10 +23,11 @@ class LyricsList extends React.Component {
 
   render() {
 
-    let items = (
-      <div>
-      </div>
-    )
+      let items = (
+        <div>
+        </div>
+      )
+
 
     if (this.props.songs.length > 0) {
       const temp = this.props.songs.map((item) => {

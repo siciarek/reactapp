@@ -2,13 +2,22 @@
 
 $songs = [
     [
-        'id' => 1,
-        'title' => 'My Way',
+        'id' => 100,
+        'title' => 'Yesterday',
         'authors' => [
             [
-                'id' => 4,
+                'id' => 10,
+                'firstName' => 'John',
+                'lastName' => 'Lennon',
+                'description' => 'John Lennon',
+                'info' => 'Member of The Beatles.',
+            ],
+            [
+                'id' => 11,
                 'firstName' => 'Paul',
-                'lastName' => 'Anka',
+                'lastName' => 'Mc Cartney',
+                'description' => 'Paul Mc Cartney',
+                'info' => 'Member of The Beatles.',
             ]
         ],
         'artists' => [
@@ -16,7 +25,38 @@ $songs = [
                 'id' => 1,
                 'firstName' => 'Frank',
                 'lastName' => 'Sinatra',
-            ]
+                'description' => 'Paul Anka',
+                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
+            ],
+        ],
+        'lyrics' => "Yesterday, love was such an easy game to play",
+        'music' => [
+
+        ],
+        'videos' => [
+
+        ],
+    ],
+    [
+        'id' => 1,
+        'title' => 'My Way',
+        'authors' => [
+            [
+                'id' => 4,
+                'firstName' => 'Paul',
+                'lastName' => 'Anka',
+                'description' => 'Paul Anka',
+                'info' => 'Legendary performer of Diana.'
+            ],
+        ],
+        'artists' => [
+            [
+                'id' => 1,
+                'firstName' => 'Frank',
+                'lastName' => 'Sinatra',
+                'description' => 'Paul Anka',
+                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
+            ],
         ],
         'lyrics' => "And now, the end is near
 And so I face the final curtain
@@ -74,6 +114,8 @@ Yes, it was my way",
                 'id' => 4,
                 'firstName' => 'Paul',
                 'lastName' => 'Anka',
+                'description' => 'Paul Anka',
+                'info' => 'Legendary performer of Diana.'
             ]
         ],
         'artists' => [
@@ -81,7 +123,9 @@ Yes, it was my way",
                 'id' => 1,
                 'firstName' => 'Frank',
                 'lastName' => 'Sinatra',
-            ]
+                'description' => 'Paul Anka',
+                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
+            ],
         ],
         'lyrics' => 'Fly me to the moon
 Let me play among the stars
@@ -106,6 +150,8 @@ In other words, I love you',
                 'id' => 4,
                 'firstName' => 'Paul',
                 'lastName' => 'Anka',
+                'description' => 'Paul Anka',
+                'info' => 'Legendary performer of Diana.'
             ]
         ],
         'artists' => [
@@ -113,11 +159,15 @@ In other words, I love you',
                 'id' => 1,
                 'firstName' => 'Frank',
                 'lastName' => 'Sinatra',
+                'description' => 'Paul Anka',
+                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
             ],
             [
                 'id' => 3,
                 'firstName' => 'Lisa',
                 'lastName' => 'Minelli',
+                'description' => 'Lisa Minelli',
+                'info' => 'Daughter of Judy Garland. Great singer and actress. Watch the Cabaret!',
             ]
         ],
         'lyrics' => "Start spreadin' the news, I'm leavin' today
@@ -156,7 +206,9 @@ $elements = explode('/', $_SERVER['PATH_INFO']);
 $elements = array_filter($elements);
 $elements = array_values($elements);
 
-switch ($elements[0]) {
+$resource = $elements[0];
+
+switch ($resource) {
     case 'lyrics':
         $data = array_map(function ($e) {
             return [
@@ -176,9 +228,11 @@ switch ($elements[0]) {
         }
 
         break;
+    case 'authors':
     case 'artists':
-        $temp = array_map(function ($e) {
-            return $e['artists'];
+
+        $temp = array_map(function ($e) use ($resource) {
+            return $e[$resource];
         }, $songs);
 
         $data = [];

@@ -1,11 +1,12 @@
 import React from 'react'
 import {withRouter} from 'react-router'
-import config from '../config'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import Divider from 'material-ui/Divider';
+
+import config from '../config'
 
 class Menu extends React.Component {
 

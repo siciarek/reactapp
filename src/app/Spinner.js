@@ -33,8 +33,6 @@ class Spinner extends React.Component {
       left: this.state.width / 2 - 40,
     }
 
-    console.log(style);
-
     return (
       <div className="spinner" style={style}>
         <CircularProgress size={80} thickness={10} color="#cacaca"/>

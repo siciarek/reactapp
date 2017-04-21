@@ -16,18 +16,6 @@ injectTapEventPlugin();
 import config from '../config'
 import './App.css'
 
-// import RaisedButton from 'material-ui/RaisedButton';
-// import FlatButton from 'material-ui/FlatButton';
-// import {fullWhite} from 'material-ui/styles/colors';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
-
-import FontIcon from 'material-ui/FontIcon';
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
-const nearbyIcon = <IconLocationOn />;
-
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-
 class App extends Component {
 
   constructor(props) {

@@ -1,63 +1,12 @@
-import React from 'react'
-import {connect} from 'react-redux'
 
-import {fetchUsers, updateUser} from '../actions/userActions'
-import Header from '../components/Header'
+import ArtistList from './ArtistList'
+import ArtistItem from './ArtistItem'
+import ArtistActions from './ArtistActions'
 
-class Artist extends React.Component {
+export {ArtistList, ArtistItem, ArtistActions}
 
-  fetch() {
-    this.props.dispatch(fetchUsers())
-  }
-
-  update(id, text) {
-    let val = prompt("Please enter new value", text);
-
-    if (val !== null && val !== text) {
-      this.props.dispatch(updateUser(id, val))
-    }
-  }
-
-  render() {
-    const items = this.props.users;
-    const listItemStyle = {
-      cursor: 'pointer',
-    }
-
-    let mappedItems = (
-      <button className={'btn-success btn-lg btn'} onClick={this.fetch.bind(this)}>load users</button>
-    )
-
-    if (items.length > 0) {
-      const temp = items.map((item) => {
-          return <li key={item.id} onClick={this.update.bind(this, item.id, item.name)} style={listItemStyle}>
-            {item.name}
-          </li>
-        }
-      )
-
-      mappedItems = (
-        <ul>
-          {temp}
-        </ul>
-      )
-    }
-
-    const style = {
-      padding: 24
-    }
-
-    return (
-      <div style={style}>
-        <Header title="Artists"/>
-        {mappedItems}
-      </div>
-    )
-  }
-}
-
-export default connect((store) => {
-  return {
-    users: store.user.users,
-  }
-})(Artist);
+export const FETCH_ARTIST = 'FETCH_ARTIST';
+export const FETCH_ARTIST_ITEM = 'FETCH_ARTIST_ITEM';
+export const FETCH_ARTIST_ITEM_FULLFILLED = 'FETCH_ARTIST_ITEM_FULLFILLED';
+export const FETCH_ARTIST_FULLFILLED = 'FETCH_ARTIST_FULLFILLED';
+export const FETCH_ARTIST_REJECTED = 'FETCH_ARTIST_REJECTED';

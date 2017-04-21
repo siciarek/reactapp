@@ -52,4 +52,14 @@ h2.page-header {
     bottom: 20px;
     left: auto;
     position: fixed;
-};
+}
+
+.container.page-not-found h1 {
+    color: teal;
+    margin-bottom: 8px
+}
+
+.container.page-not-found h2 {
+    font-weight: 200
+}
+
