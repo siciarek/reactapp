@@ -55,14 +55,16 @@ $songs = [
         ],
         'videos' => [
             [
+                'id' => 500,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=haWRUpPw_tI',
+                'url' => 'https://www.youtube.com/watch?v=haWRUpPw_tI&autoplay=1',
                 'artist' => 'The Beatles',
                 'info' => 'Live performance',
             ],
             [
+                'id' => 501,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=RjpzTys0s9g',
+                'url' => 'https://www.youtube.com/watch?v=RjpzTys0s9g&autoplay=1',
                 'artist' => 'Paul Mc Cartney',
                 'info' => 'Live performance',
             ],
@@ -125,8 +127,9 @@ Yes, it was my way",
         "music" => [],
         "videos" => [
             [
+                'id' => 502,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=FSNidgTKsbE',
+                'url' => 'https://www.youtube.com/watch?v=FSNidgTKsbE&autoplay=1',
                 'artist' => 'Frank Sinatra',
                 'info' => 'Live performance'
             ],
@@ -194,21 +197,23 @@ New York",
             [
                 'id' => 332,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=EUrUfJW1JGk',
+                'url' => 'https://www.youtube.com/watch?v=EUrUfJW1JGk&autoplay=1',
                 'artist' => 'Frank Sinatra',
                 'info' => 'Live performance'
             ],
         ],
         "videos" => [
             [
+                'id' => 503,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=xMfz1jlyQrw',
+                'url' => 'https://www.youtube.com/watch?v=xMfz1jlyQrw&autoplay=1',
                 'artist' => 'Frank Sinatra',
                 'info' => 'Live performance'
             ],
             [
+                'id' => 50,
                 'source' => 'youtube',
-                'url' => 'https://www.youtube.com/watch?v=N8hVOMAmY-s',
+                'url' => 'https://www.youtube.com/watch?v=N8hVOMAmY-s&autoplay=1',
                 'artist' => 'Luciano Pavarotti and Lisa Minelli',
                 'info' => 'Live performance'
             ]
