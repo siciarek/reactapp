@@ -13,4 +13,5 @@ Spis treści
     references/setup
     references/intro
     references/store
+    references/reducers
     references/notes

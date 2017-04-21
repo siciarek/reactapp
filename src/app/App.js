@@ -28,9 +28,9 @@ class App extends Component {
   render() {
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+      <MuiThemeProvider ref="app" muiTheme={getMuiTheme(baseTheme)}>
         <div>
-          <AppBar title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
+          <AppBar id="appbar" title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
           {this.props.children}
           <SideBar opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
         </div>

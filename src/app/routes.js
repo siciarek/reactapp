@@ -9,6 +9,8 @@ import Home from './pages/Home'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
+import {MusicList, MusicItem} from '../music/Music'
+import {VideoList, VideoItem} from '../video/Video'
 
 export default (
   <Router history={browserHistory}>
@@ -21,10 +23,10 @@ export default (
       <Route path="/authors/:id" component={AuthorItem}/>
       <Route path="/lyrics" component={LyricsList}/>
       <Route path="/lyrics/:id" component={LyricsItem}/>
-      {/*<Route path="/music" component={MusicList}/>*/}
-      {/*<Route path="/music/:id" component={MusicItem}/>*/}
-      {/*<Route path="/videos" component={VideoList}/>*/}
-      {/*<Route path="/video/:id" component={VideoItem}/>*/}
+      <Route path="/music" component={MusicList}/>
+      <Route path="/music/:id" component={MusicItem}/>
+      <Route path="/videos" component={VideoList}/>
+      <Route path="/video/:id" component={VideoItem}/>
       <Route path="*" component={PageNotFound}/>
     </Route>
   </Router>

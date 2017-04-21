@@ -49,4 +49,4 @@ export default connect((store) => {
   return {
     fetching: fetching,
   }
-})(Spinner);
+})(Spinner)

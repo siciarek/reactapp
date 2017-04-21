@@ -1,62 +1,81 @@
 <?php
 
+$people = [
+    'lennon' => [
+        'id' => 10,
+        'firstName' => 'John',
+        'lastName' => 'Lennon',
+        'description' => 'John Lennon',
+        'info' => 'Member of The Beatles.',
+    ],
+    'mccartney' => [
+        'id' => 11,
+        'firstName' => 'Paul',
+        'lastName' => 'Mc Cartney',
+        'description' => 'Paul Mc Cartney',
+        'info' => 'Member of The Beatles.',
+    ],
+    'sinatra' => [
+        'id' => 1,
+        'firstName' => 'Frank',
+        'lastName' => 'Sinatra',
+        'description' => 'Paul Anka',
+        'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
+    ],
+    'paulanka' => [
+        'id' => 4,
+        'firstName' => 'Paul',
+        'lastName' => 'Anka',
+        'description' => 'Paul Anka',
+        'info' => 'Legendary performer of Diana.'
+    ],
+    'lisaminelli' => [
+        'id' => 3,
+        'firstName' => 'Lisa',
+        'lastName' => 'Minelli',
+        'description' => 'Lisa Minelli',
+        'info' => 'Daughter of Judy Garland. Great singer and actress. Watch the Cabaret!',
+    ],
+];
+
 $songs = [
     [
         'id' => 100,
         'title' => 'Yesterday',
         'authors' => [
-            [
-                'id' => 10,
-                'firstName' => 'John',
-                'lastName' => 'Lennon',
-                'description' => 'John Lennon',
-                'info' => 'Member of The Beatles.',
-            ],
-            [
-                'id' => 11,
-                'firstName' => 'Paul',
-                'lastName' => 'Mc Cartney',
-                'description' => 'Paul Mc Cartney',
-                'info' => 'Member of The Beatles.',
-            ]
+            $people['lennon'],
+            $people['mccartney'],
         ],
         'artists' => [
-            [
-                'id' => 1,
-                'firstName' => 'Frank',
-                'lastName' => 'Sinatra',
-                'description' => 'Paul Anka',
-                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
-            ],
+            $people['sinatra'],
         ],
         'lyrics' => "Yesterday, love was such an easy game to play",
         'music' => [
 
         ],
         'videos' => [
-
+            [
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=haWRUpPw_tI',
+                'artist' => 'The Beatles',
+                'info' => 'Live performance',
+            ],
+            [
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=RjpzTys0s9g',
+                'artist' => 'Paul Mc Cartney',
+                'info' => 'Live performance',
+            ],
         ],
     ],
     [
         'id' => 1,
         'title' => 'My Way',
         'authors' => [
-            [
-                'id' => 4,
-                'firstName' => 'Paul',
-                'lastName' => 'Anka',
-                'description' => 'Paul Anka',
-                'info' => 'Legendary performer of Diana.'
-            ],
+            $people['paulanka'],
         ],
         'artists' => [
-            [
-                'id' => 1,
-                'firstName' => 'Frank',
-                'lastName' => 'Sinatra',
-                'description' => 'Paul Anka',
-                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
-            ],
+            $people['sinatra'],
         ],
         'lyrics' => "And now, the end is near
 And so I face the final curtain
@@ -104,28 +123,23 @@ And did it my way
 
 Yes, it was my way",
         "music" => [],
-        "videos" => [],
+        "videos" => [
+            [
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=FSNidgTKsbE',
+                'artist' => 'Frank Sinatra',
+                'info' => 'Live performance'
+            ],
+        ],
     ],
     [
         'id' => 2,
         'title' => 'Fly Me To The Moon',
         'authors' => [
-            [
-                'id' => 4,
-                'firstName' => 'Paul',
-                'lastName' => 'Anka',
-                'description' => 'Paul Anka',
-                'info' => 'Legendary performer of Diana.'
-            ]
+            $people['paulanka'],
         ],
         'artists' => [
-            [
-                'id' => 1,
-                'firstName' => 'Frank',
-                'lastName' => 'Sinatra',
-                'description' => 'Paul Anka',
-                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
-            ],
+            $people['sinatra'],
         ],
         'lyrics' => 'Fly me to the moon
 Let me play among the stars
@@ -146,29 +160,11 @@ In other words, I love you',
         'id' => 3,
         'title' => 'New York, New York',
         'authors' => [
-            [
-                'id' => 4,
-                'firstName' => 'Paul',
-                'lastName' => 'Anka',
-                'description' => 'Paul Anka',
-                'info' => 'Legendary performer of Diana.'
-            ]
+            $people['paulanka'],
         ],
         'artists' => [
-            [
-                'id' => 1,
-                'firstName' => 'Frank',
-                'lastName' => 'Sinatra',
-                'description' => 'Paul Anka',
-                'info' => 'No explenation is required. If you do not know the guy, you are dummbass.',
-            ],
-            [
-                'id' => 3,
-                'firstName' => 'Lisa',
-                'lastName' => 'Minelli',
-                'description' => 'Lisa Minelli',
-                'info' => 'Daughter of Judy Garland. Great singer and actress. Watch the Cabaret!',
-            ]
+            $people['sinatra'],
+            $people['lisaminelli'],
         ],
         'lyrics' => "Start spreadin' the news, I'm leavin' today
 I want to be a part of it, New York, New York
@@ -194,8 +190,29 @@ A-a-a-nd if I can make it there, I'm gonna make it anywhere
 It's up to you, New York, New York
 
 New York",
-        "music" => [],
-        "videos" => [],
+        "music" => [
+            [
+                'id' => 332,
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=EUrUfJW1JGk',
+                'artist' => 'Frank Sinatra',
+                'info' => 'Live performance'
+            ],
+        ],
+        "videos" => [
+            [
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=xMfz1jlyQrw',
+                'artist' => 'Frank Sinatra',
+                'info' => 'Live performance'
+            ],
+            [
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=N8hVOMAmY-s',
+                'artist' => 'Luciano Pavarotti and Lisa Minelli',
+                'info' => 'Live performance'
+            ]
+        ],
     ]
 ];
 
@@ -228,6 +245,42 @@ switch ($resource) {
         }
 
         break;
+    case 'videos':
+    case 'music':
+        $temp = array_filter($songs, function($e) use ($resource) {
+            return count($e[$resource]) > 0;
+        });
+        $temp = array_values($temp);
+
+        $data = [];
+
+        foreach ($temp as $e) {
+            unset($e['authors']);
+            unset($e['artists']);
+            unset($e['lyrics']);
+            switch($resource) {
+                case 'videos':
+                    unset($e['music']);
+                    break;
+                case 'music':
+                    unset($e['videos']);
+                    break;
+            }
+
+            $data = array_merge($data, [$e]);
+        }
+
+        if (count($elements) > 1) {
+
+            $data = array_filter($data, function ($e) use ($elements) {
+                return $e['id'] == $elements[1];
+            });
+
+            $data = array_values($data);
+            $data = array_pop($data);
+        }
+
+        break;
     case 'authors':
     case 'artists':
 
@@ -237,7 +290,7 @@ switch ($resource) {
 
         $data = [];
 
-        foreach($temp as $e) {
+        foreach ($temp as $e) {
             $data = array_merge($data, $e);
         }
 
@@ -245,7 +298,7 @@ switch ($resource) {
         $data = array_unique($data, SORT_REGULAR);
         $data = array_values($data);
 
-        $temp = array_map(function($e){
+        $temp = array_map(function ($e) {
             return [
                 'id' => $e['id'],
                 'name' => implode(' ', [$e['firstName'], $e['lastName']]),
@@ -260,8 +313,7 @@ switch ($resource) {
 
             $data = array_values($data);
             $data = array_pop($data);
-        }
-        else {
+        } else {
             $data = $temp;
         }
 
@@ -271,7 +323,7 @@ switch ($resource) {
         break;
 }
 
-if($data === null) {
+if ($data === null) {
     $data = new \stdClass();
 }
 

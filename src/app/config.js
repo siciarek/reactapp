@@ -14,4 +14,6 @@ export default {
   "lyricsUrl": "http://localhost:4000/index.php/lyrics",
   "authorUrl": "http://localhost:4000/index.php/authors",
   "artistUrl": "http://localhost:4000/index.php/artists",
+  "musicUrl": "http://localhost:4000/index.php/music",
+  "videoUrl": "http://localhost:4000/index.php/videos",
 }
