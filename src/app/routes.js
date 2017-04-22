@@ -12,6 +12,46 @@ import {ArtistList, ArtistItem} from '../artist/Artist'
 import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
 
+export const routes = [
+  {
+    name: 'home',
+    label: 'Home',
+    icon: 'home',
+    route: '/',
+  },
+  {
+    name: 'authors',
+    label: 'Authors',
+    icon: 'face',
+    route: '/authors',
+  },
+  {
+    name: 'artists',
+    label: 'Artists',
+    icon: 'mic',
+    route: '/artists',
+  },
+  null,
+  {
+    name: 'lyrics',
+    label: 'Lyrics',
+    icon: 'library_books',
+    route: '/lyrics',
+  },
+  {
+    name: 'music',
+    label: 'Music',
+    icon: 'volume_up',
+    route: '/music',
+  },
+  {
+    name: 'videos',
+    label: 'Videos',
+    icon: 'video_label',
+    route: '/videos',
+  },
+]
+
 export default (
   <Router history={hashHistory}>
     <Route component={App}>

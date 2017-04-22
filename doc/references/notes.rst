@@ -1,17 +1,19 @@
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
+    * Zapomnij o średnikach!
     * Sam ``react`` polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim a konkretna implementacja robiona jest przy użyciu języka Babel.
     * Dane do komponentów przekazujemy jako atrybuty (tak jak w xml)
     * Piszemy wyłącznie w ES
-    * Plik konfiguracyjny
+    * Plik konfiguracyjny!
     * jeżeli odwołujemy się przy imporcie do katalogu, to kod jest reprezentowany przez plik ``index.js`` wewnątrz tegoż katalogu.
     * Komponenty zawierają fragmenty wizualne
     * Typizacja wejść funkcji : https://facebook.github.io/react/docs/typechecking-with-proptypes.html
     * Stan aplikacji to jeden duży obiek javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji. obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.
     * Grube sprawy jak wyciąganie rekordów z webserwisów odbywają się w "akcjach"
     * Co to jest ``EventEmiter``
-    * Typy akcji powinny być unikalne w skali całego projektu
+    * Typy akcji powinny być unikalne w skali całego projektu.
+    * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna, zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
 
 
 .. code-block:: javascript
@@ -25,6 +27,11 @@ Spostrzerzenia i notatki przy nauce react redux
     /* import wszystkich funkcji */
     import * as user from '../userActions'
     user.setUserName('Jon')
+
+    // Pokazanie aktywnej pozycji w siedebarze
+    const path = this.props.router.getCurrentLocation().pathname
+
+
 
 Alternatywne skrypty do ``create-react-app``
 ============================================

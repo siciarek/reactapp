@@ -7,6 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import Divider from 'material-ui/Divider';
 
+import {routes} from './routes'
 import config from './config'
 
 class SideBar extends React.Component {
@@ -18,7 +19,8 @@ class SideBar extends React.Component {
 
   static defaultProps = {
     opened: false,
-    toggleView: () => {},
+    toggleView: () => {
+    },
   }
 
   setRoute(route) {
@@ -28,7 +30,26 @@ class SideBar extends React.Component {
 
   render() {
 
-    // const path = router.getCurrentLocation().pathname
+    const matchedRoute = this.props.router.getCurrentLocation().pathname
+    const iconChecked = <FontIcon className="material-icons">check</FontIcon>
+
+    const items = routes.map((e, i) => {
+      if (e === null) {
+        return <Divider key={i}/>
+      }
+
+      return <MenuItem key={i}
+                       primaryText={e.label}
+                       onTouchTap={() => this.setRoute(e.route)}
+                       leftIcon={
+                         <FontIcon className="material-icons">{e.icon}</FontIcon>
+                       }
+                       rightIcon={
+                         matchedRoute === e.route ? iconChecked : null
+                       }
+      />
+    });
+
 
     return (
       <Drawer docked={false}
@@ -37,34 +58,15 @@ class SideBar extends React.Component {
                 this.props.toggleView()
               }}
       >
-        <AppBar title={config.appName} showMenuIconButton={false} onTouchTap={() => this.props.toggleView()}/>
-
-        <MenuItem primaryText={'Home'} onTouchTap={() => this.setRoute('/')} leftIcon={
-          <FontIcon className="material-icons">home</FontIcon>
-        }/>
-        <MenuItem onTouchTap={() => this.setRoute('/authors')} primaryText={'Authors'} leftIcon={
-          <FontIcon className="material-icons">face</FontIcon>
-        }
+        <AppBar
+          title={config.appName}
+          showMenuIconButton={false}
+          onTouchTap={() => this.props.toggleView()}
         />
-        <MenuItem onTouchTap={() => this.setRoute('/artists')} primaryText={'Artists'} leftIcon={
-          <FontIcon className="material-icons">mic</FontIcon>
-        }/>
-        <Divider/>
-        <MenuItem onTouchTap={() => this.setRoute('/lyrics')} primaryText={'Lyrics'} leftIcon={
-          <FontIcon className="material-icons">library_books</FontIcon>
-        }/>
-        <MenuItem onTouchTap={() => this.setRoute('/music')} primaryText={'Music'} leftIcon={
-          <FontIcon className="material-icons">volume_up</FontIcon>
-        }/>
-        <MenuItem onTouchTap={() => this.setRoute('/videos')} primaryText={'Videos'} leftIcon={
-          <FontIcon className="material-icons">video_label</FontIcon>
-        }/>
+        {items}
       </Drawer>
     );
-
   }
 }
 
-const MainMenu = withRouter(SideBar);
-
-export default MainMenu
+export default withRouter(SideBar);
