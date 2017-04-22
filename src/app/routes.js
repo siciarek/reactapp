@@ -1,5 +1,5 @@
 import React from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import PageNotFound from './pages/PageNotFound'
 
@@ -13,7 +13,7 @@ import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
 
 export default (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route component={App}>
       <IndexRoute component={Home} />
       <Route path="/" component={Home}/>

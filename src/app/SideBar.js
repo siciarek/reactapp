@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {withRouter} from 'react-router'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -9,6 +10,16 @@ import Divider from 'material-ui/Divider';
 import config from './config'
 
 class SideBar extends React.Component {
+
+  static propTypes = {
+    opened: PropTypes.bool.isRequired,
+    toggleView: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    opened: false,
+    toggleView: () => {},
+  }
 
   setRoute(route) {
     this.props.router.push(route)

@@ -1,4 +1,8 @@
 <?php
+ini_set('html_errors', false);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $people = [
     'lennon' => [
@@ -223,113 +227,132 @@ New York",
 
 $data = [];
 
-$elements = explode('/', $_SERVER['PATH_INFO']);
-
-$elements = array_filter($elements);
-$elements = array_values($elements);
-
-$resource = $elements[0];
-
-switch ($resource) {
-    case 'lyrics':
-        $data = array_map(function ($e) {
-            return [
-                'id' => $e['id'],
-                'title' => $e['title'],
-            ];
-        }, $songs);
-
-        if (count($elements) > 1) {
-
-            $data = array_filter($songs, function ($e) use ($elements) {
-                return $e['id'] == $elements[1];
-            });
-
-            $data = array_values($data);
-            $data = array_pop($data);
-        }
-
+$elements = [];
+foreach(['PATH_INFO', 'REQUEST_URI'] as $key) {
+    if(array_key_exists($key, $_SERVER)) {
+        $elements = explode('/', $_SERVER[$key]);
+        $elements = array_filter($elements);
+        $elements = array_values($elements);
         break;
-    case 'videos':
-    case 'music':
-        $temp = array_filter($songs, function($e) use ($resource) {
-            return count($e[$resource]) > 0;
-        });
-        $temp = array_values($temp);
-
-        $data = [];
-
-        foreach ($temp as $e) {
-            unset($e['authors']);
-            unset($e['artists']);
-            unset($e['lyrics']);
-            switch($resource) {
-                case 'videos':
-                    unset($e['music']);
-                    break;
-                case 'music':
-                    unset($e['videos']);
-                    break;
-            }
-
-            $data = array_merge($data, [$e]);
-        }
-
-        if (count($elements) > 1) {
-
-            $data = array_filter($data, function ($e) use ($elements) {
-                return $e['id'] == $elements[1];
-            });
-
-            $data = array_values($data);
-            $data = array_pop($data);
-        }
-
-        break;
-    case 'authors':
-    case 'artists':
-
-        $temp = array_map(function ($e) use ($resource) {
-            return $e[$resource];
-        }, $songs);
-
-        $data = [];
-
-        foreach ($temp as $e) {
-            $data = array_merge($data, $e);
-        }
-
-
-        $data = array_unique($data, SORT_REGULAR);
-        $data = array_values($data);
-
-        $temp = array_map(function ($e) {
-            return [
-                'id' => $e['id'],
-                'name' => implode(' ', [$e['firstName'], $e['lastName']]),
-            ];
-        }, $data);
-
-        if (count($elements) > 1) {
-
-            $data = array_filter($data, function ($e) use ($elements) {
-                return $e['id'] == $elements[1];
-            });
-
-            $data = array_values($data);
-            $data = array_pop($data);
-        } else {
-            $data = $temp;
-        }
-
-        break;
-    default:
-
-        break;
+    }
 }
 
-if ($data === null) {
-    $data = new \stdClass();
+if(count($elements) > 0) {
+
+    $resource = $elements[0];
+
+    switch ($resource) {
+        case 'lyrics':
+            $data = array_map(function ($e) {
+                return [
+                    'id' => $e['id'],
+                    'title' => $e['title'],
+                ];
+            }, $songs);
+
+            if (count($data) === 0) {
+                break;
+            }
+
+            if (count($elements) > 1) {
+
+                $data = array_filter($songs, function ($e) use ($elements) {
+                    return $e['id'] == $elements[1];
+                });
+
+                $data = array_values($data);
+                $data = array_pop($data);
+            }
+
+            break;
+        case 'videos':
+        case 'music':
+            $temp = array_filter($songs, function ($e) use ($resource) {
+                return count($e[$resource]) > 0;
+            });
+            $temp = array_values($temp);
+
+            $data = [];
+
+            foreach ($temp as $e) {
+                unset($e['authors']);
+                unset($e['artists']);
+                unset($e['lyrics']);
+                switch ($resource) {
+                    case 'videos':
+                        unset($e['music']);
+                        break;
+                    case 'music':
+                        unset($e['videos']);
+                        break;
+                }
+
+                $data = array_merge($data, [$e]);
+            }
+
+            if (count($data) === 0) {
+                break;
+            }
+
+            if (count($elements) > 1) {
+
+                $data = array_filter($data, function ($e) use ($elements) {
+                    return $e['id'] == $elements[1];
+                });
+
+                $data = array_values($data);
+                $data = array_pop($data);
+            }
+
+            break;
+        case 'authors':
+        case 'artists':
+
+            $temp = array_map(function ($e) use ($resource) {
+                return $e[$resource];
+            }, $songs);
+
+            $data = [];
+
+            foreach ($temp as $e) {
+                $data = array_merge($data, $e);
+            }
+
+            if (count($data) === 0) {
+                break;
+            }
+
+            $data = array_unique($data, SORT_REGULAR);
+            $data = array_values($data);
+
+            $temp = array_map(function ($e) {
+                return [
+                    'id' => $e['id'],
+                    'name' => implode(' ', [$e['firstName'], $e['lastName']]),
+                ];
+            }, $data);
+
+            if (count($elements) > 1) {
+
+                $data = array_filter($data, function ($e) use ($elements) {
+                    return $e['id'] == $elements[1];
+                });
+
+                $data = array_values($data);
+                $data = array_pop($data);
+            } else {
+                $data = $temp;
+            }
+
+            break;
+        default:
+
+            break;
+    }
+
+    if ($data === null) {
+        $data = new \stdClass();
+    }
 }
 
 header('Content-Type: application/json');

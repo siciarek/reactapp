@@ -11,6 +11,7 @@ Spostrzerzenia i notatki przy nauce react redux
     * Stan aplikacji to jeden duży obiek javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji. obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.
     * Grube sprawy jak wyciąganie rekordów z webserwisów odbywają się w "akcjach"
     * Co to jest ``EventEmiter``
+    * Typy akcji powinny być unikalne w skali całego projektu
 
 
 .. code-block:: javascript
@@ -24,6 +25,12 @@ Spostrzerzenia i notatki przy nauce react redux
     /* import wszystkich funkcji */
     import * as user from '../userActions'
     user.setUserName('Jon')
+
+Alternatywne skrypty do ``create-react-app``
+============================================
+
+https://www.npmjs.com/package/custom-react-scripts
+
 
 Docs
 ====
