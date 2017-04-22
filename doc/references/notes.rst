@@ -14,6 +14,21 @@ Spostrzerzenia i notatki przy nauce react redux
     * Co to jest ``EventEmiter``
     * Typy akcji powinny być unikalne w skali całego projektu.
     * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna, zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
+    * ROUTING UWAGA
+
+DOBRZE:
+
+.. code-block:: xml
+
+      <Route path="/lyrics/add" component={LyricsEditor}/>
+      <Route path="/lyrics/:id" component={LyricsItem}/>
+
+DOBRZE:
+
+.. code-block:: xml
+
+      <Route path="/lyrics/:id" component={LyricsItem}/>
+      <Route path="/lyrics/add" component={LyricsEditor}/>
 
 
 .. code-block:: javascript

@@ -14,4 +14,5 @@ export default {
   "artistUrl": "http://api.songbook.dev/artists",
   "musicUrl": "http://api.songbook.dev/music",
   "videoUrl": "http://api.songbook.dev/videos",
+  "songUrl": "http://api.songbook.dev/song",
 }

@@ -25,7 +25,9 @@ class LyricsItem extends React.Component {
       <div className="container">
         <Header title={this.props.current.title} style={style} />
         <pre className="song">{this.props.current.lyrics}</pre>
-        <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={'/lyrics'}/>}>
+        <FloatingActionButton
+          className="button-fixed-bottom-right"
+          containerElement={<Link to={'/lyrics'}/>}>
           <BackToListIcon />
         </FloatingActionButton>
         <Spinner/>

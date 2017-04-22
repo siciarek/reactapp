@@ -242,6 +242,27 @@ if(count($elements) > 0) {
     $resource = $elements[0];
 
     switch ($resource) {
+        case 'song':
+
+            $json = file_get_contents("php://input");
+            $request = json_decode($json, true);
+
+            $data = [
+                'type' => 'info',
+                'success' => true,
+                'msg' => 'OK',
+                'datetime' => date('Y-m-d H:i:s'),
+                'data' => [
+                    'action' => 'add',
+                    'request' => $request,
+                ]
+            ];
+
+            if (count($elements) > 1) {
+                $data['data']['action'] = $elements[1];
+            }
+
+            break;
         case 'lyrics':
             $data = array_map(function ($e) {
                 return [
@@ -355,6 +376,11 @@ if(count($elements) > 0) {
     }
 }
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+header("Content-Type: application/json");
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 echo json_encode($data, JSON_PRETTY_PRINT);

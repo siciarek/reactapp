@@ -1,11 +1,12 @@
 import React from 'react'
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import PageNotFound from './pages/PageNotFound'
 
 import App from './App'
 import Home from './pages/Home'
 
+import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
@@ -14,59 +15,67 @@ import {VideoList, VideoItem} from '../video/Video'
 
 export const routes = [
   {
-    name: 'home',
     label: 'Home',
     icon: 'home',
     route: '/',
   },
   {
-    name: 'authors',
     label: 'Authors',
     icon: 'face',
     route: '/authors',
   },
   {
-    name: 'artists',
     label: 'Artists',
     icon: 'mic',
     route: '/artists',
   },
   null,
   {
-    name: 'lyrics',
     label: 'Lyrics',
     icon: 'library_books',
     route: '/lyrics',
   },
   {
-    name: 'music',
     label: 'Music',
     icon: 'volume_up',
     route: '/music',
   },
   {
-    name: 'videos',
     label: 'Videos',
     icon: 'video_label',
     route: '/videos',
   },
+  null,
+  {
+    label: 'Add song',
+    icon: 'note_add',
+    route: '/song/add',
+  },
 ]
 
 export default (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={Home}/>
       <Route path="/" component={Home}/>
+
+      <Route path="/song/add" component={SongEditor}/>
+
       <Route path="/artists" component={ArtistList}/>
       <Route path="/artists/:id" component={ArtistItem}/>
+
       <Route path="/authors" component={AuthorList}/>
       <Route path="/authors/:id" component={AuthorItem}/>
+
       <Route path="/lyrics" component={LyricsList}/>
       <Route path="/lyrics/:id" component={LyricsItem}/>
+
       <Route path="/music" component={MusicList}/>
       <Route path="/music/:id" component={MusicItem}/>
+
       <Route path="/videos" component={VideoList}/>
       <Route path="/video/:id" component={VideoItem}/>
+
       <Route path="*" component={PageNotFound}/>
     </Route>
   </Router>
