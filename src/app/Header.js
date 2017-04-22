@@ -8,7 +8,7 @@ export default class Header extends React.Component {
   }
 
   static defaultProps = {
-    title: 'XXX',
+    title: 'Header',
   }
 
   render() {

@@ -5,6 +5,7 @@ import author from '../author/authorReducer'
 import artist from '../artist/artistReducer'
 import music from '../music/musicReducer'
 import video from '../video/videoReducer'
+import song from '../song/songReducer'
 
 export default combineReducers({
   artist,
@@ -12,4 +13,5 @@ export default combineReducers({
   lyrics,
   music,
   video,
+  song,
 })

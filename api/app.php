@@ -42,6 +42,16 @@ $people = [
     ],
 ];
 
+$song = [
+    'id' => null,
+    'title' => null,
+    'lyrics' => null,
+    'authors' => [],
+    'artists' => [],
+    'music' => [],
+    'videos' => []
+];
+
 $songs = [
     [
         'id' => 100,
@@ -225,11 +235,20 @@ New York",
     ]
 ];
 
+$filename = 'data.json';
+
+if(!file_exists($filename)) {
+    file_put_contents($filename, json_encode($songs, JSON_PRETTY_PRINT));
+}
+
+$json = file_get_contents($filename);
+$songs = json_decode($json, true);
+
 $data = [];
 
 $elements = [];
-foreach(['PATH_INFO', 'REQUEST_URI'] as $key) {
-    if(array_key_exists($key, $_SERVER)) {
+foreach (['PATH_INFO', 'REQUEST_URI'] as $key) {
+    if (array_key_exists($key, $_SERVER)) {
         $elements = explode('/', $_SERVER[$key]);
         $elements = array_filter($elements);
         $elements = array_values($elements);
@@ -237,7 +256,7 @@ foreach(['PATH_INFO', 'REQUEST_URI'] as $key) {
     }
 }
 
-if(count($elements) > 0) {
+if (count($elements) > 0) {
 
     $resource = $elements[0];
 
@@ -247,20 +266,32 @@ if(count($elements) > 0) {
             $json = file_get_contents("php://input");
             $request = json_decode($json, true);
 
+            $temp = array_map(function($e) {
+                return $e['id'];
+            }, $songs);
+            $id = max($temp) + 1;
+
+            if($request['id'] === null) {
+                $request['id'] = $id;
+            }
+
+            $record = array_merge($song, $request);
+
+            array_unshift($songs, $record);
+
             $data = [
                 'type' => 'info',
                 'success' => true,
                 'msg' => 'OK',
                 'datetime' => date('Y-m-d H:i:s'),
-                'data' => [
-                    'action' => 'add',
-                    'request' => $request,
-                ]
+                'data' => $record,
             ];
 
             if (count($elements) > 1) {
-                $data['data']['action'] = $elements[1];
+                $id = $elements[1];
             }
+
+            file_put_contents($filename, json_encode($songs, JSON_PRETTY_PRINT));
 
             break;
         case 'lyrics':

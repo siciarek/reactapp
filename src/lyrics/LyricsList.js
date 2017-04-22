@@ -9,6 +9,7 @@ import Spinner from '../app/Spinner'
 
 import {List, ListItem} from 'material-ui/List';
 import ListItemIcon from 'material-ui/svg-icons/av/library-books'
+import ActionButton from "../app/ActionButton";
 
 
 class LyricsList extends React.Component {
@@ -41,6 +42,7 @@ class LyricsList extends React.Component {
       <div className="container">
         <Header title="Lyrics"/>
         {items}
+        <ActionButton icon="add" route="/song/add" />
         <Spinner/>
       </div>
     )
