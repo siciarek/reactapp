@@ -14,7 +14,7 @@ export default class ActionButton extends Component {
   }
 
   static defaultProps = {
-    icon: 'home',
+    icon: 'keyboard_arrow_left',
     route: '/',
   }
 
@@ -23,9 +23,7 @@ export default class ActionButton extends Component {
     return (
       <FloatingActionButton
         className="button-fixed-bottom-right"
-        containerElement={<Link to={this.props.route}/>}>
-        <FontIcon className="material-icons">{this.props.icon}</FontIcon>
-      </FloatingActionButton>
+        containerElement={<Link to={this.props.route}/>}><FontIcon className="material-icons">{this.props.icon}</FontIcon></FloatingActionButton>
     )
   }
 }

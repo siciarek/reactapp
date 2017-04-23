@@ -46,12 +46,13 @@ h2.page-header {
 }
 
 .button-fixed-bottom-right {
-    margin: 0px;
+    margin: 0;
     top: auto;
     right: 20px;
     bottom: 20px;
     left: auto;
     position: fixed;
+    z-index: 64000;
 }
 
 .container.page-not-found h1 {

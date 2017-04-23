@@ -237,6 +237,10 @@ New York",
 
 $filename = 'data.json';
 
+if(isset($_GET['reset'])) {
+    unlink($filename);
+}
+
 if(!file_exists($filename)) {
     file_put_contents($filename, json_encode($songs, JSON_PRETTY_PRINT));
 }

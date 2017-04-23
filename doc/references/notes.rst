@@ -20,15 +20,15 @@ DOBRZE:
 
 .. code-block:: xml
 
-      <Route path="/lyrics/add" component={LyricsEditor}/>
-      <Route path="/lyrics/:id" component={LyricsItem}/>
+    <Route path="/lyrics/add" component={LyricsEditor}/>
+    <Route path="/lyrics/:id" component={LyricsItem}/>
 
 DOBRZE:
 
 .. code-block:: xml
 
-      <Route path="/lyrics/:id" component={LyricsItem}/>
-      <Route path="/lyrics/add" component={LyricsEditor}/>
+    <Route path="/lyrics/:id" component={LyricsItem}/>
+    <Route path="/lyrics/add" component={LyricsEditor}/>
 
 
 .. code-block:: javascript
@@ -97,6 +97,7 @@ Material
 https://github.com/callemall/material-ui
 http://www.material-ui.com/
 https://github.com/callemall/material-ui/tree/master/docs
+http://redux-form.com/6.0.0-rc.1/examples/material-ui/
 
 Auth
 ====
