@@ -23,15 +23,6 @@ class SongEditor extends React.Component {
     }
   }
 
-  fields = [
-    {
-      name: 'title'
-    },
-    {
-      name: 'lyrics'
-    },
-  ]
-
   constructor(props) {
     super(props)
     this.state = {
@@ -43,10 +34,12 @@ class SongEditor extends React.Component {
   }
 
   updateValue(e) {
-    this.data[e.target.id] = e.target.value.trim()
+    const val = e.target.value.trim()
+    this.data[e.target.id] = val === null || val.trim().length === 0 ? null : val
   }
 
   submit() {
+
     this.setState({
       errors: {
         title: '',
@@ -54,26 +47,25 @@ class SongEditor extends React.Component {
       }
     })
 
-    let temp = {...this.state}
+    let fields = [
+      {
+        name: 'title'
+      },
+      {
+        name: 'lyrics'
+      },
+    ]
 
-    if (this.data.title === null || this.data.title.trim().length === 0) {
-      temp.errors.title = 'This field is requred'
-    }
-    else {
-      temp.errors.title = ''
-    }
-    this.setState({...temp})
+    for (let i = 0; i < fields.length; i++) {
+      let key = fields[i].name
+      let temp = {...this.state}
 
+      temp.errors[key] = (this.data[key] === null || this.data[key].trim().length === 0)
+        ? 'This field is requred'
+        : ''
 
-    temp = {...this.state}
-    if (this.data.lyrics === null || this.data.lyrics.trim().length === 0) {
-      temp.errors.lyrics = 'This field is requred'
+      this.setState({...temp})
     }
-    else {
-      temp.errors.lyrics = ''
-    }
-
-    this.setState({...temp})
 
     if (JSON.stringify(this.state) === JSON.stringify(this.defaultState)) {
       this.props.dispatch(addSong(this.data))
@@ -128,6 +120,8 @@ class SongEditor extends React.Component {
 
 export default connect(
   (store) => {
-    return {}
+    return {
+      data: store.lyrics.current,
+    }
   }
 )(SongEditor);
