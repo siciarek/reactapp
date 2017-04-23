@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 
@@ -12,6 +14,7 @@ class SongEditor extends React.Component {
 
   data = {
     id: null,
+    genre: null,
     title: null,
     lyrics: null,
   }
@@ -26,6 +29,7 @@ class SongEditor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      genre: null,
       errors: {
         title: '',
         lyrics: '',
@@ -33,9 +37,14 @@ class SongEditor extends React.Component {
     }
   }
 
-  updateValue(e) {
-    const val = e.target.value.trim()
-    this.data[e.target.id] = val === null || val.trim().length === 0 ? null : val
+  updateSelectValue = (event, index, value) => this.setState({genre: value});
+
+  updateValue(event) {
+    const key = event.target.id
+    const value = event.target.value === null || event.target.value.trim().length === 0 ? null : event.target.value.trim()
+
+    // TODO: use this.state
+    this.data[key] = value
   }
 
   submit() {
@@ -48,6 +57,9 @@ class SongEditor extends React.Component {
     })
 
     let fields = [
+      {
+        name: 'genre'
+      },
       {
         name: 'title'
       },
@@ -67,7 +79,7 @@ class SongEditor extends React.Component {
       this.setState({...temp})
     }
 
-    if (JSON.stringify(this.state) === JSON.stringify(this.defaultState)) {
+    if (JSON.stringify(this.state.errors) === JSON.stringify(this.defaultState.errors)) {
       this.props.dispatch(addSong(this.data))
     }
   }
@@ -79,6 +91,23 @@ class SongEditor extends React.Component {
       <div className="container">
         <Header title="Add song"/>
         <form>
+          <SelectField
+            floatingLabelText="Genre"
+            fullWidth={true}
+            ref="genre"
+            id="genre"
+            errorText={this.state.errors.genre}
+            value={this.state.genre}
+            onChange={this.updateSelectValue}
+          >
+            <MenuItem value={1} primaryText="Blues" />
+            <MenuItem value={2} primaryText="Rock" />
+            <MenuItem value={3} primaryText="Jazz" />
+            <MenuItem value={4} primaryText="Bossa nova" />
+            <MenuItem value={5} primaryText="Folk" />
+            <MenuItem value={6} primaryText="Other" />
+          </SelectField>
+
           <TextField
             ref="title"
             id="title"
