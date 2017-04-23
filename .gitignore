@@ -2,6 +2,9 @@
 
 /api/web/data.json
 
+/src/*/*.css
+/src/*/*/*.css
+
 # editor files
 .idea
 
