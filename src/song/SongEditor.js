@@ -10,7 +10,7 @@ class SongEditor extends React.Component {
   componentWillMount() {
     let state = {...this.props.current}
     state.id = null
-    state.genre = ''
+    state.genre = null
     state.lyrics = ''
     state.title = ''
     state.createdAt = new Date()

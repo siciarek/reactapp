@@ -68,8 +68,6 @@ class SongEditorForm extends React.Component {
 
   render() {
 
-    const removeButtonStyle = {}
-
     return (
 
       <form>

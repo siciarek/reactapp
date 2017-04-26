@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchLyricsList} from './LyricsActions'
-import Header from '../app/Header'
-
-import Spinner from '../app/Spinner'
-import {removeSong} from '../song/SongActions'
-
 import {List, ListItem} from 'material-ui/List';
-import ListItemIcon from 'material-ui/svg-icons/av/library-books'
 import ActionButton from "../app/ActionButton"
 import IconButton from 'material-ui/IconButton';
+
+import ListItemIcon from 'material-ui/svg-icons/av/library-books'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
+
+import {fetchLyricsList} from './LyricsActions'
+import {removeSong} from '../song/SongActions'
+import Header from '../app/Header'
+import Spinner from '../app/Spinner'
 
 class LyricsList extends Component {
 
