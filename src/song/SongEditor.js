@@ -7,9 +7,10 @@ import SongEditorForm from './SongEditorForm'
 
 class SongEditor extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     let state = {...this.props.current}
     state.id = null
+    state.genre = ''
     state.lyrics = ''
     state.title = ''
     state.createdAt = new Date()
