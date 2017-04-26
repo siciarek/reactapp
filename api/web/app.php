@@ -277,48 +277,81 @@ if (count($elements) > 0) {
     switch ($resource) {
         case 'song':
 
-            $json = file_get_contents("php://input");
-            $request = json_decode($json, true);
+            switch($_SERVER['REQUEST_METHOD']) {
+                case 'DELETE':
 
-            $temp = array_map(function ($e) {
-                return $e['id'];
-            }, $songs);
-            $temp[] = 0;
-            $id = max($temp) + 1;
+                    $id = $elements[1];
 
-            $index = null;
+                    $before = count($songs);
 
-            $record  = [];
+                    $songs = array_filter($songs, function($e) use ($id) {
+                        return $e['id'] != $id;
+                    });
+                    $songs = array_values($songs);
 
-            if (!(isset($request['id']) and $request['id'] !== null)) {
-                $request['id'] = $id;
-                $record = array_merge($song, $request);
-                $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
-                array_unshift($songs, $record);
-            }
-            else {
+                    $after = count($songs);
 
-                for($i = 0; $i < count($songs); $i++) {
-                    if($songs[$i]['id'] == $request['id']) {
+                    $data = [
+                        'type' => 'info',
+                        'success' => true,
+                        'msg' => 'OK',
+                        'datetime' => date('Y-m-d H:i:s'),
+                        'data' => [$before, $after],
+                    ];
+
+                    break;
+
+                case 'OPTIONS':
+
+                    break;
+
+                default:
+
+                    $json = file_get_contents("php://input");
+                    $request = json_decode($json, true);
+
+                    $temp = array_map(function ($e) {
+                        return $e['id'];
+                    }, $songs);
+                    $temp[] = 0;
+                    $id = max($temp) + 1;
+
+                    $index = null;
+
+                    $record  = [];
+
+                    if (!(isset($request['id']) and $request['id'] !== null)) {
+                        $request['id'] = $id;
                         $record = array_merge($song, $request);
-                        $songs[$i] = $record;
-//                        $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
-                        break;
+                        $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
+                        array_unshift($songs, $record);
                     }
-                }
-            }
+                    else {
+
+                        for($i = 0; $i < count($songs); $i++) {
+                            if($songs[$i]['id'] == $request['id']) {
+                                $record = array_merge($song, $request);
+                                $songs[$i] = $record;
+                                $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
+                                break;
+                            }
+                        }
+                    }
 
 
-            $data = [
-                'type' => 'info',
-                'success' => true,
-                'msg' => 'OK',
-                'datetime' => date('Y-m-d H:i:s'),
-                'data' => $record,
-            ];
+                    $data = [
+                        'type' => 'info',
+                        'success' => true,
+                        'msg' => 'OK',
+                        'datetime' => date('Y-m-d H:i:s'),
+                        'data' => $record,
+                    ];
 
-            if (count($elements) > 1) {
-                $id = $elements[1];
+                    if (count($elements) > 1) {
+                        $id = $elements[1];
+                    }
+
+                    break;
             }
 
             file_put_contents($filename, json_encode($songs, JSON_PRETTY_PRINT));

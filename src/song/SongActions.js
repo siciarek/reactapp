@@ -8,7 +8,10 @@ import {
   UPDATE_SONG,
   FETCH_SONG,
   FETCH_SONG_FULLFILLED,
-  FETCH_SONG_REJECTED
+  FETCH_SONG_REJECTED,
+  DELETE_SONG,
+  DELETE_SONG_FULLFILLED,
+  DELETE_SONG_REJECTED,
 } from './Song'
 
 export const updateSong = (data) => {
@@ -39,6 +42,25 @@ export const fetchSong = (id) => {
     })
   }
 }
+
+export const deleteSong = (id) => {
+
+  return (dispatch) => {
+    dispatch({type: DELETE_SONG})
+
+    axios.delete(config.songUrl + '/' + id)
+    .then((response) => {
+      dispatch({
+        type:   DELETE_SONG_FULLFILLED,
+        payload: response.data,
+      })
+    })
+    .catch((err) => {
+      dispatch({type: DELETE_SONG_REJECTED, payload: err})
+    })
+  }
+}
+
 
 export const saveSong = (data) => {
 

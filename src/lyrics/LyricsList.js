@@ -6,6 +6,7 @@ import {fetchLyricsList} from './LyricsActions'
 import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
+import {deleteSong} from '../song/SongActions'
 
 import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton'
@@ -34,27 +35,29 @@ class LyricsList extends React.Component {
       const temp = this.props.items.map((item) => {
         return <ListItem
           leftIcon={<ListItemIcon />}
-          rightIconButton={
-            <div>
-              <IconButton tooltip="Show">
-                <ShowIcon/>
-              </IconButton>
-              <IconButton tooltip="Edit" onTouchTap={(e) => {
-                location.href = `/song/${item.id}/edit`
-              }}>
-                <EditIcon/>
-              </IconButton>
-              <IconButton tooltip="Delete" onTouchTap={() => {
-                location.reload()
-              }}>
-                <DeleteIcon/>
-              </IconButton>
-            </div>}
-
-          containerElement={<Link to={`/lyrics/${item.id}`}/>}
           key={item.id}
           primaryText={item.title}
           secondaryText={`${item.genre}/${item.id}/${item.createdAt}`}
+          rightIconButton={
+            <div>
+              <IconButton tooltip="Show" onTouchTap={(e) => {
+                this.props.router.push(`/lyrics/${item.id}`)
+              }}>
+                <ShowIcon/>
+              </IconButton>
+              <IconButton tooltip="Edit" onTouchTap={(e) => {
+                this.props.router.push(`/song/${item.id}/edit`)
+              }}>
+                <EditIcon/>
+              </IconButton>
+              <IconButton tooltip="Delete" onTouchTap={(e) => {
+                this.props.dispatch(deleteSong(item.id))
+                location.href = '/lyrics'
+              }}>
+                <DeleteIcon/>
+              </IconButton>
+            </div>
+          }
         />
       })
 
