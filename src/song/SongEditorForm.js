@@ -9,15 +9,27 @@ import DatePicker from 'material-ui/DatePicker'
 import ActionButton from "../app/ActionButton"
 import config from '../app/config'
 
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
+
 class SongEditorForm extends React.Component {
 
   defaultState = {
+    open: false,
     errors: {
       createdAt: '',
       genre: '',
       title: '',
       lyrics: '',
     }
+  }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
   }
 
   constructor(props, context) {
@@ -48,7 +60,7 @@ class SongEditorForm extends React.Component {
   }
 
   remove = () => {
-    this.props.removeEntity(this.props.current.id)
+    this.handleOpen()
   }
 
   submit = () => {
@@ -67,6 +79,17 @@ class SongEditorForm extends React.Component {
   }
 
   render() {
+
+    const actions = [
+      <FlatButton
+        label="No"
+        onTouchTap={this.handleClose}
+      />,
+      <FlatButton
+        label="Yes"
+        onTouchTap={() => this.props.removeEntity(this.props.current.id)}
+      />,
+    ];
 
     return (
 
@@ -136,10 +159,8 @@ class SongEditorForm extends React.Component {
           onTouchTap={this.submit}
         />
 
-        &nbsp;&nbsp;&nbsp;
-
         <RaisedButton
-          style={{display: (this.props.current.id ? 'inline-block' : 'none')}}
+          style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
           label="Remove"
           labelPosition="before"
           secondary={true}
@@ -148,6 +169,16 @@ class SongEditorForm extends React.Component {
         />
 
         <ActionButton route="/lyrics"/>
+
+        <Dialog
+          title="Warning"
+          actions={actions}
+          modal={true}
+          open={this.state.open}
+        >
+          Are you sure you want to remove it.
+        </Dialog>
+
       </form>
     )
   }
