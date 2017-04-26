@@ -56,6 +56,51 @@ $song = [
 
 $songs = [
     [
+        'id' => 101,
+        'genre' => 'Rock',
+        'createdAt' => '2017-01-01 00:00:00',
+        'title' => 'Satisfaction',
+        'lyrics' => "I can't get no satisfaction, I can't get no satisfaction
+'Cause I try and I try and I try and I try
+I can't get no, I can't get no
+
+When I'm drivin' in my car, and the man come on the radio
+He's tellin' me more and more about some useless information
+Supposed to fire my imagination
+I can't get no, oh, no, no, no, hey, hey, hey
+That's what I say
+
+I can't get no satisfaction, I can't get no satisfaction
+'Cause I try and I try and I try and I try
+I can't get no, I can't get no
+
+When I'm watchin' my tv and a man comes on and tell me
+How white my shirts can be
+But, he can't be a man 'cause he doesn't smoke
+The same cigarettes as me
+I can't get no, oh, no, no, no, hey, hey, hey
+That's what I say
+
+I can't get no satisfaction, I can't get girl reaction
+'Cause I try and I try and I try and I try
+I can't get no, I can't get no
+When I'm ridin' round the world
+And I'm doin' this and I'm signin' that
+And I'm tryin' to make some girl, who tells me
+Baby, better come back maybe next week
+Can't you see I'm on a losing streak
+I can't get no, oh, no, no, no, hey, hey, hey
+That's what I say,
+
+I can't get no, I can't get no
+I can't get no satisfaction, no satisfaction
+No satisfaction, no satisfaction",
+        'authors' => [],
+        'artists' => [],
+        'music' => [],
+        'videos' => []
+    ],
+    [
         'id' => 100,
         'createdAt' => '2016-10-21 00:00:00',
         'genre' => 'Ballad',
@@ -67,7 +112,29 @@ $songs = [
         'artists' => [
             $people['sinatra'],
         ],
-        'lyrics' => "Yesterday, love was such an easy game to play",
+        'lyrics' => "Yesterday all my troubles seemed so far away.
+Now it looks as though they're here to stay.
+Oh, I believe in yesterday.
+
+Suddenly I'm not half the man I used to be.
+There's a shadow hanging over me.
+Oh, yesterday came suddenly.
+
+Why she had to go, I don't know, she wouldn't say.
+I said something wrong, now I long for yesterday.
+
+Yesterday love was such an easy game to play.
+Now I need a place to hide away.
+Oh, I believe in yesterday.
+
+Why she had to go, I don't know, she wouldn't say.
+I said something wrong, now I long for yesterday.
+
+Yesterday love was such an easy game to play.
+Now I need a place to hide away.
+Oh, I believe in yesterday.
+
+Mm mm mm mm mm mm mm",
         'music' => [
 
         ],
