@@ -6,6 +6,7 @@ export const ENV_PROD =  'prod'
 
 export default {
   "env": "dev",
+  "locale": "en",
   "appName": "Songbook",
   "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.",
   "usersUrl": "https://jsonplaceholder.typicode.com/users",

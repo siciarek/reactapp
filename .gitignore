@@ -2,15 +2,13 @@
 
 /api/web/data.json
 
-/src/*/*.css
-/src/*/*/*.css
+# TODO: implement sass compilator
+# /src/*/*.css
+# /src/*/*/*.css
 
 # editor files
 .idea
 
-
-# build files
-/build
 
 # dependencies
 /node_modules
@@ -28,3 +26,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+public/doc/pdf/

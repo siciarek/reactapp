@@ -64,3 +64,11 @@ h2.page-header {
     font-weight: 200
 }
 
+.documents img {
+    max-width: 300px
+}
+
+/*input[type=file] {*/
+    /*width: 0;*/
+    /*opacity: 0*/
+/*}*/

@@ -30,7 +30,7 @@ class LyricsList extends React.Component {
         return <ListItem leftIcon={<ListItemIcon />}
                          containerElement={<Link to={`/lyrics/${item.id}`}/>}
                          key={item.id}
-                         primaryText={item.title}/>
+                         primaryText={item.title} secondaryText={`${item.genre}/${item.id}/${item.createdAt}`}/>
       })
 
       items = (

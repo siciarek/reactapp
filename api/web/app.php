@@ -44,6 +44,8 @@ $people = [
 
 $song = [
     'id' => null,
+    'genre' => null,
+    'createdAt' => null,
     'title' => null,
     'lyrics' => null,
     'authors' => [],
@@ -55,6 +57,8 @@ $song = [
 $songs = [
     [
         'id' => 100,
+        'createdAt' => '2016-21-10 00:00:00',
+        'genre' => 'Ballad',
         'title' => 'Yesterday',
         'authors' => [
             $people['lennon'],
@@ -86,6 +90,8 @@ $songs = [
     ],
     [
         'id' => 1,
+        'createdAt' => '2016-21-10 00:00:00',
+        'genre' => 'Ballad',
         'title' => 'My Way',
         'authors' => [
             $people['paulanka'],
@@ -151,6 +157,8 @@ Yes, it was my way",
     ],
     [
         'id' => 2,
+        'createdAt' => '2016-21-10 00:00:00',
+        'genre' => 'Jazz',
         'title' => 'Fly Me To The Moon',
         'authors' => [
             $people['paulanka'],
@@ -175,6 +183,8 @@ In other words, I love you',
     ],
     [
         'id' => 3,
+        'createdAt' => '2016-21-10 00:00:00',
+        'genre' => 'Jazz',
         'title' => 'New York, New York',
         'authors' => [
             $people['paulanka'],
@@ -237,11 +247,11 @@ New York",
 
 $filename = 'data.json';
 
-if(isset($_GET['reset'])) {
+if (isset($_GET['reset'])) {
     unlink($filename);
 }
 
-if(!file_exists($filename)) {
+if (!file_exists($filename)) {
     file_put_contents($filename, json_encode($songs, JSON_PRETTY_PRINT));
 }
 
@@ -270,18 +280,34 @@ if (count($elements) > 0) {
             $json = file_get_contents("php://input");
             $request = json_decode($json, true);
 
-            $temp = array_map(function($e) {
+            $temp = array_map(function ($e) {
                 return $e['id'];
             }, $songs);
+            $temp[] = 0;
             $id = max($temp) + 1;
 
-            if($request['id'] === null) {
+            $index = null;
+
+            $record  = [];
+
+            if (!(isset($request['id']) and $request['id'] !== null)) {
                 $request['id'] = $id;
+                $record = array_merge($song, $request);
+                $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
+                array_unshift($songs, $record);
+            }
+            else {
+
+                for($i = 0; $i < count($songs); $i++) {
+                    if($songs[$i]['id'] == $request['id']) {
+                        $record = array_merge($song, $request);
+                        $songs[$i] = $record;
+//                        $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
+                        break;
+                    }
+                }
             }
 
-            $record = array_merge($song, $request);
-
-            array_unshift($songs, $record);
 
             $data = [
                 'type' => 'info',
@@ -302,7 +328,9 @@ if (count($elements) > 0) {
             $data = array_map(function ($e) {
                 return [
                     'id' => $e['id'],
+                    'genre' => $e['genre'],
                     'title' => $e['title'],
+                    'createdAt' => isset($e['createdAt']) ? $e['createdAt'] : date('Y-m-d H:i:s'),
                 ];
             }, $songs);
 

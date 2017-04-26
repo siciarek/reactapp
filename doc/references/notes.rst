@@ -89,7 +89,7 @@ Smart and dumb Component
 ========================
 
 https://jaketrent.com/post/smart-dumb-components-react/
-
+https://facebook.github.io/react/docs/forms.html#controlled-components
 
 Material
 ========
@@ -102,3 +102,4 @@ http://redux-form.com/6.0.0-rc.1/examples/material-ui/
 Auth
 ====
 
+https://stormpath.com/blog/stormpaths-new-path

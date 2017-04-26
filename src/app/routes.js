@@ -60,11 +60,12 @@ export default (
       <Route path="/" component={Home}/>
 
       <Route path="/song/add" component={SongEditor}/>
+      <Route path="/song/:id/edit" component={SongEditor}/>
 
       <Route path="/artists" component={ArtistList}/>
       <Route path="/artists/:id" component={ArtistItem}/>
 
-      <Route path="/authors" component={AuthorList}/>
+      <Route path="/authors" component={AuthorList} params={{title:'XX'}}/>
       <Route path="/authors/:id" component={AuthorItem}/>
 
       <Route path="/lyrics" component={LyricsList}/>

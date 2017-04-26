@@ -7,17 +7,17 @@ import CircularProgress from 'material-ui/CircularProgress'
 class Spinner extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { width: '0', height: '0' };
+    this.state = {width: '0', height: '0' };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions.bind(this));
+    window.addEventListener('resize', this.updateWindowDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions.bind(this));
+    window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
   updateWindowDimensions() {
