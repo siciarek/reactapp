@@ -29,13 +29,13 @@ class LyricsList extends Component {
     )
 
     if (this.props.items.length > 0) {
-      const temp = this.props.items.map((item) => {
+      const temp = this.props.items.map((item, index) => {
         return <ListItem
           leftIcon={<ListItemIcon />}
-          key={item.id}
+          key={index}
           primaryText={item.title}
-          secondaryText={`${item.genre}/${item.id}/${item.createdAt}`}
-          rightIconButton={
+          secondaryText={[item.genre, item.id, item.createdAt].join(' / ')}
+          rightAvatar={
             <div>
               <IconButton tooltip="Show" onTouchTap={() => {
                 this.props.router.push(`/lyrics/${item.id}`)
