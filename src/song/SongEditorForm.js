@@ -1,20 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 import DatePicker from 'material-ui/DatePicker'
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
 
 import ActionButton from "../app/ActionButton"
 import config from '../app/config'
 
-import FlatButton from 'material-ui/FlatButton'
-import Dialog from 'material-ui/Dialog'
-
 class SongEditorForm extends React.Component {
 
-  defaultState = {
+  static propTypes = {
+    current: PropTypes.object.isRequired,
+    updateEntity: PropTypes.func.isRequired,
+    saveEntity: PropTypes.func.isRequired,
+    removeEntity: PropTypes.func.isRequired,
+  }
+
+  initialState = {
     open: false,
     errors: {
       createdAt: '',
@@ -35,7 +43,7 @@ class SongEditorForm extends React.Component {
   constructor(props, context) {
     super(props, context)
 
-    this.state = {...this.defaultState, errors: {...this.defaultState.errors}}
+    this.state = {...this.initialState, errors: {...this.initialState.errors}}
   }
 
   updateDateValue = (event, value) => {
@@ -65,7 +73,7 @@ class SongEditorForm extends React.Component {
 
   submit = () => {
 
-    for (let key in this.defaultState.errors) {
+    for (let key in this.initialState.errors) {
       let temp = {...this.state}
       temp.errors[key] = (this.props.current[key] === null || this.props.current[key] === '')
         ? 'This field is requred'
@@ -73,23 +81,12 @@ class SongEditorForm extends React.Component {
       this.setState({...temp})
     }
 
-    if (JSON.stringify(this.state.errors) === JSON.stringify(this.defaultState.errors)) {
+    if (JSON.stringify(this.state.errors) === JSON.stringify(this.initialState.errors)) {
       this.props.saveEntity()
     }
   }
 
   render() {
-
-    const actions = [
-      <FlatButton
-        label="No"
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label="Yes"
-        onTouchTap={() => this.props.removeEntity(this.props.current.id)}
-      />,
-    ];
 
     return (
 
@@ -152,18 +149,18 @@ class SongEditorForm extends React.Component {
         <br/>
 
         <RaisedButton
+          primary={true}
           label="Save"
           labelPosition="before"
-          primary={true}
           icon={<FontIcon className="material-icons">add_circle_outline</FontIcon>}
           onTouchTap={this.submit}
         />
 
         <RaisedButton
+          secondary={true}
           style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
           label="Remove"
           labelPosition="before"
-          secondary={true}
           icon={<FontIcon className="material-icons">remove_circle_outline</FontIcon>}
           onTouchTap={this.remove}
         />
@@ -171,12 +168,21 @@ class SongEditorForm extends React.Component {
         <ActionButton route="/lyrics"/>
 
         <Dialog
-          title="Warning"
-          actions={actions}
+          title="Confirmation"
+          actions={[
+            <FlatButton
+              label="No"
+              onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+              label="Yes"
+              onTouchTap={() => this.props.removeEntity(this.props.current.id)}
+            />,
+          ]}
           modal={true}
           open={this.state.open}
         >
-          Are you sure you want to remove it.
+          Are you sure you want to remove it?
         </Dialog>
 
       </form>
