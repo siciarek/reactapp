@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import Header from '../app/Header'
-import {fetchSong, updateSong, saveSong} from './SongActions'
+import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
 
 class SongEditor extends React.Component {
@@ -16,9 +16,13 @@ class SongEditor extends React.Component {
     state.createdAt = new Date()
     this.props.dispatch(updateSong(state))
 
-    if(this.props.params.hasOwnProperty('id')) {
+    if (this.props.params.hasOwnProperty('id')) {
       this.props.dispatch(fetchSong(this.props.params.id))
     }
+  }
+
+  removeEntity = (id) => {
+    this.props.dispatch(removeSong(id))
   }
 
   updateEntity = (key, value) => {
@@ -29,7 +33,7 @@ class SongEditor extends React.Component {
 
   saveEntity = () => {
     let state = {...this.props.current}
-    if(this.props.params.hasOwnProperty('id')) {
+    if (this.props.params.hasOwnProperty('id')) {
       state['id'] = this.props.params.id
     }
     this.props.dispatch(saveSong(state))
@@ -42,7 +46,12 @@ class SongEditor extends React.Component {
     return (
       <div className="container">
         <Header title={title}/>
-        <SongEditorForm current={this.props.current} updateEntity={this.updateEntity} saveEntity={this.saveEntity}/>
+        <SongEditorForm
+          current={this.props.current}
+          updateEntity={this.updateEntity}
+          saveEntity={this.saveEntity}
+          removeEntity={this.removeEntity}
+        />
       </div>
     )
   }

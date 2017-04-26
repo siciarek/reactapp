@@ -6,9 +6,9 @@ import {
   FETCH_SONG,
   FETCH_SONG_FULLFILLED,
   FETCH_SONG_REJECTED,
-  DELETE_SONG,
-  DELETE_SONG_FULLFILLED,
-  DELETE_SONG_REJECTED,
+  REMOVE_SONG,
+  REMOVE_SONG_FULLFILLED,
+  REMOVE_SONG_REJECTED,
 } from './Song'
 
 export default function reducer(state = {
@@ -54,20 +54,20 @@ export default function reducer(state = {
         items: action.payload,
       }
     }
-    case DELETE_SONG: {
+    case REMOVE_SONG: {
       return {
         ...state,
         fetching: true,
       }
     }
-    case DELETE_SONG_FULLFILLED: {
+    case REMOVE_SONG_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
       }
     }
-    case DELETE_SONG_REJECTED:
+    case REMOVE_SONG_REJECTED:
     case FETCH_SONG_REJECTED:
     case ADD_SONG_REJECTED: {
       return {

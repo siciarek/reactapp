@@ -9,9 +9,9 @@ import {
   FETCH_SONG,
   FETCH_SONG_FULLFILLED,
   FETCH_SONG_REJECTED,
-  DELETE_SONG,
-  DELETE_SONG_FULLFILLED,
-  DELETE_SONG_REJECTED,
+  REMOVE_SONG,
+  REMOVE_SONG_FULLFILLED,
+  REMOVE_SONG_REJECTED,
 } from './Song'
 
 export const updateSong = (data) => {
@@ -43,20 +43,23 @@ export const fetchSong = (id) => {
   }
 }
 
-export const deleteSong = (id) => {
+export const removeSong = (id) => {
 
   return (dispatch) => {
-    dispatch({type: DELETE_SONG})
+    dispatch({type: REMOVE_SONG})
 
     axios.delete(config.songUrl + '/' + id)
     .then((response) => {
       dispatch({
-        type:   DELETE_SONG_FULLFILLED,
+        type:   REMOVE_SONG_FULLFILLED,
         payload: response.data,
       })
     })
+    .then(() => {
+      location.href = '/lyrics'
+    })
     .catch((err) => {
-      dispatch({type: DELETE_SONG_REJECTED, payload: err})
+      dispatch({type: REMOVE_SONG_REJECTED, payload: err})
     })
   }
 }
@@ -76,7 +79,7 @@ export const saveSong = (data) => {
       return response.data
     })
     .then((data) => {
-      //location.href = `/song/${data.data.id}/edit`
+      location.href = `/song/${data.data.id}/edit`
     })
     .catch((err) => {
       dispatch({type: ADD_SONG_REJECTED, payload: err})

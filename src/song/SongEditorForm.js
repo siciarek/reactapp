@@ -47,6 +47,10 @@ class SongEditorForm extends React.Component {
     this.props.updateEntity(key, val)
   }
 
+  remove = () => {
+    this.props.removeEntity(this.props.current.id)
+  }
+
   submit = () => {
 
     this.setState({errors: {...this.defaultState.errors}})
@@ -70,7 +74,9 @@ class SongEditorForm extends React.Component {
 
   render() {
 
-   return (
+    const removeButtonStyle = {}
+
+    return (
 
       <form>
 
@@ -135,8 +141,20 @@ class SongEditorForm extends React.Component {
           labelPosition="before"
           primary={true}
           icon={<FontIcon className="material-icons">add_circle_outline</FontIcon>}
-          onTouchTap={() => this.submit()}
+          onTouchTap={this.submit}
         />
+
+        &nbsp;&nbsp;&nbsp;
+
+        <RaisedButton
+          style={{display: (this.props.current.id ? 'inline-block' : 'none')}}
+          label="Remove"
+          labelPosition="before"
+          secondary={true}
+          icon={<FontIcon className="material-icons">remove_circle_outline</FontIcon>}
+          onTouchTap={this.remove}
+        />
+
         <ActionButton route="/lyrics"/>
       </form>
     )
