@@ -28,10 +28,9 @@ export const fetchSong = (id) => {
 
     axios.get(config.lyricsUrl + '/' + id)
     .then((response) => {
-      // if(response.data.createdAt !== null) {
-      //   let temp = response.data.createdAt.split(/-|\s/)
-      //   response.data.createdAt = new Date(temp.slice(0, 3).reverse().join('/') + ' ' + temp[3])
-      // }
+      if (response.data.createdAt !== null) {
+        response.data.createdAt = new Date(response.data.createdAt)
+      }
       dispatch({
         type: FETCH_SONG_FULLFILLED,
         payload: response.data,
@@ -51,7 +50,7 @@ export const removeSong = (id) => {
     axios.delete(config.songUrl + '/' + id)
     .then((response) => {
       dispatch({
-        type:   REMOVE_SONG_FULLFILLED,
+        type: REMOVE_SONG_FULLFILLED,
         payload: response.data,
       })
     })

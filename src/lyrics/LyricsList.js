@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import {fetchLyricsList} from './LyricsActions'
@@ -15,7 +15,7 @@ import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
 
-class LyricsList extends React.Component {
+class LyricsList extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchLyricsList())

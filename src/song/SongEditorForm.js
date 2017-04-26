@@ -53,19 +53,13 @@ class SongEditorForm extends React.Component {
 
   submit = () => {
 
-    this.setState({errors: {...this.defaultState.errors}})
-
     for (let key in this.defaultState.errors) {
       let temp = {...this.state}
-
       temp.errors[key] = (this.props.current[key] === null || this.props.current[key] === '')
         ? 'This field is requred'
         : ''
-
       this.setState({...temp})
     }
-
-    // console.log(JSON.stringify(this.state.errors), JSON.stringify(this.defaultState.errors))
 
     if (JSON.stringify(this.state.errors) === JSON.stringify(this.defaultState.errors)) {
       this.props.saveEntity()

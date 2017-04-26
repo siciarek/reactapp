@@ -57,7 +57,7 @@ $song = [
 $songs = [
     [
         'id' => 100,
-        'createdAt' => '2016-21-10 00:00:00',
+        'createdAt' => '2016-10-21 00:00:00',
         'genre' => 'Ballad',
         'title' => 'Yesterday',
         'authors' => [
@@ -90,7 +90,7 @@ $songs = [
     ],
     [
         'id' => 1,
-        'createdAt' => '2016-21-10 00:00:00',
+        'createdAt' => '2016-10-21 00:00:00',
         'genre' => 'Ballad',
         'title' => 'My Way',
         'authors' => [
@@ -157,7 +157,7 @@ Yes, it was my way",
     ],
     [
         'id' => 2,
-        'createdAt' => '2016-21-10 00:00:00',
+        'createdAt' => '2016-10-21 00:00:00',
         'genre' => 'Jazz',
         'title' => 'Fly Me To The Moon',
         'authors' => [
@@ -183,7 +183,7 @@ In other words, I love you',
     ],
     [
         'id' => 3,
-        'createdAt' => '2016-21-10 00:00:00',
+        'createdAt' => '2016-10-21 00:00:00',
         'genre' => 'Jazz',
         'title' => 'New York, New York',
         'authors' => [
@@ -277,14 +277,14 @@ if (count($elements) > 0) {
     switch ($resource) {
         case 'song':
 
-            switch($_SERVER['REQUEST_METHOD']) {
+            switch ($_SERVER['REQUEST_METHOD']) {
                 case 'DELETE':
 
                     $id = $elements[1];
 
                     $before = count($songs);
 
-                    $songs = array_filter($songs, function($e) use ($id) {
+                    $songs = array_filter($songs, function ($e) use ($id) {
                         return $e['id'] != $id;
                     });
                     $songs = array_values($songs);
@@ -318,21 +318,18 @@ if (count($elements) > 0) {
 
                     $index = null;
 
-                    $record  = [];
+                    $record = [];
 
                     if (!(isset($request['id']) and $request['id'] !== null)) {
                         $request['id'] = $id;
                         $record = array_merge($song, $request);
-                        $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
                         array_unshift($songs, $record);
-                    }
-                    else {
+                    } else {
 
-                        for($i = 0; $i < count($songs); $i++) {
-                            if($songs[$i]['id'] == $request['id']) {
+                        for ($i = 0; $i < count($songs); $i++) {
+                            if ($songs[$i]['id'] == $request['id']) {
                                 $record = array_merge($song, $request);
                                 $songs[$i] = $record;
-                                $record['createdAt'] = date('Y-m-d H:i:s', strtotime($record['createdAt']));
                                 break;
                             }
                         }
