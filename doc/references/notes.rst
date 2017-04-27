@@ -90,6 +90,7 @@ Smart and dumb Component
 
 https://jaketrent.com/post/smart-dumb-components-react/
 https://facebook.github.io/react/docs/forms.html#controlled-components
+https://facebook.github.io/react/docs/lifting-state-up.html
 
 Material
 ========
