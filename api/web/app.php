@@ -56,6 +56,52 @@ $song = [
 
 $songs = [
     [
+        'id' => 102,
+        'genre' => 'Ballad',
+        'createdAt' => '1979-10-11 15:10:00',
+        'title' => 'Imagine',
+        'lyrics' => "Imagine there's no heaven
+It's easy if you try
+No hell below us
+Above us only sky
+
+Imagine all the people
+Living for today
+Aha-ahh
+
+Imagine there's no countries
+It isn't hard to do
+Nothing to kill or die for
+And no religion too
+
+Imagine all the people
+Living life in peace
+Yoohoo-ooh
+
+You may say I'm a dreamer
+But I'm not the only one
+I hope someday you'll join us
+And the world will be as one
+
+Imagine no possessions
+I wonder if you can
+No need for greed or hunger
+A brotherhood of man
+
+Imagine all the people
+Sharing all the world
+Yoohoo-ooh
+
+You may say I'm a dreamer
+But I'm not the only one
+I hope someday you'll join us
+And the world will live as one",
+        'authors' => [],
+        'artists' => [],
+        'music' => [],
+        'videos' => []
+    ],
+    [
         'id' => 101,
         'genre' => 'Rock',
         'createdAt' => '2017-01-01 00:00:00',
@@ -95,10 +141,22 @@ That's what I say,
 I can't get no, I can't get no
 I can't get no satisfaction, no satisfaction
 No satisfaction, no satisfaction",
-        'authors' => [],
-        'artists' => [],
+        'authors' => [
+            $people['lennon'],
+        ],
+        'artists' => [
+            $people['lennon'],
+        ],
         'music' => [],
-        'videos' => []
+        'videos' => [
+            [
+                'id' => 600,
+                'source' => 'youtube',
+                'url' => 'https://www.youtube.com/watch?v=VOgFZfRVaww',
+                'artist' => 'John Lennon',
+                'info' => 'Official video',
+            ],
+        ]
     ],
     [
         'id' => 100,

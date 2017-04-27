@@ -5,7 +5,8 @@ import {List} from 'material-ui/List';
 import ActionButton from "../app/ActionButton"
 
 import ListItemIcon from 'material-ui/svg-icons/av/library-books'
-
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
 
 import {fetchLyricsList} from './LyricsActions'
 import {removeSong} from '../song/SongActions'
@@ -17,6 +18,20 @@ class LyricsList extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchLyricsList())
+  }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  }
+
+  handleClose = () => {
+    this.setState({open: false});
+  }
+
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {open: false, id: null}
   }
 
   render() {
@@ -31,7 +46,10 @@ class LyricsList extends Component {
         const actions = {
           show: () => this.props.router.push(`/lyrics/${item.id}`),
           edit: () => this.props.router.push(`/song/${item.id}/edit`),
-          remove: () => this.props.dispatch(removeSong(item.id)),
+          remove: () => {
+            this.handleOpen()
+            this.setState({id: item.id})
+          }
         }
 
         return <AppListItem
@@ -54,6 +72,24 @@ class LyricsList extends Component {
         {items}
         <ActionButton icon="add" route="/song/add"/>
         <Spinner/>
+
+        <Dialog
+          title="Confirmation"
+          actions={[
+            <FlatButton
+              label="No"
+              onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+              label="Yes"
+              onTouchTap={() => this.props.dispatch(removeSong(this.state.id))}
+            />,
+          ]}
+          modal={true}
+          open={this.state.open}
+        >
+          Are you sure you want to remove it?
+        </Dialog>
       </div>
     )
   }

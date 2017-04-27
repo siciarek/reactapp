@@ -1,14 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 
 import {fetchLyricsItem} from './LyricsActions'
 import Header from '../app/Header'
-
 import Spinner from '../app/Spinner'
+import ActionButton from '../app/ActionButton'
 
 class LyricsItem extends React.Component {
 
@@ -24,12 +20,10 @@ class LyricsItem extends React.Component {
     return (
       <div className="container">
         <Header title={this.props.current.title} style={style} />
-        <pre className="song">{this.props.current.lyrics}</pre>
-        <FloatingActionButton
-          className="button-fixed-bottom-right"
-          containerElement={<Link to={'/lyrics'}/>}>
-          <BackToListIcon />
-        </FloatingActionButton>
+        <pre className="song">
+          {this.props.current.lyrics}
+          </pre>
+        <ActionButton icon="keyboard_arrow_left" route="/lyrics"/>
         <Spinner/>
       </div>
     )
