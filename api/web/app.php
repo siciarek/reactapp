@@ -5,6 +5,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 $people = [
+    'jagger' => [
+        'id' => 20,
+        'firstName' => 'Mick',
+        'lastName' => 'Jagger',
+        'description' => 'Mick Jagger',
+        'info' => 'Member of The Rolling Stones.',
+    ],
     'lennon' => [
         'id' => 10,
         'firstName' => 'John',
@@ -142,10 +149,10 @@ I can't get no, I can't get no
 I can't get no satisfaction, no satisfaction
 No satisfaction, no satisfaction",
         'authors' => [
-            $people['lennon'],
+            $people['jagger'],
         ],
         'artists' => [
-            $people['lennon'],
+            $people['jagger'],
         ],
         'music' => [],
         'videos' => [
