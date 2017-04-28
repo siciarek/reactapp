@@ -10,8 +10,8 @@ import {List, ListItem} from 'material-ui/List';
 
 import {fetchMusicList} from './MusicActions'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
-import OpenMenuIcon from 'material-ui/svg-icons/action/view-list';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class MusicList extends React.Component {
 
@@ -52,10 +52,7 @@ class MusicList extends React.Component {
       <div className="container">
         <Header title="Music"/>
         {items}
-        <FloatingActionButton
-          className="button-fixed-bottom-right" onTouchTap={() => this.props.router.push('/')}>
-          <OpenMenuIcon />
-        </FloatingActionButton>
+        <AppFloatingActionButton route="/"/>
         <Spinner/>
       </div>
     )

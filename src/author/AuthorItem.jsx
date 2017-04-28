@@ -1,14 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 
 import {fetchAuthorItem} from './AuthorActions'
 
 import Header from '../app/Header'
 import Spinner from '../app/Spinner'
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class AuthorItem extends React.Component {
 
@@ -28,9 +25,7 @@ class AuthorItem extends React.Component {
       <div className="container">
         <Header icon="mic" title={this.props.current.description} style={style} />
         <pre className="song">{this.props.current.info}</pre>
-        <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.listRoute}/>}>
-          <BackToListIcon />
-        </FloatingActionButton>
+        <AppFloatingActionButton route="/authors"/>
         <Spinner/>
       </div>
     )

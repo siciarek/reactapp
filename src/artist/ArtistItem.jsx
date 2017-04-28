@@ -1,19 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ItemHeaderIcon from 'material-ui/svg-icons/action/face'
 
 import {fetchArtistItem} from './ArtistActions'
 import Header from '../app/Header'
-
 import Spinner from '../app/Spinner'
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class ArtistItem extends React.Component {
-
-  listRoute = '/artists'
 
   componentDidMount() {
     this.props.dispatch(fetchArtistItem(this.props.params.id))
@@ -26,11 +21,9 @@ class ArtistItem extends React.Component {
 
     return (
       <div className="container">
-        <Header leftIcon={<ItemHeaderIcon/>} title={this.props.current.description} style={style} />
+        <Header leftIcon={<ItemHeaderIcon/>} title={this.props.current.description} style={style}/>
         <pre className="song">{this.props.current.info}</pre>
-        <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.listRoute}/>}>
-          <BackToListIcon />
-        </FloatingActionButton>
+        <AppFloatingActionButton route="/artists"/>
         <Spinner/>
       </div>
     )

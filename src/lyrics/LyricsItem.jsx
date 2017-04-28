@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {fetchLyricsItem} from './LyricsActions'
 import Header from '../app/Header'
 import Spinner from '../app/Spinner'
-import ActionButton from '../app/ActionButton'
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class LyricsItem extends React.Component {
 
@@ -23,7 +23,7 @@ class LyricsItem extends React.Component {
         <pre className="song">
           {this.props.current.lyrics}
           </pre>
-        <ActionButton icon="keyboard_arrow_left" route="/lyrics"/>
+        <AppFloatingActionButton icon="keyboard_arrow_left" route="/lyrics"/>
         <Spinner/>
       </div>
     )

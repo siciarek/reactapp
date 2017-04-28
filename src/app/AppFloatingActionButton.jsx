@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FontIcon from 'material-ui/FontIcon';
 
 
-export default class ActionButton extends Component {
+export default class AppFloatingActionButton extends Component {
 
   static propTypes = {
     icon: PropTypes.string.isRequired,
@@ -21,9 +21,7 @@ export default class ActionButton extends Component {
   render() {
 
     return (
-      <FloatingActionButton
-        className="button-fixed-bottom-right"
-        containerElement={<Link to={this.props.route}/>}>
+      <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.props.route}/>}>
         <FontIcon className="material-icons">{this.props.icon}</FontIcon>
       </FloatingActionButton>
     )

@@ -10,7 +10,7 @@ import DatePicker from 'material-ui/DatePicker'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 
-import ActionButton from "../app/ActionButton"
+import AppFloatingActionButton from "../app/AppFloatingActionButton"
 import config from '../app/config'
 
 class SongEditorForm extends React.Component {
@@ -165,7 +165,7 @@ class SongEditorForm extends React.Component {
           onTouchTap={this.remove}
         />
 
-        <ActionButton route="/lyrics"/>
+        <AppFloatingActionButton route="/lyrics"/>
 
         <Dialog
           title="Confirmation"

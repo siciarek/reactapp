@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import {List} from 'material-ui/List';
-import ActionButton from "../app/ActionButton"
+import AppFloatingActionButton from "../app/AppFloatingActionButton"
 
 import ListItemIcon from 'material-ui/svg-icons/av/library-books'
 import Dialog from 'material-ui/Dialog'
@@ -70,7 +70,7 @@ class LyricsList extends Component {
       <div className="container">
         <Header title="Lyrics"/>
         {items}
-        <ActionButton icon="add" route="/song/add"/>
+        <AppFloatingActionButton icon="add" route="/song/add"/>
         <Spinner/>
 
         <Dialog

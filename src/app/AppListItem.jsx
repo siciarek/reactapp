@@ -12,13 +12,18 @@ export default class AppListItem extends Component {
     actions: PropTypes.object.isRequired,
   }
 
-  static defaultProps = {
+  static defaultProps = {}
 
+  constructor(props) {
+    super(props)
+    this.state = {open: false}
   }
 
   render() {
 
+
     let props = {...this.props}
+
 
     const icons = {
       show: (<ShowIcon/>),
@@ -29,21 +34,22 @@ export default class AppListItem extends Component {
     let actions = {...props.actions}
 
     // Remove props unsupported by ListItem
-    delete(props.actions)
+    Object.keys(AppListItem.propTypes).map(function (prop) {
+      return delete(props[prop])
+    })
 
-    const temp = Object.keys(actions).map(function(key, index) {
-      return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={() => {actions[key]()}}>
+    const temp = Object.keys(actions).map(function (key, index) {
+      return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={() => {
+        actions[key]()
+      }}>
         {icons[key]}
       </IconButton>
     })
 
-    const buttonBar = (<span>{temp}</span>)
+    const buttonBar = (<span style={{display: (this.state.open ? 'block' : 'none')}}>{temp}</span>)
 
     return (
-      <ListItem
-        {...props}
-        rightAvatar={buttonBar}
-      />
+      <ListItem {...props} onTouchTap={() => this.setState({open: !this.state.open})} rightAvatar={buttonBar}/>
     )
   }
 }

@@ -1,15 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
 
 import {List, ListItem} from 'material-ui/List';
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
-import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import {fetchMusicItem} from './MusicActions'
 import Header from '../app/Header'
 import Spinner from '../app/Spinner'
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class MusicItem extends React.Component {
 
@@ -46,9 +44,7 @@ class MusicItem extends React.Component {
       <div className="container">
         <Header title={this.props.current.title} />
         {items}
-        <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.listRoute}/>}>
-          <BackToListIcon />
-        </FloatingActionButton>
+        <AppFloatingActionButton route="/music"/>
         <Spinner/>
       </div>
     )

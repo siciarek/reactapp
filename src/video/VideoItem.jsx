@@ -1,19 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
 
 import {List, ListItem} from 'material-ui/List';
 import ListItemIcon from 'material-ui/svg-icons/av/video-label'
-import BackToListIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import {fetchVideoItem} from './VideoActions'
 import Header from '../app/Header'
 import Spinner from '../app/Spinner'
+import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class VideoItem extends React.Component {
-
-  listRoute = '/videos'
 
   constructor(props) {
     super(props);
@@ -46,9 +42,7 @@ class VideoItem extends React.Component {
       <div className="container">
         <Header title={this.props.current.title} />
         {items}
-        <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.listRoute}/>}>
-          <BackToListIcon />
-        </FloatingActionButton>
+        <AppFloatingActionButton route="/videos"/>
         <Spinner/>
       </div>
     )
