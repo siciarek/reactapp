@@ -2,6 +2,7 @@ import React from 'react'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import PageNotFound from './pages/PageNotFound'
+import AccessForbiden from './pages/AccessForbiden'
 
 import App from './App'
 import Home from './pages/Home'
@@ -71,6 +72,7 @@ export default (
       <Route path="/videos" component={VideoList}/>
       <Route path="/video/:id" component={VideoItem}/>
 
+      <Route path="/private" component={AccessForbiden}/>
       <Route path="*" component={PageNotFound}/>
     </Route>
   </Router>

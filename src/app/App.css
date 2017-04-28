@@ -55,12 +55,12 @@ h2.page-header {
     z-index: 64000;
 }
 
-.container.page-not-found h1 {
+.container.system-page h1 {
     color: teal;
     margin-bottom: 8px
 }
 
-.container.page-not-found h2 {
+.container.system-page h2 {
     font-weight: 200
 }
 
