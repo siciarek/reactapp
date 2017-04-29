@@ -27,7 +27,7 @@ export const routes = [
   },
   {
     label: 'Videos',
-    icon: 'video_label',
+    icon: 'theaters',
     route: '/videos',
   },
   null,

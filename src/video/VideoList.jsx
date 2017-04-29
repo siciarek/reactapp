@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 import {List, ListItem} from 'material-ui/List';
-import ListItemIcon from 'material-ui/svg-icons/av/video-label'
+import ListItemIcon from 'material-ui/svg-icons/action/theaters'
 
 import {fetchVideoList} from './VideoActions'
 import Header from '../app/Header'
