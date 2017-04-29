@@ -76,7 +76,7 @@ class Login extends Component {
             primary={true}
             label="Log In"
             labelPosition="before"
-            icon={<FontIcon className="material-icons">lock_open</FontIcon>}
+            icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
             onTouchTap={this.submit}
           />
 
