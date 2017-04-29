@@ -2,7 +2,7 @@
 
 /src/app/config.jsx
 /temp
-/api/web/data.json
+/api/web/*.json
 
 # TODO: implement sass compilator
 # /src/*/*.css

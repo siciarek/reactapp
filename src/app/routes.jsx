@@ -7,6 +7,7 @@ import AccessForbiden from './pages/AccessForbiden'
 import App from './App'
 import Home from './pages/Home'
 
+import {Login, Dashboard} from '../user/User';
 import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
@@ -46,6 +47,17 @@ export const routes = [
     icon: 'video_label',
     route: '/videos',
   },
+  null,
+  {
+    label: 'Log In',
+    icon: 'lock_open',
+    route: '/login',
+  },
+  {
+    label: 'Dashboard',
+    icon: 'video_label',
+    route: '/dashboard',
+  },
 ]
 
 export default (
@@ -53,6 +65,9 @@ export default (
     <Route component={App}>
       <IndexRoute component={Home}/>
       <Route path="/" component={Home}/>
+
+      <Route path="/login" component={Login}/>
+      <Route path="/dashboard" component={Dashboard}/>
 
       <Route path="/song/add" component={SongEditor}/>
       <Route path="/song/:id/edit" component={SongEditor}/>
@@ -72,7 +87,7 @@ export default (
       <Route path="/videos" component={VideoList}/>
       <Route path="/video/:id" component={VideoItem}/>
 
-      <Route path="/private" component={AccessForbiden}/>
+      <Route path="/access-forbiden" component={AccessForbiden}/>
       <Route path="*" component={PageNotFound}/>
     </Route>
   </Router>

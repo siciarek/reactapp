@@ -105,3 +105,4 @@ Auth
 
 https://stormpath.com/blog/stormpaths-new-path
 http://blog.slatepeak.com/build-a-react-redux-app-with-json-web-token-jwt-authentication/
+http://stackoverflow.com/questions/33773477/jwt-json-web-token-in-php-without-using-3rd-party-library-how-to-sign
