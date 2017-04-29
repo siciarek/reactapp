@@ -1,12 +1,12 @@
 TODO
 ----
 
-* Zmienić rozszerzenia plików na *.jsx poza /src/index.js
-* Aplikacja ma posiadać konta użytkowników (Lista, Szczegóły, Dodaj, Modyfikuj, Usuń)
-* Aplikacja ma posiadać dostęp do postów (Lista, Szczegóły, Dodaj, Modyfikuj, Usuń)
 * Autoryzacja autentykacja
+* Użycie less lub sass do generowania arkuszy stylów CSS
+* Responsywność - 2 kolumny przy widoku LARGE
 
 DONE
 ----
 
+* Zmienić rozszerzenia plików na *.jsx poza /src/index.js.
 * Podczas akcji zaciągającej dane z serwisu zewnętrznego ma się włączać spinner.

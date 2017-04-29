@@ -9,7 +9,6 @@ export default {
   "locale": "en",
   "appName": "Songbook",
   "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.",
-  "usersUrl": "https://jsonplaceholder.typicode.com/users",
   "lyricsUrl": "http://api.songbook.dev/lyrics",
   "authorUrl": "http://api.songbook.dev/authors",
   "artistUrl": "http://api.songbook.dev/artists",
