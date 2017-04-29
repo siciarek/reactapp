@@ -64,7 +64,9 @@ class App extends Component {
                 ? <Logged onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
                 : <Login onTouchTap={() => this.props.router.push('/login')}/>}
           />
+
           {this.props.children}
+
           <AppDrawer
             opened={this.state.isMenuOpened}
             toggleView={this.toggleMenu}
