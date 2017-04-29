@@ -63,8 +63,6 @@ export default function (state = INITIAL_STATE, action) {
       }
     case AUTH_CHECK_SUCCESS:
 
-      console.log(JSON.stringify(action.payload, null, 4))
-
       return {
         ...state,
         error: '',

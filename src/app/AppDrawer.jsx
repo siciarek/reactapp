@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -33,10 +34,24 @@ class AppDrawer extends React.Component {
     const matchedRoute = this.props.router.getCurrentLocation().pathname
     const iconChecked = <FontIcon className="material-icons">check</FontIcon>
 
-    const items = routes.map((e, i) => {
+    let xroutes = routes
+
+    if(this.props.authenticated === true) {
+      xroutes = xroutes.filter(function(e) {
+        return e === null || e.hasOwnProperty('private') === false || e.private === true
+      })
+    }
+    else {
+      xroutes = xroutes.filter(function(e) {
+        return e === null || e.hasOwnProperty('private') === false || e.private === false
+      })
+    }
+
+    const items = xroutes.map((e, i) => {
       if (e === null) {
         return <Divider key={i}/>
       }
+
 
       return <MenuItem
         key={i}
@@ -71,4 +86,8 @@ class AppDrawer extends React.Component {
   }
 }
 
-export default withRouter(AppDrawer);
+export  default connect((store) => {
+  return {
+    authenticated: store.user.authenticated,
+  }
+})(withRouter(AppDrawer));

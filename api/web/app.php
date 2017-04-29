@@ -17,7 +17,7 @@ $user = [
 ];
 
 $users = [
-    'jsiciarek:pass' => [
+    'siciarek:pass' => [
         'id' => 2345,
         'firstName' => 'Jacek',
         'lastName' => 'Siciarek',
@@ -31,6 +31,22 @@ $users = [
         'lastName' => 'Olak',
         'username' => 'colak',
         'email' => 'colak@gmail.com',
+        'authenticated' => true,
+    ],
+    'molak:pass' => [
+        'id' => 4928,
+        'firstName' => 'Marianna',
+        'lastName' => 'Olak',
+        'username' => 'molak',
+        'email' => 'molak@gmail.com',
+        'authenticated' => true,
+    ],
+    'zblues:pass' => [
+        'id' => 8928,
+        'firstName' => 'Zenek',
+        'lastName' => 'Blues',
+        'username' => 'zblues',
+        'email' => 'zenek.blues@gmail.com',
         'authenticated' => true,
     ],
 ];

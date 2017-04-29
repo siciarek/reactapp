@@ -3,16 +3,41 @@
  * which incorporates components providedby material-ui.
  */
 import React, {Component} from 'react'
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router'
+
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import AppBar from 'material-ui/AppBar'
+import FlatButton from 'material-ui/FlatButton'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 import AppDrawer from './AppDrawer'
 import config from './config'
 import './App.css'
+import {unauthenticateUser} from '../user/UserActions'
+
+class Login extends Component {
+  static muiName = 'FlatButton';
+
+  render() {
+    return (
+      <FlatButton {...this.props} label="Log In" />
+    )
+  }
+}
+
+class Logged extends Component {
+  static muiName = 'FlatButton';
+
+  render() {
+    return (
+      <FlatButton {...this.props} label="Sign Out" />
+    )
+  }
+}
 
 class App extends Component {
 
@@ -30,9 +55,20 @@ class App extends Component {
     return (
       <MuiThemeProvider ref="app" muiTheme={getMuiTheme(baseTheme)}>
         <div>
-          <AppBar id="appbar" title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
+          <AppBar
+            id="appbar"
+            title={config.appName}
+            onLeftIconButtonTouchTap={this.toggleMenu}
+            iconElementRight={
+              this.props.authenticated
+                ? <Logged onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
+                : <Login onTouchTap={() => this.props.router.push('/login')}/>}
+          />
           {this.props.children}
-          <AppDrawer opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
+          <AppDrawer
+            opened={this.state.isMenuOpened}
+            toggleView={this.toggleMenu}
+          />
         </div>
 
       </MuiThemeProvider>
@@ -40,4 +76,8 @@ class App extends Component {
   }
 }
 
-export default App
+export  default connect((store) => {
+  return {
+    authenticated: store.user.authenticated,
+  }
+})(withRouter(App));

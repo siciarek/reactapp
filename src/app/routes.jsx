@@ -1,20 +1,3 @@
-import React from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-
-import PageNotFound from './pages/PageNotFound'
-import AccessForbiden from './pages/AccessForbiden'
-
-import App from './App'
-import Home from './pages/Home'
-
-import {Login, Dashboard} from '../user/User';
-import {SongEditor} from '../song/Song'
-import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
-import {AuthorList, AuthorItem} from '../author/Author'
-import {ArtistList, ArtistItem} from '../artist/Artist'
-import {MusicList, MusicItem} from '../music/Music'
-import {VideoList, VideoItem} from '../video/Video'
-
 export const routes = [
   {
     label: 'Home',
@@ -52,13 +35,32 @@ export const routes = [
     label: 'Log In',
     icon: 'lock_open',
     route: '/login',
+    private: false,
   },
   {
     label: 'Dashboard',
-    icon: 'video_label',
+    icon: 'dashboard',
     route: '/dashboard',
+    private: true,
   },
 ]
+
+import React from 'react'
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+
+import PageNotFound from './pages/PageNotFound'
+import AccessForbiden from './pages/AccessForbiden'
+
+import App from './App'
+import Home from './pages/Home'
+
+import {Login, Dashboard} from '../user/User';
+import {SongEditor} from '../song/Song'
+import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
+import {AuthorList, AuthorItem} from '../author/Author'
+import {ArtistList, ArtistItem} from '../artist/Artist'
+import {MusicList, MusicItem} from '../music/Music'
+import {VideoList, VideoItem} from '../video/Video'
 
 export default (
   <Router history={browserHistory}>
