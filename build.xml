@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE project>
 
-<project name="baseapp" default="doc-html" basedir=".">
+<project name="baseapp" default="doc" basedir=".">
 
     <property name="sphinx.build" value="sphinx-build"/>
 
     <property name="doc.source.dir" value="doc"/>
-    <property name="doc.html.target.dir" value="public/doc"/>
-    <property name="doc.pdf.target.dir" value="public/doc/pdf"/>
+    <property name="doc.html.target.dir" value="build/doc"/>
+    <property name="doc.pdf.target.dir" value="build/doc/pdf"/>
 
     <target name="doc" depends="doc-html, doc-pdf" description="Generowanie dokumentacji projektu"/>
 

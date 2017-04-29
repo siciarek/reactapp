@@ -104,3 +104,4 @@ Auth
 ====
 
 https://stormpath.com/blog/stormpaths-new-path
+http://blog.slatepeak.com/build-a-react-redux-app-with-json-web-token-jwt-authentication/
