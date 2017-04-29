@@ -10,7 +10,7 @@ import Divider from 'material-ui/Divider';
 import {routes} from './routes'
 import config from './config'
 
-class SideBar extends React.Component {
+class AppDrawer extends React.Component {
 
   static propTypes = {
     opened: PropTypes.bool.isRequired,
@@ -38,25 +38,27 @@ class SideBar extends React.Component {
         return <Divider key={i}/>
       }
 
-      return <MenuItem key={i}
-                       primaryText={e.label}
-                       onTouchTap={() => this.setRoute(e.route)}
-                       leftIcon={
-                         <FontIcon className="material-icons">{e.icon}</FontIcon>
-                       }
-                       rightIcon={
-                         matchedRoute === e.route ? iconChecked : null
-                       }
+      return <MenuItem
+        key={i}
+        primaryText={e.label}
+        onTouchTap={() => this.setRoute(e.route)}
+        leftIcon={
+          <FontIcon className="material-icons">{e.icon}</FontIcon>
+        }
+        rightIcon={
+          matchedRoute === e.route ? iconChecked : null
+        }
       />
     });
 
 
     return (
-      <Drawer docked={false}
-              open={this.props.opened}
-              onRequestChange={() => {
-                this.props.toggleView()
-              }}
+      <Drawer
+        docked={false}
+        open={this.props.opened}
+        onRequestChange={() => {
+          this.props.toggleView()
+        }}
       >
         <AppBar
           title={config.appName}
@@ -69,4 +71,4 @@ class SideBar extends React.Component {
   }
 }
 
-export default withRouter(SideBar);
+export default withRouter(AppDrawer);

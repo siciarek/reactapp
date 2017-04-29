@@ -10,7 +10,7 @@ import AppBar from 'material-ui/AppBar'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-import SideBar from './SideBar'
+import AppDrawer from './AppDrawer'
 import config from './config'
 import './App.css'
 
@@ -32,7 +32,7 @@ class App extends Component {
         <div>
           <AppBar id="appbar" title={config.appName} onLeftIconButtonTouchTap={this.toggleMenu}/>
           {this.props.children}
-          <SideBar opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
+          <AppDrawer opened={this.state.isMenuOpened} toggleView={this.toggleMenu}/>
         </div>
 
       </MuiThemeProvider>
