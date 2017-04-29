@@ -51,9 +51,10 @@ class Login extends Component {
 
           <TextField
             id="username"
+            type="text"
             value={this.state.username}
-            floatingLabelText="Email"
-            hintText="Insert email"
+            floatingLabelText="Username"
+            hintText="Insert username"
             onChange={this.updateValue}
           />
 
@@ -61,10 +62,10 @@ class Login extends Component {
 
           <TextField
             id="password"
+            type="password"
             value={this.state.password}
             floatingLabelText="Password"
-            type="password"
-            hintText="Insert email"
+            hintText="Insert password"
             onChange={this.updateValue}
           />
 

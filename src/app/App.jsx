@@ -11,6 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
+import FontIcon from 'material-ui/FontIcon'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
@@ -24,7 +25,12 @@ class Login extends Component {
 
   render() {
     return (
-      <FlatButton {...this.props} label="Log In" />
+      <FlatButton
+        {...this.props}
+        label="Log In"
+        labelPosition="before"
+        icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
+      />
     )
   }
 }
@@ -34,7 +40,12 @@ class Logged extends Component {
 
   render() {
     return (
-      <FlatButton {...this.props} label="Sign Out" />
+      <FlatButton
+        {...this.props}
+        label="Log Out"
+        labelPosition="before"
+        icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
+      />
     )
   }
 }
