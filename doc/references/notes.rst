@@ -111,6 +111,7 @@ http://stackoverflow.com/questions/33773477/jwt-json-web-token-in-php-without-us
 Testowanie
 ==========
 
+http://revelry.co/react-testing-with-jasmine/
 https://facebook.github.io/react/docs/test-utils.html#iscompositecomponentwithtype
 https://medium.com/@TuckerConnelly/good-practices-for-testing-react-apps-3a64154fa3b1
 https://www.npmjs.com/package/react-test-renderer
