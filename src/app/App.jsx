@@ -50,7 +50,7 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {isMenuOpened: false,}
+    this.state = {isMenuOpened: false}
   }
 
   toggleMenu = () => {
