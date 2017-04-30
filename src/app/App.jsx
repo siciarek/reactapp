@@ -86,9 +86,6 @@ class App extends Component {
   }
 }
 
-export const APP_START_PROCESSING = 'APP_START_PROCESSING'
-export const APP_END_PROCESSING = 'APP_END_PROCESSING'
-
 export  default connect((store) => {
   return {
     authenticated: store.user.authenticated,

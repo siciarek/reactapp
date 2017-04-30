@@ -52,7 +52,7 @@ class MusicItem extends React.Component {
 }
 
 export default connect((store) => {
-  window.xstore = store
+
   return {
     fetching: store.music.fetching,
     current: store.music.current,

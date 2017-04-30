@@ -50,7 +50,7 @@ class VideoItem extends React.Component {
 }
 
 export default connect((store) => {
-  window.xstore = store
+
   return {
     fetching: store.video.fetching,
     current: store.video.current,

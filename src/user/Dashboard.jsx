@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
 }
 
 export default connect((store) => {
-  window.xstore = store
+
   return {
     firstName: store.user.firstName,
     lastName: store.user.lastName,

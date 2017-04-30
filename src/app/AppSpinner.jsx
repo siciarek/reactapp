@@ -44,7 +44,7 @@ class AppSpinner extends React.Component {
 }
 
 export default connect((store) => {
-  window.xstore = store
+
   const fetching = store.lyrics.fetching||store.artist.fetching||store.author.fetching
   return {
     fetching: fetching,
