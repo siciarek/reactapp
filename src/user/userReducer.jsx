@@ -7,7 +7,7 @@ import {
   AUTH_CHECK,
   AUTH_CHECK_SUCCESS,
   AUTH_CHECK_FAILURE,
-} from './User';
+} from './User'
 
 const INITIAL_STATE = {
   error: '',

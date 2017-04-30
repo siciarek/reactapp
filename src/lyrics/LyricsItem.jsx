@@ -35,4 +35,4 @@ export default connect((store) => {
     fetching: store.lyrics.fetching,
     current: store.lyrics.current,
   }
-})(LyricsItem);
+})(LyricsItem)

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import FontIcon from 'material-ui/FontIcon';
-import Divider from 'material-ui/Divider';
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import FontIcon from 'material-ui/FontIcon'
+import Divider from 'material-ui/Divider'
 
 import {routes} from './routes'
 import config from './config'
@@ -64,7 +64,7 @@ class AppDrawer extends React.Component {
           matchedRoute === e.route ? iconChecked : null
         }
       />
-    });
+    })
 
 
     return (
@@ -82,7 +82,7 @@ class AppDrawer extends React.Component {
         />
         {items}
       </Drawer>
-    );
+    )
   }
 }
 
@@ -90,4 +90,4 @@ export  default connect((store) => {
   return {
     authenticated: store.user.authenticated,
   }
-})(withRouter(AppDrawer));
+})(withRouter(AppDrawer))

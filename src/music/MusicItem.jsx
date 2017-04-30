@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 
 import {fetchMusicItem} from './MusicActions'
@@ -14,7 +14,7 @@ class MusicItem extends React.Component {
   listRoute = '/music'
 
   constructor(props) {
-    super(props);
+    super(props)
     this.props.dispatch(fetchMusicItem(this.props.params.id))
   }
 
@@ -57,4 +57,4 @@ export default connect((store) => {
     fetching: store.music.fetching,
     current: store.music.current,
   }
-})(MusicItem);
+})(MusicItem)

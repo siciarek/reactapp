@@ -4,9 +4,9 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
 
 import reducer from './reducers'
-import config, { ENV_PROD } from './config'
+import config, {ENV_PROD} from './config'
 
-const logger = config.env !== ENV_PROD ? createLogger() : null;
-let middleware = logger === null ? applyMiddleware(promise(), thunk) : applyMiddleware(promise(), thunk, logger)
+const logger = config.env !== ENV_PROD ? createLogger() : null
+const middleware = config.env !== ENV_PROD ? applyMiddleware(promise(), thunk) : applyMiddleware(promise(), thunk, logger)
 
 export default createStore(reducer, middleware)

@@ -7,7 +7,7 @@ import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
 
 
@@ -56,4 +56,4 @@ export default connect((store) => {
     fetching: store.artist.fetching,
     items: store.artist.items,
   }
-})(ArtistList);
+})(ArtistList)

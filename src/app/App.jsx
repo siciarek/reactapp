@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
@@ -17,7 +17,7 @@ import './App.css'
 import {unauthenticateUser} from '../user/UserActions'
 
 class Login extends Component {
-  static muiName = 'FlatButton';
+  static muiName = 'FlatButton'
 
   render() {
     return (
@@ -32,7 +32,7 @@ class Login extends Component {
 }
 
 class Logged extends Component {
-  static muiName = 'FlatButton';
+  static muiName = 'FlatButton'
 
   render() {
     return (
@@ -93,4 +93,4 @@ export  default connect((store) => {
   return {
     authenticated: store.user.authenticated,
   }
-})(withRouter(App));
+})(withRouter(App))

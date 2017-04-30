@@ -1,6 +1,7 @@
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
+    * Obkumać https://github.com/pburtchaell/redux-promise-middleware i https://github.com/gaearon/redux-thunk
     * Zapomnij o średnikach!
     * Sam ``react`` polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim a konkretna implementacja robiona jest przy użyciu języka Babel.
     * Dane do komponentów przekazujemy jako atrybuty (tak jak w xml)

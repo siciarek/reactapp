@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/video-label'
 
 import {fetchVideoItem} from './VideoActions'
@@ -12,7 +12,7 @@ import AppFloatingActionButton from '../app/AppFloatingActionButton'
 class VideoItem extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.props.dispatch(fetchVideoItem(this.props.params.id))
   }
 
@@ -55,4 +55,4 @@ export default connect((store) => {
     fetching: store.video.fetching,
     current: store.video.current,
   }
-})(VideoItem);
+})(VideoItem)

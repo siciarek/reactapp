@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {authenticateUser} from './UserActions';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {authenticateUser} from './UserActions'
 
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -82,7 +82,7 @@ class Login extends Component {
 
         </form>
       </div>
-    );
+    )
   }
 }
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {ListItem} from 'material-ui/List';
+import {ListItem} from 'material-ui/List'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
-import IconButton from 'material-ui/IconButton';
+import IconButton from 'material-ui/IconButton'
 
 export default class AppListItem extends Component {
 

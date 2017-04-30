@@ -12,7 +12,7 @@ class AuthorItem extends React.Component {
   listRoute = '/authors'
 
   constructor(props) {
-    super(props);
+    super(props)
     this.props.dispatch(fetchAuthorItem(this.props.params.id))
   }
 
@@ -37,4 +37,4 @@ export default connect((store) => {
     fetching: store.author.fetching,
     current: store.author.current,
   }
-})(AuthorItem);
+})(AuthorItem)

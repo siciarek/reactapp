@@ -35,4 +35,4 @@ export default connect((store) => {
     fetching: store.artist.fetching,
     current: store.artist.current,
   }
-})(ArtistItem);
+})(ArtistItem)

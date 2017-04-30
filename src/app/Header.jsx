@@ -13,7 +13,7 @@ export default class Header extends React.Component {
 
   render() {
 
-    const title = this.props.title;
+    const title = this.props.title
 
     return (
       <div>

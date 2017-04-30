@@ -1,6 +1,6 @@
 import React from 'react'
-import FontIcon from 'material-ui/FontIcon';
-import {grey400} from 'material-ui/styles/colors';
+import FontIcon from 'material-ui/FontIcon'
+import {grey400} from 'material-ui/styles/colors'
 
 export default class AccessForbiden extends React.Component {
 

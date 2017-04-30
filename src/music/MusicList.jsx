@@ -6,7 +6,7 @@ import Header from '../app/Header'
 
 import Spinner from '../app/Spinner'
 
-import {List, ListItem} from 'material-ui/List';
+import {List, ListItem} from 'material-ui/List'
 
 import {fetchMusicList} from './MusicActions'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
@@ -64,4 +64,4 @@ export default connect((store) => {
     fetching: store.music.fetching,
     items: store.music.items,
   }
-})(MusicList);
+})(MusicList)

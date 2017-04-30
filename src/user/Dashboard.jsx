@@ -1,11 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 
 import Header from '../app/Header'
-import {authCheck, unauthenticateUser} from './UserActions';
+import {authCheck, unauthenticateUser} from './UserActions'
 
 class Dashboard extends React.Component {
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {List} from 'material-ui/List';
+import {List} from 'material-ui/List'
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
 
 import ListItemIcon from 'material-ui/svg-icons/av/library-books'
@@ -21,11 +21,11 @@ class LyricsList extends Component {
   }
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({open: true})
   }
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({open: false})
   }
 
   constructor(props, context) {
