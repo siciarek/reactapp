@@ -17,7 +17,7 @@ Spostrzerzenia i notatki przy nauce react redux
     * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna, zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
     * ROUTING UWAGA
 
-DOBRZE:
+ŹLE:
 
 .. code-block:: xml
 
@@ -107,3 +107,10 @@ Auth
 https://stormpath.com/blog/stormpaths-new-path
 http://blog.slatepeak.com/build-a-react-redux-app-with-json-web-token-jwt-authentication/
 http://stackoverflow.com/questions/33773477/jwt-json-web-token-in-php-without-using-3rd-party-library-how-to-sign
+
+Testowanie
+==========
+
+https://facebook.github.io/react/docs/test-utils.html#iscompositecomponentwithtype
+https://medium.com/@TuckerConnelly/good-practices-for-testing-react-apps-3a64154fa3b1
+https://www.npmjs.com/package/react-test-renderer
