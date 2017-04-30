@@ -1,25 +1,26 @@
-import React, {Component} from 'react';
-import {Router, Route, Link, IndexRoute, hashHistory, browserHistory} from 'react-router';
-import logo from './resources/images/logo.svg';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class Header extends Component {
+export default class Header extends React.Component {
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    title: 'Page',
+  }
+
   render() {
+
+    const title = this.props.title;
+
     return (
-      <div className="App-header">
-
-        <img src={logo} className="App-logo" alt="logo"/>
-        <h2>{this.props.title}</h2>
-
-        <ul>
-          <li><Link activeStyle={{color: '#53acff'}} to='/'>Home</Link></li>
-          <li><Link activeStyle={{color: '#53acff'}} to='/user'>User</Link></li>
-          <li><Link activeStyle={{color: '#53acff'}} to='/45/user'>Specific User</Link></li>
-          <li><Link activeStyle={{color: '#53acff'}} to='/about'>About</Link></li>
-        </ul>
-
+      <div>
+        <h2 className="page-header">
+          {title}
+        </h2>
       </div>
-    );
+    )
   }
 }
-
-export default Header;

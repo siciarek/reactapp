@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import '../app/resources/css/App.css';
-import Header from '../app/Header';
+import Login from './Login'
+import Dashboard from './Dashboard'
 
-class User extends Component {
-  render() {
-    return (
+export {Login, Dashboard}
 
-      <div className="App">
-        <Header title="Strona użytkownika" />
-        <p className="App-intro">
-          To jest strona użytkownika. {this.props.params.id && this.props.params.id}
-        </p>
-      </div>
-    );
-  }
-}
-
-export default User;
+export const
+  AUTH_USER = 'AUTH_USER',
+  AUTH_USER_FULLFILLED = 'AUTH_USER_FULLFILLED',
+  UNAUTH_USER = 'UNAUTH_USER',
+  UNAUTH_USER_FULLFILLED = 'UNAUTH_USER_FULLFILLED',
+  AUTH_ERROR = 'AUTH_ERROR',
+  AUTH_CHECK = 'AUTH_CHECK',
+  AUTH_CHECK_SUCCESS = 'AUTH_CHECK_SUCCESS',
+  AUTH_CHECK_FAILURE = 'AUTH_CHECK_FAILURE'

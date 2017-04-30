@@ -1,0 +1,19 @@
+/* global configuration */
+
+export const ENV_DEV = 'dev'
+export const ENV_TEST = 'test'
+export const ENV_PROD =  'prod'
+
+export default {
+  "env": "dev",
+  "locale": "en",
+  "appName": "Songbook",
+  "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.",
+  "userUrl": "http://localhost:8080/app.php/user",
+  "lyricsUrl": "http://localhost:8080/app.php/lyrics",
+  "authorUrl": "http://localhost:8080/app.php/authors",
+  "artistUrl": "http://localhost:8080/app.php/artists",
+  "musicUrl": "http://localhost:8080/app.php/music",
+  "videoUrl": "http://localhost:8080/app.php/videos",
+  "songUrl": "http://localhost:8080/app.php/song",
+}
