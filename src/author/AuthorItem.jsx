@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 
 import {fetchAuthorItem} from './AuthorActions'
 
-import Header from '../app/Header'
-import Spinner from '../app/Spinner'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class AuthorItem extends React.Component {
@@ -23,10 +23,10 @@ class AuthorItem extends React.Component {
 
     return (
       <div className="container">
-        <Header icon="mic" title={this.props.current.description} style={style} />
+        <AppHeader icon="mic" title={this.props.current.description} style={style} />
         <pre className="song">{this.props.current.info}</pre>
         <AppFloatingActionButton route="/authors"/>
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }

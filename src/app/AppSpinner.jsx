@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import CircularProgress from 'material-ui/CircularProgress'
 
 
-class Spinner extends React.Component {
+class AppSpinner extends React.Component {
   constructor(props) {
     super(props)
     this.state = {width: '0', height: '0' }
@@ -49,4 +49,4 @@ export default connect((store) => {
   return {
     fetching: fetching,
   }
-})(Spinner)
+})(AppSpinner)

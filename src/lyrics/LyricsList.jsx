@@ -10,8 +10,8 @@ import FlatButton from 'material-ui/FlatButton'
 
 import {fetchLyricsList} from './LyricsActions'
 import {removeSong} from '../song/SongActions'
-import Header from '../app/Header'
-import Spinner from '../app/Spinner'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
 import AppListItem from '../app/AppListItem'
 
 class LyricsList extends Component {
@@ -68,10 +68,10 @@ class LyricsList extends Component {
 
     return (
       <div className="container">
-        <Header title="Lyrics"/>
+        <AppHeader title="Lyrics"/>
         {items}
         <AppFloatingActionButton icon="add" route="/song/add"/>
-        <Spinner/>
+        <AppSpinner/>
 
         <Dialog
           title="Confirmation"

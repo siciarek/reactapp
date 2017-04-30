@@ -5,8 +5,8 @@ import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 
 import {fetchMusicItem} from './MusicActions'
-import Header from '../app/Header'
-import Spinner from '../app/Spinner'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class MusicItem extends React.Component {
@@ -42,10 +42,10 @@ class MusicItem extends React.Component {
 
     return (
       <div className="container">
-        <Header title={this.props.current.title} />
+        <AppHeader title={this.props.current.title} />
         {items}
         <AppFloatingActionButton route="/music"/>
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }

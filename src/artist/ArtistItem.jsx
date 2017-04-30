@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 import ItemHeaderIcon from 'material-ui/svg-icons/action/face'
 
 import {fetchArtistItem} from './ArtistActions'
-import Header from '../app/Header'
-import Spinner from '../app/Spinner'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class ArtistItem extends React.Component {
@@ -21,10 +21,10 @@ class ArtistItem extends React.Component {
 
     return (
       <div className="container">
-        <Header leftIcon={<ItemHeaderIcon/>} title={this.props.current.description} style={style}/>
+        <AppHeader leftIcon={<ItemHeaderIcon/>} title={this.props.current.description} style={style}/>
         <pre className="song">{this.props.current.info}</pre>
         <AppFloatingActionButton route="/artists"/>
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }

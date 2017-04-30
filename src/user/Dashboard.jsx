@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 
-import Header from '../app/Header'
+import AppHeader from '../app/AppHeader'
 import {authCheck, unauthenticateUser} from './UserActions'
 
 class Dashboard extends React.Component {
@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
 
     return (
       <div className="container">
-        <Header title="User dashboard"/>
+        <AppHeader title="User dashboard"/>
 
         <p>Hello, {`${this.props.firstName} ${this.props.lastName}`}!</p>
 

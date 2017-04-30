@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import Header from '../app/Header'
+import AppHeader from '../app/AppHeader'
 import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
 
@@ -46,7 +46,7 @@ class SongEditor extends React.Component {
 
     return (
       <div className="container">
-        <Header title={title}/>
+        <AppHeader title={title}/>
         <SongEditorForm
           current={this.props.current}
           updateEntity={this.updateEntity}

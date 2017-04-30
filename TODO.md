@@ -10,6 +10,7 @@ TODO
 DONE
 ----
 
+* Środowisko testowe i testy jednostkowe
 * Autoryzacja, autentykacja
 * Zmienić rozszerzenia plików na *.jsx poza /src/index.js.
 * Podczas akcji zaciągającej dane z serwisu zewnętrznego ma się włączać spinner.

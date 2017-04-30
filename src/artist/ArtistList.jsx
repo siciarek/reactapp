@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 
 import {Link} from 'react-router'
 import {fetchArtistList} from './ArtistActions'
-import Header from '../app/Header'
+import AppHeader from '../app/AppHeader'
 
-import Spinner from '../app/Spinner'
+import AppSpinner from '../app/AppSpinner'
 
 import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
@@ -43,9 +43,9 @@ class ArtistList extends React.Component {
 
     return (
       <div className="container">
-        <Header title="Artist"/>
+        <AppHeader title="Artist"/>
         {items}
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }

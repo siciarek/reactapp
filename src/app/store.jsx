@@ -3,10 +3,22 @@ import {createLogger} from 'redux-logger'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
 
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
+const sagaMiddleware = createSagaMiddleware()
+
 import reducer from './reducers'
-import config, {ENV_PROD} from './config'
+import config, { ENV_PROD } from './config'
 
-const logger = config.env !== ENV_PROD ? createLogger() : null
-const middleware = config.env !== ENV_PROD ? applyMiddleware(promise(), thunk) : applyMiddleware(promise(), thunk, logger)
+const logger = config.env !== ENV_PROD ? createLogger() : null;
 
-export default createStore(reducer, middleware)
+let middleware = logger === null
+  ? applyMiddleware(promise(), thunk, sagaMiddleware)
+  : applyMiddleware(promise(), thunk, sagaMiddleware, logger)
+
+
+const store = createStore(reducer, middleware)
+
+sagaMiddleware.run(rootSaga)
+
+export default store

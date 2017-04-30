@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {Link} from 'react-router'
-import Header from '../app/Header'
+import AppHeader from '../app/AppHeader'
 
-import Spinner from '../app/Spinner'
+import AppSpinner from '../app/AppSpinner'
 
 import {List, ListItem} from 'material-ui/List'
 
@@ -44,9 +44,9 @@ class AuthorList extends React.Component {
 
     return (
       <div className="container">
-        <Header title="Author"/>
+        <AppHeader title="Author"/>
         {items}
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }

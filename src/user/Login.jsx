@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 import Snackbar from 'material-ui/Snackbar'
 
-import Header from '../app/Header'
+import AppHeader from '../app/AppHeader'
 
 const initialState = {
   username: '',
@@ -38,7 +38,7 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <Header title="Log in"/>
+        <AppHeader title="Log in"/>
 
         <Snackbar
           open={this.props.errorMessage !== ''}

@@ -6,8 +6,8 @@ import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/action/theaters'
 
 import {fetchVideoList} from './VideoActions'
-import Header from '../app/Header'
-import Spinner from '../app/Spinner'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class VideoList extends React.Component {
@@ -39,10 +39,10 @@ class VideoList extends React.Component {
 
     return (
       <div className="container">
-        <Header title={this.title}/>
+        <AppHeader title={this.title}/>
         {items}
         <AppFloatingActionButton route="/"/>
-        <Spinner/>
+        <AppSpinner/>
       </div>
     )
   }
