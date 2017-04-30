@@ -1,7 +1,3 @@
-/**
- * In this file, we create a React component
- * which incorporates components providedby material-ui.
- */
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
@@ -64,16 +60,17 @@ class App extends Component {
   render() {
 
     return (
-      <MuiThemeProvider ref="app" muiTheme={getMuiTheme(baseTheme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+
         <div>
           <AppBar
-            id="appbar"
             title={config.appName}
             onLeftIconButtonTouchTap={this.toggleMenu}
             iconElementRight={
-              this.props.authenticated
+              this.props.authenticated === true
                 ? <Logged onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
-                : <Login onTouchTap={() => this.props.router.push('/login')}/>}
+                : <Login onTouchTap={() => this.props.router.push('/login')}/>
+            }
           />
 
           {this.props.children}
@@ -88,6 +85,9 @@ class App extends Component {
     )
   }
 }
+
+export const START_PROCESSING = 'START_PROCESSING'
+export const END_PROCESSING = 'END_PROCESSING'
 
 export  default connect((store) => {
   return {
