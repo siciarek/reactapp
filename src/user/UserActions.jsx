@@ -33,6 +33,7 @@ export function saveUser(data) {
     let url = config.userUrl + '/' + data.id
 
     axios.put(url, {
+      data,
       headers: {
         'Authorization': cookie.get('token')
       }
@@ -40,7 +41,7 @@ export function saveUser(data) {
     .then((response) => {
       dispatch({
         type: SAVE_USER_FULLFILLED,
-        payload: response.data,
+        payload: response.data.msg,
       })
     })
     .catch((err) => {

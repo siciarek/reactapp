@@ -19,17 +19,19 @@ $user = [
 $users = [
     'siciarek:pass' => [
         'id' => 2345,
+        'public' => true,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Jacek',
         'lastName' => 'Siciarek',
         'username' => 'jsiciarek',
         'email' => 'siciarek@gmail.com',
-        'authenticated' => true,
         'info' => 'Spoko ziom.',
+        'authenticated' => true,
     ],
     'colak:pass' => [
         'id' => 3456,
+        'public' => false,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Czesław',
@@ -41,6 +43,7 @@ $users = [
     ],
     'molak:pass' => [
         'id' => 4928,
+        'public' => true,
         'gender' => 'female',
         'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Marianna',
@@ -52,6 +55,7 @@ $users = [
     ],
     'zblues:pass' => [
         'id' => 8928,
+        'public' => true,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Zenek',
@@ -158,6 +162,7 @@ if (count($elements) > 0) {
                             $data = array_merge($user, []);
                         }
 
+                        file_put_contents($userFilename, json_encode($data, JSON_PRETTY_PRINT));
                         break;
                     case 'logout' :
                         $json = file_get_contents($userFilename);
@@ -165,6 +170,7 @@ if (count($elements) > 0) {
 
                         $data['token'] = null;
                         $data['authenticated'] = false;
+                        file_put_contents($userFilename, json_encode($data, JSON_PRETTY_PRINT));
                         break;
                     case 'auth' :
                         $json = file_get_contents($userFilename);
@@ -174,34 +180,34 @@ if (count($elements) > 0) {
 
                             $headers = getallheaders();
 
-//                            var_dump([$data['token'] === $headers['Authorization'], $data['token'], $headers['Authorization']]);
-
-                            var_dump($data);
                             $data['authenticated'] = $data['token'] === $headers['Authorization'];
 
                             if ($data['authenticated'] === false) {
                                 $data['token'] = null;
                             }
                         }
+                        file_put_contents($userFilename, json_encode($data, JSON_PRETTY_PRINT));
                         break;
                     default:
                         $id = $elements[1];
 
                         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+
+                            $json = file_get_contents("php://input");
+                            $request = json_decode($json, true);
+
                             $data = [
                                 'type' => 'info',
                                 'success' => true,
                                 'msg' => 'Updated successfully',
                                 'datetime' => date('Y-m-d H:i:s'),
-                                'data' => new \stdClass(),
+                                'data' => $request,
                             ];
                         }
 
                         break;
 
                 }
-
-                file_put_contents($userFilename, json_encode($data, JSON_PRETTY_PRINT));
             }
 
 

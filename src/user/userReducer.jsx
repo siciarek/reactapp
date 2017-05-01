@@ -71,7 +71,7 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         error: '',
-        message: action.payload.data.msg,
+        message: action.payload,
       }
     case AUTH_CHECK_FAILURE:
       return {
@@ -87,6 +87,7 @@ export default function (state = INITIAL_STATE, action) {
         error: '',
         message: '',
         id: action.payload.id,
+        public: action.payload.public,
         info: action.payload.info === null ? null : action.payload.info,
         gender: action.payload.gender,
         dateOfBirth: action.payload.dateOfBirth,
