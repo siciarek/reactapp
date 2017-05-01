@@ -5,15 +5,17 @@ export const ENV_TEST = 'test'
 export const ENV_PROD =  'prod'
 
 export default {
-  "env": "dev",
-  "locale": "en",
-  "appName": "Songbook",
-  "appDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.",
-  "userUrl": "http://localhost:8080/app.php/user",
-  "lyricsUrl": "http://localhost:8080/app.php/lyrics",
-  "authorUrl": "http://localhost:8080/app.php/authors",
-  "artistUrl": "http://localhost:8080/app.php/artists",
-  "musicUrl": "http://localhost:8080/app.php/music",
-  "videoUrl": "http://localhost:8080/app.php/videos",
-  "songUrl": "http://localhost:8080/app.php/song",
+  env: 'dev',
+  locale: 'en',
+  appPicture: '/images/microphone.jpg',
+  appName: 'Songbook',
+  appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.',
+
+  userUrl: 'http://api.songbook.dev/user',
+  lyricsUrl: 'http://api.songbook.dev/lyrics',
+  authorUrl: 'http://api.songbook.dev/authors',
+  artistUrl: 'http://api.songbook.dev/artists',
+  musicUrl: 'http://api.songbook.dev/music',
+  videoUrl: 'http://api.songbook.dev/videos',
+  songUrl: 'http://api.songbook.dev/song',
 }

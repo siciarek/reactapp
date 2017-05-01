@@ -16,36 +16,6 @@ import config from './config'
 import './App.css'
 import {unauthenticateUser} from '../user/UserActions'
 
-class Login extends Component {
-  static muiName = 'FlatButton'
-
-  render() {
-    return (
-      <FlatButton
-        {...this.props}
-        label="Log In"
-        labelPosition="before"
-        icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-      />
-    )
-  }
-}
-
-class Logged extends Component {
-  static muiName = 'FlatButton'
-
-  render() {
-    return (
-      <FlatButton
-        {...this.props}
-        label="Log Out"
-        labelPosition="before"
-        icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-      />
-    )
-  }
-}
-
 class App extends Component {
 
   constructor(props) {
@@ -68,8 +38,16 @@ class App extends Component {
             onLeftIconButtonTouchTap={this.toggleMenu}
             iconElementRight={
               this.props.authenticated === true
-                ? <Logged onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
-                : <Login onTouchTap={() => this.props.router.push('/login')}/>
+                ? <FlatButton
+                label="Log Out"
+                labelPosition="before"
+                icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
+                onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
+                : <FlatButton
+                label="Log In"
+                labelPosition="before"
+                icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
+                onTouchTap={() => this.props.router.push('/login')} />
             }
           />
 

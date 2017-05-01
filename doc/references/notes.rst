@@ -101,6 +101,11 @@ http://www.material-ui.com/
 https://github.com/callemall/material-ui/tree/master/docs
 http://redux-form.com/6.0.0-rc.1/examples/material-ui/
 
+Layout
+======
+
+https://github.com/STRML/react-grid-layout
+
 Auth
 ====
 
