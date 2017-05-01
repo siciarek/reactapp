@@ -43,6 +43,12 @@ export const routes = [
     route: '/dashboard',
     private: true,
   },
+  {
+    label: 'Profile',
+    icon: 'account_circle',
+    route: '/profile',
+    private: true,
+  },
 ]
 
 import React from 'react'
@@ -54,7 +60,7 @@ import AccessForbiden from './pages/AccessForbiden'
 import App from './App'
 import Home from './pages/Home'
 
-import {Login, Dashboard} from '../user/User'
+import {Login, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
@@ -70,6 +76,7 @@ export default (
 
       <Route path="/login" component={Login}/>
       <Route path="/dashboard" component={Dashboard}/>
+      <Route path="/profile" component={Profile}/>
 
       <Route path="/song/add" component={SongEditor}/>
       <Route path="/song/:id/edit" component={SongEditor}/>

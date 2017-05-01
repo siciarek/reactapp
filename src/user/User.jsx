@@ -1,9 +1,15 @@
 import Login from './Login'
 import Dashboard from './Dashboard'
+import Profile from './Profile'
 
-export {Login, Dashboard}
+export {Login, Dashboard, Profile}
 
 export const
+  UPDATE_USER = 'UPDATE_USER',
+  SAVE_USER = 'SAVE_USER', // TODO: find better name
+  SAVE_USER_FULLFILLED = 'SAVE_USER_FULLFILLED', // TODO: find better name
+  SAVE_USER_REJECTED = 'SAVE_USER_REJECTED', // TODO: find better name
+  REMOVE_USER = 'UPDATE_USER',
   AUTH_USER = 'AUTH_USER',
   AUTH_USER_FULLFILLED = 'AUTH_USER_FULLFILLED',
   UNAUTH_USER = 'UNAUTH_USER',

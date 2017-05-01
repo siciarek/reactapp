@@ -3,6 +3,11 @@ import {Cookies} from 'react-cookie'
 
 import config from '../app/config'
 import {
+  UPDATE_USER,
+  SAVE_USER,
+  SAVE_USER_FULLFILLED,
+  SAVE_USER_REJECTED,
+  REMOVE_USER,
   AUTH_USER,
   UNAUTH_USER,
   AUTH_USER_FULLFILLED,
@@ -14,6 +19,35 @@ import {
 } from './User'
 
 const cookie = new Cookies()
+
+export function updateUser(data) {
+  return function (dispatch) {
+    dispatch({type: UPDATE_USER, payload: data})
+  }
+}
+
+export function saveUser(data) {
+
+  return function (dispatch) {
+    dispatch({type: SAVE_USER})
+    let url = config.userUrl + '/' + data.id
+
+    axios.put(url, {
+      headers: {
+        'Authorization': cookie.get('token')
+      }
+    })
+    .then((response) => {
+      dispatch({
+        type: SAVE_USER_FULLFILLED,
+        payload: response.data,
+      })
+    })
+    .catch((err) => {
+      dispatch({type: SAVE_USER_REJECTED, payload: err})
+    })
+  }
+}
 
 export function authenticateUser({username, password}) {
   return function (dispatch) {
@@ -73,6 +107,9 @@ export function authCheck() {
         window.location.href = '/login'
       }
       else {
+        if (typeof response.data.dateOfBirth !== 'undefined' && response.data.dateOfBirth !== null) {
+          response.data.dateOfBirth = new Date(response.data.dateOfBirth)
+        }
         dispatch({
           type: AUTH_CHECK_SUCCESS,
           payload: response.data

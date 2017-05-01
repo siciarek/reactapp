@@ -19,35 +19,47 @@ $user = [
 $users = [
     'siciarek:pass' => [
         'id' => 2345,
+        'gender' => 'male',
+        'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Jacek',
         'lastName' => 'Siciarek',
         'username' => 'jsiciarek',
         'email' => 'siciarek@gmail.com',
         'authenticated' => true,
+        'info' => 'Spoko ziom.',
     ],
     'colak:pass' => [
         'id' => 3456,
+        'gender' => 'male',
+        'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Czesław',
         'lastName' => 'Olak',
         'username' => 'colak',
         'email' => 'colak@gmail.com',
         'authenticated' => true,
+        'info' => null,
     ],
     'molak:pass' => [
         'id' => 4928,
+        'gender' => 'female',
+        'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Marianna',
         'lastName' => 'Olak',
         'username' => 'molak',
         'email' => 'molak@gmail.com',
         'authenticated' => true,
+        'info' => null,
     ],
     'zblues:pass' => [
         'id' => 8928,
+        'gender' => 'male',
+        'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Zenek',
         'lastName' => 'Blues',
         'username' => 'zblues',
         'email' => 'zenek.blues@gmail.com',
         'authenticated' => true,
+        'info' => null,
     ],
 ];
 
@@ -135,15 +147,14 @@ if (count($elements) > 0) {
 
                         $key = sprintf('%s:%s', $username, $password);
 
-                        if(array_key_exists($key, $users)) {
+                        if (array_key_exists($key, $users)) {
 
                             $token = getJwtToken();
 
                             $data = array_merge($user, $users[$key]);
 
                             $data['token'] = $token;
-                        }
-                        else {
+                        } else {
                             $data = array_merge($user, []);
                         }
 
@@ -159,12 +170,13 @@ if (count($elements) > 0) {
                         $json = file_get_contents($userFilename);
                         $data = json_decode($json, true);
 
-                        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
                             $headers = getallheaders();
 
 //                            var_dump([$data['token'] === $headers['Authorization'], $data['token'], $headers['Authorization']]);
 
+                            var_dump($data);
                             $data['authenticated'] = $data['token'] === $headers['Authorization'];
 
                             if ($data['authenticated'] === false) {
@@ -172,6 +184,21 @@ if (count($elements) > 0) {
                             }
                         }
                         break;
+                    default:
+                        $id = $elements[1];
+
+                        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+                            $data = [
+                                'type' => 'info',
+                                'success' => true,
+                                'msg' => 'Updated successfully',
+                                'datetime' => date('Y-m-d H:i:s'),
+                                'data' => new \stdClass(),
+                            ];
+                        }
+
+                        break;
+
                 }
 
                 file_put_contents($userFilename, json_encode($data, JSON_PRETTY_PRINT));

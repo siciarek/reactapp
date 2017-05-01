@@ -33,11 +33,13 @@ class Dashboard extends React.Component {
 
         <p>Hello, {`${this.props.firstName} ${this.props.lastName}`}!</p>
 
-        <p>Welcome on board!</p>
+
+        <p><em>{`${this.props.dateOfBirth}`}</em></p>
+        <p><em>{`${this.props.email}`}</em></p>
 
         <br/>
 
-        <p><em>{`${this.props.email}`}</em></p>
+        <p>Welcome on board! At the moment you can log out or visit the page of you personal user profile.</p>
 
         <br/>
 
@@ -48,6 +50,16 @@ class Dashboard extends React.Component {
           icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
           onTouchTap={this.logOut}
         />
+
+        {' '}
+
+        <RaisedButton
+          primary={true}
+          label="Profile"
+          labelPosition="before"
+          icon={<FontIcon className="material-icons">account_circle</FontIcon>}
+          onTouchTap={() => this.props.router.push('/profile')}
+        />
       </div>
     )
   }
@@ -56,6 +68,7 @@ class Dashboard extends React.Component {
 export default connect((store) => {
 
   return {
+    dateOfBirth: store.user.dateOfBirth,
     firstName: store.user.firstName,
     lastName: store.user.lastName,
     email: store.user.email,

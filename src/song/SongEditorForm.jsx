@@ -98,9 +98,9 @@ class SongEditorForm extends React.Component {
           errorText={this.state.errors.createdAt}
           floatingLabelText="Created at"
           onChange={this.updateDateValue}
-          DateTimeFormat={global.Intl.DateTimeFormat}
           autoOk={true}
-          locale={config.locale}
+          // DateTimeFormat={global.Intl.DateTimeFormat}
+          // locale={config.locale}
           hintText="Created at"
           fullWidth={true}
         />

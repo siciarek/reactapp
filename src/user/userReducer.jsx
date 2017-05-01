@@ -1,4 +1,9 @@
 import {
+  UPDATE_USER,
+  SAVE_USER,
+  SAVE_USER_FULLFILLED,
+  SAVE_USER_REJECTED,
+  REMOVE_USER,
   AUTH_USER,
   UNAUTH_USER,
   AUTH_USER_FULLFILLED,
@@ -12,6 +17,7 @@ import {
 const INITIAL_STATE = {
   error: '',
   message: '',
+  dateOfBirth: null,
   firstName: 'John',
   lastName: 'Doe',
   username: '',
@@ -55,6 +61,18 @@ export default function (state = INITIAL_STATE, action) {
         error: '',
         message: 'Authentication check in progress.',
       }
+    case SAVE_USER_REJECTED:
+      return {
+        ...state,
+        error: (typeof action.payload.data.msg !== 'undefined' ? action.payload.data.msg : 'User profile can not be saved.'),
+        message: '',
+      }
+    case SAVE_USER_FULLFILLED:
+      return {
+        ...state,
+        error: '',
+        message: action.payload.data.msg,
+      }
     case AUTH_CHECK_FAILURE:
       return {
         ...state,
@@ -62,11 +80,16 @@ export default function (state = INITIAL_STATE, action) {
         authenticated: false
       }
     case AUTH_CHECK_SUCCESS:
-
+    case UPDATE_USER:
+      // TODO: wyrzucić przypisywanie wartości do akcji
       return {
         ...state,
         error: '',
         message: '',
+        id: action.payload.id,
+        info: action.payload.info === null ? null : action.payload.info,
+        gender: action.payload.gender,
+        dateOfBirth: action.payload.dateOfBirth,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         username: action.payload.username,
