@@ -3,27 +3,21 @@ import ReactTestUtils from 'react-dom/test-utils'
 import ReactTestRenderer from 'react-test-renderer/shallow'
 
 
-import AppHeader from './AppHeader'
+import AppSpinner from './AppSpinner'
 
-describe('AppHeader', () => {
+describe('AppSpinner', () => {
 
   it('can render without error', () => {
     let component, element
 
-    element = React.createElement(AppHeader, {})
+    element = React.createElement(AppSpinner, {})
 
     expect(function () {
       component = ReactTestUtils.renderIntoDocument(element)
     }).not.toThrow()
 
     expect(function () {
-      component = ReactTestUtils.renderIntoDocument(<AppHeader/>)
+      component = ReactTestUtils.renderIntoDocument(<AppSpinner/>)
     }).not.toThrow()
-  })
-
-  it('has a proper default title', () => {
-
-    let component = ReactTestUtils.renderIntoDocument(<AppHeader/>)
-    expect(component.props.title).toBe('Page')
   })
 })

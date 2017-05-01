@@ -14,14 +14,12 @@ class Profile extends React.Component {
   }
 
   removeEntity = (id) => {
-    console.log(id)
+    alert('Not implemented yet.')
     // this.props.dispatch(removeUser(id))
   }
 
   updateEntity = (key, value) => {
-    let state = {...this.props.current}
-    state[key] = value
-    this.props.dispatch(updateUser(state))
+    this.props.dispatch(updateUser({...this.props.current, [key]: value}))
   }
 
   saveEntity = () => {

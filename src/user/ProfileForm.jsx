@@ -6,6 +6,7 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import Toggle from 'material-ui/Toggle'
+import Checkbox from 'material-ui/Checkbox'
 import DatePicker from 'material-ui/DatePicker'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
@@ -70,6 +71,13 @@ class ProfileForm extends React.Component {
     this.props.update(key, val)
   }
 
+  updateBooleanValue = (proxy, value) => {
+    const key = 'public'
+    const val =  value
+
+    this.props.update(key, val)
+  }
+
   updateValue = (event) => {
     const key = event.target.id
     let val = event.target.value === null || event.target.value.toString().trim().length === 0 ? null : event.target.value
@@ -108,10 +116,19 @@ class ProfileForm extends React.Component {
 
           <Toggle
             id="public"
-            onToggle={this.toggleValue}
-            defaultToggled={this.props.current.public}
             label="Profile visible to the public"
             labelPosition="right"
+            defaultToggled={this.props.current.public}
+            onToggle={this.toggleValue}
+          />
+
+          <br/>
+
+          <Checkbox
+            label="Profile visible to the public"
+            labelPosition="right"
+            onCheck={this.updateBooleanValue}
+            checked={this.props.current.public}
           />
 
           <SelectField
