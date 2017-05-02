@@ -20,7 +20,7 @@ class AppSpinner extends React.Component {
     window.removeEventListener('resize', this.updateWindowDimensions)
   }
 
-  updateWindowDimensions() {
+  updateWindowDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
 
