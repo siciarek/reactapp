@@ -1,5 +1,6 @@
 import axios from 'axios'
-import {Cookies} from 'react-cookie'
+
+import AppStash from '../app/AppStash'
 
 import config from '../app/config'
 import {
@@ -17,7 +18,6 @@ import {
   AUTH_CHECK_FAILURE,
 } from './User'
 
-const cookie = new Cookies()
 
 export function updateUser(data) {
   return function (dispatch) {
@@ -34,7 +34,7 @@ export function saveUser(data) {
     axios.put(url, {
       data,
       headers: {
-        'Authorization': cookie.get('token')
+        'Authorization': AppStash.get('token')
       }
     })
     .then((response) => {
@@ -56,7 +56,7 @@ export function authenticateUser({username, password}) {
     axios.post(`${config.userUrl}/login`, {username, password})
     .then(response => {
       if (response.data.authenticated === true) {
-        cookie.set('token', response.data.token, {path: '/'})
+        AppStash.set('token', response.data.token)
         dispatch({type: AUTH_USER_FULLFILLED, payload: response.data})
         window.location.href = '/dashboard'
       }
@@ -77,7 +77,7 @@ export function unauthenticateUser() {
     axios.post(`${config.userUrl}/logout`)
     .then(response => {
       if (response.data.authenticated === false) {
-        cookie.remove('token', {path: '/'})
+        AppStash.remove('token')
         dispatch({type: UNAUTH_USER_FULLFILLED, payload: response.data})
         window.location.href = '/login'
       }
@@ -95,7 +95,7 @@ export function authCheck() {
 
     axios.get(`${config.userUrl}/auth`, {
       headers: {
-        'Authorization': cookie.get('token')
+        'Authorization': AppStash.get('token')
       }
     })
     .then(response => {

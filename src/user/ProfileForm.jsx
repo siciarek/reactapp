@@ -190,7 +190,7 @@ class ProfileForm extends React.Component {
 
           <TextField
             id="info"
-            value={this.props.current.info}
+            value={this.props.current.info?this.props.current.info:''}
             errorText={this.state.errors.info}
             floatingLabelText="Info"
             fullWidth={true}

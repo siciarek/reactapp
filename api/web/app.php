@@ -14,6 +14,8 @@ $user = [
     'firstName' => 'Erma',
     'lastName' => 'Cassini',
     'authenticated' => false,
+    'error' => '',
+    'message' => '',
 ];
 
 $users = [
@@ -29,6 +31,8 @@ $users = [
         'email' => 'siciarek@gmail.com',
         'info' => 'Spoko ziom.',
         'authenticated' => true,
+        'error' => '',
+        'message' => '',
     ],
     'colak:pass' => [
         'id' => 3456,
@@ -42,6 +46,8 @@ $users = [
         'email' => 'colak@gmail.com',
         'info' => null,
         'authenticated' => true,
+        'error' => '',
+        'message' => '',
     ],
     'molak:pass' => [
         'id' => 4928,
@@ -55,6 +61,8 @@ $users = [
         'email' => 'molak@gmail.com',
         'info' => null,
         'authenticated' => true,
+        'error' => '',
+        'message' => '',
     ],
     'zblues:pass' => [
         'id' => 8928,
@@ -68,6 +76,8 @@ $users = [
         'email' => 'zenek.blues@gmail.com',
         'info' => null,
         'authenticated' => true,
+        'error' => '',
+        'message' => '',
     ],
 ];
 

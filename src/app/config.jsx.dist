@@ -1,8 +1,11 @@
 /* global configuration */
 
-export const ENV_DEV = 'dev'
-export const ENV_TEST = 'test'
-export const ENV_PROD =  'prod'
+export const
+  ENV_DEV = 'dev',
+  ENV_TEST = 'test',
+  ENV_PROD =  'prod',
+  STORAGE_TYPE_COOKIES = 'cookies',
+  STORAGE_TYPE_LOCAL = 'localStorage'
 
 export default {
   env: 'dev',
@@ -10,6 +13,8 @@ export default {
   appPicture: '/images/microphone.jpg',
   appName: 'Songbook',
   appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.',
+
+  storageType: STORAGE_TYPE_COOKIES,
 
   userUrl: 'http://api.songbook.dev/user',
   lyricsUrl: 'http://api.songbook.dev/lyrics',
