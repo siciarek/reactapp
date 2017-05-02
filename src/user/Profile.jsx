@@ -46,7 +46,6 @@ class Profile extends React.Component {
 }
 
 export default connect((store) => {
-  window.store = store
   return {
     current: store.user,
   }

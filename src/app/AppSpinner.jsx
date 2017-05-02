@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import CircularProgress from 'material-ui/CircularProgress'
 
 
 class AppSpinner extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {width: '0', height: '0' }
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+    this.state = {width: '0', height: '0'}
   }
 
   componentDidMount() {
@@ -21,7 +20,7 @@ class AppSpinner extends React.Component {
   }
 
   updateWindowDimensions = () => {
-    this.setState({ width: window.innerWidth, height: window.innerHeight })
+    this.setState({width: window.innerWidth, height: window.innerHeight})
   }
 
   render() {
@@ -37,7 +36,7 @@ class AppSpinner extends React.Component {
 
     return (
       <div className="spinner" style={style}>
-        <CircularProgress size={size} color="#cacaca"/>
+        <CircularProgress size={size}/>
       </div>
     )
   }
@@ -45,7 +44,7 @@ class AppSpinner extends React.Component {
 
 export default connect((store) => {
 
-  const fetching = store.lyrics.fetching||store.artist.fetching||store.author.fetching
+  const fetching = store.app.processing || store.lyrics.fetching || store.artist.fetching || store.author.fetching
   return {
     fetching: fetching,
   }

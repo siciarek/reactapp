@@ -13,13 +13,10 @@ class LyricsItem extends React.Component {
   }
 
   render() {
-    const style = {
-      display: this.props.fetching === true ? 'block' : 'none',
-    }
 
     return (
       <div className="container">
-        <AppHeader title={this.props.current.title} style={style} />
+        <AppHeader title={this.props.current.title}/>
         <pre className="song">{this.props.current.lyrics}</pre>
         <AppFloatingActionButton icon="keyboard_arrow_left" route="/lyrics"/>
         <AppSpinner/>

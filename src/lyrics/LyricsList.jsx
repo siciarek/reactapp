@@ -71,7 +71,6 @@ class LyricsList extends Component {
         <AppHeader title="Lyrics"/>
         {items}
         <AppFloatingActionButton icon="add" route="/song/add"/>
-        <AppSpinner/>
 
         <Dialog
           title="Confirmation"
@@ -90,14 +89,16 @@ class LyricsList extends Component {
         >
           Are you sure you want to remove it?
         </Dialog>
+
+        <AppSpinner/>
       </div>
     )
   }
 }
 
 export default connect((store) => {
+
   return {
-    fetching: store.lyrics.fetching,
     items: store.lyrics.items,
   }
 })(LyricsList)
