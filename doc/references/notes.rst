@@ -82,7 +82,7 @@ Zmiana wartości boolowskich
     <Checkbox
         label="Profile visible to the public"
         labelPosition="right"
-        checked={this.props.current.public}
+        defaultChecked={this.props.current.public}
         onCheck={this.updateBooleanValue}
     />
 

@@ -11,7 +11,7 @@ import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
-import config from '../app/config'
+// import config from '../app/config'
 
 class SongEditorForm extends React.Component {
 

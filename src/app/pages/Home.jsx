@@ -16,6 +16,8 @@ class Home extends React.Component {
         isResizable={false}
         margin={[0, 0]}
         containerPadding={[0, 0]}
+        // breakpoints = {{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+        breakpoints = {{lg: 1000, md: 996, sm: 768, xs: 480, xxs: 0}}
       >
         <Card key={1} data-grid={{x: 3, y: 0, w: 6, h: 2, static: false}}>
           <CardMedia overlay={<CardTitle title={config.appName} subtitle="Just sing a song"/>}>

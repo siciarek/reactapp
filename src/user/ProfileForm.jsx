@@ -5,7 +5,6 @@ import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
-import Toggle from 'material-ui/Toggle'
 import Slider from 'material-ui/Slider'
 import Checkbox from 'material-ui/Checkbox'
 import DatePicker from 'material-ui/DatePicker'
@@ -13,7 +12,6 @@ import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
-import config from '../app/config'
 
 class ProfileForm extends React.Component {
 
@@ -60,14 +58,6 @@ class ProfileForm extends React.Component {
   updateSelectValue = (component, index, value) => {
     const key = 'gender'
     const val = value === null || value.toString().trim().length === 0 ? null : value
-
-    this.props.update(key, val)
-  }
-
-  toggleValue = (event) => {
-
-    const key = event.nativeEvent.target.id
-    const val = !this.props.current[key]
 
     this.props.update(key, val)
   }
@@ -124,12 +114,11 @@ class ProfileForm extends React.Component {
 
           <br/>
 
-
           <Checkbox
             label="Profile visible to the public"
             labelPosition="right"
             onCheck={this.updateBooleanValue}
-            checked={this.props.current.public}
+            defaultChecked={this.props.current.public}
           />
 
           <br/>
