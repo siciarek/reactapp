@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
 
     if (this.props.authenticated === false) {
       return (
-        <div className="container">
+        <div>
         </div>
       )
     }

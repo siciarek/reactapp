@@ -4,9 +4,15 @@ import {connect} from 'react-redux'
 import AppHeader from '../app/AppHeader'
 import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
+import {authCheck} from '../user/UserActions'
 
 
 class SongEditor extends React.Component {
+
+  constructor(params) {
+    super(params)
+    this.props.dispatch(authCheck())
+  }
 
   componentWillMount() {
     let state = {...this.props.current}
@@ -42,6 +48,13 @@ class SongEditor extends React.Component {
 
   render() {
 
+    if (this.props.authenticated === false) {
+      return (
+        <div>
+        </div>
+      )
+    }
+
     const title = this.props.current.id ? 'Edit song' : 'Add song'
 
     return (
@@ -61,5 +74,6 @@ class SongEditor extends React.Component {
 export default connect((store) => {
   return {
     current: store.song.current,
+    authenticated: store.user.authenticated,
   }
 })(SongEditor)
