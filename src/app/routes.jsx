@@ -59,6 +59,7 @@ import AccessForbiden from './pages/AccessForbiden'
 
 import App from './App'
 import Home from './pages/Home'
+import ConfigInfo from './pages/ConfigInfo'
 
 import {Login, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
@@ -73,6 +74,7 @@ export default (
     <Route component={App}>
       <IndexRoute component={Home}/>
       <Route path="/" component={Home}/>
+      <Route path="/config-info" component={ConfigInfo}/>
 
       <Route path="/login" component={Login}/>
       <Route path="/dashboard" component={Dashboard}/>

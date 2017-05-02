@@ -20,9 +20,7 @@ class LyricsItem extends React.Component {
     return (
       <div className="container">
         <AppHeader title={this.props.current.title} style={style} />
-        <pre className="song">
-          {this.props.current.lyrics}
-          </pre>
+        <pre className="song">{this.props.current.lyrics}</pre>
         <AppFloatingActionButton icon="keyboard_arrow_left" route="/lyrics"/>
         <AppSpinner/>
       </div>

@@ -90,7 +90,7 @@ class SongEditorForm extends React.Component {
 
     return (
 
-      <form>
+      <form style={{padding: 16, paddingTop: 0,}}>
 
         <DatePicker
           id="createdAt"

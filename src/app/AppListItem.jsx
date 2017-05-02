@@ -1,15 +1,19 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+
 import {ListItem} from 'material-ui/List'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
 import IconButton from 'material-ui/IconButton'
 
-export default class AppListItem extends Component {
+class AppListItem extends Component {
 
   static propTypes = {
     actions: PropTypes.object.isRequired,
+    authenticated: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired,
   }
 
   static defaultProps = {}
@@ -21,9 +25,7 @@ export default class AppListItem extends Component {
 
   render() {
 
-
     let props = {...this.props}
-
 
     const icons = {
       show: (<ShowIcon/>),
@@ -31,7 +33,7 @@ export default class AppListItem extends Component {
       remove: (<RemoveIcon/>),
     }
 
-    let actions = {...props.actions}
+    let actions = this.props.authenticated === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
     Object.keys(AppListItem.propTypes).map(function (prop) {
@@ -54,3 +56,9 @@ export default class AppListItem extends Component {
   }
 }
 
+export default connect((store) => {
+
+  return {
+    authenticated: store.user.authenticated,
+  }
+})(AppListItem)

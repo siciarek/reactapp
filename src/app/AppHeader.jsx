@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './AppHeader.css'
 
 export default class AppHeader extends React.Component {
 
