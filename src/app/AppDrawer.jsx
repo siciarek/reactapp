@@ -49,7 +49,7 @@ class AppDrawer extends React.Component {
 
     const items = xroutes.map((e, i) => {
       if (e === null) {
-        return <Divider key={i}/>
+        return <Divider inset={false} key={i}/>
       }
 
 

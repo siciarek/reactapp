@@ -87,6 +87,7 @@ export default function (state = INITIAL_STATE, action) {
         error: '',
         message: '',
         id: action.payload.id,
+        skillLevel: action.payload.skillLevel,
         public: action.payload.public,
         info: action.payload.info === null ? null : action.payload.info,
         gender: action.payload.gender,

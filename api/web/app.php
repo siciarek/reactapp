@@ -19,6 +19,7 @@ $user = [
 $users = [
     'siciarek:pass' => [
         'id' => 2345,
+        'skillLevel' => 12,
         'public' => true,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
@@ -32,17 +33,19 @@ $users = [
     'colak:pass' => [
         'id' => 3456,
         'public' => false,
+        'skillLevel' => 32,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
         'firstName' => 'Czesław',
         'lastName' => 'Olak',
         'username' => 'colak',
         'email' => 'colak@gmail.com',
-        'authenticated' => true,
         'info' => null,
+        'authenticated' => true,
     ],
     'molak:pass' => [
         'id' => 4928,
+        'skillLevel' => 44,
         'public' => true,
         'gender' => 'female',
         'dateOfBirth' => '1966-10-21 15:10:00',
@@ -50,11 +53,12 @@ $users = [
         'lastName' => 'Olak',
         'username' => 'molak',
         'email' => 'molak@gmail.com',
-        'authenticated' => true,
         'info' => null,
+        'authenticated' => true,
     ],
     'zblues:pass' => [
         'id' => 8928,
+        'skillLevel' => 61,
         'public' => true,
         'gender' => 'male',
         'dateOfBirth' => '1966-10-21 15:10:00',
@@ -62,8 +66,8 @@ $users = [
         'lastName' => 'Blues',
         'username' => 'zblues',
         'email' => 'zenek.blues@gmail.com',
-        'authenticated' => true,
         'info' => null,
+        'authenticated' => true,
     ],
 ];
 
@@ -196,12 +200,22 @@ if (count($elements) > 0) {
                             $json = file_get_contents("php://input");
                             $request = json_decode($json, true);
 
+                            $temp = $request['data'];
+                            $temp['id'] = intval($id);
+                            unset($temp['error']);
+                            unset($temp['message']);
+
+                            $temp['token'] = $request['headers']['Authorization'];
+                            $temp['authenticated'] = true;
+
+                            file_put_contents($userFilename, json_encode($temp, JSON_PRETTY_PRINT));
+
                             $data = [
                                 'type' => 'info',
                                 'success' => true,
                                 'msg' => 'Updated successfully',
                                 'datetime' => date('Y-m-d H:i:s'),
-                                'data' => $request,
+                                'data' => $temp,
                             ];
                         }
 
@@ -272,7 +286,6 @@ if (count($elements) > 0) {
                             }
                         }
                     }
-
 
                     $data = [
                         'type' => 'info',

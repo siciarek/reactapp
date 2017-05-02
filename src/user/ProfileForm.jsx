@@ -6,6 +6,7 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import Toggle from 'material-ui/Toggle'
+import Slider from 'material-ui/Slider'
 import Checkbox from 'material-ui/Checkbox'
 import DatePicker from 'material-ui/DatePicker'
 import FlatButton from 'material-ui/FlatButton'
@@ -85,6 +86,15 @@ class ProfileForm extends React.Component {
     this.props.update(key, val)
   }
 
+  updateNumericalValue = (event, value, x) => {
+    // console.log(event, value)
+
+    const key = 'skillLevel'
+    const val =  value
+
+    this.props.update(key, val)
+  }
+
   remove = () => {
     this.handleOpen()
   }
@@ -114,15 +124,6 @@ class ProfileForm extends React.Component {
 
           <br/>
 
-          <Toggle
-            id="public"
-            label="Profile visible to the public"
-            labelPosition="right"
-            defaultToggled={this.props.current.public}
-            onToggle={this.toggleValue}
-          />
-
-          <br/>
 
           <Checkbox
             label="Profile visible to the public"
@@ -130,6 +131,23 @@ class ProfileForm extends React.Component {
             onCheck={this.updateBooleanValue}
             checked={this.props.current.public}
           />
+
+          <br/>
+
+
+          <Slider
+            ref="level"
+            id="level"
+            key="level"
+            style={{marginTop: -10, marginBottom: -40}}
+            min={0}
+            max={100}
+            step={1}
+            value={this.props.current.skillLevel}
+            onChange={this.updateNumericalValue}
+          />
+
+          <span>{`Skill level (${this.props.current.skillLevel}%)`}</span>
 
           <SelectField
             id="gender"

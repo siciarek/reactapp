@@ -1,6 +1,7 @@
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
+    * "single source of truth"
     * Obkumać https://github.com/pburtchaell/redux-promise-middleware i https://github.com/gaearon/redux-thunk
     * Zapomnij o średnikach!
     * Sam ``react`` polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim a konkretna implementacja robiona jest przy użyciu języka Babel.
@@ -47,6 +48,43 @@ DOBRZE:
     // Pokazanie aktywnej pozycji w siedebarze
     const path = this.props.router.getCurrentLocation().pathname
 
+
+Zmiana wartości boolowskich
+===========================
+
+.. code-block:: javascript
+
+    toggleValue = (event) => {
+        const key = event.nativeEvent.target.id
+        const val = !this.props.current[key]
+
+        this.props.update(key, val)
+    }
+
+    updateBooleanValue = (proxy, value) => {
+        const key = 'public'
+        const val =  value
+
+        this.props.update(key, val)
+    }
+
+
+    <Toggle
+        id="public"
+        label="Profile visible to the public"
+        labelPosition="right"
+        defaultToggled={this.props.current.public}
+        onToggle={this.toggleValue}
+    />
+
+    <br/>
+
+    <Checkbox
+        label="Profile visible to the public"
+        labelPosition="right"
+        checked={this.props.current.public}
+        onCheck={this.updateBooleanValue}
+    />
 
 
 Alternatywne skrypty do ``create-react-app``
