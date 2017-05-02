@@ -52,7 +52,6 @@ class AppDrawer extends React.Component {
         return <Divider inset={false} key={i}/>
       }
 
-
       return <MenuItem
         key={i}
         primaryText={e.label}
