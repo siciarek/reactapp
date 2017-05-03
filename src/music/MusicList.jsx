@@ -1,26 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import {Link} from 'react-router'
-import AppHeader from '../app/AppHeader'
-
-import AppSpinner from '../app/AppSpinner'
-
-import {List, ListItem} from 'material-ui/List'
-
-import {fetchMusicList} from './MusicActions'
+import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
-
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
+import {fetchMusicList} from './MusicActions'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class MusicList extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchMusicList())
-  }
-
-  toggleMenu = () => {
-
   }
 
   render() {

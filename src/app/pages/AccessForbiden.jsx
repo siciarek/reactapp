@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import SystemPage from './SystemPage'
 
-export default class AccessForbiden extends Component {
+export default class AccessForbiden extends React.Component {
 
   render() {
     return (

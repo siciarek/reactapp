@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 
 import {List} from 'material-ui/List'
@@ -14,9 +14,14 @@ import AppHeader from '../app/AppHeader'
 import AppSpinner from '../app/AppSpinner'
 import AppListItem from '../app/AppListItem'
 
-class LyricsList extends Component {
+class LyricsList extends React.Component {
 
-  componentDidMount() {
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {open: false, id: null}
+  }
+  componentWillMount() {
     this.props.dispatch(fetchLyricsList())
   }
 
@@ -28,64 +33,49 @@ class LyricsList extends Component {
     this.setState({open: false})
   }
 
-  constructor(props, context) {
-    super(props, context)
 
-    this.state = {open: false, id: null}
+  generateList = () => {
+
+    const temp = this.props.items.map((item, index) => {
+      const actions = {
+        show: () => this.props.router.push(`/lyrics/${item.id}`),
+        edit: () => this.props.router.push(`/song/${item.id}/edit`),
+        remove: () => {
+          this.handleOpen()
+          this.setState({id: item.id})
+        }
+      }
+
+      return <AppListItem
+        key={index}
+        leftIcon={<ListItemIcon />}
+        primaryText={item.title}
+        secondaryText={[item.genre, item.id, item.createdAt].join(' / ')}
+        actions={actions}
+      />
+    })
+
+    return (<List>{temp}</List>)
   }
 
   render() {
 
-    let items = (
-      <div>
-      </div>
-    )
-
-    if (this.props.items.length > 0) {
-      const temp = this.props.items.map((item, index) => {
-        const actions = {
-          show: () => this.props.router.push(`/lyrics/${item.id}`),
-          edit: () => this.props.router.push(`/song/${item.id}/edit`),
-          remove: () => {
-            this.handleOpen()
-            this.setState({id: item.id})
-          }
-        }
-
-        return <AppListItem
-          key={index}
-          leftIcon={<ListItemIcon />}
-          primaryText={item.title}
-          secondaryText={[item.genre, item.id, item.createdAt].join(' / ')}
-          actions={actions}
-        />
-      })
-
-      items = (
-        <List>{temp}</List>
-      )
-    }
-
     return (
       <div className="container">
         <AppHeader title="Lyrics"/>
-        {items}
+
+        {this.generateList()}
+
         <AppFloatingActionButton icon="add" route="/song/add"/>
 
         <Dialog
           title="Confirmation"
-          actions={[
-            <FlatButton
-              label="No"
-              onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-              label="Yes"
-              onTouchTap={() => this.props.dispatch(removeSong(this.state.id))}
-            />,
-          ]}
           modal={true}
           open={this.state.open}
+          actions={[
+            <FlatButton label="No" onTouchTap={this.handleClose}/>,
+            <FlatButton label="Yes" onTouchTap={() => this.props.dispatch(removeSong(this.state.id))}/>,
+          ]}
         >
           Are you sure you want to remove it?
         </Dialog>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 
@@ -16,7 +16,7 @@ import config from './config'
 import './App.css'
 import {unauthenticateUser} from '../user/UserActions'
 
-class App extends Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props)

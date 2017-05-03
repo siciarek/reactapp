@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import ItemHeaderIcon from 'material-ui/svg-icons/action/face'
-
 import {fetchArtistItem} from './ArtistActions'
 import AppHeader from '../app/AppHeader'
 import AppSpinner from '../app/AppSpinner'
@@ -10,7 +8,7 @@ import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class ArtistItem extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchArtistItem(this.props.params.id))
   }
 

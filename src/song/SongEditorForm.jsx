@@ -1,17 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import TextField from 'material-ui/TextField'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import RaisedButton from 'material-ui/RaisedButton'
-import FontIcon from 'material-ui/FontIcon'
-import DatePicker from 'material-ui/DatePicker'
-import FlatButton from 'material-ui/FlatButton'
-import Dialog from 'material-ui/Dialog'
-
+import {TextField, SelectField, MenuItem, RaisedButton, FontIcon, DatePicker, FlatButton, Dialog} from 'material-ui'
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
-// import config from '../app/config'
 
 class SongEditorForm extends React.Component {
 

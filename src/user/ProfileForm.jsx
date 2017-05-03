@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import TextField from 'material-ui/TextField'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import RaisedButton from 'material-ui/RaisedButton'
-import Slider from 'material-ui/Slider'
-import Checkbox from 'material-ui/Checkbox'
-import DatePicker from 'material-ui/DatePicker'
-import FlatButton from 'material-ui/FlatButton'
-import Dialog from 'material-ui/Dialog'
-
+import{
+  TextField,
+  SelectField,
+  MenuItem,
+  RaisedButton,
+  Slider,
+  Checkbox,
+  DatePicker,
+  FlatButton,
+  Dialog,
+} from 'material-ui'
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
 
 class ProfileForm extends React.Component {
@@ -64,7 +64,7 @@ class ProfileForm extends React.Component {
 
   updateBooleanValue = (proxy, value) => {
     const key = 'public'
-    const val =  value
+    const val = value
 
     this.props.update(key, val)
   }
@@ -80,7 +80,7 @@ class ProfileForm extends React.Component {
     // console.log(event, value)
 
     const key = 'skillLevel'
-    const val =  value
+    const val = value
 
     this.props.update(key, val)
   }
@@ -190,7 +190,7 @@ class ProfileForm extends React.Component {
 
           <TextField
             id="info"
-            value={this.props.current.info?this.props.current.info:''}
+            value={this.props.current.info ? this.props.current.info : ''}
             errorText={this.state.errors.info}
             floatingLabelText="Info"
             fullWidth={true}

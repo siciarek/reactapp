@@ -7,13 +7,13 @@ import AppHeader from '../app/AppHeader'
 
 import AppSpinner from '../app/AppSpinner'
 
-import {List, ListItem} from 'material-ui/List'
+import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
 
 
 class ArtistList extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchArtistList())
   }
 

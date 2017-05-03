@@ -1,9 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import AppHeader from '../app/AppHeader'
 import {authCheck, updateUser, saveUser} from './UserActions'
-
 import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {

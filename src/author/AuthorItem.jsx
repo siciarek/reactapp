@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import {fetchAuthorItem} from './AuthorActions'
-
 import AppHeader from '../app/AppHeader'
 import AppSpinner from '../app/AppSpinner'
 import AppFloatingActionButton from '../app/AppFloatingActionButton'

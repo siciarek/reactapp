@@ -1,12 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
+import {TextField, RaisedButton, FontIcon, Snackbar} from 'material-ui'
 import {authenticateUser} from './UserActions'
-
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import FontIcon from 'material-ui/FontIcon'
-import Snackbar from 'material-ui/Snackbar'
-
 import AppHeader from '../app/AppHeader'
 
 const initialState = {
@@ -14,7 +9,7 @@ const initialState = {
   password: '',
 }
 
-class Login extends Component {
+class Login extends React.Component {
 
   constructor(props) {
     super(props)

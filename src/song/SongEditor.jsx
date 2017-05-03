@@ -1,11 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import AppHeader from '../app/AppHeader'
 import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
 import {authCheck} from '../user/UserActions'
-
 
 class SongEditor extends React.Component {
 

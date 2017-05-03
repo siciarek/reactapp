@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React from 'react'
 import AppHeader from "../AppHeader";
 
 import config from '../config'
 import AppListItem from "../AppListItem";
 import {List} from 'material-ui/List'
 
-export default class ConfigInfo extends Component {
+export default class ConfigInfo extends React.Component {
 
   render() {
 

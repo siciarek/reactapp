@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router'
 
@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import FontIcon from 'material-ui/FontIcon'
 
 
-export default class AppFloatingActionButton extends Component {
+export default class AppFloatingActionButton extends React.Component {
 
   static propTypes = {
     icon: PropTypes.string.isRequired,

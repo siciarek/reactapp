@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {List, ListItem} from 'material-ui/List'
+import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 
 import {fetchMusicItem} from './MusicActions'

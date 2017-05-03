@@ -1,20 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import {Link} from 'react-router'
-import AppHeader from '../app/AppHeader'
-
-import AppSpinner from '../app/AppSpinner'
-
-import {List, ListItem} from 'material-ui/List'
-
-import {fetchAuthorList} from './AuthorActions'
+import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/action/face'
+import AppHeader from '../app/AppHeader'
+import AppSpinner from '../app/AppSpinner'
+import {fetchAuthorList} from './AuthorActions'
 
 
 class AuthorList extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchAuthorList())
   }
 

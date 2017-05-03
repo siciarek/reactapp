@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -8,7 +8,7 @@ import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
 import IconButton from 'material-ui/IconButton'
 
-class AppListItem extends Component {
+class AppListItem extends React.Component {
 
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -21,6 +21,18 @@ class AppListItem extends Component {
   constructor(props) {
     super(props)
     this.state = {open: false}
+  }
+
+  handleTap = (actions) => {
+
+    if (this.props.authenticated === true) {
+      this.setState({open: !this.state.open})
+    }
+    else {
+      if (actions.hasOwnProperty('show') === true) {
+        actions.show()
+      }
+    }
   }
 
   render() {
@@ -51,7 +63,7 @@ class AppListItem extends Component {
     const buttonBar = (<span style={{display: (this.state.open ? 'block' : 'none')}}>{temp}</span>)
 
     return (
-      <ListItem {...props} onTouchTap={() => this.setState({open: !this.state.open})} rightAvatar={buttonBar}/>
+      <ListItem {...props} onTouchTap={() => this.handleTap(this.props.actions)} rightAvatar={buttonBar}/>
     )
   }
 }

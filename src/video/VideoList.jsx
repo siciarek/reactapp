@@ -15,7 +15,7 @@ class VideoList extends React.Component {
   title = 'Videos'
   itemRoute = 'video'
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchVideoList())
   }
 

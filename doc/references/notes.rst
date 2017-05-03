@@ -97,6 +97,7 @@ Docs
 ====
 
 http://redux.js.org/
+http://es6-features.org
 
 Struktura
 =========
@@ -121,6 +122,7 @@ http://jpsierens.com/simple-react-redux-application/
 Świetne wideo
 ~~~~~~~~~~~~~
 
+https://egghead.io/courses/getting-started-with-redux
 https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
 
 

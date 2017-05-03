@@ -1,8 +1,6 @@
 import React from 'react'
-
 import {connect} from 'react-redux'
-import CircularProgress from 'material-ui/CircularProgress'
-
+import {CircularProgress} from 'material-ui'
 
 class AppSpinner extends React.Component {
   constructor(props) {
