@@ -52,7 +52,7 @@ class SongEditorForm extends React.Component {
 
   updateValue = (event) => {
     const key = event.target.id
-    let val = event.target.value === null || event.target.value.toString().trim().length === 0 ? null : event.target.value
+    let val = event.target.value
 
     this.props.updateEntity(key, val)
   }
@@ -131,6 +131,7 @@ class SongEditorForm extends React.Component {
           floatingLabelText="Lyrics"
           fullWidth={true}
           multiLine={true}
+          rows={4}
           rowsMax={8}
           onChange={this.updateValue}
         />

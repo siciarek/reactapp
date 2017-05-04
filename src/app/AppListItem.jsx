@@ -20,13 +20,12 @@ class AppListItem extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {open: false}
+    this.state = {open: false, id: this.props.selected}
   }
 
   handleTap = (actions) => {
-
     if (this.props.authenticated === true) {
-      this.setState({open: !this.state.open})
+      this.setState({open: !this.state.open, id: this.props.selected})
     }
     else {
       if (actions.hasOwnProperty('show') === true) {

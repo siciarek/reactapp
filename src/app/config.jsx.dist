@@ -5,7 +5,8 @@ export const
   ENV_TEST = 'test',
   ENV_PROD =  'prod',
   STORAGE_TYPE_COOKIES = 'cookies',
-  STORAGE_TYPE_LOCAL = 'localStorage'
+  STORAGE_TYPE_LOCAL = 'localStorage',
+  API_BASE_URL = 'http://api.songbook.dev'
 
 export default {
   env: 'dev',
@@ -16,11 +17,11 @@ export default {
 
   storageType: STORAGE_TYPE_COOKIES,
 
-  userUrl: 'http://api.songbook.dev/user',
-  lyricsUrl: 'http://api.songbook.dev/lyrics',
-  authorUrl: 'http://api.songbook.dev/authors',
-  artistUrl: 'http://api.songbook.dev/artists',
-  musicUrl: 'http://api.songbook.dev/music',
-  videoUrl: 'http://api.songbook.dev/videos',
-  songUrl: 'http://api.songbook.dev/song',
+  userUrl: `${API_BASE_URL}/user`,
+  lyricsUrl: `${API_BASE_URL}/lyrics`,
+  authorUrl: `${API_BASE_URL}/authors`,
+  artistUrl: `${API_BASE_URL}/artists`,
+  musicUrl: `${API_BASE_URL}/music`,
+  videoUrl: `${API_BASE_URL}/videos`,
+  songUrl: `${API_BASE_URL}/song`,
 }

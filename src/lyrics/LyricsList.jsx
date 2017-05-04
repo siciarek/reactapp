@@ -19,7 +19,10 @@ class LyricsList extends React.Component {
   constructor(props, context) {
     super(props, context)
 
-    this.state = {open: false, id: null}
+    this.state = {
+      open: false,
+      id: 0
+    }
   }
   componentWillMount() {
     this.props.dispatch(fetchLyricsList())
@@ -41,13 +44,13 @@ class LyricsList extends React.Component {
         show: () => this.props.router.push(`/lyrics/${item.id}`),
         edit: () => this.props.router.push(`/song/${item.id}/edit`),
         remove: () => {
-          this.handleOpen()
-          this.setState({id: item.id})
+          this.setState({id: item.id}, this.handleOpen)
         }
       }
 
       return <AppListItem
-        key={index}
+        key={item.id}
+        selected={this.state.id}
         leftIcon={<ListItemIcon />}
         primaryText={item.title}
         secondaryText={[item.genre, item.id, item.createdAt].join(' / ')}
