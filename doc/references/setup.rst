@@ -75,3 +75,10 @@ Równie dobrze może to być dowolny serwer www np. wbudowany serwer ``php``.
 
     $  php -S localhost:8080 -t build
 
+
+Zakładam, że używamy przeglądarki Chrome, więc należy zainstalowąć użyteczne dodatki:
+
+    * React DevTools
+    * Redux DevTools
+
+Tu artykuł z instrukcją obsługi http://mediatemple.net/blog/tips/a-quick-look-at-the-react-and-redux-devtools/

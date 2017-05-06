@@ -57,7 +57,7 @@ class LyricsList extends React.Component {
 export default connect((store) => {
 
   return {
-    authenticated: true, // store.user.authenticated,
+    authenticated: store.user.authenticated,
     items: store.lyrics.items,
   }
 })(LyricsList)

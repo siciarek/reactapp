@@ -46,7 +46,7 @@ export default class AppListItem extends React.Component {
 
     let props = {...this.props}
 
-    let actions = this.props.toolbarVisible === true ? {...props.actions} : {}
+    let actions = this.props.editable === true && this.props.toolbarVisible === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
     Object.keys(AppListItem.propTypes).map(function (key) {

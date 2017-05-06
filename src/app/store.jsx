@@ -34,7 +34,7 @@ let middleware = logger === null
   : applyMiddleware(promise(), thunk, sagaMiddleware, logger)
 
 
-const store = createStore(reducer, middleware)
+const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension(), middleware)
 
 sagaMiddleware.run(rootSaga)
 
