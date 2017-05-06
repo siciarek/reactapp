@@ -93,6 +93,27 @@ Ciekawe
     * renderowanie reduxa po stronie serwera
 
 
+Redux middleware
+================
+
+.. code-block::javascript
+
+    /**
+     * Sample middleware logger
+     */
+    const simpleLogger = store => next => action => {
+      console.log(action.type)
+
+      // console.group(action.type)
+      // console.info('dispatching', action)
+      let result = next(action)
+      // console.log('next state', store.getState())
+      // console.groupEnd(action.type)
+
+      return result
+    }
+
+
 Alternatywne skrypty do ``create-react-app``
 ============================================
 

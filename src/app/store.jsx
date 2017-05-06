@@ -1,5 +1,5 @@
 import {applyMiddleware, createStore} from 'redux'
-// import {createLogger} from 'redux-logger'
+import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise-middleware'
 
@@ -8,33 +8,18 @@ import rootSaga from './sagas'
 const sagaMiddleware = createSagaMiddleware()
 
 import reducer from './reducers'
-import config, { ENV_PROD } from './config'
+import config, {ENV_PROD} from './config'
 
 
-/**
- * Sample middleware logger
- */
-const simpleLogger = store => next => action => {
-  console.log(action.type)
+const composeEnhancers = composeWithDevTools({
+  // Specify here name, actionsBlacklist, actionsCreators and other options if needed
+})
 
-  // console.group(action.type)
-  // console.info('dispatching', action)
-  let result = next(action)
-  // console.log('next state', store.getState())
-  // console.groupEnd(action.type)
+const middleware = applyMiddleware(promise(), thunk, sagaMiddleware)
 
-  return result
-}
-
-// const logger = config.env !== ENV_PROD ? createLogger() : null;
-const logger = config.env !== ENV_PROD ? simpleLogger : null;
-
-let middleware = logger === null
-  ? applyMiddleware(promise(), thunk, sagaMiddleware)
-  : applyMiddleware(promise(), thunk, sagaMiddleware, logger)
-
-
-const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension(), middleware)
+const store = config.env !== ENV_PROD
+  ? createStore(reducer, composeEnhancers(middleware))
+  : createStore(reducer, middleware)
 
 sagaMiddleware.run(rootSaga)
 
