@@ -87,6 +87,12 @@ Zmiana wartości boolowskich
     />
 
 
+Ciekawe
+=======
+
+    * renderowanie reduxa po stronie serwera
+
+
 Alternatywne skrypty do ``create-react-app``
 ============================================
 

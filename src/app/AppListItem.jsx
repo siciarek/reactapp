@@ -1,42 +1,42 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import {ListItem} from 'material-ui/List'
+import {ListItem, IconButton} from 'material-ui'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
-import IconButton from 'material-ui/IconButton'
 
-class AppListItem extends React.Component {
+export default class AppListItem extends React.Component {
 
   static propTypes = {
-    actions: PropTypes.object.isRequired,
-    authenticated: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    actions: PropTypes.shape({
+      show: PropTypes.func,
+      edit: PropTypes.func,
+      remove: PropTypes.func
+    }),
+    toolbarVisible: PropTypes.bool.isRequired,
+    editable: PropTypes.bool.isRequired,
+    selectFunction: PropTypes.func.isRequired,
   }
 
-  static defaultProps = {}
-
-  constructor(props) {
-    super(props)
-    this.state = {open: false, id: this.props.selected}
+  static defaultProps = {
+    editable: false,
   }
 
-  handleTap = (actions) => {
-    if (this.props.authenticated === true) {
-      this.setState({open: !this.state.open, id: this.props.selected})
+  handleTap = () => {
+
+    if (this.props.editable === false) {
+      if (this.props.actions.hasOwnProperty('show') === true) {
+        this.props.actions.show()
+      }
     }
     else {
-      if (actions.hasOwnProperty('show') === true) {
-        actions.show()
-      }
+      // Toggle toolbar visibility
+      this.props.selectFunction(this.props.toolbarVisible ? 0 : this.props.id)
     }
   }
 
   render() {
-
-    let props = {...this.props}
 
     const icons = {
       show: (<ShowIcon/>),
@@ -44,32 +44,19 @@ class AppListItem extends React.Component {
       remove: (<RemoveIcon/>),
     }
 
-    let actions = this.props.authenticated === true ? {...props.actions} : {}
+    let props = {...this.props}
+
+    let actions = this.props.toolbarVisible === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
-    Object.keys(AppListItem.propTypes).map(function (prop) {
-      return delete(props[prop])
+    Object.keys(AppListItem.propTypes).map(function (key) {
+      return delete(props[key])
     })
 
-    const temp = Object.keys(actions).map(function (key, index) {
-      return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={() => {
-        actions[key]()
-      }}>
-        {icons[key]}
-      </IconButton>
+    const buttons = Object.keys(actions).map(function (key, index) {
+      return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={actions[key]}>{icons[key]}</IconButton>
     })
 
-    const buttonBar = (<span style={{display: (this.state.open ? 'block' : 'none')}}>{temp}</span>)
-
-    return (
-      <ListItem {...props} onTouchTap={() => this.handleTap(this.props.actions)} rightAvatar={buttonBar}/>
-    )
+    return <ListItem {...props} onTouchTap={this.handleTap} rightAvatar={<span>{buttons}</span>}/>
   }
 }
-
-export default connect((store) => {
-
-  return {
-    authenticated: store.user.authenticated,
-  }
-})(AppListItem)

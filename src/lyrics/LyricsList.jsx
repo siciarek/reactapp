@@ -1,64 +1,33 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {List} from 'material-ui/List'
 import AppFloatingActionButton from "../app/AppFloatingActionButton"
-
-import ListItemIcon from 'material-ui/svg-icons/av/library-books'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
 
 import {fetchLyricsList} from './LyricsActions'
 import {removeSong} from '../song/SongActions'
 import AppHeader from '../app/AppHeader'
 import AppSpinner from '../app/AppSpinner'
-import AppListItem from '../app/AppListItem'
+import AppList from '../app/AppList'
 
 class LyricsList extends React.Component {
 
-  constructor(props, context) {
-    super(props, context)
-
+  constructor(props) {
+    super(props)
     this.state = {
-      open: false,
-      id: 0
+      selectedItem: 0,
     }
   }
+
   componentWillMount() {
     this.props.dispatch(fetchLyricsList())
   }
 
-  handleOpen = () => {
-    this.setState({open: true})
-  }
-
-  handleClose = () => {
-    this.setState({open: false})
-  }
-
-
-  generateList = () => {
-
-    const temp = this.props.items.map((item, index) => {
-      const actions = {
-        show: () => this.props.router.push(`/lyrics/${item.id}`),
-        edit: () => this.props.router.push(`/song/${item.id}/edit`),
-        remove: () => {
-          this.setState({id: item.id}, this.handleOpen)
-        }
-      }
-
-      return <AppListItem
-        key={item.id}
-        selected={this.state.id}
-        leftIcon={<ListItemIcon />}
-        primaryText={item.title}
-        secondaryText={[item.genre, item.id, item.createdAt].join(' / ')}
-        actions={actions}
-      />
-    })
-
-    return (<List>{temp}</List>)
+  generateActions = (id, handleRemoval) => {
+    return {
+      show: () => this.props.router.push(`/lyrics/${id}`),
+      edit: () => this.props.router.push(`/song/${id}/edit`),
+      remove: handleRemoval,
+    }
   }
 
   render() {
@@ -66,23 +35,19 @@ class LyricsList extends React.Component {
     return (
       <div className="container">
         <AppHeader title="Lyrics"/>
+        <AppList
+          primaryTextIndexes={['title']}
+          secondaryTextIndexes={['genre', 'id', 'createdAt']}
 
-        {this.generateList()}
+          removeItemFunction={(id) => this.props.dispatch(removeSong(id))}
+          selectFunction={(id) => this.setState({selectedItem: id})}
+          generateActions={this.generateActions}
 
+          selectedItem={this.state.selectedItem}
+          items={this.props.items}
+          editable={this.props.authenticated}
+        />
         <AppFloatingActionButton icon="add" route="/song/add"/>
-
-        <Dialog
-          title="Confirmation"
-          modal={true}
-          open={this.state.open}
-          actions={[
-            <FlatButton label="No" onTouchTap={this.handleClose}/>,
-            <FlatButton label="Yes" onTouchTap={() => this.props.dispatch(removeSong(this.state.id))}/>,
-          ]}
-        >
-          Are you sure you want to remove it?
-        </Dialog>
-
         <AppSpinner/>
       </div>
     )
@@ -92,6 +57,7 @@ class LyricsList extends React.Component {
 export default connect((store) => {
 
   return {
+    authenticated: true, // store.user.authenticated,
     items: store.lyrics.items,
   }
 })(LyricsList)
