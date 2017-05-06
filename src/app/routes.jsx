@@ -52,7 +52,7 @@ export const routes = [
 ]
 
 import React from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
 
 import PageNotFound from './pages/PageNotFound'
 import AccessForbiden from './pages/AccessForbiden'
@@ -69,8 +69,10 @@ import {ArtistList, ArtistItem} from '../artist/Artist'
 import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
 
+export { routerHistory }
+
 export default (
-  <Router history={browserHistory}>
+  <Router history={routerHistory}>
     <Route component={App}>
       <IndexRoute component={Home}/>
       <Route path="/" component={Home}/>

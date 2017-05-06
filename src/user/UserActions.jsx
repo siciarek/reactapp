@@ -1,7 +1,6 @@
 import axios from 'axios'
-
+import {browserHistory as routerHistory} from 'react-router'
 import AppStash from '../app/AppStash'
-
 import config from '../app/config'
 import {
   UPDATE_USER,
@@ -29,9 +28,9 @@ export function saveUser(data) {
 
   return function (dispatch) {
     dispatch({type: SAVE_USER})
-    let url = config.userUrl + '/' + data.id
 
-    axios.put(url, {
+    axios
+    .put(`${config.userUrl}/${data.id}`, {
       data,
       headers: {
         'Authorization': AppStash.get('token')
@@ -53,12 +52,14 @@ export function authenticateUser({username, password}) {
   return function (dispatch) {
     dispatch({type: AUTH_USER})
 
-    axios.post(`${config.userUrl}/login`, {username, password})
+    axios
+    .post(`${config.userUrl}/login`, {username, password})
     .then(response => {
       if (response.data.authenticated === true) {
         AppStash.set('token', response.data.token)
         dispatch({type: AUTH_USER_FULLFILLED, payload: response.data})
-        window.location.href = '/dashboard'
+        routerHistory.push('/')
+        routerHistory.push('/dashboard')
       }
       else {
         dispatch({type: AUTH_CHECK_FAILURE, payload: response.data})
@@ -74,12 +75,14 @@ export function unauthenticateUser() {
   return function (dispatch) {
     dispatch({type: UNAUTH_USER})
 
-    axios.post(`${config.userUrl}/logout`)
+    axios
+    .post(`${config.userUrl}/logout`)
     .then(response => {
       if (response.data.authenticated === false) {
         AppStash.remove('token')
         dispatch({type: UNAUTH_USER_FULLFILLED, payload: response.data})
-        window.location.href = '/login'
+        routerHistory.push('/')
+        routerHistory.push('/login')
       }
     })
     .catch((err) => {
@@ -104,7 +107,8 @@ export function authCheck() {
           type: AUTH_CHECK_FAILURE,
           payload: response.data
         })
-        window.location.href = '/login'
+        routerHistory.push('/')
+        routerHistory.push('/login')
       }
       else {
         if (typeof response.data.dateOfBirth !== 'undefined' && response.data.dateOfBirth !== null) {

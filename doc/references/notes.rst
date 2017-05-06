@@ -114,6 +114,12 @@ Redux middleware
     }
 
 
+Własne walidatory PropType
+==========================
+
+https://www.ian-thomas.net/custom-proptype-validation-with-react/
+
+
 Alternatywne skrypty do ``create-react-app``
 ============================================
 

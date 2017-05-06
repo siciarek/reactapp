@@ -1,6 +1,8 @@
 import axios from 'axios'
-import config from '../app/config'
+import { browserHistory as routerHistory } from 'react-router'
+// import { routerHistory } from '../app/routes'
 
+import config from '../app/config'
 import {
   ADD_SONG,
   ADD_SONG_FULLFILLED,
@@ -14,6 +16,11 @@ import {
   REMOVE_SONG_REJECTED,
 } from './Song'
 
+import {
+  APP_END_PROCESSING,
+  APP_START_PROCESSING,
+} from '../app/AppActionTypes'
+
 export const updateSong = (data) => {
 
   return (dispatch) => {
@@ -26,7 +33,7 @@ export const fetchSong = (id) => {
   return (dispatch) => {
     dispatch({type: FETCH_SONG})
 
-    axios.get(config.lyricsUrl + '/' + id)
+    axios.get(`${config.lyricsUrl}/${id}`)
     .then((response) => {
       if (response.data.createdAt !== null) {
         response.data.createdAt = new Date(response.data.createdAt)
@@ -46,8 +53,9 @@ export const removeSong = (id) => {
 
   return (dispatch) => {
     dispatch({type: REMOVE_SONG})
+    dispatch({type: APP_START_PROCESSING})
 
-    axios.delete(config.songUrl + '/' + id)
+    axios.delete(`${config.songUrl}/${id}`)
     .then((response) => {
       dispatch({
         type: REMOVE_SONG_FULLFILLED,
@@ -55,7 +63,9 @@ export const removeSong = (id) => {
       })
     })
     .then(() => {
-      location.href = '/lyrics'
+      dispatch({type: APP_END_PROCESSING})
+      routerHistory.push('/')
+      routerHistory.push('/lyrics')
     })
     .catch((err) => {
       dispatch({type: REMOVE_SONG_REJECTED, payload: err})
@@ -78,7 +88,8 @@ export const saveSong = (data) => {
       return response.data
     })
     .then((data) => {
-      location.href = `/song/${data.data.id}/edit`
+      routerHistory.push('/')
+      routerHistory.push(`/song/${data.data.id}/edit`)
     })
     .catch((err) => {
       dispatch({type: ADD_SONG_REJECTED, payload: err})
