@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { browserHistory as routerHistory } from 'react-router'
-// import { routerHistory } from '../app/routes'
 
 import config from '../app/config'
 import {
