@@ -41,9 +41,7 @@ class AppSpinner extends React.Component {
 }
 
 export default connect((store) => {
-
-  const fetching = store.app.processing || store.lyrics.fetching || store.artist.fetching || store.author.fetching
   return {
-    fetching: fetching,
+    fetching: store.app.processing,
   }
 })(AppSpinner)

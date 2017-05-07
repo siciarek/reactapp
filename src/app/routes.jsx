@@ -53,6 +53,7 @@ export const routes = [
 
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
+export {routerHistory}
 
 import {Home, Blank, Test, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 

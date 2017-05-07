@@ -1,9 +1,10 @@
 import {
-  FETCH_LYRICS,
-  FETCH_LYRICS_FULLFILLED,
-  FETCH_LYRICS_ITEM,
-  FETCH_LYRICS_ITEM_FULLFILLED,
-  FETCH_LYRICS_REJECTED
+  LYRICS_LIST_FETCH,
+  LYRICS_LIST_FETCH_FULLFILLED,
+  LYRICS_LIST_FETCH_REJECTED,
+  LYRICS_ITEM_FETCH,
+  LYRICS_ITEM_FETCH_FULLFILLED,
+  LYRICS_ITEM_FETCH_REJECTED,
 } from './Lyrics'
 
 export default function reducer(state = {
@@ -15,26 +16,19 @@ export default function reducer(state = {
 }, action) {
 
   switch (action.type) {
-    case FETCH_LYRICS: {
+    case LYRICS_LIST_FETCH: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_LYRICS_ITEM: {
+    case LYRICS_ITEM_FETCH: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_LYRICS_REJECTED: {
-      return {
-        ...state,
-        fetching: false,
-        error: action.payload
-      }
-    }
-    case FETCH_LYRICS_FULLFILLED: {
+    case LYRICS_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
@@ -42,12 +36,20 @@ export default function reducer(state = {
         items: action.payload
       }
     }
-    case FETCH_LYRICS_ITEM_FULLFILLED: {
+    case LYRICS_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
         current: action.payload
+      }
+    }
+    case LYRICS_LIST_FETCH_REJECTED:
+    case LYRICS_ITEM_FETCH_REJECTED: {
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
       }
     }
     default:
