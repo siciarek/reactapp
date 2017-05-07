@@ -63,7 +63,7 @@ export const removeSong = (id) => {
     })
     .then(() => {
       dispatch({type: APP_END_PROCESSING})
-      routerHistory.push('/')
+      routerHistory.push('/blank')
       routerHistory.push('/lyrics')
     })
     .catch((err) => {
@@ -87,7 +87,7 @@ export const saveSong = (data) => {
       return response.data
     })
     .then((data) => {
-      routerHistory.push('/')
+      routerHistory.push('/blank')
       routerHistory.push(`/song/${data.data.id}/edit`)
     })
     .catch((err) => {
