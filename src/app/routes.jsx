@@ -54,13 +54,7 @@ export const routes = [
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
 
-import PageNotFound from './pages/PageNotFound'
-import AccessForbiden from './pages/AccessForbiden'
-
-import Home from './pages/Home'
-import Blank from './pages/Blank'
-import Test from './pages/Test'
-import ConfigInfo from './pages/ConfigInfo'
+import {Home, Blank, Test, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
 import {Login, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
