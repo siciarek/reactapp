@@ -57,8 +57,9 @@ import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-
 import PageNotFound from './pages/PageNotFound'
 import AccessForbiden from './pages/AccessForbiden'
 
-import App from './App'
 import Home from './pages/Home'
+import Blank from './pages/Blank'
+import Test from './pages/Test'
 import ConfigInfo from './pages/ConfigInfo'
 
 import {Login, Dashboard, Profile} from '../user/User'
@@ -68,6 +69,8 @@ import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
 import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
+
+import App from './App'
 
 export default
 <Router history={routerHistory}>
@@ -98,6 +101,8 @@ export default
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>
 
+    <Route path="/blank" component={Blank}/>
+    <Route path="/test" component={Test}/>
     <Route path="/access-forbiden" component={AccessForbiden}/>
     <Route path="*" component={PageNotFound}/>
   </Route>
