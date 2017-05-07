@@ -1,52 +1,54 @@
 import {
-  ADD_SONG,
-  ADD_SONG_FULLFILLED,
-  ADD_SONG_REJECTED,
-  UPDATE_SONG,
-  FETCH_SONG,
-  FETCH_SONG_FULLFILLED,
-  FETCH_SONG_REJECTED,
-  REMOVE_SONG,
-  REMOVE_SONG_FULLFILLED,
-  REMOVE_SONG_REJECTED,
+  SONG_ITEM_SAVE,
+  SONG_ITEM_SAVE_FULLFILLED,
+  SONG_ITEM_SAVE_REJECTED,
+  SONG_ITEM_UPDATE,
+  SONG_ITEM_FETCH,
+  SONG_ITEM_FETCH_FULLFILLED,
+  SONG_ITEM_FETCH_REJECTED,
+  SONG_ITEM_REMOVE,
+  SONG_ITEM_REMOVE_FULLFILLED,
+  SONG_ITEM_REMOVE_REJECTED,
 } from './Song'
 
-export default function reducer(state = {
+const DEFAULT_STATE = {
   current: {},
   items: [],
   fetching: false,
   fetched: false,
   error: null,
-}, action) {
+}
+
+export default function reducer(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
-    case UPDATE_SONG: {
+    case SONG_ITEM_UPDATE: {
       return {
         ...state,
         current: {...action.payload},
       }
     }
-    case FETCH_SONG: {
+    case SONG_ITEM_FETCH: {
       return {
         ...state,
         fetching: true,
       }
     }
-    case FETCH_SONG_FULLFILLED: {
+    case SONG_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        current: action.payload
+        current: {...action.payload}
       }
     }
-    case ADD_SONG: {
+    case SONG_ITEM_SAVE: {
       return {
         ...state,
         fetching: true,
       }
     }
-    case ADD_SONG_FULLFILLED: {
+    case SONG_ITEM_SAVE_FULLFILLED: {
       return {
         ...state,
         fetching: false,
@@ -54,22 +56,22 @@ export default function reducer(state = {
         items: action.payload,
       }
     }
-    case REMOVE_SONG: {
+    case SONG_ITEM_REMOVE: {
       return {
         ...state,
         fetching: true,
       }
     }
-    case REMOVE_SONG_FULLFILLED: {
+    case SONG_ITEM_REMOVE_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
       }
     }
-    case REMOVE_SONG_REJECTED:
-    case FETCH_SONG_REJECTED:
-    case ADD_SONG_REJECTED: {
+    case SONG_ITEM_REMOVE_REJECTED:
+    case SONG_ITEM_FETCH_REJECTED:
+    case SONG_ITEM_SAVE_REJECTED: {
       return {
         ...state,
         fetching: false,

@@ -2,6 +2,27 @@
 
 
 $people = [
+    'blackmore' => [
+        'id' => 40,
+        'firstName' => 'Ritchie',
+        'lastName' => 'Blackmore',
+        'description' => 'Ritchie Blackmore',
+        'info' => "(born 14 April 1945) is an English guitarist and songwriter. He was one of the founder members of Deep Purple in 1968, playing jam-style hard-rock music which mixed guitar riffs and organ sounds. During his solo career, he established a heavy metal band called Rainbow which fused baroque music influences and elements of hard rock. Rainbow steadily moved to catchy pop-style mainstream rock. Later in life, he formed the traditional folk rock project Blackmore's Night transitioning to vocalist-centred sounds. As a member of Deep Purple, Blackmore was inducted into the Rock and Roll Hall of Fame in April 2016.",
+    ],
+    'gillan' => [
+        'id' => 41,
+        'firstName' => 'Ian',
+        'lastName' => 'Gillan',
+        'description' => 'Ian Gillan',
+        'info' => "(born 19 August 1945) is an English singer and songwriter. He originally found commercial success as the lead singer and lyricist for Deep Purple.
+
+Initially influenced by Elvis Presley, Gillan started and fronted several local bands in the mid-sixties, and eventually joined Episode Six when their original singer left. He first found widespread commercial success after joining Deep Purple in 1969. After an almost non-stop workload, during which time he recorded six albums in four years, and problematic relationships with other band members, particularly guitarist Ritchie Blackmore, Gillan resigned from the band in June 1973, having given a lengthy notice period to their managers.
+
+After a short time away from the music business, he resumed his music career with solo bands the Ian Gillan Band and Gillan, before a year-long stint as the vocalist for Black Sabbath. He rejoined a reformed Deep Purple in 1984, but was fired in 1989. He rejoined the band for a second time in 1992 for their twenty-fifth anniversary, and following the recruitment of guitarist Steve Morse in 1994, has helped transform the group into a regular touring outfit, which he has fronted ever since.
+
+In addition to his main work—performing with Deep Purple and other bands during the 1970s and 1980s—he sang the role of Jesus in the original recording of Andrew Lloyd Webber's rock opera Jesus Christ Superstar, performed in the charity supergroup Rock Aid Armenia, and engaged in a number of business investments and ventures, including a hotel, a motorcycle manufacturer, and music recording facilities at Kingsway Studios. More recently, he has performed solo concerts concurrently with his latter career in Deep Purple, and his work and affinity with Armenia, combined with his continued friendship with Tony Iommi since his brief time in Black Sabbath, has led him to form the supergroup WhoCares with Iommi. His solo career outside of Deep Purple was given a comprehensive overview with the Gillan's Inn box set in 2006."
+    ],
+//    , Ian Gillan, Roger Glover, Jon Lord, Ian Paice
     'jagger' => [
         'id' => 20,
         'firstName' => 'Mick',
@@ -60,13 +81,104 @@ $song = [
 
 $songs = [
     [
+        'id' => 110,
+        'genre' => 'Rock',
+        'createdAt' => '1972-01-01 00:00:00',
+        'title' => 'Smoke on the Water',
+        'lyrics' => "We all came out to Montreux
+On the Lake Geneva shoreline
+To make records with a mobile
+We didn't have much time
+Frank Zappa and the Mothers
+Were at the best place around
+But some stupid with a flare gun
+Burned the place to the ground
+
+Smoke on the water, a fire in the sky
+Smoke on the water
+
+They burned down the gambling house
+It died with an awful sound
+Funky Claude was running in and out
+Pulling kids out the ground
+When it all was over
+We had to find another place
+But Swiss time was running out
+It seemed that we would lose the race
+
+Smoke on the water, a fire in the sky
+Smoke on the water
+
+We ended up at the Grand Hotel
+It was empty, cold and bare
+But with the Rolling truck Stones thing just outside
+Making our music there
+With a few red lights, a few old beds
+We made a place to sweat
+No matter what we get out of this
+I know, I know we'll never forget
+
+Smoke on the water, a fire in the sky
+Smoke on the water",
+        'authors' => [
+            $people['blackmore'],
+            $people['gillan'],
+        ],
+        'artists' => [
+            $people['blackmore'],
+            $people['gillan'],
+        ],
+        'music' => [],
+        'videos' => []
+    ],
+    [
         'id' => 103,
         'genre' => 'Rock',
         'createdAt' => '1979-10-11 15:10:00',
         'title' => 'Highway To Hell',
-        'lyrics' => "
-Living easy, living free        
-        ",
+        'lyrics' => "Living easy, living free
+Season ticket on a one-way ride
+Asking nothing, leave me be
+Taking everything in my stride
+Don't need reason, don't need rhyme
+Ain't nothing I would rather do
+Going down, party time
+My friends are gonna be there too
+
+I'm on the highway to hell
+On the highway to hell
+Highway to hell
+I'm on the highway to hell
+
+No stop signs, speed limit
+Nobody's gonna slow me down
+Like a wheel, gonna spin it
+Nobody's gonna mess me around
+Hey Satan, paid my dues
+Playing in a rocking band
+Hey mama, look at me
+I'm on my way to the promised land, whoo!
+
+I'm on the highway to hell
+Highway to hell
+I'm on the highway to hell
+Highway to hell
+
+Don't stop me
+
+I'm on the highway to hell
+On the highway to hell
+I'm on the highway to hell
+On the highway
+Yeah, highway to hell
+I'm on the highway to hell
+Highway to hell
+Highway to hell
+
+And I'm going down
+All the way
+Whoa!
+I'm on the highway to hell",
         'authors' => [],
         'artists' => [],
         'music' => [],
