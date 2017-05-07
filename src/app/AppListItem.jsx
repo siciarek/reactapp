@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {ListItem, IconButton} from 'material-ui'
+import {Avatar, IconButton, ListItem} from 'material-ui'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
 import RemoveIcon from 'material-ui/svg-icons/action/delete'
+
+import './AppListItem.css'
 
 export default class AppListItem extends React.Component {
 
@@ -58,9 +60,12 @@ export default class AppListItem extends React.Component {
       return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={actions[key]}>{icons[key]}</IconButton>
     })
 
+    const initial = this.props.primaryText.substring(-1,1).toLocaleUpperCase()
+
     return <ListItem
       {...props}
       onTouchTap={this.handleTap}
+      leftAvatar={<Avatar className={initial}>{initial}</Avatar>}
       rightAvatar={<span>{buttons}</span>}
     />
   }

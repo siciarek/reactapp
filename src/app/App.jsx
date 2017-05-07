@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
+import {Helmet} from 'react-helmet'
 
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -33,6 +34,10 @@ class App extends React.Component {
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
 
         <div>
+          <Helmet>
+            <title>{config.appName}</title>
+          </Helmet>
+
           <AppBar
             title={config.appName}
             onLeftIconButtonTouchTap={this.toggleMenu}
