@@ -25,6 +25,7 @@ export default function reducer(state = {
     case LYRICS_ITEM_FETCH: {
       return {
         ...state,
+        current: {},
         fetching: true
       }
     }

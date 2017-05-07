@@ -24,6 +24,6 @@ describe('AppHeader', () => {
   it('has a proper default title', () => {
 
     let component = ReactTestUtils.renderIntoDocument(<AppHeader/>)
-    expect(component.props.title).toBe('Page')
+    expect(component.props.title).toBe('…')
   })
 })

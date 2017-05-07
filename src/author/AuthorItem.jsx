@@ -7,22 +7,21 @@ import AppFloatingActionButton from '../app/AppFloatingActionButton'
 
 class AuthorItem extends React.Component {
 
-  listRoute = '/authors'
-
   constructor(props) {
     super(props)
     this.props.dispatch(fetchAuthorItem(this.props.params.id))
   }
 
   render() {
-    const style = {
-      display: this.props.fetching === true ? 'block' : 'none',
+
+    if(this.props.fetching === true) {
+      return <AppSpinner/>
     }
 
     return (
       <div className="container">
-        <AppHeader icon="mic" title={this.props.current.description} style={style} />
-        <pre className="song">{this.props.current.info}</pre>
+        <AppHeader icon="mic" title={this.props.current.description} />
+        <pre className="text">{this.props.current.info}</pre>
         <AppFloatingActionButton route="/authors"/>
         <AppSpinner/>
       </div>

@@ -1,40 +1,37 @@
 import {
-  FETCH_AUTHOR,
-  FETCH_AUTHOR_FULLFILLED,
-  FETCH_AUTHOR_ITEM,
-  FETCH_AUTHOR_ITEM_FULLFILLED,
-  FETCH_AUTHOR_REJECTED
+  AUTHOR_LIST_FETCH,
+  AUTHOR_LIST_FETCH_FULLFILLED,
+  AUTHOR_LIST_FETCH_REJECTED,
+  AUTHOR_ITEM_FETCH,
+  AUTHOR_ITEM_FETCH_FULLFILLED,
+  AUTHOR_ITEM_FETCH_REJECTED
 } from './Author'
 
-export default function reducer(state = {
+const DEFAULT_STATE = {
   current: {},
   items: [],
   fetching: false,
   fetched: false,
   error: null,
-}, action) {
+}
+
+export default function reducer(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
-    case FETCH_AUTHOR: {
+    case AUTHOR_LIST_FETCH: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_AUTHOR_ITEM: {
+    case AUTHOR_ITEM_FETCH: {
       return {
         ...state,
+        current: {},
         fetching: true
       }
     }
-    case FETCH_AUTHOR_REJECTED: {
-      return {
-        ...state,
-        fetching: false,
-        error: action.payload
-      }
-    }
-    case FETCH_AUTHOR_FULLFILLED: {
+    case AUTHOR_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
@@ -42,12 +39,20 @@ export default function reducer(state = {
         items: action.payload
       }
     }
-    case FETCH_AUTHOR_ITEM_FULLFILLED: {
+    case AUTHOR_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
         current: action.payload
+      }
+    }
+    case AUTHOR_LIST_FETCH_REJECTED:
+    case AUTHOR_ITEM_FETCH_REJECTED: {
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
       }
     }
     default:

@@ -1,40 +1,37 @@
 import {
-  FETCH_ARTIST,
-  FETCH_ARTIST_FULLFILLED,
-  FETCH_ARTIST_ITEM,
-  FETCH_ARTIST_ITEM_FULLFILLED,
-  FETCH_ARTIST_REJECTED
+  ARTIST_LIST_FETCH,
+  ARTIST_LIST_FETCH_FULLFILLED,
+  ARTIST_LIST_FETCH_REJECTED,
+  ARTIST_ITEM_FETCH,
+  ARTIST_ITEM_FETCH_FULLFILLED,
+  ARTIST_ITEM_FETCH_REJECTED
 } from './Artist'
 
-export default function reducer(state = {
+const DEFAULT_STATE = {
   current: {},
   items: [],
   fetching: false,
   fetched: false,
   error: null,
-}, action) {
+}
+
+export default function reducer(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
-    case FETCH_ARTIST: {
+    case ARTIST_LIST_FETCH: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_ARTIST_ITEM: {
+    case ARTIST_ITEM_FETCH: {
       return {
         ...state,
+        current: {},
         fetching: true
       }
     }
-    case FETCH_ARTIST_REJECTED: {
-      return {
-        ...state,
-        fetching: false,
-        error: action.payload
-      }
-    }
-    case FETCH_ARTIST_FULLFILLED: {
+    case ARTIST_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
@@ -42,12 +39,20 @@ export default function reducer(state = {
         items: action.payload
       }
     }
-    case FETCH_ARTIST_ITEM_FULLFILLED: {
+    case ARTIST_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
         fetching: false,
         fetched: true,
         current: action.payload
+      }
+    }
+    case ARTIST_LIST_FETCH_REJECTED:
+    case ARTIST_ITEM_FETCH_REJECTED: {
+      return {
+        ...state,
+        fetching: false,
+        error: action.payload
       }
     }
     default:

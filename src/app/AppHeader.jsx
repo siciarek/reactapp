@@ -9,7 +9,7 @@ export default class AppHeader extends React.Component {
   }
 
   static defaultProps = {
-    title: 'Page',
+    title: '…',
   }
 
   render() {

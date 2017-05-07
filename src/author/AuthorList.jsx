@@ -16,27 +16,20 @@ class AuthorList extends React.Component {
 
   render() {
 
-    let items = (
-      <div>
-      </div>
+    const temp = this.props.items.map((item) => {
+      return <ListItem
+        leftIcon={<ListItemIcon />}
+        containerElement={<Link to={`authors/${item.id}`}/>}
+        key={item.id}
+        primaryText={item.name}
+      />
+    })
+
+    const items = (
+      <List>
+        {temp}
+      </List>
     )
-
-    if (this.props.items.length > 0) {
-      const temp = this.props.items.map((item) => {
-        return <ListItem
-          leftIcon={<ListItemIcon />}
-          containerElement={<Link to={`authors/${item.id}`}/>}
-          key={item.id}
-          primaryText={item.name}
-        />
-      })
-
-      items = (
-        <List>
-          {temp}
-        </List>
-      )
-    }
 
     return (
       <div className="container">
