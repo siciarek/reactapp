@@ -4,9 +4,9 @@
 /temp
 /api/web/*.json
 
-# TODO: implement sass compilator
-# /src/*/*.css
-# /src/*/*/*.css
+# CSS files are being created by npm-sass scrip
+/src/*/*.css
+/src/*/*/*.css
 
 # editor files
 .idea

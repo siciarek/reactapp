@@ -21,6 +21,7 @@ export default class AppListItem extends React.Component {
 
   static defaultProps = {
     editable: false,
+    actions: {},
   }
 
   handleTap = () => {
@@ -57,6 +58,10 @@ export default class AppListItem extends React.Component {
       return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={actions[key]}>{icons[key]}</IconButton>
     })
 
-    return <ListItem {...props} onTouchTap={this.handleTap} rightAvatar={<span>{buttons}</span>}/>
+    return <ListItem
+      {...props}
+      onTouchTap={this.handleTap}
+      rightAvatar={<span>{buttons}</span>}
+    />
   }
 }

@@ -47,7 +47,7 @@ class App extends React.Component {
                 label="Log In"
                 labelPosition="before"
                 icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-                onTouchTap={() => this.props.router.push('/login')} />
+                onTouchTap={() => this.props.router.push('/login')}/>
             }
           />
 
@@ -64,7 +64,7 @@ class App extends React.Component {
   }
 }
 
-export  default connect((store) => {
+export default connect((store) => {
   return {
     authenticated: store.user.authenticated,
   }
