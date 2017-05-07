@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-
+import {routerReducer as routing} from 'react-router-redux'
 import app from '../app/appReducer'
 import lyrics from '../lyrics/lyricsReducer'
 import author from '../author/authorReducer'
@@ -10,6 +10,7 @@ import song from '../song/songReducer'
 import user from '../user/userReducer'
 
 export default combineReducers({
+  routing,
   app,
   user,
   artist,

@@ -53,7 +53,7 @@ export const routes = [
 
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
-export {routerHistory}
+import {syncHistoryWithStore} from 'react-router-redux'
 
 import {Home, Blank, Test, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
@@ -66,9 +66,12 @@ import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
 
 import App from './App'
+import store from './store'
+
+const history = syncHistoryWithStore(routerHistory, store)
 
 export default
-<Router history={routerHistory}>
+<Router history={history}>
   <Route component={App}>
     <IndexRoute component={Home}/>
     <Route path="/" component={Home}/>

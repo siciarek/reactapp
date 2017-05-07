@@ -117,7 +117,7 @@ Ciekawe
 =======
 
     * http://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index
-
+    * https://github.com/reactjs/react-router-redux
 
 Własne walidatory PropType
 ==========================
