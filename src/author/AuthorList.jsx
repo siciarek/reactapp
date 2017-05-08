@@ -33,7 +33,7 @@ class AuthorList extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader title="Author"/>
+        <AppHeader title="Authors"/>
         {items}
         <AppSpinner/>
       </div>

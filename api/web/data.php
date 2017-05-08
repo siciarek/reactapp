@@ -28,7 +28,11 @@ In addition to his main work—performing with Deep Purple and other bands durin
         'firstName' => 'Mick',
         'lastName' => 'Jagger',
         'description' => 'Mick Jagger',
-        'info' => 'Member of The Rolling Stones.',
+        'info' => "Sir Michael Philip \"Mick\" Jagger (born 26 July 1943) is an English singer and songwriter, the lead singer and one of the founder members of the Rolling Stones.
+
+Jagger's career has spanned over 55 years, and he has been described as \"one of the most popular and influential frontmen in the history of rock & roll\". Jagger's distinctive voice and performance, along with Keith Richards' guitar style, have been the trademark of the Rolling Stones throughout the career of the band. Jagger gained press notoriety for his admitted drug use and romantic involvements, and was often portrayed as a countercultural figure.
+
+In the late 1960s, Jagger began acting in films (starting with Performance and Ned Kelly), to mixed reception. In 1985, he released his first solo album, She's the Boss. In early 2009, Jagger joined the electric supergroup SuperHeavy. In 1989 he was inducted into the Rock and Roll Hall of Fame, and in 2004 into the UK Music Hall of Fame with the Rolling Stones. In 2003, he was knighted for his services to popular music.",
     ],
     'lennon' => [
         'id' => 10,

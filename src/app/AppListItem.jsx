@@ -10,32 +10,18 @@ import './AppListItem.css'
 
 export default class AppListItem extends React.Component {
 
-  static propTypes = {
-    actions: PropTypes.shape({
-      show: PropTypes.func,
-      edit: PropTypes.func,
-      remove: PropTypes.func
-    }),
-    toolbarVisible: PropTypes.bool.isRequired,
-    editable: PropTypes.bool.isRequired,
-    selectFunction: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    editable: false,
-    actions: {},
-  }
-
   handleTap = () => {
 
-    if (this.props.editable === false) {
-      if (this.props.actions.hasOwnProperty('show') === true) {
-        this.props.actions.show()
+    const {editable, actions, toolbarVisible, selectFunction, id} = this.props
+
+    if (editable === false) {
+      if (actions.hasOwnProperty('show') === true) {
+        actions.show()
       }
     }
     else {
       // Toggle toolbar visibility
-      this.props.selectFunction(this.props.toolbarVisible ? 0 : this.props.id)
+      selectFunction(toolbarVisible ? 0 : id)
     }
   }
 
@@ -49,7 +35,9 @@ export default class AppListItem extends React.Component {
 
     let props = {...this.props}
 
-    let actions = this.props.editable === true && this.props.toolbarVisible === true ? {...props.actions} : {}
+    let {editable, toolbarVisible, primaryText } = this.props
+
+    let actions = editable === true && toolbarVisible === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
     Object.keys(AppListItem.propTypes).map(function (key) {
@@ -60,7 +48,7 @@ export default class AppListItem extends React.Component {
       return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={actions[key]}>{icons[key]}</IconButton>
     })
 
-    const initial = this.props.primaryText.substring(-1,1).toLocaleUpperCase()
+    const initial = primaryText.substring(-1,1).toLocaleUpperCase()
 
     return <ListItem
       {...props}
@@ -69,4 +57,20 @@ export default class AppListItem extends React.Component {
       rightAvatar={<span>{buttons}</span>}
     />
   }
+}
+
+AppListItem.propTypes = {
+  actions: PropTypes.shape({
+    show: PropTypes.func,
+    edit: PropTypes.func,
+    remove: PropTypes.func
+  }),
+  toolbarVisible: PropTypes.bool.isRequired,
+  editable: PropTypes.bool.isRequired,
+  selectFunction: PropTypes.func.isRequired,
+}
+
+AppListItem.defaultProps = {
+  editable: false,
+  actions: {},
 }

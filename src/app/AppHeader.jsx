@@ -2,26 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './AppHeader.css'
 
-export default class AppHeader extends React.Component {
+export default function AppHeader(props) {
+  return (
+    <h2 className="page-header">
+      {props.title}
+    </h2>
+  )
+}
 
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  }
+AppHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+}
 
-  static defaultProps = {
-    title: '…',
-  }
-
-  render() {
-
-    const title = this.props.title
-
-    return (
-      <div>
-        <h2 className="page-header">
-          {title}
-        </h2>
-      </div>
-    )
-  }
+AppHeader.defaultProps = {
+  title: '…',
 }

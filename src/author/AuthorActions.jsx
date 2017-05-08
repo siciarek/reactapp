@@ -33,6 +33,7 @@ export const fetchAuthorItem = (id) => {
     axios.get(`${config.authorUrl}/${id}`)
     .then((response) => {
       dispatch({type: AUTHOR_ITEM_FETCH_FULLFILLED, payload: response.data})
+      return response.data
     })
     .catch((err) => {
       dispatch({type: AUTHOR_ITEM_FETCH_REJECTED, payload: err})

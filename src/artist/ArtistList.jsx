@@ -33,7 +33,7 @@ class ArtistList extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader title="Artist"/>
+        <AppHeader title="Artists"/>
         {items}
         <AppSpinner/>
       </div>

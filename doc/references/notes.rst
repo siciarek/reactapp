@@ -4,18 +4,20 @@ Spostrzerzenia i notatki przy nauce react redux
     * "single source of truth"
     * Obkumać https://github.com/pburtchaell/redux-promise-middleware i https://github.com/gaearon/redux-thunk
     * Zapomnij o średnikach!
-    * Sam ``react`` polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim a konkretna implementacja robiona jest przy użyciu języka Babel.
+    * Sam ``react`` polega głównie na obiekcie Component, nasze komponenty dziedziczą po nim
+      a konkretna implementacja robiona jest przy użyciu języka Babel.
     * Dane do komponentów przekazujemy jako atrybuty (tak jak w xml)
     * Piszemy wyłącznie w ES
     * Plik konfiguracyjny!
     * jeżeli odwołujemy się przy imporcie do katalogu, to kod jest reprezentowany przez plik ``index.js`` wewnątrz tegoż katalogu.
     * Komponenty zawierają fragmenty wizualne
     * Typizacja wejść funkcji : https://facebook.github.io/react/docs/typechecking-with-proptypes.html
-    * Stan aplikacji to jeden duży obiek javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji. obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.
+    * Stan aplikacji to jeden duży obiekt javascript przechowywany w jednym miejscu (storage) i zawierający kompletny stan aplikacji. obiekt ten nie podlega zmianom, za każdym zapisem zapisywany jest od nowa kompletny obiekt statu.
     * Grube sprawy jak wyciąganie rekordów z webserwisów odbywają się w "akcjach"
     * Co to jest ``EventEmiter``
-    * Typy akcji powinny być unikalne w skali całego projektu.
-    * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna, zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
+    * Typy akcji powinny być unikalne w skali całego projektu!
+    * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna,
+      zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
     * ROUTING UWAGA
 
 ŹLE:
@@ -91,6 +93,9 @@ Ciekawe
 =======
 
     * renderowanie reduxa po stronie serwera
+    * Co to jest biblioteka "moment"
+    * http://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index
+    * https://github.com/reactjs/react-router-redux
 
 
 Redux middleware
@@ -112,12 +117,6 @@ Redux middleware
 
       return result
     }
-
-Ciekawe
-=======
-
-    * http://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index
-    * https://github.com/reactjs/react-router-redux
 
 Własne walidatory PropType
 ==========================

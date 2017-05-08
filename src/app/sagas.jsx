@@ -33,11 +33,11 @@ import {
 } from '../artist/Artist'
 
 export function* runTheSpinner() {
-  yield put({type: APP_START_PROCESSING});
+  yield put({type: APP_START_PROCESSING})
 }
 
 export function* stopTheSpinner() {
-  yield put({type: APP_END_PROCESSING});
+  yield put({type: APP_END_PROCESSING})
 }
 
 export function* watchTheSpinner() {

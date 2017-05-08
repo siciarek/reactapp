@@ -77,27 +77,27 @@ export default
     <Route path="/" component={Home}/>
     <Route path="/config-info" component={ConfigInfo}/>
 
-    <Route path="/login" component={Login}/>
+    <Route name="login" path="/login" component={Login}/>
     <Route path="/dashboard" component={Dashboard}/>
     <Route path="/profile" component={Profile}/>
 
     <Route path="/song/add" component={SongEditor}/>
-    <Route path="/song/(:id)/edit" component={SongEditor}/>
+    <Route path="/song/:id/edit" component={SongEditor}/>
 
     <Route path="/artists" component={ArtistList}/>
     <Route path="/artists/:id" component={ArtistItem}/>
 
     <Route path="/authors" component={AuthorList}/>
-    <Route path="/authors/(:id)" component={AuthorItem}/>
+    <Route path="/authors/:id" component={AuthorItem}/>
 
     <Route path="/lyrics" component={LyricsList}/>
-    <Route path="/lyrics/(:id)" component={LyricsItem}/>
+    <Route path="/lyrics/:id" component={LyricsItem}/>
 
     <Route path="/music" component={MusicList}/>
-    <Route path="/music/(:id)" component={MusicItem}/>
+    <Route path="/music/:id" component={MusicItem}/>
 
     <Route path="/videos" component={VideoList}/>
-    <Route path="/video/(:id)" component={VideoItem}/>
+    <Route path="/video/:id" component={VideoItem}/>
 
     <Route path="/blank" component={Blank}/>
     <Route path="/test" component={Test}/>
