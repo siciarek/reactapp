@@ -35,7 +35,7 @@ export default class AppListItem extends React.Component {
 
     let props = {...this.props}
 
-    let {editable, toolbarVisible, primaryText } = this.props
+    let {editable, toolbarVisible, primaryText } = props
 
     let actions = editable === true && toolbarVisible === true ? {...props.actions} : {}
 
