@@ -6,24 +6,21 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import FontIcon from 'material-ui/FontIcon'
 
 
-export default class AppFloatingActionButton extends React.Component {
-
-  static propTypes = {
-    icon: PropTypes.string.isRequired,
-    route: PropTypes.string.isRequired,
-  }
-
-  static defaultProps = {
-    icon: 'keyboard_arrow_left',
-    route: '/',
-  }
-
-  render() {
+export default function AppFloatingActionButton(props) {
 
     return (
-      <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={this.props.route}/>}>
-        <FontIcon className="material-icons">{this.props.icon}</FontIcon>
+      <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={props.route}/>}>
+        <FontIcon className="material-icons">{props.icon}</FontIcon>
       </FloatingActionButton>
     )
-  }
+}
+
+AppFloatingActionButton.propTypes = {
+  icon: PropTypes.string.isRequired,
+  route: PropTypes.string.isRequired,
+}
+
+AppFloatingActionButton.defaultProps = {
+  icon: 'keyboard_arrow_left',
+  route: '/',
 }

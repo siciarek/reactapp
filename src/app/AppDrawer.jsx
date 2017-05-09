@@ -1,48 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import AppBar from 'material-ui/AppBar'
-import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
-import FontIcon from 'material-ui/FontIcon'
-import Divider from 'material-ui/Divider'
+import {AppBar, Drawer, MenuItem, FontIcon, Divider} from 'material-ui'
 
 import {routes} from './routes'
 import config from './config'
 
-class AppDrawer extends React.Component {
+function AppDrawer(props) {
 
-  static propTypes = {
-    opened: PropTypes.bool.isRequired,
-    toggleView: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    opened: false,
-    toggleView: () => {
-    },
-  }
-
-  setRoute(route) {
-    this.props.router.push(route)
-    this.props.toggleView()
-  }
-
-  render() {
-
-    const matchedRoute = this.props.router.getCurrentLocation().pathname
+    const matchedRoute = props.router.getCurrentLocation().pathname
     const iconChecked = <FontIcon className="material-icons">check</FontIcon>
 
-    let xroutes = routes
+    let xroutes = [...routes]
 
-    if(this.props.authenticated === true) {
-      xroutes = xroutes.filter(function(e) {
+    if (props.authenticated === true) {
+      xroutes = xroutes.filter(function (e) {
         return e === null || e.hasOwnProperty('private') === false || e.private === true
       })
     }
     else {
-      xroutes = xroutes.filter(function(e) {
+      xroutes = xroutes.filter(function (e) {
         return e === null || e.hasOwnProperty('private') === false || e.private === false
       })
     }
@@ -55,7 +32,10 @@ class AppDrawer extends React.Component {
       return <MenuItem
         key={i}
         primaryText={e.label}
-        onTouchTap={() => this.setRoute(e.route)}
+        onTouchTap={() => {
+          props.router.push(e.route)
+          props.toggleView()
+        }}
         leftIcon={
           <FontIcon className="material-icons">{e.icon}</FontIcon>
         }
@@ -65,28 +45,35 @@ class AppDrawer extends React.Component {
       />
     })
 
-
     return (
       <Drawer
         docked={false}
-        open={this.props.opened}
+        open={props.opened}
         onRequestChange={() => {
-          this.props.toggleView()
+          props.toggleView()
         }}
       >
         <AppBar
           title={config.appName}
           showMenuIconButton={false}
-          onTouchTap={() => this.props.toggleView()}
+          onTouchTap={() => props.toggleView()}
         />
         {items}
       </Drawer>
     )
-  }
 }
 
-export  default connect((store) => {
-  return {
-    authenticated: store.user.authenticated,
-  }
-})(withRouter(AppDrawer))
+AppDrawer.propTypes = {
+  opened: PropTypes.bool.isRequired,
+  authenticated: PropTypes.bool.isRequired,
+  toggleView: PropTypes.func.isRequired,
+}
+
+AppDrawer.defaultProps = {
+  opened: false,
+  authenticated: false,
+  toggleView: () => {
+  },
+}
+
+export default withRouter(AppDrawer)

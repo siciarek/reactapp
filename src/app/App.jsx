@@ -59,6 +59,7 @@ class App extends React.Component {
           {this.props.children}
 
           <AppDrawer
+            authenticated={this.props.authenticated}
             opened={this.state.isMenuOpened}
             toggleView={this.toggleMenu}
           />
