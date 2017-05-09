@@ -5,9 +5,9 @@ import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/video-label'
 
 import {fetchVideoItem} from './VideoActions'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
-import AppFloatingActionButton from '../app/AppFloatingActionButton'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
+import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class VideoItem extends React.Component {
 

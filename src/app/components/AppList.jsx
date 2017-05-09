@@ -5,28 +5,6 @@ import AppListItem from './AppListItem'
 
 export default class AppList extends React.Component {
 
-  static propTypes = {
-    editable: PropTypes.bool.isRequired,
-    selectFunction: PropTypes.func.isRequired,
-    removeItemFunction: PropTypes.func.isRequired,
-    generateActions: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })).isRequired,
-    selectedItem: PropTypes.number.isRequired,
-    primaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
-    secondaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
-    primaryTextSeparator: PropTypes.string.isRequired,
-    secondaryTextSeparator: PropTypes.string.isRequired,
-  }
-
-  static defaultProps = {
-    editable: false,
-    primaryTextSeparator: ' ',
-    secondaryTextSeparator: '/',
-    secondaryTextIndexes: [],
-  }
-
   constructor(props) {
     super(props)
 
@@ -99,4 +77,27 @@ export default class AppList extends React.Component {
       {this.generateRemovalConfirmationDialog()}
     </div>
   }
+}
+
+
+AppList.propTypes = {
+  editable: PropTypes.bool.isRequired,
+  selectFunction: PropTypes.func.isRequired,
+  removeItemFunction: PropTypes.func.isRequired,
+  generateActions: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })).isRequired,
+  selectedItem: PropTypes.number.isRequired,
+  primaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  secondaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  primaryTextSeparator: PropTypes.string.isRequired,
+  secondaryTextSeparator: PropTypes.string.isRequired,
+}
+
+AppList.defaultProps = {
+  editable: false,
+  primaryTextSeparator: ' ',
+  secondaryTextSeparator: '/',
+  secondaryTextIndexes: [],
 }

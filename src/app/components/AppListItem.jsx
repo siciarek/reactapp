@@ -8,7 +8,7 @@ import RemoveIcon from 'material-ui/svg-icons/action/delete'
 
 import './AppListItem.css'
 
-export default class AppListItem extends React.Component {
+class AppListItem extends React.Component {
 
   handleTap = () => {
 
@@ -74,3 +74,5 @@ AppListItem.defaultProps = {
   editable: false,
   actions: {},
 }
+
+export default AppListItem

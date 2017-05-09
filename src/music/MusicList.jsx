@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
 import {fetchMusicList} from './MusicActions'
-import AppFloatingActionButton from '../app/AppFloatingActionButton'
+import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class MusicList extends React.Component {
 

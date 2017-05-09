@@ -5,9 +5,9 @@ import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 
 import {fetchMusicItem} from './MusicActions'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
-import AppFloatingActionButton from '../app/AppFloatingActionButton'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
+import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class MusicItem extends React.Component {
 

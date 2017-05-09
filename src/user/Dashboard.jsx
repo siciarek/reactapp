@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 
-import AppHeader from '../app/AppHeader'
+import AppHeader from '../app/components/AppHeader'
 import {authCheck, unauthenticateUser} from './UserActions'
 
 class Dashboard extends React.Component {

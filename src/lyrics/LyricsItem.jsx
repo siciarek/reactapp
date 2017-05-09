@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchLyricsItem} from './LyricsActions'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
-import AppFloatingActionButton from '../app/AppFloatingActionButton'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
+import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class LyricsItem extends React.Component {
   static propTypes = {

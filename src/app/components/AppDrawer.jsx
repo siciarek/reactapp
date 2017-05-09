@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import {withRouter} from 'react-router'
 import {AppBar, Drawer, MenuItem, FontIcon, Divider} from 'material-ui'
 
-import {routes} from './routes'
-import config from './config'
+import {routes} from '../routes'
+import config from '../config'
 
 function AppDrawer(props) {
 

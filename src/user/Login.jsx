@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {TextField, RaisedButton, FontIcon, Snackbar} from 'material-ui'
 import {authenticateUser} from './UserActions'
-import AppHeader from '../app/AppHeader'
+import AppHeader from '../app/components/AppHeader'
 
 const initialState = {
   username: '',

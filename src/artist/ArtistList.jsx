@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
 import {fetchArtistList} from './ArtistActions'
 
 

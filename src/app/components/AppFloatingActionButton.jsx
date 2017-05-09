@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import FontIcon from 'material-ui/FontIcon'
 
 
-export default function AppFloatingActionButton(props) {
+function AppFloatingActionButton(props) {
 
     return (
       <FloatingActionButton className="button-fixed-bottom-right" containerElement={<Link to={props.route}/>}>
@@ -24,3 +24,5 @@ AppFloatingActionButton.defaultProps = {
   icon: 'keyboard_arrow_left',
   route: '/',
 }
+
+export default AppFloatingActionButton

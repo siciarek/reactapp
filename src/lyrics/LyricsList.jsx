@@ -1,13 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import AppFloatingActionButton from "../app/AppFloatingActionButton"
+import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
 
 import {fetchLyricsList} from './LyricsActions'
 import {removeSong} from '../song/SongActions'
-import AppHeader from '../app/AppHeader'
-import AppSpinner from '../app/AppSpinner'
-import AppList from '../app/AppList'
+import AppHeader from '../app/components/AppHeader'
+import AppSpinner from '../app/components/AppSpinner'
+import AppList from '../app/components/AppList'
 
 class LyricsList extends React.Component {
 

@@ -3,9 +3,10 @@ import {connect} from 'react-redux'
 import {CircularProgress} from 'material-ui'
 
 class AppSpinner extends React.Component {
+
   constructor(props) {
     super(props)
-    this.state = {width: '0', height: '0'}
+    this.state = {size: 60, width: 0, height: 0}
   }
 
   componentDidMount() {
@@ -23,17 +24,17 @@ class AppSpinner extends React.Component {
 
   render() {
 
-    const size = 60
+    const {size, width, height} = this.state
 
     const style = {
-      display: this.props.fetching === true ? 'block' : 'none',
+      display: this.props.show === true ? 'block' : 'none',
       position: 'absolute',
-      top: (this.state.height - size) / 2,
-      left: (this.state.width - size) / 2,
+      left: (width - size) / 2,
+      top: (height - size) / 2,
     }
 
     return (
-      <div className="spinner" style={style}>
+      <div style={style}>
         <CircularProgress size={size}/>
       </div>
     )
@@ -42,6 +43,6 @@ class AppSpinner extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.app.processing,
+    show: store.app.processing,
   }
 })(AppSpinner)

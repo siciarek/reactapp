@@ -1,8 +1,8 @@
 import React from 'react'
-import AppHeader from "../AppHeader";
+import AppHeader from "../components/AppHeader";
 
 import config from '../config'
-import AppListItem from "../AppListItem";
+import AppListItem from "../components/AppListItem";
 import {List} from 'material-ui/List'
 
 export default class ConfigInfo extends React.Component {

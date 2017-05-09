@@ -12,7 +12,7 @@ import FontIcon from 'material-ui/FontIcon'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-import AppDrawer from './AppDrawer'
+import AppDrawer from './components/AppDrawer'
 import config from './config'
 import './App.css'
 import {unauthenticateUser} from '../user/UserActions'

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './AppHeader.css'
 
-export default function AppHeader(props) {
+function AppHeader(props) {
   return (
     <h2 className="page-header">
       {props.title}
@@ -17,3 +17,5 @@ AppHeader.propTypes = {
 AppHeader.defaultProps = {
   title: '…',
 }
+
+export default AppHeader

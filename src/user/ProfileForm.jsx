@@ -11,7 +11,7 @@ import{
   FlatButton,
   Dialog,
 } from 'material-ui'
-import AppFloatingActionButton from "../app/AppFloatingActionButton"
+import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
 
 class ProfileForm extends React.Component {
 
