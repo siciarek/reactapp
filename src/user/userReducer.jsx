@@ -1,15 +1,15 @@
 import {
-  UPDATE_USER,
-  SAVE_USER_FULLFILLED,
-  SAVE_USER_REJECTED,
-  AUTH_USER,
-  UNAUTH_USER,
-  AUTH_USER_FULLFILLED,
-  UNAUTH_USER_FULLFILLED,
-  AUTH_ERROR,
-  AUTH_CHECK,
-  AUTH_CHECK_SUCCESS,
-  AUTH_CHECK_FAILURE,
+  USER_UPDATE,
+  USER_SAVE_FULLFILLED,
+  USER_SAVE_REJECTED,
+  USER_AUTH,
+  USER_UNAUTH,
+  USER_AUTH_FULLFILLED,
+  USER_UNAUTH_FULLFILLED,
+  USER_AUTH_ERROR,
+  USER_AUTH_CHECK,
+  USER_AUTH_CHECK_SUCCESS,
+  USER_AUTH_CHECK_FAILURE,
 } from './User'
 
 const INITIAL_STATE = {
@@ -26,59 +26,59 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
 
   switch (action.type) {
-    case AUTH_USER:
+    case USER_AUTH:
       return {
         ...state,
         error: '',
         message: 'Authentication in progress.',
       }
-    case AUTH_USER_FULLFILLED:
+    case USER_AUTH_FULLFILLED:
       return {
         ...state,
         email: action.payload.email,
         authenticated: true
       }
-    case UNAUTH_USER:
+    case USER_UNAUTH:
       return {
         ...state,
         message: 'Unauthentication in progress.',
       }
-    case UNAUTH_USER_FULLFILLED:
+    case USER_UNAUTH_FULLFILLED:
       return {
         ...state,
         INITIAL_STATE,
       }
-    case AUTH_ERROR:
+    case USER_AUTH_ERROR:
       return {
         ...state,
         error: action.payload
       }
-    case AUTH_CHECK:
+    case USER_AUTH_CHECK:
       return {
         ...state,
         error: '',
         message: 'Authentication check in progress.',
       }
-    case SAVE_USER_REJECTED:
+    case USER_SAVE_REJECTED:
       return {
         ...state,
         error: (typeof action.payload.data.msg !== 'undefined' ? action.payload.data.msg : 'User profile can not be saved.'),
         message: '',
       }
-    case SAVE_USER_FULLFILLED:
+    case USER_SAVE_FULLFILLED:
       return {
         ...state,
         error: '',
         message: action.payload,
       }
-    case AUTH_CHECK_FAILURE:
+    case USER_AUTH_CHECK_FAILURE:
       return {
         ...state,
         error: 'Invalid access data.',
         authenticated: false
       }
-    case AUTH_CHECK_SUCCESS:
-    case UPDATE_USER:
+    case USER_AUTH_CHECK_SUCCESS:
+    case USER_UPDATE:
       // TODO: wyrzucić przypisywanie wartości do akcji
       return {
         ...state,

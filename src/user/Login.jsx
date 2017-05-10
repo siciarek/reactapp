@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {TextField, RaisedButton, FontIcon, Snackbar} from 'material-ui'
 import {authenticateUser} from './UserActions'
-import AppHeader from '../app/components/AppHeader'
+import {AppHeader, AppSpinner} from '../app/components'
 
 const initialState = {
   username: '',
@@ -76,6 +76,7 @@ class Login extends React.Component {
           />
 
         </form>
+        <AppSpinner/>
       </div>
     )
   }

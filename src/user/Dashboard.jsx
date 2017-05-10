@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import FontIcon from 'material-ui/FontIcon'
 
-import AppHeader from '../app/components/AppHeader'
+import {AppHeader, AppSpinner} from '../app/components'
 import {authCheck, unauthenticateUser} from './UserActions'
 
 class Dashboard extends React.Component {
@@ -60,6 +60,8 @@ class Dashboard extends React.Component {
           icon={<FontIcon className="material-icons">account_circle</FontIcon>}
           onTouchTap={() => this.props.router.push('/profile')}
         />
+
+        <AppSpinner/>
       </div>
     )
   }

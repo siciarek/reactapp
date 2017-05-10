@@ -2,7 +2,7 @@ import {takeEvery, put, all} from 'redux-saga/effects'
 
 import {
   APP_START_PROCESSING,
-  APP_END_PROCESSING
+  APP_END_PROCESSING,
 } from './AppActionTypes'
 
 import {
@@ -20,7 +20,7 @@ import {
   AUTHOR_LIST_FETCH_REJECTED,
   AUTHOR_ITEM_FETCH,
   AUTHOR_ITEM_FETCH_FULLFILLED,
-  AUTHOR_ITEM_FETCH_REJECTED
+  AUTHOR_ITEM_FETCH_REJECTED,
 } from '../author/Author'
 
 import {
@@ -29,8 +29,23 @@ import {
   ARTIST_LIST_FETCH_REJECTED,
   ARTIST_ITEM_FETCH,
   ARTIST_ITEM_FETCH_FULLFILLED,
-  ARTIST_ITEM_FETCH_REJECTED
+  ARTIST_ITEM_FETCH_REJECTED,
 } from '../artist/Artist'
+
+import {
+  USER_AUTH,
+  USER_AUTH_FULLFILLED,
+  USER_AUTH_REJECTED,
+  USER_UNAUTH,
+  USER_UNAUTH_FULLFILLED,
+  USER_UNAUTH_REJECTED,
+  USER_AUTH_CHECK,
+  USER_AUTH_CHECK_SUCCESS,
+  USER_AUTH_CHECK_FAILURE,
+  USER_SAVE,
+  USER_SAVE_FULLFILLED,
+  USER_SAVE_REJECTED,
+} from '../user/User'
 
 export function* runTheSpinner() {
   yield put({type: APP_START_PROCESSING})
@@ -42,6 +57,10 @@ export function* stopTheSpinner() {
 
 export function* watchTheSpinner() {
   yield takeEvery([
+    USER_AUTH,
+    USER_UNAUTH,
+    USER_AUTH_CHECK,
+    USER_SAVE,
     LYRICS_LIST_FETCH,
     LYRICS_ITEM_FETCH,
     AUTHOR_LIST_FETCH,
@@ -51,6 +70,14 @@ export function* watchTheSpinner() {
   ], runTheSpinner)
 
   yield takeEvery([
+    USER_SAVE_FULLFILLED,
+    USER_SAVE_REJECTED,
+    USER_AUTH_CHECK_SUCCESS,
+    USER_AUTH_CHECK_FAILURE,
+    USER_AUTH_FULLFILLED,
+    USER_AUTH_REJECTED,
+    USER_UNAUTH_FULLFILLED,
+    USER_UNAUTH_REJECTED,
     LYRICS_LIST_FETCH_FULLFILLED,
     LYRICS_LIST_FETCH_REJECTED,
     LYRICS_ITEM_FETCH_FULLFILLED,

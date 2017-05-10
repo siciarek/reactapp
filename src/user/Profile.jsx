@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import AppHeader from '../app/components/AppHeader'
+import {AppHeader,AppSpinner} from '../app/components'
 import {authCheck, updateUser, saveUser} from './UserActions'
 import ProfileForm from './ProfileForm'
 
@@ -38,6 +38,7 @@ class Profile extends React.Component {
       <div className="container">
         <AppHeader title="User profile"/>
         <ProfileForm current={this.props.current} update={this.updateEntity} save={this.saveEntity} remove={this.removeEntity}/>
+        <AppSpinner/>
       </div>
     );
   }
