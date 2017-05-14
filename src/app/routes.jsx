@@ -14,6 +14,11 @@ export const routes = [
     icon: 'mic',
     route: '/artists',
   },
+  {
+    label: 'Genres',
+    icon: 'stars',
+    route: '/genre/list',
+  },
   null,
   {
     label: 'Lyrics',
@@ -57,6 +62,7 @@ import {syncHistoryWithStore} from 'react-router-redux'
 
 import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
+import {GenreList, GenreItem, GenreEditor} from '../genre/Genre'
 import {Login, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
@@ -99,6 +105,11 @@ export default
 
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>
+
+    <Route path="/genre/list" component={GenreList}/>
+    <Route path="/genre/:id/show" component={GenreItem}/>
+    <Route path="/genre/new" component={GenreEditor}/>
+    <Route path="/genre/:id/edit" component={GenreEditor}/>
 
     <Route path="/tests" component={TestList}/>
     <Route path="/tests/:id" component={TestItem}/>

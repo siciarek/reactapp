@@ -58,8 +58,7 @@ export const removeSong = (id) => {
     })
     .then(() => {
       console.log(routerHistory)
-      routerHistory.push('/blank')
-      routerHistory.push('/lyrics')
+      routerHistory.replace('/lyrics')
     })
     .catch((err) => {
       dispatch({type: SONG_ITEM_REMOVE_REJECTED, payload: err})
@@ -81,8 +80,7 @@ export const saveSong = (data) => {
       return response.data
     })
     .then((data) => {
-      routerHistory.push('/blank')
-      routerHistory.push(`/song/${data.data.id}/edit`)
+      routerHistory.replace(`/song/${data.data.id}/edit`)
     })
     .catch((err) => {
       dispatch({type: SONG_ITEM_SAVE_REJECTED, payload: err})

@@ -60,8 +60,7 @@ export function authenticateUser({username, password}) {
       if (response.data.authenticated === true) {
         AppStash.set('token', response.data.token)
         dispatch({type: USER_AUTH_FULLFILLED, payload: response.data})
-        routerHistory.push('/blank')
-        routerHistory.push('/dashboard')
+        routerHistory.replace('/dashboard')
       }
       else {
         dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response.data})
@@ -83,8 +82,7 @@ export function unauthenticateUser() {
       if (response.data.authenticated === false) {
         AppStash.remove('token')
         dispatch({type: USER_UNAUTH_FULLFILLED, payload: response.data})
-        routerHistory.push('/blank')
-        routerHistory.push('/login')
+        routerHistory.replace('/login')
       }
     })
     .catch((err) => {
@@ -109,8 +107,7 @@ export function authCheck() {
           type: USER_AUTH_CHECK_FAILURE,
           payload: response.data
         })
-        routerHistory.push('/blank')
-        routerHistory.push('/login')
+        routerHistory.replace('/login')
       }
       else {
         if (typeof response.data.dateOfBirth !== 'undefined' && response.data.dateOfBirth !== null) {
