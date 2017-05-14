@@ -1,0 +1,86 @@
+import React from 'react'
+import {SortableContainer, SortableHandle, SortableElement, arrayMove} from 'react-sortable-hoc'
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui'
+import './Test'
+
+const DragHandle = SortableHandle(() => <span>::</span>); // This can be any component you want
+
+const SortableItem = SortableElement(({value}) => {
+  return <TableRow>
+    <TableRowColumn>{value}</TableRowColumn>
+    <TableRowColumn>John</TableRowColumn>
+    <TableRowColumn>Smith</TableRowColumn>
+    <TableRowColumn>Male</TableRowColumn>
+    <TableRowColumn>1966-10-21</TableRowColumn>
+  </TableRow>
+})
+
+SortableItem.muiName = 'TableRow'
+
+const AppList = SortableContainer(({items}) => {
+
+  const rows = items.map((value, index) => {
+      return <SortableItem key={index} index={index} value={index}/>
+    }
+  )
+
+  return (
+    <TableBody displayRowCheckbox={true}>
+      {rows}
+    </TableBody>
+  )
+})
+
+AppList.muiName = 'TableBody'
+
+export default class Test extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      items: [
+        'Item 1',
+        'Item 2',
+        'Item 3',
+        'Item 4',
+        'Item 5',
+        'Item 6',
+      ],
+    }
+  }
+
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({
+      items: [...arrayMove(this.state.items, oldIndex, newIndex)],
+    }, () => {
+      console.log(this.state.items)
+      this.forceUpdate()
+    })
+  }
+
+  render() {
+
+    return (
+      <Table>
+        <TableHeader displaySelectAll={false}>
+          <TableRow >
+            <TableHeaderColumn>#</TableHeaderColumn>
+            <TableHeaderColumn>First name</TableHeaderColumn>
+            <TableHeaderColumn>Last name</TableHeaderColumn>
+            <TableHeaderColumn>Gender</TableHeaderColumn>
+            <TableHeaderColumn>Date of birth</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <AppList items={this.state.items}  lockAxis="y" onSortEnd={this.onSortEnd}/>
+      </Table>
+    )
+  }
+}

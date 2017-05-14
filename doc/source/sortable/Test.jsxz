@@ -1,0 +1,104 @@
+import React from 'react'
+import {SortableContainer, SortableHandle, SortableElement, arrayMove} from 'react-sortable-hoc'
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui'
+
+import './Test.css'
+
+const SortableItem = SortableElement((props) => {
+  const {id, firstName, lastName, gender, enabled} = props.data
+
+  return <TableRow>
+    <TableRowColumn>{enabled}</TableRowColumn>
+    <TableRowColumn>{id}</TableRowColumn>
+    <TableRowColumn>{firstName}</TableRowColumn>
+    <TableRowColumn>{lastName}</TableRowColumn>
+    <TableRowColumn>{gender}</TableRowColumn>
+  </TableRow>
+})
+
+SortableItem.muiName = 'TableRow'
+
+const SortableList = SortableContainer(({items}) => {
+  return (
+    <Table>
+      <TableHeader displaySelectAll={false}>
+        <TableRow>
+          <TableHeaderColumn>Enabled</TableHeaderColumn>
+          <TableHeaderColumn>ID</TableHeaderColumn>
+          <TableHeaderColumn>First name</TableHeaderColumn>
+          <TableHeaderColumn>Last name</TableHeaderColumn>
+          <TableHeaderColumn>Gender</TableHeaderColumn>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          items.map((value, index) => {
+            return <SortableItem key={value.id} index={index} data={value}/>
+          })
+        }
+      </TableBody>
+    </Table>
+  );
+});
+
+export default class Test extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      items: [
+        {
+          id: 123,
+          firstName: 'Albert',
+          lastName: 'Einstein',
+          gender: 'male',
+          enabled: true,
+        },
+        {
+          id: 345,
+          firstName: 'Elvis',
+          lastName: 'Presley',
+          gender: 'male',
+          enabled: false,
+        },
+        {
+          id: 709,
+          firstName: 'Jane',
+          lastName: 'Fonda',
+          gender: 'female',
+          enabled: true,
+        }
+      ],
+    }
+  }
+
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({
+      items: arrayMove(this.state.items, oldIndex, newIndex),
+    }, console.log([oldIndex, newIndex], this.state));
+  };
+
+  render() {
+
+    return (
+
+      <SortableList
+        items={this.state.items}
+        lockAxis="y"
+        helperClass="selected-row"
+        lockToContainerEdges={true}
+        hideSortableGhost={true}
+        onSortEnd={this.onSortEnd}
+        showCheckboxes={false}
+      />
+    )
+  }
+}
