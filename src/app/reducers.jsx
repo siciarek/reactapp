@@ -8,8 +8,10 @@ import music from '../music/musicReducer'
 import video from '../video/videoReducer'
 import song from '../song/songReducer'
 import user from '../user/userReducer'
+import test from '../test/testReducer'
 
 export default combineReducers({
+  test,
   routing,
   app,
   user,

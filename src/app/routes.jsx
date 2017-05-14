@@ -55,7 +55,7 @@ import React from 'react'
 import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
 
-import {Home, Blank, Test, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
+import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
 import {Login, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
@@ -64,6 +64,7 @@ import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
 import {MusicList, MusicItem} from '../music/Music'
 import {VideoList, VideoItem} from '../video/Video'
+import {TestList, TestItem}  from '../test/Test'
 
 import App from './App'
 import store from './store'
@@ -99,8 +100,10 @@ export default
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>
 
+    <Route path="/tests" component={TestList}/>
+    <Route path="/tests/:id" component={TestItem}/>
+
     <Route path="/blank" component={Blank}/>
-    <Route path="/test" component={Test}/>
     <Route path="/access-forbiden" component={AccessForbiden}/>
     <Route path="*" component={PageNotFound}/>
   </Route>

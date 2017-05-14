@@ -20,7 +20,7 @@ class ArtistItem extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader icon="mic" title={this.props.current.description} />
+        <AppHeader title={this.props.current.description} />
         <pre className="text">{this.props.current.info}</pre>
         <AppFloatingActionButton route="/artists"/>
         <AppSpinner/>

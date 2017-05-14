@@ -1,34 +1,40 @@
 import React from 'react'
 import config from '../config'
-
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-
+import {
+  Card,
+  CardMedia,
+  CardTitle,
+  CardText,
+} from 'material-ui'
 import {Responsive, WidthProvider} from 'react-grid-layout'
+
 const GridLayout = WidthProvider(Responsive)
 
-class Home extends React.Component {
+function Home(props) {
 
-  render() {
-    return (
-      <GridLayout
-        isDraggable={false}
-        isResizable={false}
-        margin={[0, 0]}
-        containerPadding={[0, 0]}
-        // breakpoints = {{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
-        breakpoints={{lg: 1000, md: 996, sm: 768, xs: 480, xxs: 0}}
-      >
-        <Card key={1} data-grid={{x: 3, y: 0, w: 6, h: 2, static: false}}>
-          <CardMedia overlay={<CardTitle title={config.appName} subtitle="Just sing a song"/>}>
-            <img src={config.appPicture} alt="Mircorphone"/>
-          </CardMedia>
-          <CardText>
-            {config.appDescription}
-          </CardText>
-        </Card>
-      </GridLayout>
-    )
-  }
+  const {appName, appDescription, appPicture} = config
+
+  console.log(process.env.NODE_ENV)
+
+  return (
+    <GridLayout
+      isDraggable={false}
+      isResizable={false}
+      margin={[0, 0]}
+      containerPadding={[0, 0]}
+      // breakpoints = {{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+      breakpoints={{lg: 1000, md: 996, sm: 768, xs: 480, xxs: 0}}
+    >
+      <Card key={1} data-grid={{x: 3, y: 0, w: 6, h: 2, static: false}}>
+        <CardMedia overlay={<CardTitle title={appName} subtitle="Just sing a song"/>}>
+          <img src={appPicture} alt="Mircorphone"/>
+        </CardMedia>
+        <CardText>
+          {appDescription}
+        </CardText>
+      </Card>
+    </GridLayout>
+  )
 }
 
 export default Home

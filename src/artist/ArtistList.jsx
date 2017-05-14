@@ -21,7 +21,7 @@ class ArtistList extends React.Component {
         leftIcon={<ListItemIcon />}
         containerElement={<Link to={`artists/${item.id}`}/>}
         key={item.id}
-        primaryText={item.name}
+        primaryText={item.description}
       />
     })
 

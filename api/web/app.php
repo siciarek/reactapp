@@ -109,9 +109,17 @@ $songs = json_decode($json, true);
 $data = [];
 
 $elements = [];
+$query = null;
+
 foreach (['PATH_INFO', 'REQUEST_URI'] as $key) {
     if (array_key_exists($key, $_SERVER)) {
-        $elements = explode('/', $_SERVER[$key]);
+        $path = $_SERVER[$key];
+        $temp = explode('?', $_SERVER[$key]);
+        if(count($temp) > 1) {
+            $path = $temp[0];
+            $query = $temp[1];
+        }
+        $elements = explode('/', $path);
         $elements = array_filter($elements);
         $elements = array_values($elements);
         break;
@@ -238,8 +246,7 @@ if (count($elements) > 0) {
 
 
             break;
-        case
-        'song':
+        case 'song':
 
             switch ($_SERVER['REQUEST_METHOD']) {
                 case 'DELETE':
@@ -429,6 +436,26 @@ if (count($elements) > 0) {
 
     if ($data === null) {
         $data = new \stdClass();
+    }
+}
+$temp = explode('=', $query);
+
+
+if (
+    in_array($resource, ['lyrics', 'authors', 'artists', 'videos', 'music'])
+    AND !empty($query)
+) {
+
+    $temp = explode('=', $query);
+
+    if ($temp[0] === 'swap') {
+        list($first, $second) = explode(',', $temp[1]);
+        $first *= 1;
+        $second *= 1;
+
+        $temp = $data[$first];
+        $data[$first] = $data[$second];
+        $data[$second] = $temp;
     }
 }
 
