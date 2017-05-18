@@ -27,7 +27,7 @@ export default {
   lyricsUrl: `${API_BASE_URLS[APP_ENV]}/lyrics`,
   authorUrl: `${API_BASE_URLS[APP_ENV]}/authors`,
   artistUrl: `${API_BASE_URLS[APP_ENV]}/artists`,
-  musicUrl: `${API_BASE_URLS[APP_ENV]}/music`,
+  audioUrl: `${API_BASE_URLS[APP_ENV]}/audio`,
   videoUrl: `${API_BASE_URLS[APP_ENV]}/videos`,
   songUrl: `${API_BASE_URLS[APP_ENV]}/song`,
 }

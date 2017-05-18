@@ -77,7 +77,6 @@ class ProfileForm extends React.Component {
   }
 
   updateNumericalValue = (event, value, x) => {
-    // console.log(event, value)
 
     const key = 'skillLevel'
     const val = value

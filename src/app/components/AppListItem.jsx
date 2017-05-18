@@ -35,7 +35,7 @@ class AppListItem extends React.Component {
 
     let props = {...this.props}
 
-    let {editable, toolbarVisible, primaryText } = props
+    let {editable, toolbarVisible, primaryText} = props
 
     let actions = editable === true && toolbarVisible === true ? {...props.actions} : {}
 
@@ -45,10 +45,15 @@ class AppListItem extends React.Component {
     })
 
     const buttons = Object.keys(actions).map(function (key, index) {
-      return <IconButton key={index} tooltip={key.toUpperCase()} onTouchTap={actions[key]}>{icons[key]}</IconButton>
+      return <IconButton
+        key={index}
+        tooltip={key.toUpperCase()}
+        onTouchTap={actions[key]}>
+        {icons[key]}
+      </IconButton>
     })
 
-    const initial = primaryText.substring(-1,1).toLocaleUpperCase()
+    const initial = primaryText.substring(-1, 1).toLocaleUpperCase()
 
     return <ListItem
       {...props}

@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {RaisedButton, FontIcon} from 'material-ui'
+import {RaisedButton, FontIcon, Paper} from 'material-ui'
 import {fetchItemGenre} from './GenreActions'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 
@@ -13,10 +13,21 @@ class GenreItem extends React.Component {
 
   render() {
 
+    const {id, name, description, info} = this.props.current;
+
+    if (this.props.fetching) {
+      return <AppSpinner/>
+    }
+
+    const content = (info === null)
+      ? <Paper style={{padding: 16}} zDepth={2}>No info.</Paper>
+      : <pre className="text">{info}</pre>
+
     return (
       <div className="container">
-        <AppHeader title={this.props.current.name}/>
-        <pre className="text">{this.props.current.info}</pre>
+        <AppHeader title={name}/>
+
+        {content}
 
         <br/>
         <br/>

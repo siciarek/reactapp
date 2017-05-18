@@ -5,13 +5,13 @@ import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 import AppHeader from '../app/components/AppHeader'
 import AppSpinner from '../app/components/AppSpinner'
-import {fetchMusicList} from './MusicActions'
+import {fetchAudioList} from './AudioActions'
 import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
-class MusicList extends React.Component {
+class AudioList extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchMusicList())
+    this.props.dispatch(fetchAudioList())
   }
 
   render() {
@@ -25,10 +25,10 @@ class MusicList extends React.Component {
       const temp = this.props.items.map((item) => {
         return <ListItem
           leftIcon={<ListItemIcon />}
-          containerElement={<Link to={`music/${item.id}`}/>}
+          containerElement={<Link to={`audio/${item.id}`}/>}
           key={item.id}
           primaryText={item.title}
-          secondaryText={`results: ${item.music.length}`}
+          secondaryText={`items: ${item.audioCount}`}
         />
       })
 
@@ -41,7 +41,7 @@ class MusicList extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader title="Music"/>
+        <AppHeader title="Audio"/>
         {items}
         <AppFloatingActionButton route="/"/>
         <AppSpinner/>
@@ -52,7 +52,7 @@ class MusicList extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.music.fetching,
-    items: store.music.items,
+    fetching: store.audio.fetching,
+    items: store.audio.items,
   }
-})(MusicList)
+})(AudioList)

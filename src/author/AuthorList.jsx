@@ -21,7 +21,7 @@ class AuthorList extends React.Component {
         leftIcon={<ListItemIcon />}
         containerElement={<Link to={`authors/${item.id}`}/>}
         key={item.id}
-        primaryText={item.name}
+        primaryText={item.description}
       />
     })
 

@@ -14,8 +14,6 @@ function Home(props) {
 
   const {appName, appDescription, appPicture} = config
 
-  console.log(process.env.NODE_ENV)
-
   return (
     <GridLayout
       isDraggable={false}

@@ -37,7 +37,7 @@ class LyricsList extends React.Component {
         <AppHeader title="Lyrics"/>
         <AppList
           primaryTextIndexes={['title']}
-          secondaryTextIndexes={['genre', 'id', 'createdAt']}
+          secondaryTextIndexes={['genre.name','createdAt']}
 
           removeItemFunction={(id) => this.props.dispatch(removeSong(id))}
           selectFunction={(id) => this.setState({selectedItem: id})}

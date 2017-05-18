@@ -27,7 +27,7 @@ class VideoList extends React.Component {
         containerElement={<Link to={`${this.itemRoute}/${item.id}`}/>}
         key={item.id}
         primaryText={item.title}
-        secondaryText={`results: ${item.videos.length}`}
+        secondaryText={`results: ${item.videoCount}`}
       />
     })
 

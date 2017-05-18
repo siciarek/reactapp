@@ -26,9 +26,9 @@ export const routes = [
     route: '/lyrics',
   },
   {
-    label: 'Music',
+    label: 'Audio',
     icon: 'volume_up',
-    route: '/music',
+    route: '/audio',
   },
   {
     label: 'Videos',
@@ -43,16 +43,23 @@ export const routes = [
     private: false,
   },
   {
-    label: 'Dashboard',
-    icon: 'dashboard',
-    route: '/dashboard',
+    label: 'User Zone',
+    icon: 'person',
     private: true,
-  },
-  {
-    label: 'Profile',
-    icon: 'account_circle',
-    route: '/profile',
-    private: true,
+    children: [
+      {
+        label: 'Dashboard',
+        icon: 'dashboard',
+        route: '/dashboard',
+        private: true,
+      },
+      {
+        label: 'Profile',
+        icon: 'account_circle',
+        route: '/profile',
+        private: true,
+      },
+    ]
   },
 ]
 
@@ -68,7 +75,7 @@ import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
-import {MusicList, MusicItem} from '../music/Music'
+import {AudioList, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItem} from '../video/Video'
 import {TestList, TestItem}  from '../test/Test'
 
@@ -100,8 +107,8 @@ export default
     <Route path="/lyrics" component={LyricsList}/>
     <Route path="/lyrics/:id" component={LyricsItem}/>
 
-    <Route path="/music" component={MusicList}/>
-    <Route path="/music/:id" component={MusicItem}/>
+    <Route path="/audio" component={AudioList}/>
+    <Route path="/audio/:id" component={AudioItem}/>
 
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>

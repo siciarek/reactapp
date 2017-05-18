@@ -1,36 +1,43 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {List, ListItem} from 'material-ui'
+import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
 
-import {fetchMusicItem} from './MusicActions'
+import {fetchAudioItem} from './AudioActions'
 import AppHeader from '../app/components/AppHeader'
 import AppSpinner from '../app/components/AppSpinner'
 import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
-class MusicItem extends React.Component {
-
-  listRoute = '/music'
+class AudioItem extends React.Component {
 
   constructor(props) {
     super(props)
-    this.props.dispatch(fetchMusicItem(this.props.params.id))
+    this.props.dispatch(fetchAudioItem(this.props.params.id))
   }
 
   render() {
 
-    if(typeof this.props.current.music === 'undefined') {
+    if (this.props.current === undefined) {
       return false
     }
 
-    const temp = this.props.current.music.map((item) => {
+    let title = undefined;
+
+    const temp = this.props.current.map((item) => {
+
+      title = item.song.title
+
+      const atemp = item.artists.map((artist) => {
+        return artist.name;
+      })
+
       return <ListItem
         leftIcon={<ListItemIcon />}
         key={item.id}
-        primaryText={item.artist}
-        secondaryText={item.info}
-        href={item.url}
+        primaryText={atemp.join(', ')}
+        secondaryText={item.description}
+        href={item.path}
       />
     })
 
@@ -42,9 +49,9 @@ class MusicItem extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader title={this.props.current.title} />
+        <AppHeader title={title}/>
         {items}
-        <AppFloatingActionButton route="/music"/>
+        <AppFloatingActionButton route="/audio"/>
         <AppSpinner/>
       </div>
     )
@@ -54,7 +61,7 @@ class MusicItem extends React.Component {
 export default connect((store) => {
 
   return {
-    fetching: store.music.fetching,
-    current: store.music.current,
+    fetching: store.audio.fetching,
+    current: store.audio.current,
   }
-})(MusicItem)
+})(AudioItem)

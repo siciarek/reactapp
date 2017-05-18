@@ -57,7 +57,6 @@ export const removeSong = (id) => {
       })
     })
     .then(() => {
-      console.log(routerHistory)
       routerHistory.replace('/lyrics')
     })
     .catch((err) => {

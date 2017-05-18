@@ -18,17 +18,27 @@ class VideoItem extends React.Component {
 
   render() {
 
-    if(typeof this.props.current.videos === 'undefined') {
+    if (typeof this.props.current === 'undefined') {
       return false
+
     }
 
-    const temp = this.props.current.videos.map((item) => {
+    let title = undefined;
+
+    const temp = this.props.current.map((item) => {
+
+      title = item.song.title
+
+      const atemp = item.artists.map((artist) => {
+        return artist.name;
+      })
+
       return <ListItem
         leftIcon={<ListItemIcon />}
         key={item.id}
-        primaryText={item.artist}
-        secondaryText={item.info}
-        href={item.url}
+        primaryText={atemp.join(', ')}
+        secondaryText={item.description}
+        href={item.path}
       />
     })
 
@@ -40,7 +50,7 @@ class VideoItem extends React.Component {
 
     return (
       <div className="container">
-        <AppHeader title={this.props.current.title} />
+        <AppHeader title={title}/>
         {items}
         <AppFloatingActionButton route="/videos"/>
         <AppSpinner/>

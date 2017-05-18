@@ -7,7 +7,7 @@ import {
 } from './Video'
 
 export default function reducer(state = {
-  current: {},
+  current: [],
   items: [],
   fetching: false,
   fetched: false,

@@ -10,27 +10,32 @@ import {fetchListGenre} from './GenreActions'
 
 class GenreList extends React.Component {
 
-  componentWillMount() {
+  constructor(props) {
+    super(props)
     this.props.dispatch(fetchListGenre())
   }
 
   render() {
 
-    const temp = this.props.items.map((item) => {
-      return <ListItem
-        leftIcon={<ListItemIcon />}
-        containerElement={<Link to={`/genre/${item.id}/show`}/>}
-        key={item.id}
-        primaryText={item.name}
-        secondaryText={item.description}
-      />
-    })
+    if(this.props.fetching) {
+      return <AppSpinner/>
+    }
 
     return (
       <div className="container">
         <AppHeader title="Genres"/>
         <List>
-          {temp}
+          {
+            this.props.items.map((item) => {
+              return <ListItem
+                leftIcon={<ListItemIcon />}
+                containerElement={<Link to={`/genre/${item.id}/show`}/>}
+                key={item.id}
+                primaryText={item.name}
+                secondaryText={item.category.name}
+              />
+            })
+          }
         </List>
         <AppSpinner/>
       </div>

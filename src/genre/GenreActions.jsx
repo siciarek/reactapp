@@ -14,8 +14,6 @@ import {
   GENRE_ITEM_SAVE_FULLFILLED,
   GENRE_ITEM_SAVE_REJECTED,
   GENRE_ITEM_UPDATE,
-  GENRE_ITEM_UPDATE_FULLFILLED,
-  GENRE_ITEM_UPDATE_REJECTED,
   GENRE_ITEM_REMOVE,
   GENRE_ITEM_REMOVE_FULLFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
@@ -66,7 +64,6 @@ export const saveGenre = (data) => {
     dispatch({type: GENRE_ITEM_SAVE})
 
     if (data.id !== null) {
-      console.log(data);
 
       axios.put(`${config.genreUrl}/${data.id}`, data)
       .then((response) => {

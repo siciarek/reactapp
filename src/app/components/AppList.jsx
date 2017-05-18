@@ -35,8 +35,18 @@ export default class AppList extends React.Component {
       }).join(this.props.primaryTextSeparator)
 
       const st = this.props.secondaryTextIndexes.map((e) => {
-        return item[e]
+        const parts = e.split('.')
+
+        let val = {...item}
+
+        while(parts.length > 0) {
+          const key = parts.shift()
+          val = val[key]
+        }
+
+        return val
       })
+
       const secondaryText = st.length > 0 ? st.join(this.props.secondaryTextSeparator) : null
 
       return <AppListItem

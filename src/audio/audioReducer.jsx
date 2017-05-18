@@ -1,13 +1,13 @@
 import {
-  FETCH_MUSIC,
-  FETCH_MUSIC_FULLFILLED,
-  FETCH_MUSIC_ITEM,
-  FETCH_MUSIC_ITEM_FULLFILLED,
-  FETCH_MUSIC_REJECTED
-} from './Music'
+  FETCH_AUDIO,
+  FETCH_AUDIO_FULLFILLED,
+  FETCH_AUDIO_ITEM,
+  FETCH_AUDIO_ITEM_FULLFILLED,
+  FETCH_AUDIO_REJECTED
+} from './Audio'
 
 export default function reducer(state = {
-  current: {},
+  current: [],
   items: [],
   fetching: false,
   fetched: false,
@@ -15,26 +15,26 @@ export default function reducer(state = {
 }, action) {
 
   switch (action.type) {
-    case FETCH_MUSIC: {
+    case FETCH_AUDIO: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_MUSIC_ITEM: {
+    case FETCH_AUDIO_ITEM: {
       return {
         ...state,
         fetching: true
       }
     }
-    case FETCH_MUSIC_REJECTED: {
+    case FETCH_AUDIO_REJECTED: {
       return {
         ...state,
         fetching: false,
         error: action.payload
       }
     }
-    case FETCH_MUSIC_FULLFILLED: {
+    case FETCH_AUDIO_FULLFILLED: {
       return {
         ...state,
         fetching: false,
@@ -42,7 +42,7 @@ export default function reducer(state = {
         items: action.payload
       }
     }
-    case FETCH_MUSIC_ITEM_FULLFILLED: {
+    case FETCH_AUDIO_ITEM_FULLFILLED: {
       return {
         ...state,
         fetching: false,
