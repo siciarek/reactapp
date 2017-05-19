@@ -14,8 +14,6 @@ import {
   SONG_ITEM_FETCH_REJECTED,
 } from './Song'
 
-//import {routerHistory} from '../app/routes'
-
 export const updateSong = (data) => {
 
   return (dispatch) => {
@@ -57,6 +55,7 @@ export const removeSong = (id) => {
       })
     })
     .then(() => {
+      routerHistory.push('/blank')
       routerHistory.replace('/lyrics')
     })
     .catch((err) => {
@@ -67,22 +66,43 @@ export const removeSong = (id) => {
 
 export const saveSong = (data) => {
 
+
   return (dispatch) => {
     dispatch({type: SONG_ITEM_SAVE})
 
-    axios.post(config.songUrl, data)
-    .then((response) => {
-      dispatch({
-        type: SONG_ITEM_SAVE_FULLFILLED,
-        payload: response.data,
+    if (data.id !== null) {
+
+      axios.put(`${config.songUrl}/${data.id}`, data)
+      .then((response) => {
+        dispatch({
+          type: SONG_ITEM_SAVE_FULLFILLED,
+          payload: response.data,
+        })
+        return response.data
       })
-      return response.data
-    })
-    .then((data) => {
-      routerHistory.replace(`/song/${data.data.id}/edit`)
-    })
-    .catch((err) => {
-      dispatch({type: SONG_ITEM_SAVE_REJECTED, payload: err})
-    })
+      .then((data) => {
+        routerHistory.push('/blank')
+        routerHistory.replace(`/song/${data.id}/edit`)
+      })
+      .catch((err) => {
+        dispatch({type: SONG_ITEM_SAVE_REJECTED, payload: err})
+      })
+    }
+    else {
+      axios.post(config.songUrl, data)
+      .then((response) => {
+        dispatch({
+          type: SONG_ITEM_SAVE_FULLFILLED,
+          payload: response.data,
+        })
+        return response.data
+      })
+      .then((data) => {
+        routerHistory.replace(`/song/${data.id}/edit`)
+      })
+      .catch((err) => {
+        dispatch({type: SONG_ITEM_SAVE_REJECTED, payload: err})
+      })
+    }
   }
 }

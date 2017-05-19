@@ -39,7 +39,7 @@ class SongEditor extends React.Component {
   saveEntity = () => {
     let state = {...this.props.current}
     if (this.props.params.hasOwnProperty('id')) {
-      state['id'] = this.props.params.id
+      state['id'] = this.props.current.id
     }
     this.props.dispatch(saveSong(state))
   }

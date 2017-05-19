@@ -98,19 +98,17 @@ class SongEditorForm extends React.Component {
         <SelectField
           id="genre"
           ref="genre"
-          value={this.props.current.genre}
+          value={this.props.current.genre.id}
           errorText={this.state.errors.genre}
           floatingLabelText="Genre"
           fullWidth={true}
           onChange={this.updateSelectValue}
         >
-          <MenuItem value={'Blues'} primaryText="Blues"/>
-          <MenuItem value={'Ballad'} primaryText="Ballad"/>
-          <MenuItem value={'Rock'} primaryText="Rock"/>
-          <MenuItem value={'Jazz'} primaryText="Jazz"/>
-          <MenuItem value={'Bossa nova'} primaryText="Bossa nova"/>
-          <MenuItem value={'Folk'} primaryText="Folk"/>
-          <MenuItem value={'Other'} primaryText="Other"/>
+          <MenuItem value={93} primaryText="Blues"/>
+          <MenuItem value={494} primaryText="Jazz"/>
+          <MenuItem value={611} primaryText="Pop"/>
+          <MenuItem value={691} primaryText="Rock"/>
+          <MenuItem value={202} primaryText="Beautiful music"/>
         </SelectField>
 
         <TextField
