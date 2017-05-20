@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {TextField, SelectField, MenuItem, RaisedButton, FontIcon, DatePicker, FlatButton, Dialog} from 'material-ui'
-import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
+import {TextField, RaisedButton, FontIcon, DatePicker, FlatButton, Dialog} from 'material-ui'
+import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
+import GenreSelectField from '../genre/components/GenreSelectField'
 
 class SongEditorForm extends React.Component {
 
@@ -43,13 +44,6 @@ class SongEditorForm extends React.Component {
     this.props.updateEntity(key, val)
   }
 
-  updateSelectValue = (component, index, value) => {
-    const key = 'genre'
-    const val = value === null || value.toString().trim().length === 0 ? null : value
-
-    this.props.updateEntity(key, val)
-  }
-
   updateValue = (event) => {
     const key = event.target.id
     let val = event.target.value
@@ -82,35 +76,6 @@ class SongEditorForm extends React.Component {
 
       <form style={{padding: 16, paddingTop: 0,}}>
 
-        <DatePicker
-          id="createdAt"
-          value={this.props.current.createdAt}
-          errorText={this.state.errors.createdAt}
-          floatingLabelText="Created at"
-          onChange={this.updateDateValue}
-          autoOk={true}
-          // DateTimeFormat={global.Intl.DateTimeFormat}
-          // locale={config.locale}
-          hintText="Created at"
-          fullWidth={true}
-        />
-
-        <SelectField
-          id="genre"
-          ref="genre"
-          value={this.props.current.genre.id}
-          errorText={this.state.errors.genre}
-          floatingLabelText="Genre"
-          fullWidth={true}
-          onChange={this.updateSelectValue}
-        >
-          <MenuItem value={93} primaryText="Blues"/>
-          <MenuItem value={494} primaryText="Jazz"/>
-          <MenuItem value={611} primaryText="Pop"/>
-          <MenuItem value={691} primaryText="Rock"/>
-          <MenuItem value={202} primaryText="Beautiful music"/>
-        </SelectField>
-
         <TextField
           id="title"
           value={this.props.current.title}
@@ -119,6 +84,12 @@ class SongEditorForm extends React.Component {
           floatingLabelText="Title"
           fullWidth={true}
           onChange={this.updateValue}
+        />
+
+        <GenreSelectField
+          value={this.props.current.genre}
+          errorText={this.state.errors.genre}
+          onChange={this.props.updateEntity}
         />
 
         <TextField
@@ -132,6 +103,19 @@ class SongEditorForm extends React.Component {
           rows={4}
           rowsMax={8}
           onChange={this.updateValue}
+        />
+
+        <DatePicker
+          id="createdAt"
+          value={this.props.current.createdAt}
+          errorText={this.state.errors.createdAt}
+          floatingLabelText="Created at"
+          onChange={this.updateDateValue}
+          autoOk={true}
+          // DateTimeFormat={global.Intl.DateTimeFormat}
+          // locale={config.locale}
+          hintText="Created at"
+          fullWidth={true}
         />
 
         <br/>

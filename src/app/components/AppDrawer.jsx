@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {withRouter} from 'react-router'
-import {AppBar, Drawer, MenuItem, FontIcon, Divider, ListItem} from 'material-ui'
+import {AppBar, Drawer, MenuItem, FontIcon, Divider} from 'material-ui'
 
 import {routes} from '../routes'
 import config from '../config'
