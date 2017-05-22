@@ -79,11 +79,10 @@ export function unauthenticateUser() {
     axios
     .post(`${config.userUrl}/logout`)
     .then(response => {
-      if (response.data.authenticated === false) {
         AppStash.remove('token')
-        dispatch({type: USER_UNAUTH_FULLFILLED, payload: response.data})
-        routerHistory.replace('/login')
-      }
+        dispatch({type: USER_UNAUTH_FULLFILLED, payload: {}})
+        routerHistory.push('/blank')
+        routerHistory.push('/login')
     })
     .catch((err) => {
       dispatch({type: USER_AUTH_ERROR, payload: err})

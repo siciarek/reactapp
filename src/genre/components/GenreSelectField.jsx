@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 class GenreSelectField extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchListGenre())
+    this.props.dispatch(fetchListGenre(true))
   }
 
   onChange = (component, index, value) => {
@@ -22,7 +22,7 @@ class GenreSelectField extends React.Component {
 
   render() {
 
-    if(this.props.value.id === undefined) {
+    if(this.props.value === null) {
       return null
     }
 

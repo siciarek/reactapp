@@ -19,12 +19,14 @@ import {
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
 
-export const fetchListGenre = () => {
+export const fetchListGenre = (onlyEnabled = false) => {
+
+  const url = onlyEnabled === true ? `${config.genreUrl}?enabled=1` : config.genreUrl
 
   return (dispatch) => {
     dispatch({type: GENRE_LIST_FETCH})
 
-    axios.get(config.genreUrl)
+    axios.get(url)
     .then((response) => {
       dispatch({type: GENRE_LIST_FETCH_FULLFILLED, payload: response.data})
     })

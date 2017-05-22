@@ -17,6 +17,7 @@ import {
 const DEFAULT_STATE = {
   current: {},
   items: [],
+  itemsEnabled: [],
   fetching: false,
   fetched: false,
   error: null,

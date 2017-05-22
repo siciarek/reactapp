@@ -16,8 +16,8 @@ const INITIAL_STATE = {
   error: '',
   message: '',
   dateOfBirth: null,
-  firstName: 'John',
-  lastName: 'Doe',
+  firstName: '',
+  lastName: '',
   username: '',
   email: '',
   authenticated: false,
@@ -44,10 +44,7 @@ export default function (state = INITIAL_STATE, action) {
         message: 'Unauthentication in progress.',
       }
     case USER_UNAUTH_FULLFILLED:
-      return {
-        ...state,
-        INITIAL_STATE,
-      }
+      return INITIAL_STATE
     case USER_AUTH_ERROR:
       return {
         ...state,
