@@ -16,10 +16,12 @@ const INITIAL_STATE = {
   error: '',
   message: '',
   dateOfBirth: null,
+  gender: null,
   firstName: '',
   lastName: '',
   username: '',
   email: '',
+  skillLevel: 0,
   authenticated: false,
 }
 
@@ -35,7 +37,8 @@ export default function (state = INITIAL_STATE, action) {
     case USER_AUTH_FULLFILLED:
       return {
         ...state,
-        email: action.payload.email,
+        username: action.payload.username,
+        message: 'User authentication succeeed.',
         authenticated: true
       }
     case USER_UNAUTH:
@@ -80,18 +83,7 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         error: '',
-        message: '',
-        id: action.payload.id,
-        skillLevel: action.payload.skillLevel,
-        public: action.payload.public,
-        info: action.payload.info === null ? null : action.payload.info,
-        gender: action.payload.gender,
-        dateOfBirth: action.payload.dateOfBirth,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
-        username: action.payload.username,
-        email: action.payload.email,
-        authenticated: action.payload.authenticated,
+        authenticated: true,
       }
     default:
       return state

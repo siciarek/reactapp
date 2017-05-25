@@ -51,14 +51,28 @@ export function saveUser(data) {
 }
 
 export function authenticateUser({username, password}) {
+  let url = `${config.userUrl}/login`
+
+  url = 'http://localhost:8000/api/login_check'
+
   return function (dispatch) {
     dispatch({type: USER_AUTH})
 
-    axios
-    .post(`${config.userUrl}/login`, {username, password})
+    const cnf = {
+      method: 'post',
+      headers: new Headers({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: `username=${username}&password=${password}`,
+    }
+
+    fetch(url, cnf)
     .then(response => {
-      if (response.data.authenticated === true) {
-        AppStash.set('token', response.data.token)
+       return response.json()
+    })
+    .then(response => {
+      if (response.hasOwnProperty('token')) {
+        AppStash.set('token', response.token)
         dispatch({type: USER_AUTH_FULLFILLED, payload: response.data})
         routerHistory.replace('/dashboard')
       }
@@ -79,10 +93,10 @@ export function unauthenticateUser() {
     axios
     .post(`${config.userUrl}/logout`)
     .then(response => {
-        AppStash.remove('token')
-        dispatch({type: USER_UNAUTH_FULLFILLED, payload: {}})
-        routerHistory.push('/blank')
-        routerHistory.push('/login')
+      AppStash.remove('token')
+      dispatch({type: USER_UNAUTH_FULLFILLED, payload: {}})
+      routerHistory.push('/blank')
+      routerHistory.push('/login')
     })
     .catch((err) => {
       dispatch({type: USER_AUTH_ERROR, payload: err})
@@ -94,32 +108,9 @@ export function authCheck() {
 
   return function (dispatch) {
     dispatch({type: USER_AUTH_CHECK})
-
-    axios.get(`${config.userUrl}/auth`, {
-      headers: {
-        'Authorization': AppStash.get('token')
-      }
-    })
-    .then(response => {
-      if (response.data.authenticated === false) {
-        dispatch({
-          type: USER_AUTH_CHECK_FAILURE,
-          payload: response.data
-        })
-        routerHistory.replace('/login')
-      }
-      else {
-        if (typeof response.data.dateOfBirth !== 'undefined' && response.data.dateOfBirth !== null) {
-          response.data.dateOfBirth = new Date(response.data.dateOfBirth)
-        }
-        dispatch({
-          type: USER_AUTH_CHECK_SUCCESS,
-          payload: response.data
-        })
-      }
-    })
-    .catch((err) => {
-      dispatch({type: USER_AUTH_ERROR, payload: err})
+    dispatch({
+      type: USER_AUTH_CHECK_SUCCESS,
+      payload: {}
     })
   }
 }

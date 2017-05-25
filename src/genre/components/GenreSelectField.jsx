@@ -12,7 +12,7 @@ class GenreSelectField extends React.Component {
 
   onChange = (component, index, value) => {
     const temp = this.props.list.filter((item) => {
-      return item.id == value
+      return item.id === value
     })
 
     const genre = temp.length > 0 ? temp[0] : null

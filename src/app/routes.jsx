@@ -53,12 +53,12 @@ export const routes = [
         route: '/dashboard',
         private: true,
       },
-      {
-        label: 'Profile',
-        icon: 'account_circle',
-        route: '/profile',
-        private: true,
-      },
+      // {
+      //   label: 'Profile',
+      //   icon: 'account_circle',
+      //   route: '/profile',
+      //   private: true,
+      // },
     ]
   },
 ]

@@ -4,16 +4,16 @@ import {TextField, RaisedButton, FontIcon, Snackbar} from 'material-ui'
 import {authenticateUser} from './UserActions'
 import {AppHeader, AppSpinner} from '../app/components'
 
-const initialState = {
-  username: '',
-  password: '',
+const INITIAL_STATE = {
+  username: 'molak',
+  password: 'pass',
 }
 
 class Login extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {...initialState}
+    this.state = {...INITIAL_STATE}
   }
 
   updateValue = (event) => {
@@ -33,14 +33,15 @@ class Login extends React.Component {
 
     return (
       <div className="container">
+
         <AppHeader title="Log in"/>
 
-        <Snackbar
-          open={this.props.errorMessage !== ''}
-          message={this.props.errorMessage}
-          autoHideDuration={4000}
-          onRequestClose={this.handleRequestClose}
-        />
+        {/*<Snackbar*/}
+          {/*open={this.props.errorMessage !== ''}*/}
+          {/*message={this.props.errorMessage}*/}
+          {/*autoHideDuration={4000}*/}
+          {/*onRequestClose={this.handleRequestClose}*/}
+        {/*/>*/}
 
         <form>
 
