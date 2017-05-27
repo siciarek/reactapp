@@ -51,9 +51,7 @@ export function saveUser(data) {
 }
 
 export function authenticateUser({username, password}) {
-  let url = `${config.userUrl}/login`
-
-  url = 'http://localhost:8000/api/login_check'
+  const url = `${config.authUrl}`
 
   return function (dispatch) {
     dispatch({type: USER_AUTH})
@@ -68,7 +66,7 @@ export function authenticateUser({username, password}) {
 
     fetch(url, cnf)
     .then(response => {
-       return response.json()
+      return response.json()
     })
     .then(response => {
       if (response.hasOwnProperty('token')) {
@@ -77,7 +75,7 @@ export function authenticateUser({username, password}) {
         routerHistory.replace('/dashboard')
       }
       else {
-        dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response.data})
+        dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response})
       }
     })
     .catch((err) => {
