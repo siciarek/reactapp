@@ -22,6 +22,7 @@ export default {
   appDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nDonec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.\nDonec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.\nAliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.',
 
   storageType: STORAGE_TYPE_LOCAL,
+  notificationTimeout: 5,
 
   userUrl: `${API_BASE_URLS[APP_ENV]}/user`,
   lyricsUrl: `${API_BASE_URLS[APP_ENV]}/lyrics`,

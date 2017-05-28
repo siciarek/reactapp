@@ -13,7 +13,7 @@ injectTapEventPlugin()
 import AppDrawer from './components/AppDrawer'
 import config from './config'
 import './App.css'
-import {unauthenticateUser} from '../user/UserActions'
+import {APP_ERROR_HIDE} from './AppActionTypes'
 
 class App extends React.Component {
 
@@ -30,15 +30,18 @@ class App extends React.Component {
 
     const notification = this.props.error ? <Snackbar
       open={true}
-      message={this.props.error.data.message}
-      autoHideDuration={8000}
-      onRequestClose={(e) => console.log(e)}
+      message={`${this.props.error.data.code} ${this.props.error.data.message}`}
+      autoHideDuration={config.notificationTimeout * 1000}
+      onRequestClose={() => this.props.dispatch({type: APP_ERROR_HIDE})}
     /> : null
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
 
         <div>
+
+          {notification}
+
           <Helmet>
             <title>{config.appName}</title>
           </Helmet>
@@ -52,7 +55,7 @@ class App extends React.Component {
                 label="Log Out"
                 labelPosition="before"
                 icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-                onTouchTap={() => this.props.dispatch(unauthenticateUser())}/>
+                onTouchTap={() => this.props.router.push('/logout')}/>
                 : <FlatButton
                 label="Log In"
                 labelPosition="before"
@@ -68,7 +71,7 @@ class App extends React.Component {
             opened={this.state.isMenuOpened}
             toggleView={this.toggleMenu}
           />
-          {notification}
+
         </div>
 
       </MuiThemeProvider>
