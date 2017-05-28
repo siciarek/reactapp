@@ -10,9 +10,6 @@ import {
 const DEFAULT_STATE = {
   current: {},
   items: [],
-  fetching: false,
-  fetched: false,
-  error: null,
 }
 
 export default function reducer(state = DEFAULT_STATE, action) {
@@ -22,29 +19,23 @@ export default function reducer(state = DEFAULT_STATE, action) {
       return {
         ...state,
         items: [],
-        fetching: true
       }
     }
     case AUTHOR_ITEM_FETCH: {
       return {
         ...state,
         current: {},
-        fetching: true
       }
     }
     case AUTHOR_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         items: action.payload
       }
     }
     case AUTHOR_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         current: action.payload
       }
     }
@@ -52,7 +43,6 @@ export default function reducer(state = DEFAULT_STATE, action) {
     case AUTHOR_ITEM_FETCH_REJECTED: {
       return {
         ...state,
-        fetching: false,
         error: action.payload
       }
     }

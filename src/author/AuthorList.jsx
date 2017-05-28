@@ -16,25 +16,21 @@ class AuthorList extends React.Component {
 
   render() {
 
-    const temp = this.props.items.map((item) => {
-      return <ListItem
-        leftIcon={<ListItemIcon />}
-        containerElement={<Link to={`authors/${item.id}`}/>}
-        key={item.id}
-        primaryText={item.description}
-      />
-    })
-
-    const items = (
-      <List>
-        {temp}
-      </List>
-    )
-
     return (
       <div className="container">
         <AppHeader title="Authors"/>
-        {items}
+        <List>
+          {
+            this.props.items.map((item) => {
+              return <ListItem
+                key={item.id}
+                leftIcon={<ListItemIcon />}
+                containerElement={<Link to={`authors/${item.id}`}/>}
+                primaryText={item.description}
+              />
+            })
+          }
+        </List>
         <AppSpinner/>
       </div>
     )
@@ -43,7 +39,6 @@ class AuthorList extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.author.fetching,
     items: store.author.items,
   }
 })(AuthorList)
