@@ -53,12 +53,18 @@ export const routes = [
         route: '/dashboard',
         private: true,
       },
-      // {
-      //   label: 'Profile',
-      //   icon: 'account_circle',
-      //   route: '/profile',
-      //   private: true,
-      // },
+      {
+        label: 'Profile',
+        icon: 'account_circle',
+        route: '/profile',
+        private: true,
+      },
+      {
+        label: 'Log out',
+        icon: 'power_settings_new',
+        route: '/logout',
+        private: true,
+      },
     ]
   },
 ]
@@ -70,7 +76,7 @@ import {syncHistoryWithStore} from 'react-router-redux'
 import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
 import {GenreList, GenreItem, GenreEditor} from '../genre/Genre'
-import {Login, Dashboard, Profile} from '../user/User'
+import {Login, Logout, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
@@ -91,7 +97,8 @@ export default
     <Route path="/" component={Home}/>
     <Route path="/config-info" component={ConfigInfo}/>
 
-    <Route name="login" path="/login" component={Login}/>
+    <Route path="/login" component={Login}/>
+    <Route path="/logout" component={Logout}/>
     <Route path="/dashboard" component={Dashboard}/>
     <Route path="/profile" component={Profile}/>
 

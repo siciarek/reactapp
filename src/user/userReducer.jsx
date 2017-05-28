@@ -74,7 +74,7 @@ export default function (state = INITIAL_STATE, action) {
     case USER_AUTH_CHECK_FAILURE:
       return {
         ...state,
-        error: 'Invalid access data.',
+        error: action.payload,
         authenticated: false
       }
     case USER_AUTH_CHECK_SUCCESS:

@@ -21,6 +21,7 @@ export default function reducer(state = DEFAULT_STATE, action) {
     case AUTHOR_LIST_FETCH: {
       return {
         ...state,
+        items: [],
         fetching: true
       }
     }

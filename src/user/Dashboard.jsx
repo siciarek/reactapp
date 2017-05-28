@@ -1,21 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
-import RaisedButton from 'material-ui/RaisedButton'
-import FontIcon from 'material-ui/FontIcon'
-
+import {withRouter} from 'react-router'
+import {RaisedButton, FontIcon} from 'material-ui'
 import {AppHeader, AppSpinner} from '../app/components'
-import {authCheck, unauthenticateUser} from './UserActions'
 
 class Dashboard extends React.Component {
 
-  constructor(params) {
-    super(params)
-    this.props.dispatch(authCheck())
-  }
-
   logOut = () => {
-    this.props.dispatch(unauthenticateUser())
+     this.props.router.push('/logout')
   }
 
   render() {
@@ -76,4 +68,4 @@ export default connect((store) => {
     email: store.user.email,
     authenticated: store.user.authenticated,
   }
-})(Dashboard)
+})(withRouter(Dashboard))

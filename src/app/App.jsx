@@ -6,9 +6,7 @@ import {Helmet} from 'react-helmet'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import AppBar from 'material-ui/AppBar'
-import FlatButton from 'material-ui/FlatButton'
-import FontIcon from 'material-ui/FontIcon'
+import {AppBar, FlatButton, FontIcon, Snackbar} from 'material-ui'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
@@ -29,6 +27,13 @@ class App extends React.Component {
   }
 
   render() {
+
+    const notification = this.props.error ? <Snackbar
+      open={true}
+      message={this.props.error.data.message}
+      autoHideDuration={8000}
+      onRequestClose={(e) => console.log(e)}
+    /> : null
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
@@ -63,6 +68,7 @@ class App extends React.Component {
             opened={this.state.isMenuOpened}
             toggleView={this.toggleMenu}
           />
+          {notification}
         </div>
 
       </MuiThemeProvider>
@@ -72,6 +78,7 @@ class App extends React.Component {
 
 export default connect((store) => {
   return {
+    error: store.app.error,
     authenticated: store.user.authenticated,
   }
 })(withRouter(App))

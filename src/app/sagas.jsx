@@ -3,6 +3,8 @@ import {takeEvery, put, all} from 'redux-saga/effects'
 import {
   APP_START_PROCESSING,
   APP_END_PROCESSING,
+  APP_ERROR_OCCURRED,
+  APP_ERROR_HIDE,
 } from './AppActionTypes'
 
 import {
@@ -27,7 +29,6 @@ import {
   SONG_ITEM_SAVE,
   SONG_ITEM_REMOVE,
   SONG_ITEM_FETCH,
-  SONG_ITEM_UPDATE,
   SONG_ITEM_SAVE_FULLFILLED,
   SONG_ITEM_SAVE_REJECTED,
   SONG_ITEM_FETCH_FULLFILLED,
@@ -85,6 +86,26 @@ export function* runTheSpinner() {
 export function* stopTheSpinner() {
   yield put({type: APP_END_PROCESSING})
 }
+
+export function* showError(action) {
+  yield put({type: APP_ERROR_OCCURRED, payload: action.payload.response})
+}
+
+export function* hideError() {
+  yield put({type: APP_ERROR_HIDE})
+}
+
+export function* watchErrors(action) {
+
+  yield takeEvery([
+    AUTHOR_LIST_FETCH_REJECTED,
+  ], showError)
+
+  yield takeEvery([
+    USER_AUTH_FULLFILLED,
+  ], hideError)
+}
+
 
 export function* watchTheSpinner() {
   yield takeEvery([
@@ -151,5 +172,6 @@ export function* watchTheSpinner() {
 export default function* rootSaga() {
   yield all([
     watchTheSpinner(),
+    watchErrors(),
   ])
 }

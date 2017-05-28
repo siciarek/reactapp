@@ -1,8 +1,9 @@
 import Login from './Login'
+import Logout from './Logout'
 import Dashboard from './Dashboard'
 import Profile from './Profile'
 
-export {Login, Dashboard, Profile}
+export {Login, Logout, Dashboard, Profile}
 
 export const
   USER_UPDATE = 'USER_UPDATE',

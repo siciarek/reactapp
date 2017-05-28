@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {TextField, RaisedButton, FontIcon, Snackbar} from 'material-ui'
+import {TextField, RaisedButton, FontIcon} from 'material-ui'
 import {authenticateUser} from './UserActions'
 import {AppHeader, AppSpinner} from '../app/components'
 
@@ -35,13 +35,6 @@ class Login extends React.Component {
       <div className="container">
 
         <AppHeader title="Log in"/>
-
-        {/*<Snackbar*/}
-          {/*open={this.props.errorMessage !== ''}*/}
-          {/*message={this.props.errorMessage}*/}
-          {/*autoHideDuration={4000}*/}
-          {/*onRequestClose={this.handleRequestClose}*/}
-        {/*/>*/}
 
         <form>
 
@@ -85,8 +78,6 @@ class Login extends React.Component {
 
 export default connect((store) => {
   return {
-    errorMessage: store.user.error,
-    message: store.user.message,
     authenticated: store.user.authenticated,
   }
 })(Login)

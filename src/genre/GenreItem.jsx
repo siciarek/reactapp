@@ -13,7 +13,7 @@ class GenreItem extends React.Component {
 
   render() {
 
-    const {id, name, description, info} = this.props.current;
+    const {name, info} = this.props.current;
 
     if (this.props.fetching) {
       return <AppSpinner/>

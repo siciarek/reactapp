@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {SelectField, MenuItem} from 'material-ui'
 import {fetchListGenre} from '../GenreActions'
-import PropTypes from 'prop-types'
 
 class GenreSelectField extends React.Component {
 

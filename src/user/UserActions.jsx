@@ -1,6 +1,5 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
-//import {routerHistory} from '../app/routes'
 
 import AppStash from '../app/AppStash'
 import config from '../app/config'
@@ -10,21 +9,12 @@ import {
   USER_SAVE_FULLFILLED,
   USER_SAVE_REJECTED,
   USER_AUTH,
-  USER_UNAUTH,
   USER_AUTH_FULLFILLED,
   USER_UNAUTH_FULLFILLED,
   USER_AUTH_ERROR,
-  USER_AUTH_CHECK,
-  USER_AUTH_CHECK_SUCCESS,
   USER_AUTH_CHECK_FAILURE,
 } from './User'
 
-
-export function updateUser(data) {
-  return function (dispatch) {
-    dispatch({type: USER_UPDATE, payload: data})
-  }
-}
 
 export function saveUser(data) {
 
@@ -84,31 +74,16 @@ export function authenticateUser({username, password}) {
   }
 }
 
-export function unauthenticateUser() {
+export function updateUser(data) {
   return function (dispatch) {
-    dispatch({type: USER_UNAUTH})
-
-    axios
-    .post(`${config.userUrl}/logout`)
-    .then(response => {
-      AppStash.remove('token')
-      dispatch({type: USER_UNAUTH_FULLFILLED, payload: {}})
-      routerHistory.push('/blank')
-      routerHistory.push('/login')
-    })
-    .catch((err) => {
-      dispatch({type: USER_AUTH_ERROR, payload: err})
-    })
+    dispatch({type: USER_UPDATE, payload: data})
   }
 }
 
-export function authCheck() {
-
+export function unauthenticateUser() {
   return function (dispatch) {
-    dispatch({type: USER_AUTH_CHECK})
-    dispatch({
-      type: USER_AUTH_CHECK_SUCCESS,
-      payload: {}
-    })
+    dispatch({type: USER_UNAUTH_FULLFILLED})
+    AppStash.remove('token')
+    routerHistory.replace('/')
   }
 }

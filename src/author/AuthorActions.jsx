@@ -1,5 +1,7 @@
 import axios from 'axios'
 import config from '../app/config'
+import {browserHistory as routerHistory} from 'react-router'
+import AppStash from '../app/AppStash'
 
 import {
   AUTHOR_LIST_FETCH,
@@ -15,12 +17,19 @@ export const fetchAuthorList = () => {
   return (dispatch) => {
     dispatch({type: AUTHOR_LIST_FETCH})
 
-    axios.get(config.authorUrl)
+    const cnf = AppStash.get('token') ? {headers: {'Authorization': `Bearer ${AppStash.get('token')}`}} : {}
+
+    axios.get(config.authorUrl, cnf)
     .then((response) => {
       dispatch({type: AUTHOR_LIST_FETCH_FULLFILLED, payload: response.data})
     })
     .catch((err) => {
+
       dispatch({type: AUTHOR_LIST_FETCH_REJECTED, payload: err})
+
+      if(err.hasOwnProperty('response') && err.response.status === 401) {
+        routerHistory.replace('/login')
+      }
     })
   }
 }
