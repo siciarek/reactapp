@@ -23,11 +23,11 @@ export const fetchAuthorList = () => {
     .then((response) => {
       dispatch({type: AUTHOR_LIST_FETCH_FULLFILLED, payload: response.data})
     })
-    .catch((err) => {
+    .catch((error) => {
 
-      dispatch({type: AUTHOR_LIST_FETCH_REJECTED, payload: err})
+      dispatch({type: AUTHOR_LIST_FETCH_REJECTED, payload: error})
 
-      if(err.hasOwnProperty('response') && err.response.status === 401) {
+      if(err.hasOwnProperty('response') && error.response.status === 401) {
         routerHistory.replace('/login')
       }
     })

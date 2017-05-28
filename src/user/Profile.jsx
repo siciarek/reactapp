@@ -6,14 +6,8 @@ import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {
 
-  constructor(params) {
-    super(params)
-    this.props.dispatch(authCheck())
-  }
-
   removeEntity = (id) => {
     alert('Not implemented yet.')
-    // this.props.dispatch(removeUser(id))
   }
 
   updateEntity = (key, value) => {
@@ -28,19 +22,21 @@ class Profile extends React.Component {
   render() {
 
     if (this.props.authenticated === false) {
-      return (
-        <div>
-        </div>
-      )
+      return null
     }
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title="User profile"/>
-        <ProfileForm current={this.props.current} update={this.updateEntity} save={this.saveEntity} remove={this.removeEntity}/>
+        <ProfileForm
+          current={this.props.current}
+          update={this.updateEntity}
+          save={this.saveEntity}
+          remove={this.removeEntity}
+        />
         <AppSpinner/>
       </div>
-    );
+    )
   }
 }
 
