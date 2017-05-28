@@ -12,22 +12,31 @@ import {
   AUTHOR_ITEM_FETCH_REJECTED
 } from './Author'
 
+import {
+  APP_SET_TARGET_ROUTE,
+} from '../app/AppActionTypes'
+
+function getAuthHeaders() {
+  return AppStash.get('token')
+    ? {headers: {'Authorization': `Bearer ${AppStash.get('token')}`}}
+    : {}
+}
+
 export const fetchAuthorList = () => {
 
   return (dispatch) => {
     dispatch({type: AUTHOR_LIST_FETCH})
 
-    const cnf = AppStash.get('token') ? {headers: {'Authorization': `Bearer ${AppStash.get('token')}`}} : {}
-
-    axios.get(config.authorUrl, cnf)
+    axios
+    .get(config.authorUrl, getAuthHeaders())
     .then((response) => {
       dispatch({type: AUTHOR_LIST_FETCH_FULLFILLED, payload: response.data})
     })
     .catch((error) => {
-
       dispatch({type: AUTHOR_LIST_FETCH_REJECTED, payload: error})
 
-      if(err.hasOwnProperty('response') && error.response.status === 401) {
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: '/authors'})
         routerHistory.replace('/login')
       }
     })
@@ -39,13 +48,19 @@ export const fetchAuthorItem = (id) => {
   return (dispatch) => {
     dispatch({type: AUTHOR_ITEM_FETCH})
 
-    axios.get(`${config.authorUrl}/${id}`)
+    axios
+    .get(`${config.authorUrl}/${id}`, getAuthHeaders())
     .then((response) => {
       dispatch({type: AUTHOR_ITEM_FETCH_FULLFILLED, payload: response.data})
       return response.data
     })
-    .catch((err) => {
-      dispatch({type: AUTHOR_ITEM_FETCH_REJECTED, payload: err})
+    .catch((error) => {
+      dispatch({type: AUTHOR_ITEM_FETCH_REJECTED, payload: error})
+
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: `/authors/${id}`})
+        routerHistory.replace('/login')
+      }
     })
   }
 }

@@ -95,7 +95,7 @@ export function* hideError() {
   yield put({type: APP_ERROR_HIDE})
 }
 
-export function* watchErrors(action) {
+export function* watchErrors() {
 
   yield takeEvery([
     AUTHOR_LIST_FETCH_REJECTED,

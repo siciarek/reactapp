@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {AppHeader,AppSpinner} from '../app/components'
-import {authCheck, updateUser, saveUser} from './UserActions'
+import {updateUser, saveUser} from './UserActions'
 import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {

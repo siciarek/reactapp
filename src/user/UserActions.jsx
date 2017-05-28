@@ -68,8 +68,8 @@ export function authenticateUser({username, password}) {
         dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response})
       }
     })
-    .catch((err) => {
-      dispatch({type: USER_AUTH_ERROR, payload: err})
+    .catch((error) => {
+      dispatch({type: USER_AUTH_ERROR, payload: error})
     })
   }
 }

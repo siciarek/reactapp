@@ -3,6 +3,9 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {RaisedButton, FontIcon} from 'material-ui'
 import {AppHeader, AppSpinner} from '../app/components'
+import {
+  APP_UNSET_TARGET_ROUTE
+} from '../app/AppActionTypes'
 
 class Dashboard extends React.Component {
 
@@ -13,10 +16,13 @@ class Dashboard extends React.Component {
   render() {
 
     if (this.props.authenticated === false) {
-      return (
-        <div>
-        </div>
-      )
+      return null
+    }
+
+    if(this.props.redirectTo !== null) {
+      this.props.router.push(this.props.redirectTo)
+      this.props.dispatch({type: APP_UNSET_TARGET_ROUTE})
+      return null
     }
 
     return (
@@ -62,6 +68,7 @@ class Dashboard extends React.Component {
 export default connect((store) => {
 
   return {
+    redirectTo: store.app.targetRoute,
     dateOfBirth: store.user.dateOfBirth,
     firstName: store.user.firstName,
     lastName: store.user.lastName,
