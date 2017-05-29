@@ -16,33 +16,22 @@ class AudioList extends React.Component {
 
   render() {
 
-    let items = (
-      <div>
-      </div>
-    )
-
-    if (this.props.items.length > 0) {
-      const temp = this.props.items.map((item) => {
-        return <ListItem
-          leftIcon={<ListItemIcon />}
-          containerElement={<Link to={`audio/${item.id}`}/>}
-          key={item.id}
-          primaryText={item.title}
-          secondaryText={`items: ${item.audioCount}`}
-        />
-      })
-
-      items = (
-        <List>
-          {temp}
-        </List>
-      )
-    }
-
     return (
-      <div className="container">
+      <div>
         <AppHeader title="Audio"/>
-        {items}
+        <List>
+          {
+            this.props.items.map((item) => {
+              return <ListItem
+                key={item.id}
+                leftIcon={<ListItemIcon />}
+                containerElement={<Link to={`audio/${item.id}`}/>}
+                primaryText={item.title}
+                secondaryText={`items: ${item.audioCount}`}
+              />
+            })
+          }
+        </List>
         <AppFloatingActionButton route="/"/>
         <AppSpinner/>
       </div>
@@ -52,7 +41,6 @@ class AudioList extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.audio.fetching,
     items: store.audio.items,
   }
 })(AudioList)

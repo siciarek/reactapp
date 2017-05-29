@@ -10,9 +10,6 @@ import {
 const DEFAULT_STATE = {
   current: {},
   items: [],
-  fetching: false,
-  fetched: false,
-  error: null,
 }
 
 export default function reducer(state = DEFAULT_STATE, action) {
@@ -21,29 +18,24 @@ export default function reducer(state = DEFAULT_STATE, action) {
     case ARTIST_LIST_FETCH: {
       return {
         ...state,
-        fetching: true
+        items: [],
       }
     }
     case ARTIST_ITEM_FETCH: {
       return {
         ...state,
         current: {},
-        fetching: true
       }
     }
     case ARTIST_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         items: action.payload
       }
     }
     case ARTIST_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         current: action.payload
       }
     }
@@ -51,7 +43,6 @@ export default function reducer(state = DEFAULT_STATE, action) {
     case ARTIST_ITEM_FETCH_REJECTED: {
       return {
         ...state,
-        fetching: false,
         error: action.payload
       }
     }

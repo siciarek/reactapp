@@ -1,13 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
-import {List, ListItem} from 'material-ui/List'
+import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/video-label'
-
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchVideoItem} from './VideoActions'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
-import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class VideoItem extends React.Component {
 
@@ -17,11 +13,6 @@ class VideoItem extends React.Component {
   }
 
   render() {
-
-    if (typeof this.props.current === 'undefined') {
-      return false
-
-    }
 
     let title = undefined;
 
@@ -42,16 +33,12 @@ class VideoItem extends React.Component {
       />
     })
 
-    let items = (
-      <List>
-        {temp}
-      </List>
-    )
-
     return (
       <div className="container">
         <AppHeader title={title}/>
-        {items}
+        <List>
+          {temp}
+        </List>
         <AppFloatingActionButton route="/videos"/>
         <AppSpinner/>
       </div>

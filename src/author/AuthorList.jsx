@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/action/face'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
+import {AppHeader, AppSpinner} from '../app/components'
 import {fetchAuthorList} from './AuthorActions'
 
 
@@ -17,7 +16,7 @@ class AuthorList extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title="Authors"/>
         <List>
           {

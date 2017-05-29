@@ -1,9 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchArtistItem} from './ArtistActions'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
-import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class ArtistItem extends React.Component {
 
@@ -14,12 +12,8 @@ class ArtistItem extends React.Component {
 
   render() {
 
-    if(this.props.fetching === true) {
-      return <AppSpinner/>
-    }
-
     return (
-      <div className="container">
+      <div>
         <AppHeader title={this.props.current.description} />
         <pre className="text">{this.props.current.info}</pre>
         <AppFloatingActionButton route="/artists"/>
@@ -31,7 +25,6 @@ class ArtistItem extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.artist.fetching,
     current: store.artist.current,
   }
 })(ArtistItem)

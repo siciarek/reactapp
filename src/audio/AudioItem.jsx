@@ -33,24 +33,20 @@ class AudioItem extends React.Component {
       })
 
       return <ListItem
-        leftIcon={<ListItemIcon />}
         key={item.id}
+        leftIcon={<ListItemIcon />}
         primaryText={atemp.join(', ')}
         secondaryText={item.description}
         href={item.path}
       />
     })
 
-    let items = (
-      <List>
-        {temp}
-      </List>
-    )
-
     return (
-      <div className="container">
+      <div>
         <AppHeader title={title}/>
-        {items}
+        <List>
+          {temp}
+        </List>
         <AppFloatingActionButton route="/audio"/>
         <AppSpinner/>
       </div>
@@ -59,9 +55,7 @@ class AudioItem extends React.Component {
 }
 
 export default connect((store) => {
-
   return {
-    fetching: store.audio.fetching,
     current: store.audio.current,
   }
 })(AudioItem)
