@@ -109,6 +109,9 @@ export const saveGenre = (data) => {
         return response.data
       })
       .then((data) => {
+
+        console.log(data)
+
         routerHistory.replace(url)
       })
       .catch((error) => {

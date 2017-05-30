@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {TextField, RaisedButton, FontIcon} from 'material-ui'
+import {SelectField, MenuItem, TextField, RaisedButton, FontIcon} from 'material-ui'
 import {AppHeader, AppFloatingActionButton} from '../app/components'
 import {fetchItemGenre, saveGenre, removeGenre, updateGenre} from './GenreActions'
 
@@ -10,6 +10,29 @@ class GenreEditor extends React.Component {
   constructor(params) {
     super(params)
     this.state = {
+
+      categories: [
+        {id: 0, name: 'Unknown'},
+        {id: 1, name: 'African'},
+        {id: 2, name: 'Asian'},
+        {id: 3, name: 'East Asian'},
+        {id: 4, name: 'South and southeast Asian'},
+        {id: 5, name: 'Avant-garde'},
+        {id: 6, name: 'Blues'},
+        {id: 7, name: 'Caribbean and Caribbean-influenced'},
+        {id: 8, name: 'Comedy'},
+        {id: 9, name: 'Country'},
+        {id: 10, name: 'Easy listening'},
+        {id: 11, name: 'Electronic'},
+        {id: 12, name: 'Folk'},
+        {id: 13, name: 'Hip hop'},
+        {id: 14, name: 'Jazz'},
+        {id: 15, name: 'Latin'},
+        {id: 16, name: 'Pop'},
+        {id: 17, name: 'R&B and soul'},
+        {id: 18, name: 'Rock'},
+      ],
+
       errors: {
         name: '',
         description: '',
@@ -37,6 +60,17 @@ class GenreEditor extends React.Component {
     this.updateEntity(key, val)
   }
 
+  updateSelectedValue = (component, index, value) => {
+    const key = 'category'
+
+    const temp = this.state.categories.filter((item) => {
+      return item.id === value;
+    })
+    const val = temp.shift();
+
+    this.updateEntity(key, val)
+  }
+
   submit = () => {
     const id = this.props.params.hasOwnProperty('id') ? this.props.params.id : null
     const state = {...this.props.current, id: id}
@@ -51,13 +85,34 @@ class GenreEditor extends React.Component {
 
   render() {
 
+    if(!this.props.current.category) {
+      return null
+    }
+
     const title = this.props.current.id ? 'Edit genre' : 'Add genre'
+    const categoryId = this.props.current.category ? this.props.current.category.id : 0
+    const categories = this.state.categories;
 
     return (
       <div className="container">
         <AppHeader title={title}/>
 
         <form>
+
+          <SelectField
+            id="category"
+            floatingLabelText="Category"
+            fullWidth={true}
+            value={categoryId}
+            onChange={this.updateSelectedValue}
+          >
+            {
+              categories.map((item, index) => {
+                return <MenuItem key={index} value={item.id} primaryText={item.name} />
+              })
+            }
+          </SelectField>
+
           <TextField
             id="name"
             defaultValue={this.props.current.name}
@@ -127,7 +182,6 @@ class GenreEditor extends React.Component {
             labelPosition="before"
             icon={<FontIcon className="material-icons">add_circle_outline</FontIcon>}
             onTouchTap={() => {
-              console.log(this.props.router)
               this.props.router.push('/genre/new')
             }}
           />
@@ -140,7 +194,9 @@ class GenreEditor extends React.Component {
 }
 
 export default connect((store) => {
+
   return {
+    category: store.genre.current.category,
     current: store.genre.current,
   }
 })(withRouter(GenreEditor))

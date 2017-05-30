@@ -18,7 +18,12 @@ import {
 } from './Genre'
 
 const DEFAULT_STATE = {
-  current: {},
+  current: {
+    category: {
+      id: 0,
+      name: 'Unknown',
+    }
+  },
   items: [],
   itemsEnabled: [],
   fetching: false,
@@ -31,9 +36,10 @@ export default function reducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
 
     case GENRE_ITEM_UPDATE: {
+      const category = {...action.payload.category}
       return {
         ...state,
-        current: {...action.payload},
+        current: {...action.payload, category},
       }
     }
     case GENRE_ITEM_ADD:

@@ -16,9 +16,13 @@ class GenreList extends React.Component {
 
   render() {
 
-    if(this.props.fetching) {
+    console.log(this.props.items.length)
+    // return null
+
+    if(this.props.items.length === 0) {
       return <AppSpinner/>
     }
+
 
     return (
       <div className="container">
