@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 
+import {getAuthHeaders}  from '../app/AppHelpers'
 import config from '../app/config'
 
 import {
@@ -10,6 +11,9 @@ import {
   GENRE_ITEM_FETCH,
   GENRE_ITEM_FETCH_FULLFILLED,
   GENRE_ITEM_FETCH_REJECTED,
+  GENRE_ITEM_ADD,
+  GENRE_ITEM_ADD_FULLFILLED,
+  GENRE_ITEM_ADD_REJECTED,
   GENRE_ITEM_SAVE,
   GENRE_ITEM_SAVE_FULLFILLED,
   GENRE_ITEM_SAVE_REJECTED,
@@ -18,6 +22,10 @@ import {
   GENRE_ITEM_REMOVE_FULLFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
+
+import {
+  APP_SET_TARGET_ROUTE,
+} from '../app/AppActionTypes'
 
 export const fetchListGenre = (onlyEnabled = false) => {
 
@@ -63,14 +71,14 @@ export const updateGenre = (data) => {
 export const saveGenre = (data) => {
 
   return (dispatch) => {
-    dispatch({type: GENRE_ITEM_SAVE})
 
     if (data.id !== null) {
+      dispatch({type: GENRE_ITEM_ADD})
 
-      axios.put(`${config.genreUrl}/${data.id}`, data)
+      axios.put(`${config.genreUrl}/${data.id}`, data, getAuthHeaders())
       .then((response) => {
         dispatch({
-          type: GENRE_ITEM_SAVE_FULLFILLED,
+          type: GENRE_ITEM_ADD_FULLFILLED,
           payload: response.data,
         })
         return response.data
@@ -78,12 +86,21 @@ export const saveGenre = (data) => {
       .then((data) => {
         routerHistory.replace(`/genre/${data.id}/edit`)
       })
-      .catch((err) => {
-        dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: err})
+      .catch((error) => {
+        dispatch({type: GENRE_ITEM_ADD_REJECTED, payload: error})
+        if (error.hasOwnProperty('response') && error.response.status === 401) {
+          dispatch({type: APP_SET_TARGET_ROUTE, payload: '/genre/new'})
+          routerHistory.replace('/login')
+        }
       })
     }
     else {
-      axios.post(config.genreUrl, data)
+
+      const url = `/genre/${data.id}/edit`
+
+      dispatch({type: GENRE_ITEM_SAVE})
+
+      axios.post(config.genreUrl, data, getAuthHeaders())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_SAVE_FULLFILLED,
@@ -92,10 +109,14 @@ export const saveGenre = (data) => {
         return response.data
       })
       .then((data) => {
-        routerHistory.replace(`/genre/${data.id}/edit`)
+        routerHistory.replace(url)
       })
-      .catch((err) => {
-        dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: err})
+      .catch((error) => {
+        dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: error})
+        if (error.hasOwnProperty('response') && error.response.status === 401) {
+          dispatch({type: APP_SET_TARGET_ROUTE, payload: url})
+          routerHistory.replace('/login')
+        }
       })
     }
   }
@@ -106,7 +127,9 @@ export const removeGenre = (id) => {
   return (dispatch) => {
     dispatch({type: GENRE_ITEM_REMOVE})
 
-    axios.delete(`${config.genreUrl}/${id}`)
+    const url = `${config.genreUrl}/${id}`
+
+    axios.delete(url, getAuthHeaders())
     .then((response) => {
       dispatch({
         type: GENRE_ITEM_REMOVE_FULLFILLED,
@@ -116,8 +139,13 @@ export const removeGenre = (id) => {
     .then(() => {
       routerHistory.replace('/genre/list')
     })
-    .catch((err) => {
-      dispatch({type: GENRE_ITEM_REMOVE_REJECTED, payload: err})
+    .catch((error) => {
+      dispatch({type: GENRE_ITEM_REMOVE_REJECTED, payload: error})
+
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: `${url}/edit`})
+        routerHistory.replace('/login')
+      }
     })
   }
 }

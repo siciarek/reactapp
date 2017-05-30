@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 import {TextField, RaisedButton, FontIcon} from 'material-ui'
 import {AppHeader, AppFloatingActionButton} from '../app/components'
 import {fetchItemGenre, saveGenre, removeGenre, updateGenre} from './GenreActions'
@@ -18,8 +19,8 @@ class GenreEditor extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.params.hasOwnProperty('id')) {
-      this.props.dispatch(fetchItemGenre(this.props.params.id))
+    if(this.props.router.params.hasOwnProperty('id')) {
+      this.props.dispatch(fetchItemGenre(this.props.router.params.id))
     }
   }
 
@@ -59,7 +60,7 @@ class GenreEditor extends React.Component {
         <form>
           <TextField
             id="name"
-            value={this.props.current.name}
+            defaultValue={this.props.current.name}
             errorText={this.state.errors.name}
             hintText="Insert the name"
             floatingLabelText="Name"
@@ -69,7 +70,7 @@ class GenreEditor extends React.Component {
 
           <TextField
             id="description"
-            value={this.props.current.description}
+            defaultValue={this.props.current.description}
             errorText={this.state.errors.info}
             hintText="Insert the description"
             floatingLabelText="Description"
@@ -79,7 +80,7 @@ class GenreEditor extends React.Component {
 
           <TextField
             id="info"
-            value={this.props.current.info}
+            defaultValue={this.props.current.info}
             errorText={this.state.errors.info}
             hintText="Insert info"
             floatingLabelText="Info"
@@ -89,7 +90,6 @@ class GenreEditor extends React.Component {
             rowsMax={8}
             onChange={this.updateValue}
           />
-
 
           <br/>
           <br/>
@@ -120,6 +120,18 @@ class GenreEditor extends React.Component {
             onTouchTap={() => this.props.router.push(`/genre/${this.props.current.id}/show`)}
           />
 
+          <RaisedButton
+            primary={true}
+            style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+            label="New"
+            labelPosition="before"
+            icon={<FontIcon className="material-icons">add_circle_outline</FontIcon>}
+            onTouchTap={() => {
+              console.log(this.props.router)
+              this.props.router.push('/genre/new')
+            }}
+          />
+
           <AppFloatingActionButton route="/genre/list"/>
         </form>
       </div>
@@ -131,4 +143,4 @@ export default connect((store) => {
   return {
     current: store.genre.current,
   }
-})(GenreEditor)
+})(withRouter(GenreEditor))

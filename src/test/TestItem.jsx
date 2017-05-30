@@ -1,9 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchTestItem} from './TestActions'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
-import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class TestItem extends React.Component {
 

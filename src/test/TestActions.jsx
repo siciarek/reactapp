@@ -16,7 +16,7 @@ export const fetchTestList = () => {
   return (dispatch) => {
     dispatch({type: TEST_LIST_FETCH})
 
-    axios.get(config.authorUrl)
+    axios.get(config.artistUrl)
     .then((response) => {
       dispatch({type: TEST_LIST_FETCH_FULLFILLED, payload: response.data})
     })
@@ -30,6 +30,8 @@ export const swapTwoTestListItems = (oldIndex, newIndex) => {
 
   return (dispatch) => {
     dispatch({type: TEST_ITEMS_SWAP, payload: [oldIndex, newIndex]})
+
+    console.log([oldIndex, newIndex])
   }
 }
 
@@ -37,7 +39,7 @@ export const fetchTestItem = (id) => {
   return (dispatch) => {
     dispatch({type: TEST_ITEM_FETCH})
 
-    axios.get(`${config.authorUrl}/${id}`)
+    axios.get(`${config.artistUrl}/${id}`)
     .then((response) => {
       dispatch({type: TEST_ITEM_FETCH_FULLFILLED, payload: response.data})
       return response.data

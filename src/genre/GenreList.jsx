@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/action/stars'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchListGenre} from './GenreActions'
 
 
@@ -37,6 +36,7 @@ class GenreList extends React.Component {
             })
           }
         </List>
+        <AppFloatingActionButton icon="add" route="/genre/new"/>
         <AppSpinner/>
       </div>
     )

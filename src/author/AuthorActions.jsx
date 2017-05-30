@@ -1,7 +1,7 @@
 import axios from 'axios'
 import config from '../app/config'
 import {browserHistory as routerHistory} from 'react-router'
-import AppStash from '../app/AppStash'
+import {getAuthHeaders} from '../app/AppHelpers'
 
 import {
   AUTHOR_LIST_FETCH,
@@ -15,12 +15,6 @@ import {
 import {
   APP_SET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
-
-function getAuthHeaders() {
-  return AppStash.get('token')
-    ? {headers: {'Authorization': `Bearer ${AppStash.get('token')}`}}
-    : {}
-}
 
 export const fetchAuthorList = () => {
 
