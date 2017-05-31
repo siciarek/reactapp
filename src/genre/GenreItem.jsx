@@ -22,9 +22,9 @@ class GenreItem extends React.Component {
       ? <div className="empty">No info.</div>
       : <pre className="text">{info}</pre>
 
-    const descriptionContent = (info === null)
+    const descriptionContent = (description === null)
       ? <div className="empty">No description.</div>
-      : <div style={{color: 'silver'}}>{description}</div>
+      : <div style={{color: 'teal'}}>{description}</div>
 
     return (
       <div className="container">
