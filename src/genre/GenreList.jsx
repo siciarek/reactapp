@@ -16,13 +16,9 @@ class GenreList extends React.Component {
 
   render() {
 
-    console.log(this.props.items.length)
-    // return null
-
-    if(this.props.items.length === 0) {
+    if(typeof this.props.items.map === 'undefined'){
       return <AppSpinner/>
     }
-
 
     return (
       <div className="container">
@@ -49,7 +45,6 @@ class GenreList extends React.Component {
 
 export default connect((store) => {
   return {
-    fetching: store.genre.fetching,
     items: store.genre.items,
   }
 })(GenreList)

@@ -49,14 +49,19 @@ export const fetchItemGenre = (id) => {
   return (dispatch) => {
     dispatch({type: GENRE_ITEM_FETCH})
 
-    axios.get(`${config.genreUrl}/${id}`)
-    .then((response) => {
-      dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: response.data})
-      return response.data
-    })
-    .catch((err) => {
-      dispatch({type: GENRE_ITEM_FETCH_REJECTED, payload: err})
-    })
+    if(id === null) {
+      dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: null})
+    }
+    else {
+      axios.get(`${config.genreUrl}/${id}`)
+      .then((response) => {
+        dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: response.data})
+        return response.data
+      })
+      .catch((err) => {
+        dispatch({type: GENRE_ITEM_FETCH_REJECTED, payload: err})
+      })
+    }
   }
 }
 
@@ -75,7 +80,8 @@ export const saveGenre = (data) => {
     if (data.id !== null) {
       dispatch({type: GENRE_ITEM_ADD})
 
-      axios.put(`${config.genreUrl}/${data.id}`, data, getAuthHeaders())
+      axios
+      .put(`${config.genreUrl}/${data.id}`, data, getAuthHeaders())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_ADD_FULLFILLED,
@@ -100,7 +106,8 @@ export const saveGenre = (data) => {
 
       dispatch({type: GENRE_ITEM_SAVE})
 
-      axios.post(config.genreUrl, data, getAuthHeaders())
+      axios
+      .post(config.genreUrl, data, getAuthHeaders())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_SAVE_FULLFILLED,
@@ -109,10 +116,7 @@ export const saveGenre = (data) => {
         return response.data
       })
       .then((data) => {
-
-        console.log(data)
-
-        routerHistory.replace(url)
+        routerHistory.replace(`/genre/${data.id}/edit`)
       })
       .catch((error) => {
         dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: error})

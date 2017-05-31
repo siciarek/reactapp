@@ -94,11 +94,15 @@ export default function reducer(state = DEFAULT_STATE, action) {
       }
     }
     case GENRE_ITEM_FETCH_FULLFILLED: {
+      const current = action.payload === null
+        ? DEFAULT_STATE.current
+        : action.payload
+
       return {
         ...state,
         fetching: false,
         fetched: true,
-        current: action.payload
+        current: current
       }
     }
     case GENRE_LIST_FETCH_REJECTED:

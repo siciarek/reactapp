@@ -1,33 +1,48 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {RaisedButton, FontIcon, Paper} from 'material-ui'
-import {fetchItemGenre} from './GenreActions'
+import {RaisedButton, FontIcon} from 'material-ui'
+import {fetchItemGenre, removeGenre} from './GenreActions'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 
 class GenreItem extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchItemGenre(this.props.params.id))
   }
 
   render() {
 
-    const {name, info} = this.props.current;
-
-    if (this.props.fetching) {
+    if(this.props.processing === true) {
       return <AppSpinner/>
     }
 
-    const content = (info === null)
-      ? <Paper style={{padding: 16}} zDepth={2}>No info.</Paper>
+    const {name, info, description, category} = this.props.current;
+
+    const infoContent = (info === null)
+      ? <div className="empty">No info.</div>
       : <pre className="text">{info}</pre>
+
+    const descriptionContent = (info === null)
+      ? <div className="empty">No description.</div>
+      : <div style={{color: 'silver'}}>{description}</div>
 
     return (
       <div className="container">
+        <AppSpinner/>
+
         <AppHeader title={name}/>
 
-        {content}
+        <br/>
+
+        <div>Category: {typeof category.name === 'undefined' ? '' : category.name}</div>
+
+        <br/>
+
+        {descriptionContent}
+
+        <br/>
+
+        {infoContent}
 
         <br/>
         <br/>
@@ -40,8 +55,16 @@ class GenreItem extends React.Component {
           onTouchTap={() => this.props.router.push(`/genre/${this.props.params.id}/edit`)}
         />
 
+        <RaisedButton
+          secondary={true}
+          style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+          label="Remove"
+          labelPosition="before"
+          icon={<FontIcon className="material-icons">remove_circle_outline</FontIcon>}
+          onTouchTap={() => this.props.dispatch(removeGenre(this.props.params.id))}
+        />
+
         <AppFloatingActionButton route="/genre/list"/>
-        <AppSpinner/>
       </div>
     )
   }
@@ -49,6 +72,7 @@ class GenreItem extends React.Component {
 
 export default connect((store) => {
   return {
+    processing: store.app.processing,
     current: store.genre.current,
   }
 })(GenreItem)

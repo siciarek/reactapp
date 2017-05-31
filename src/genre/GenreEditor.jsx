@@ -2,15 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {SelectField, MenuItem, TextField, RaisedButton, FontIcon} from 'material-ui'
-import {AppHeader, AppFloatingActionButton} from '../app/components'
+import {AppHeader, AppFloatingActionButton, AppSpinner} from '../app/components'
 import {fetchItemGenre, saveGenre, removeGenre, updateGenre} from './GenreActions'
 
 class GenreEditor extends React.Component {
 
   constructor(params) {
     super(params)
-    this.state = {
 
+    this.state = {
       categories: [
         {id: 0, name: 'Unknown'},
         {id: 1, name: 'African'},
@@ -42,9 +42,8 @@ class GenreEditor extends React.Component {
   }
 
   componentWillMount() {
-    if(this.props.router.params.hasOwnProperty('id')) {
-      this.props.dispatch(fetchItemGenre(this.props.router.params.id))
-    }
+    const id = this.props.router.params.hasOwnProperty('id') ? this.props.router.params.id : null
+    this.props.dispatch(fetchItemGenre(id))
   }
 
   updateEntity = (key, value) => {
@@ -85,16 +84,14 @@ class GenreEditor extends React.Component {
 
   render() {
 
-    if(!this.props.current.category) {
-      return null
-    }
-
     const title = this.props.current.id ? 'Edit genre' : 'Add genre'
     const categoryId = this.props.current.category ? this.props.current.category.id : 0
     const categories = this.state.categories;
 
     return (
       <div className="container">
+        <AppSpinner/>
+
         <AppHeader title={title}/>
 
         <form>
