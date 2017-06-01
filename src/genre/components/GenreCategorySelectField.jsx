@@ -1,39 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import axios from 'axios'
 import {SelectField, MenuItem} from 'material-ui'
+import config from '../../app/config'
 
 class GenreCategorySelectField extends React.Component {
 
   constructor(params) {
     super(params)
-
-    this.state = {
-      categories: [
-        {id: 0, name: 'Unknown'},
-        {id: 1, name: 'African'},
-        {id: 2, name: 'Asian'},
-        {id: 3, name: 'East Asian'},
-        {id: 4, name: 'South and southeast Asian'},
-        {id: 5, name: 'Avant-garde'},
-        {id: 6, name: 'Blues'},
-        {id: 7, name: 'Caribbean and Caribbean-influenced'},
-        {id: 8, name: 'Comedy'},
-        {id: 9, name: 'Country'},
-        {id: 10, name: 'Easy listening'},
-        {id: 11, name: 'Electronic'},
-        {id: 12, name: 'Folk'},
-        {id: 13, name: 'Hip hop'},
-        {id: 14, name: 'Jazz'},
-        {id: 15, name: 'Latin'},
-        {id: 16, name: 'Pop'},
-        {id: 17, name: 'R&B and soul'},
-        {id: 18, name: 'Rock'},
-      ],
-    }
+    this.state = { categories: [] }
   }
 
   componentWillMount() {
-
+    axios.get(config.genreCategoryUrl)
+    .then((response) => {
+      this.setState({categories: response.data})
+    })
   }
 
   onChange = (component, index, value) => {
@@ -41,13 +23,15 @@ class GenreCategorySelectField extends React.Component {
       return item.id === value;
     })
 
-    const val  = temp.shift();
+    const val = temp.shift();
     this.props.onChange(val)
   }
 
   render() {
 
-    const list = this.state.categories
+    if(typeof this.state.categories.map !== 'function') {
+      return null
+    }
 
     return <SelectField
       floatingLabelText="Category"
@@ -56,7 +40,7 @@ class GenreCategorySelectField extends React.Component {
       onChange={this.onChange}
     >
       {
-        list.map((item) => {
+        this.state.categories.map((item) => {
           return <MenuItem key={item.id} value={item.id} primaryText={item.name}/>
         })
       }
@@ -66,8 +50,6 @@ class GenreCategorySelectField extends React.Component {
 }
 
 export default connect((store) => {
-  return {
-
-  }
+  return {}
 })(GenreCategorySelectField)
 
