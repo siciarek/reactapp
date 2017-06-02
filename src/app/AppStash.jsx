@@ -37,6 +37,7 @@ export default class AppStash {
     if (config.hasOwnProperty('storageType') && config.storageType === STORAGE_TYPE_COOKIES) {
       return AppStash.getCookies().remove(key, {path: '/'})
     }
+
     return localStorage.removeItem(key)
   }
 }
