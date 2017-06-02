@@ -7,9 +7,19 @@ export default class AppStash {
     return new Cookies()
   }
 
+  static has = (key) => {
+
+    if (config.hasOwnProperty('storageType') && config.storageType === STORAGE_TYPE_COOKIES) {
+      return typeof AppStash.getCookies().get(key, {path: '/'}) !== 'undefined'
+    }
+
+    return localStorage.getItem(key) !== null
+  }
+
   static get = (key) => {
     if (config.hasOwnProperty('storageType') && config.storageType === STORAGE_TYPE_COOKIES) {
-      return AppStash.getCookies().get(key, {path: '/'})
+      const val = AppStash.getCookies().get(key, {path: '/'})
+      return val
     }
 
     return localStorage.getItem(key)

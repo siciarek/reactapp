@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {SelectField, MenuItem} from 'material-ui'
 import config from '../../app/config'
+import AppStash from '../../app/AppStash'
 
 class GenreCategorySelectField extends React.Component {
 
@@ -12,10 +13,25 @@ class GenreCategorySelectField extends React.Component {
   }
 
   componentWillMount() {
-    axios.get(config.genreCategoryUrl)
-    .then((response) => {
-      this.setState({categories: response.data})
-    })
+
+    const key = 'genrecategory'
+    const storage = sessionStorage
+
+    console.log(storage.getItem(key))
+
+    if(storage.getItem(key) === null) {
+      axios.get(config.genreCategoryUrl)
+      .then((response) => {
+        storage.setItem(key, JSON.stringify(response.data))
+        return storage.getItem(key)
+      })
+      .then((data) => {
+        this.setState({categories: JSON.parse(data)})
+      })
+    }
+    else {
+     this.setState({categories: storage.getItem(key)})
+    }
   }
 
   onChange = (component, index, value) => {
