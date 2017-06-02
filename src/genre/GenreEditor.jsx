@@ -13,6 +13,7 @@ class GenreEditor extends React.Component {
 
     this.state = {
       errors: {
+        category: '',
         name: '',
         description: '',
         info: '',
@@ -21,15 +22,16 @@ class GenreEditor extends React.Component {
   }
 
   componentWillMount() {
-    const id = this.props.router.params.hasOwnProperty('id') ? this.props.router.params.id : null
-    this.props.dispatch(fetchItemGenre(id))
+    const id = this.props.router.params.hasOwnProperty('id')
+      ? this.props.router.params.id
+      : null
+
+    if(id !== null) {
+      this.props.dispatch(fetchItemGenre(id))
+    }
   }
 
-  componentDidMount() {
-
-  }
-
-    updateEntity = (key, value) => {
+  updateEntity = (key, value) => {
     let state = {...this.props.current}
     state[key] = value
     this.props.dispatch(updateGenre(state))
@@ -37,13 +39,12 @@ class GenreEditor extends React.Component {
 
   updateValue = event => {
     const key = event.target.id
-    let val = event.target.value
+    let value = event.target.value
 
-    this.updateEntity(key, val)
+    this.updateEntity(key, value)
   }
 
-  updateCategory = value => {
-    const key = 'category'
+  updateCategory = (value, key = 'category') => {
     this.updateEntity(key, value)
   }
 
@@ -100,7 +101,7 @@ class GenreEditor extends React.Component {
 
           <TextField
             id="info"
-            value={this.props.current.info}
+            defaultValue={this.props.current.info}
             errorText={this.state.errors.info}
             hintText="Insert info"
             floatingLabelText="Info"

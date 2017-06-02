@@ -122,7 +122,6 @@ class ProfileForm extends React.Component {
 
           <br/>
 
-
           <Slider
             ref="level"
             id="level"
