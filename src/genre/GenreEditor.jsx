@@ -25,20 +25,24 @@ class GenreEditor extends React.Component {
     this.props.dispatch(fetchItemGenre(id))
   }
 
-  updateEntity = (key, value) => {
+  componentDidMount() {
+
+  }
+
+    updateEntity = (key, value) => {
     let state = {...this.props.current}
     state[key] = value
     this.props.dispatch(updateGenre(state))
   }
 
-  updateValue = (event) => {
+  updateValue = event => {
     const key = event.target.id
     let val = event.target.value
 
     this.updateEntity(key, val)
   }
 
-  updateCategory = (value) => {
+  updateCategory = value => {
     const key = 'category'
     this.updateEntity(key, value)
   }
@@ -70,7 +74,9 @@ class GenreEditor extends React.Component {
 
           <GenreCategorySelectField
             value={categoryId}
-            onChange={this.updateCategory}/>
+            fullWidth={true}
+            onChange={this.updateCategory}
+          />
 
           <TextField
             id="name"
@@ -94,7 +100,7 @@ class GenreEditor extends React.Component {
 
           <TextField
             id="info"
-            defaultValue={this.props.current.info}
+            value={this.props.current.info}
             errorText={this.state.errors.info}
             hintText="Insert info"
             floatingLabelText="Info"

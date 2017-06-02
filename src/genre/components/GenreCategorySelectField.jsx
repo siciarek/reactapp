@@ -3,14 +3,13 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {SelectField, MenuItem} from 'material-ui'
 import config from '../../app/config'
-import AppStash from '../../app/AppStash'
 
 class GenreCategorySelectField extends React.Component {
 
   constructor(params) {
     super(params)
     this.state = {
-      categories: []
+      items: []
     }
   }
 
@@ -25,16 +24,16 @@ class GenreCategorySelectField extends React.Component {
         storage.setItem(key, JSON.stringify(response.data))
       })
       .then(() => {
-        this.setState({categories: JSON.parse(storage.getItem(key))})
+        this.setState({items: JSON.parse(storage.getItem(key))})
       })
     }
     else {
-     this.setState({categories: JSON.parse(storage.getItem(key))})
+     this.setState({items: JSON.parse(storage.getItem(key))})
     }
   }
 
   onChange = (component, index, value) => {
-    const temp = this.state.categories.filter((item) => {
+    const temp = this.state.items.filter((item) => {
       return item.id === value;
     })
 
@@ -44,18 +43,18 @@ class GenreCategorySelectField extends React.Component {
 
   render() {
 
-    if(typeof this.state.categories.map !== 'function') {
+    if(typeof this.state.items.map !== 'function') {
       return null
     }
 
     return <SelectField
       floatingLabelText="Category"
-      fullWidth={true}
+      fullWidth={this.props.fullWidth}
       value={this.props.value}
       onChange={this.onChange}
     >
       {
-        this.state.categories.map((item) => {
+        this.state.items.map((item) => {
           return <MenuItem key={item.id} value={item.id} primaryText={item.name}/>
         })
       }

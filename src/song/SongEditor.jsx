@@ -3,14 +3,8 @@ import {connect} from 'react-redux'
 import AppHeader from '../app/components/AppHeader'
 import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
-import {authCheck} from '../user/UserActions'
 
 class SongEditor extends React.Component {
-
-  constructor(params) {
-    super(params)
-    this.props.dispatch(authCheck())
-  }
 
   componentWillMount() {
     let state = {...this.props.current}
