@@ -9,28 +9,27 @@ class GenreCategorySelectField extends React.Component {
 
   constructor(params) {
     super(params)
-    this.state = { categories: [] }
+    this.state = {
+      categories: []
+    }
   }
 
   componentWillMount() {
 
     const key = 'genrecategory'
-    const storage = sessionStorage
-
-    console.log(storage.getItem(key))
+    const storage = localStorage
 
     if(storage.getItem(key) === null) {
       axios.get(config.genreCategoryUrl)
       .then((response) => {
         storage.setItem(key, JSON.stringify(response.data))
-        return storage.getItem(key)
       })
-      .then((data) => {
-        this.setState({categories: JSON.parse(data)})
+      .then(() => {
+        this.setState({categories: JSON.parse(storage.getItem(key))})
       })
     }
     else {
-     this.setState({categories: storage.getItem(key)})
+     this.setState({categories: JSON.parse(storage.getItem(key))})
     }
   }
 
