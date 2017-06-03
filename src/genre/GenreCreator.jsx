@@ -1,26 +1,25 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
 import {AppHeader, AppFloatingActionButton, AppSpinner} from '../app/components'
 import {GenreForm}  from './components'
 import {fetchItemGenre} from './GenreActions'
 
-class GenreEditor extends React.Component {
+class GenreCreator extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchItemGenre(this.props.router.params.id))
+    this.props.dispatch(fetchItemGenre(null))
   }
 
   render() {
 
-    if(this.props.item.id === null) {
+    if(this.props.item.id !== null) {
       return <AppSpinner/>
     }
 
     return (
       <div>
         <AppSpinner/>
-        <AppHeader title="Edit genre"/>
+        <AppHeader title="Add genre"/>
 
         <GenreForm
           current={this.props.item}
@@ -38,4 +37,4 @@ export default connect((store) => {
   return {
     item: store.genre.current,
   }
-})(withRouter(GenreEditor))
+})(GenreCreator)

@@ -15,12 +15,6 @@ import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
 
 class ProfileForm extends React.Component {
 
-  static propTypes = {
-    current: PropTypes.object.isRequired,
-    update: PropTypes.func.isRequired,
-    save: PropTypes.func.isRequired,
-    remove: PropTypes.func.isRequired,
-  }
 
   initialState = {
     open: false,
@@ -232,6 +226,13 @@ class ProfileForm extends React.Component {
       </div>
     )
   }
+}
+
+ProfileForm.propTypes = {
+  current: PropTypes.object.isRequired,
+  update: PropTypes.func.isRequired,
+  save: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
 }
 
 export default ProfileForm

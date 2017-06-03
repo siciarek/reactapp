@@ -19,6 +19,10 @@ import {
 
 const DEFAULT_STATE = {
   current: {
+    id: null,
+    name: null,
+    description: null,
+    info: null,
     category: {
       id: 0,
       name: 'Unknown',
@@ -36,10 +40,10 @@ export default function reducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
 
     case GENRE_ITEM_UPDATE: {
-      const category = {...action.payload.category}
+
       return {
         ...state,
-        current: {...action.payload, category},
+        current: {...action.payload},
       }
     }
     case GENRE_ITEM_ADD:
@@ -97,12 +101,11 @@ export default function reducer(state = DEFAULT_STATE, action) {
       const current = action.payload === null
         ? DEFAULT_STATE.current
         : action.payload
-
       return {
         ...state,
         fetching: false,
         fetched: true,
-        current: current
+        current: {...current}
       }
     }
     case GENRE_LIST_FETCH_REJECTED:

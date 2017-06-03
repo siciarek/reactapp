@@ -75,7 +75,7 @@ import {syncHistoryWithStore} from 'react-router-redux'
 
 import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 
-import {GenreList, GenreItem, GenreEditor} from '../genre/Genre'
+import {GenreList, GenreItem, GenreEditor, GenreCreator} from '../genre/Genre'
 import {Login, Logout, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
@@ -122,7 +122,7 @@ export default
 
     <Route path="/genre/list" component={GenreList}/>
     <Route path="/genre/:id/show" component={GenreItem}/>
-    <Route path="/genre/new" component={GenreEditor}/>
+    <Route path="/genre/new" component={GenreCreator}/>
     <Route path="/genre/:id/edit" component={GenreEditor}/>
 
     <Route path="/tests" component={TestList}/>

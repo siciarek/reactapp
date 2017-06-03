@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 import axios from 'axios'
 import {SelectField, MenuItem} from 'material-ui'
 import config from '../../app/config'
@@ -19,7 +19,7 @@ class GenreCategorySelectField extends React.Component {
     const storage = localStorage
 
     if(storage.getItem(key) === null) {
-      axios.get(config.genreCategoryUrl)
+      axios.get(config.genrecategoryUrl)
       .then((response) => {
         storage.setItem(key, JSON.stringify(response.data))
       })
@@ -33,7 +33,7 @@ class GenreCategorySelectField extends React.Component {
   }
 
   onChange = (component, index, value) => {
-    const temp = this.state.items.filter((item) => {
+    const temp = this.state.items.filter(item => {
       return item.id === value;
     })
 
@@ -49,13 +49,18 @@ class GenreCategorySelectField extends React.Component {
 
     return <SelectField
       floatingLabelText="Category"
+      errorText={this.props.errorText}
       fullWidth={this.props.fullWidth}
       value={this.props.value}
       onChange={this.onChange}
     >
       {
-        this.state.items.map((item) => {
-          return <MenuItem key={item.id} value={item.id} primaryText={item.name}/>
+        this.state.items.map(item => {
+          return <MenuItem
+            key={item.id}
+            value={item.id}
+            primaryText={item.name}
+          />
         })
       }
     </SelectField>
@@ -63,7 +68,19 @@ class GenreCategorySelectField extends React.Component {
   }
 }
 
-export default connect((store) => {
-  return {}
-})(GenreCategorySelectField)
+GenreCategorySelectField.propTypes = {
+  fullWidth: PropTypes.bool.isRequired,
+  value: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+}
+
+GenreCategorySelectField.defaultProps = {
+  fullWidth: false,
+  value: 0,
+  onChange: (component, index, value) => {
+    console.log(value)
+  },
+}
+
+export default GenreCategorySelectField
 

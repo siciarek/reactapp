@@ -1,9 +1,10 @@
 import GenreList from './GenreList'
 import GenreItem from './GenreItem'
 import GenreEditor from './GenreEditor'
+import GenreCreator from './GenreCreator'
 import GenreActions from './GenreActions'
 
-export {GenreList, GenreItem, GenreActions, GenreEditor}
+export {GenreList, GenreItem, GenreActions, GenreEditor, GenreCreator}
 
 export const
   GENRE_LIST_FETCH = 'GENRE_LIST_FETCH',

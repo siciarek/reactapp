@@ -18,6 +18,8 @@ class GenreItem extends React.Component {
 
     const {name, info, description, category} = this.props.current;
 
+    const nameContent = name === null ? '' : name
+
     const infoContent = (info === null)
       ? <div className="empty">No info.</div>
       : <pre className="text">{info}</pre>
@@ -30,7 +32,7 @@ class GenreItem extends React.Component {
       <div className="container">
         <AppSpinner/>
 
-        <AppHeader title={name}/>
+        <AppHeader title={nameContent}/>
 
         <br/>
 
