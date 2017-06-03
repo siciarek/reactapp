@@ -23,7 +23,7 @@ class GenreEditor extends React.Component {
         <AppHeader title="Edit genre"/>
 
         <GenreForm
-          current={this.props.item}
+          item={this.props.item}
           dispatch={this.props.dispatch}
         />
 

@@ -22,7 +22,7 @@ class GenreCreator extends React.Component {
         <AppHeader title="Add genre"/>
 
         <GenreForm
-          current={this.props.item}
+          item={this.props.item}
           dispatch={this.props.dispatch}
         />
 

@@ -7,12 +7,9 @@ import {saveGenre, updateGenre, removeGenre} from '../GenreActions'
 class GenreForm extends React.Component {
 
   initialState = {
-    open: false,
     errors: {
       category: '',
       name: '',
-      description: '',
-      info: '',
     }
   }
 
@@ -22,10 +19,31 @@ class GenreForm extends React.Component {
     this.state = {...this.initialState, errors: {...this.initialState.errors}}
   }
 
+  validate = () => {
+    for (let key in this.initialState.errors) {
+      let temp = {...this.state}
+
+      switch(key) {
+        case 'name':
+          temp.errors[key] = (this.props.item[key] === null || this.props.item[key].trim() === '')
+            ? 'This field is requred'
+            : ''
+          break
+
+        case 'category':
+          temp.errors[key] = this.props.item[key].id === 0
+            ? 'This field is requred'
+            : ''
+          break
+      }
+
+      this.setState({...temp})
+    }
+  }
+
   updateEntity = (key, value) => {
-    let state = {...this.props.current}
-    state[key] = value
-    this.props.dispatch(updateGenre(state))
+    this.props.dispatch(updateGenre({...this.props.item, [key]: value}))
+    this.validate()
   }
 
   updateValue = event => {
@@ -46,32 +64,17 @@ class GenreForm extends React.Component {
   }
 
   submit = () => {
-    const id = this.props.params.hasOwnProperty('id') ? this.props.params.id : null
-    const state = {...this.props.current, id: id}
 
-    for (let key in this.initialState.errors) {
-      let temp = {...this.state}
-      temp.errors[key] = key === 'name'  && (this.props.current[key] === null || this.props.current[key] === '')
-        ? 'This field is requred'
-        : ''
-
-      if(key === 'category') {
-        temp.errors[key] = key === 'category' && this.props.current[key].id === 0
-          ? 'This field is requred'
-          : ''
-      }
-
-      this.setState({...temp})
-    }
+    this.validate()
 
     if (JSON.stringify(this.state.errors) === JSON.stringify(this.initialState.errors)) {
-      this.props.dispatch(saveGenre(this.props.current))
+      this.props.dispatch(saveGenre(this.props.item))
     }
   }
 
   render() {
 
-    if(this.props.current.hasOwnProperty('id') === false) {
+    if (this.props.item.hasOwnProperty('id') === false) {
       return null
     }
 
@@ -81,7 +84,7 @@ class GenreForm extends React.Component {
         <form>
 
           <GenreCategorySelectField
-            value={this.props.current.category.id}
+            value={this.props.item.category.id}
             errorText={this.state.errors.category}
             fullWidth={true}
             onChange={this.updateCategory}
@@ -89,7 +92,7 @@ class GenreForm extends React.Component {
 
           <TextField
             id="name"
-            defaultValue={this.props.current.name}
+            defaultValue={this.props.item.name}
             errorText={this.state.errors.name}
             hintText="Insert the name"
             floatingLabelText="Name"
@@ -99,7 +102,7 @@ class GenreForm extends React.Component {
 
           <TextField
             id="description"
-            defaultValue={this.props.current.description}
+            defaultValue={this.props.item.description}
             errorText={this.state.errors.info}
             hintText="Insert the description"
             floatingLabelText="Description"
@@ -109,7 +112,7 @@ class GenreForm extends React.Component {
 
           <TextField
             id="info"
-            defaultValue={this.props.current.info}
+            defaultValue={this.props.item.info}
             errorText={this.state.errors.info}
             hintText="Insert info"
             floatingLabelText="Info"
@@ -133,7 +136,7 @@ class GenreForm extends React.Component {
 
           <RaisedButton
             secondary={true}
-            style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+            style={{marginLeft: 12, display: (this.props.item.id ? 'inline-block' : 'none')}}
             label="Remove"
             labelPosition="before"
             icon={<FontIcon className="material-icons">remove_circle_outline</FontIcon>}
@@ -142,16 +145,16 @@ class GenreForm extends React.Component {
 
           <RaisedButton
             primary={true}
-            style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+            style={{marginLeft: 12, display: (this.props.item.id ? 'inline-block' : 'none')}}
             label="Show"
             labelPosition="before"
             icon={<FontIcon className="material-icons">panorama_fish_eye</FontIcon>}
-            onTouchTap={() => this.props.router.push(`/genre/${this.props.current.id}/show`)}
+            onTouchTap={() => this.props.router.push(`/genre/${this.props.item.id}/show`)}
           />
 
           <RaisedButton
             primary={true}
-            style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+            style={{marginLeft: 12, display: (this.props.item.id ? 'inline-block' : 'none')}}
             label="New"
             labelPosition="before"
             icon={<FontIcon className="material-icons">add_circle_outline</FontIcon>}
