@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './AppHeader.css'
 
-function AppHeader(props) {
-  return (
-    <h2 className="page-header">
-      {props.title}
-    </h2>
-  )
+class AppHeader extends React.Component {
+  render() {
+    return (
+      <h2 className="page-header">
+        {this.props.title}
+      </h2>
+    )
+  }
 }
 
 AppHeader.propTypes = {

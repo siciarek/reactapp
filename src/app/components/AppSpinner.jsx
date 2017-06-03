@@ -1,12 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {CircularProgress} from 'material-ui'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 class AppSpinner extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {size: 60, width: 0, height: 0}
+    this.state = {
+      size: 60,
+      width: 0,
+      height: 0
+    }
+  }
+
+  static childContextTypes = {
+    muiTheme: PropTypes.object
+  }
+
+  getChildContext() {
+    return {
+      muiTheme: getMuiTheme()
+    }
   }
 
   componentDidMount() {

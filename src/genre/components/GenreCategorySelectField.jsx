@@ -70,13 +70,11 @@ class GenreCategorySelectField extends React.Component {
 
 GenreCategorySelectField.propTypes = {
   fullWidth: PropTypes.bool.isRequired,
-  value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 
 GenreCategorySelectField.defaultProps = {
   fullWidth: false,
-  value: 0,
   onChange: (component, index, value) => {
     console.log(value)
   },

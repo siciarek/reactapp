@@ -6,39 +6,37 @@ import {saveGenre, updateGenre, removeGenre} from '../GenreActions'
 
 class GenreForm extends React.Component {
 
-  initialState = {
+  DEFAULT_STATE = {
     errors: {
       category: '',
       name: '',
+    },
+    validators: {
+      name: (val) => {
+        return val === null || val.trim() === ''
+          ? 'This field is required.'
+          : ''
+      },
+      category: (val) => {
+        return val.id === 0
+          ? 'No category was chosen.'
+          : ''
+      },
     }
   }
 
   constructor(params) {
     super(params)
 
-    this.state = {...this.initialState, errors: {...this.initialState.errors}}
+    this.state = {...this.DEFAULT_STATE, errors: {...this.DEFAULT_STATE.errors}}
   }
 
   validate = () => {
-    for (let key in this.initialState.errors) {
-      let temp = {...this.state}
-
-      switch(key) {
-        case 'name':
-          temp.errors[key] = (this.props.item[key] === null || this.props.item[key].trim() === '')
-            ? 'This field is requred'
-            : ''
-          break
-
-        case 'category':
-          temp.errors[key] = this.props.item[key].id === 0
-            ? 'This field is requred'
-            : ''
-          break
-      }
-
-      this.setState({...temp})
+    let temp = {...this.state}
+    for (let key in this.DEFAULT_STATE.errors) {
+      temp.errors[key] = temp.validators[key](this.props.item[key])
     }
+    this.setState({...temp})
   }
 
   updateEntity = (key, value) => {
@@ -67,7 +65,7 @@ class GenreForm extends React.Component {
 
     this.validate()
 
-    if (JSON.stringify(this.state.errors) === JSON.stringify(this.initialState.errors)) {
+    if (JSON.stringify(this.state.errors) === JSON.stringify(this.DEFAULT_STATE.errors)) {
       this.props.dispatch(saveGenre(this.props.item))
     }
   }

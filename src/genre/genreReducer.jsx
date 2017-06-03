@@ -24,7 +24,7 @@ const DEFAULT_STATE = {
     description: null,
     info: null,
     category: {
-      id: 0,
+      id: null,
       name: 'Unknown',
     }
   },

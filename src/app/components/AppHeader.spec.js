@@ -1,8 +1,5 @@
 import React from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
-import ReactTestRenderer from 'react-test-renderer/shallow'
-
-
 import AppHeader from './AppHeader'
 
 describe('AppHeader', () => {
