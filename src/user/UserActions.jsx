@@ -2,8 +2,13 @@ import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 
 import AppStash from '../app/AppStash'
+import {getAuthHeaders}  from '../app/AppHelpers'
 import config from '../app/config'
 import {
+  USER_PROFILE_FETCH,
+  USER_PROFILE_FETCH_FULLFILLED,
+  USER_PROFILE_FETCH_REJECTED,
+
   USER_UPDATE,
   USER_SAVE,
   USER_SAVE_FULLFILLED,
@@ -15,27 +20,49 @@ import {
   USER_AUTH_CHECK_FAILURE,
 } from './User'
 
+import {
+  APP_SET_TARGET_ROUTE,
+} from '../app/AppActionTypes'
+
+export function fetchUserProfile() {
+
+  return function (dispatch) {
+    dispatch({type: USER_PROFILE_FETCH})
+
+    axios
+    .get(config.userProfileUrl, getAuthHeaders())
+    .then((response) => {
+      dispatch({
+        type: USER_PROFILE_FETCH_FULLFILLED,
+        payload: response.data,
+      })
+    })
+    .catch((error) => {
+      dispatch({type: USER_PROFILE_FETCH_REJECTED, payload: error})
+
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: '/profile'})
+        routerHistory.replace('/login')
+      }
+    })
+  }
+}
+
 
 export function saveUser(data) {
 
   return function (dispatch) {
     dispatch({type: USER_SAVE})
-
     axios
-    .put(`${config.userUrl}/${data.id}`, {
-      data,
-      headers: {
-        'Authorization': AppStash.get('token')
-      }
-    })
+    .put(config.userProfileUrl, data, getAuthHeaders())
     .then((response) => {
       dispatch({
         type: USER_SAVE_FULLFILLED,
-        payload: response.data.msg,
+        payload: response.data,
       })
     })
-    .catch((err) => {
-      dispatch({type: USER_SAVE_REJECTED, payload: err})
+    .catch((error) => {
+      dispatch({type: USER_SAVE_REJECTED, payload: error})
     })
   }
 }

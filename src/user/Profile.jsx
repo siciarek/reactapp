@@ -1,10 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {AppHeader,AppSpinner} from '../app/components'
-import {updateUser, saveUser} from './UserActions'
+import {updateUser, saveUser, fetchUserProfile} from './UserActions'
 import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {
+
+  componentWillMount() {
+    this.props.dispatch(fetchUserProfile())
+  }
 
   removeEntity = (id) => {
     alert('Not implemented yet.')
@@ -21,7 +25,7 @@ class Profile extends React.Component {
 
   render() {
 
-    if (this.props.authenticated === false) {
+    if(this.props.current.id === null) {
       return null
     }
 

@@ -1,4 +1,5 @@
 import {
+  USER_PROFILE_FETCH_FULLFILLED,
   USER_UPDATE,
   USER_SAVE_FULLFILLED,
   USER_SAVE_REJECTED,
@@ -15,19 +16,31 @@ import {
 const INITIAL_STATE = {
   error: '',
   message: '',
+  id: null,
   dateOfBirth: null,
   gender: null,
   firstName: '',
   lastName: '',
   username: '',
   email: '',
-  skillLevel: 0,
+  level: 0,
   authenticated: false,
 }
 
 export default function (state = INITIAL_STATE, action) {
 
   switch (action.type) {
+    case USER_PROFILE_FETCH_FULLFILLED:
+      return {
+        ...state,
+        id: action.payload.id,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        email: action.payload.email,
+        gender: action.payload.gender,
+        dateOfBirth: action.payload.dateOfBirth,
+        level: action.payload.level,
+      }
     case USER_AUTH:
       return {
         ...state,
@@ -78,12 +91,15 @@ export default function (state = INITIAL_STATE, action) {
         authenticated: false
       }
     case USER_AUTH_CHECK_SUCCESS:
-    case USER_UPDATE:
-      // TODO: wyrzucić przypisywanie wartości do akcji
       return {
         ...state,
         error: '',
         authenticated: true,
+      }
+    case USER_UPDATE:
+      return {
+        ...action.payload,
+        error: ''
       }
     default:
       return state

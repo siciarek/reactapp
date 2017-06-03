@@ -13,6 +13,9 @@ class Dashboard extends React.Component {
       this.props.router.replace(this.props.redirectTo)
       this.props.dispatch({type: APP_UNSET_TARGET_ROUTE})
     }
+    else {
+
+    }
   }
 
   render() {

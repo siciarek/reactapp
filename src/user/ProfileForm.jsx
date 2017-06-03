@@ -70,9 +70,9 @@ class ProfileForm extends React.Component {
     this.props.update(key, val)
   }
 
-  updateNumericalValue = (event, value, x) => {
+  updateNumericalValue = (event, value) => {
 
-    const key = 'skillLevel'
+    const key = 'level'
     const val = value
 
     this.props.update(key, val)
@@ -83,18 +83,7 @@ class ProfileForm extends React.Component {
   }
 
   submit = () => {
-
-    for (let key in this.initialState.errors) {
-      let temp = {...this.state}
-      temp.errors[key] = key !== 'info' && (this.props.current[key] === null || this.props.current[key] === '')
-        ? 'This field is requred'
-        : ''
-      this.setState({...temp})
-    }
-
-    if (JSON.stringify(this.state.errors) === JSON.stringify(this.initialState.errors)) {
-      this.props.save()
-    }
+    this.props.save()
   }
 
   render() {
@@ -124,11 +113,11 @@ class ProfileForm extends React.Component {
             min={0}
             max={100}
             step={1}
-            value={this.props.current.skillLevel}
+            value={this.props.current.level}
             onChange={this.updateNumericalValue}
           />
 
-          <span>{`Skill level (${this.props.current.skillLevel}%)`}</span>
+          <span>{`Level (${this.props.current.level}%)`}</span>
 
           <SelectField
             id="gender"
@@ -143,15 +132,15 @@ class ProfileForm extends React.Component {
             <MenuItem value={'female'} primaryText="Female"/>
           </SelectField>
 
-          <DatePicker
-            id="dateOfBirth"
-            value={this.props.current.dateOfBirth}
-            errorText={this.state.errors.dateOfBirth}
-            floatingLabelText="Date of birth"
-            onChange={this.updateDateValue}
-            autoOk={true}
-            fullWidth={true}
-          />
+            {/*<DatePicker*/}
+              {/*id="dateOfBirth"*/}
+              {/*value={this.props.current.dateOfBirth}*/}
+              {/*errorText={this.state.errors.dateOfBirth}*/}
+              {/*floatingLabelText="Date of birth"*/}
+              {/*onChange={this.updateDateValue}*/}
+              {/*autoOk={true}*/}
+              {/*fullWidth={true}*/}
+            {/*/>*/}
 
           <TextField
             id="firstName"
