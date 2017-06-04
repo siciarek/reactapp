@@ -11,10 +11,9 @@ import{
   FlatButton,
   Dialog,
 } from 'material-ui'
-import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
+import {updateUser, saveUser} from './UserActions'
 
 class ProfileForm extends React.Component {
-
 
   initialState = {
     open: false,
@@ -28,6 +27,21 @@ class ProfileForm extends React.Component {
     }
   }
 
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {...this.initialState, errors: {...this.initialState.errors}}
+  }
+
+  updateEntity = (key, value) => {
+    this.props.dispatch(updateUser({...this.props.current, [key]: value}))
+  }
+
+  saveEntity = () => {
+    this.props.dispatch(saveUser(this.props.current))
+  }
+
+
   handleOpen = () => {
     this.setState({open: true})
   }
@@ -36,38 +50,33 @@ class ProfileForm extends React.Component {
     this.setState({open: false})
   }
 
-  constructor(props, context) {
-    super(props, context)
-
-    this.state = {...this.initialState, errors: {...this.initialState.errors}}
-  }
 
   updateDateValue = (event, value) => {
     const key = 'dateOfBirth'
     const val = value
 
-    this.props.update(key, val)
+    this.updateEntity(key, val)
   }
 
   updateSelectValue = (component, index, value) => {
     const key = 'gender'
     const val = value === null || value.toString().trim().length === 0 ? null : value
 
-    this.props.update(key, val)
+    this.updateEntity(key, val)
   }
 
   updateBooleanValue = (proxy, value) => {
     const key = 'public'
     const val = value
 
-    this.props.update(key, val)
+    this.updateEntity(key, val)
   }
 
   updateValue = (event) => {
     const key = event.target.id
     let val = event.target.value === null || event.target.value.toString().trim().length === 0 ? null : event.target.value
 
-    this.props.update(key, val)
+    this.updateEntity(key, val)
   }
 
   updateNumericalValue = (event, value) => {
@@ -75,7 +84,7 @@ class ProfileForm extends React.Component {
     const key = 'level'
     const val = value
 
-    this.props.update(key, val)
+    this.updateEntity(key, val)
   }
 
   remove = () => {
@@ -83,7 +92,7 @@ class ProfileForm extends React.Component {
   }
 
   submit = () => {
-    this.props.save()
+    this.saveEntity()
   }
 
   render() {
@@ -192,8 +201,6 @@ class ProfileForm extends React.Component {
         </form>
 
 
-        <AppFloatingActionButton route="/dashboard" icon="dashboard"/>
-
         <Dialog
           title="Confirmation"
           actions={[
@@ -219,9 +226,7 @@ class ProfileForm extends React.Component {
 
 ProfileForm.propTypes = {
   current: PropTypes.object.isRequired,
-  update: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default ProfileForm

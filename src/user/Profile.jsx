@@ -1,26 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {AppHeader,AppSpinner} from '../app/components'
-import {updateUser, saveUser, fetchUserProfile} from './UserActions'
+import {fetchUserProfile} from './UserActions'
 import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(fetchUserProfile())
-  }
-
-  removeEntity = (id) => {
-    alert('Not implemented yet.')
-  }
-
-  updateEntity = (key, value) => {
-    this.props.dispatch(updateUser({...this.props.current, [key]: value}))
-  }
-
-  saveEntity = () => {
-    let state = {...this.props.current}
-    this.props.dispatch(saveUser(state))
   }
 
   render() {
@@ -31,12 +18,10 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <AppHeader title="User profile"/>
+        <AppHeader title={`User #${this.props.current.id}`}/>
         <ProfileForm
           current={this.props.current}
-          update={this.updateEntity}
-          save={this.saveEntity}
-          remove={this.removeEntity}
+          dispatch={this.props.dispatch}
         />
         <AppSpinner/>
       </div>
