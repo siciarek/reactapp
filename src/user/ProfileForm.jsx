@@ -52,10 +52,7 @@ class ProfileForm extends React.Component {
 
 
   updateDateValue = (event, value) => {
-    const key = 'dateOfBirth'
-    const val = value
-
-    this.updateEntity(key, val)
+    this.updateEntity('dateOfBirth', value)
   }
 
   updateSelectValue = (component, index, value) => {
@@ -66,10 +63,7 @@ class ProfileForm extends React.Component {
   }
 
   updateBooleanValue = (proxy, value) => {
-    const key = 'public'
-    const val = value
-
-    this.updateEntity(key, val)
+    this.updateEntity('profileVisibleToThePublic', value)
   }
 
   updateValue = (event) => {
@@ -80,11 +74,7 @@ class ProfileForm extends React.Component {
   }
 
   updateNumericalValue = (event, value) => {
-
-    const key = 'level'
-    const val = value
-
-    this.updateEntity(key, val)
+    this.updateEntity('level', value)
   }
 
   remove = () => {
@@ -109,7 +99,7 @@ class ProfileForm extends React.Component {
             label="Profile visible to the public"
             labelPosition="right"
             onCheck={this.updateBooleanValue}
-            defaultChecked={this.props.current.public}
+            defaultChecked={this.props.current.profileVisibleToThePublic}
           />
 
           <br/>
@@ -141,15 +131,15 @@ class ProfileForm extends React.Component {
             <MenuItem value={'female'} primaryText="Female"/>
           </SelectField>
 
-            {/*<DatePicker*/}
-              {/*id="dateOfBirth"*/}
-              {/*value={this.props.current.dateOfBirth}*/}
-              {/*errorText={this.state.errors.dateOfBirth}*/}
-              {/*floatingLabelText="Date of birth"*/}
-              {/*onChange={this.updateDateValue}*/}
-              {/*autoOk={true}*/}
-              {/*fullWidth={true}*/}
-            {/*/>*/}
+            <DatePicker
+              id="dateOfBirth"
+              value={this.props.current.dateOfBirth}
+              errorText={this.state.errors.dateOfBirth}
+              floatingLabelText="Date of birth"
+              onChange={this.updateDateValue}
+              autoOk={true}
+              fullWidth={true}
+            />
 
           <TextField
             id="firstName"

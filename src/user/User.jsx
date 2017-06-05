@@ -6,6 +6,21 @@ import Profile from './Profile'
 export {Login, Logout, Dashboard, Profile}
 
 export const
+  USER_INITIAL_STATE = {
+    error: '',
+    message: '',
+    id: null,
+    dateOfBirth: null,
+    gender: null,
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    level: 0,
+    info: null,
+    profileVisibleToThePublic: false,
+    authenticated: false,
+  },
   USER_PROFILE_FETCH = 'USER_PROFILE_FETCH',
   USER_PROFILE_FETCH_FULLFILLED = 'USER_PROFILE_FETCH_FULLFILLED',
   USER_PROFILE_FETCH_REJECTED = 'USER_PROFILE_FETCH_REJECTED',
@@ -13,10 +28,9 @@ export const
   USER_DASHBOARD_FETCH_FULLFILLED = 'USER_DASHBOARD_FETCH_FULLFILLED',
   USER_DASHBOARD_FETCH_REJECTED = 'USER_DASHBOARD_FETCH_REJECTED',
   USER_UPDATE = 'USER_UPDATE',
-  USER_SAVE = 'USER_SAVE', // TODO: find better name
-  USER_SAVE_FULLFILLED = 'USER_SAVE_FULLFILLED', // TODO: find better name
-  USER_SAVE_REJECTED = 'USER_SAVE_REJECTED', // TODO: find better name
-  USER_REMOVE = 'USER_REMOVE',
+  USER_SAVE = 'USER_SAVE',
+  USER_SAVE_FULLFILLED = 'USER_SAVE_FULLFILLED',
+  USER_SAVE_REJECTED = 'USER_SAVE_REJECTED',
   USER_AUTH = 'USER_AUTH',
   USER_AUTH_FULLFILLED = 'USER_AUTH_FULLFILLED',
   USER_AUTH_REJECTED = 'USER_AUTH_REJECTED',

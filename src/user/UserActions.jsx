@@ -1,6 +1,6 @@
 import axios from 'axios'
+import querystring from 'querystring'
 import {browserHistory as routerHistory} from 'react-router'
-
 import AppStash from '../app/AppStash'
 import {getAuthHeaders}  from '../app/AppHelpers'
 import config from '../app/config'
@@ -32,6 +32,9 @@ export function fetchUserProfile() {
     axios
     .get(config.userProfileUrl, getAuthHeaders())
     .then((response) => {
+
+      response.data.dateOfBirth = new Date(response.data.dateOfBirth)
+
       dispatch({
         type: USER_PROFILE_FETCH_FULLFILLED,
         payload: response.data,
@@ -49,17 +52,21 @@ export function fetchUserProfile() {
 }
 
 
+export function updateUser(data) {
+  return function (dispatch) {
+    dispatch({type: USER_UPDATE, payload: data})
+  }
+}
+
 export function saveUser(data) {
 
   return function (dispatch) {
     dispatch({type: USER_SAVE})
+
     axios
-    .put(config.userProfileUrl, data, getAuthHeaders())
-    .then((response) => {
-      dispatch({
-        type: USER_SAVE_FULLFILLED,
-        payload: response.data,
-      })
+    .post(config.userProfileUrl, data, getAuthHeaders())
+    .then(() => {
+      dispatch({type: USER_SAVE_FULLFILLED})
     })
     .catch((error) => {
       dispatch({type: USER_SAVE_REJECTED, payload: error})
@@ -67,28 +74,29 @@ export function saveUser(data) {
   }
 }
 
-export function authenticateUser({username, password}) {
-  const url = `${config.authUrl}`
+export function authenticateUser(data) {
 
   return function (dispatch) {
+
     dispatch({type: USER_AUTH})
 
-    const cnf = {
-      method: 'post',
-      headers: new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: `username=${username}&password=${password}`,
-    }
-
-    fetch(url, cnf)
+    fetch(
+      config.authUrl,
+      {
+        method: 'post',
+        headers: new Headers({
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }),
+        body: querystring.stringify(data),
+      }
+    )
     .then(response => {
       return response.json()
     })
     .then(response => {
       if (response.hasOwnProperty('token')) {
+        dispatch({type: USER_AUTH_FULLFILLED})
         AppStash.set('token', response.token)
-        dispatch({type: USER_AUTH_FULLFILLED, payload: response.data})
         routerHistory.replace('/dashboard')
       }
       else {
@@ -101,16 +109,10 @@ export function authenticateUser({username, password}) {
   }
 }
 
-export function updateUser(data) {
-  return function (dispatch) {
-    dispatch({type: USER_UPDATE, payload: data})
-  }
-}
-
 export function unauthenticateUser() {
   return function (dispatch) {
-    dispatch({type: USER_UNAUTH_FULLFILLED})
     AppStash.remove('token')
+    dispatch({type: USER_UNAUTH_FULLFILLED})
     routerHistory.replace('/')
   }
 }

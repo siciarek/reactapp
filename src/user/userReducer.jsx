@@ -1,4 +1,5 @@
 import {
+  USER_INITIAL_STATE,
   USER_PROFILE_FETCH_FULLFILLED,
   USER_UPDATE,
   USER_SAVE_FULLFILLED,
@@ -13,33 +14,15 @@ import {
   USER_AUTH_CHECK_FAILURE,
 } from './User'
 
-const INITIAL_STATE = {
-  error: '',
-  message: '',
-  id: null,
-  dateOfBirth: null,
-  gender: null,
-  firstName: '',
-  lastName: '',
-  username: '',
-  email: '',
-  level: 0,
-  authenticated: false,
-}
-
-export default function (state = INITIAL_STATE, action) {
+export default function (state = USER_INITIAL_STATE, action) {
 
   switch (action.type) {
     case USER_PROFILE_FETCH_FULLFILLED:
       return {
         ...state,
-        id: action.payload.id,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
-        email: action.payload.email,
-        gender: action.payload.gender,
-        dateOfBirth: action.payload.dateOfBirth,
-        level: action.payload.level,
+        ...action.payload,
+        error: '',
+        message: '',
       }
     case USER_AUTH:
       return {
@@ -50,7 +33,6 @@ export default function (state = INITIAL_STATE, action) {
     case USER_AUTH_FULLFILLED:
       return {
         ...state,
-        username: action.payload.username,
         message: 'User authentication succeeed.',
         authenticated: true
       }
@@ -60,7 +42,7 @@ export default function (state = INITIAL_STATE, action) {
         message: 'Unauthentication in progress.',
       }
     case USER_UNAUTH_FULLFILLED:
-      return {...INITIAL_STATE}
+      return {...USER_INITIAL_STATE}
     case USER_AUTH_ERROR:
       return {
         ...state,
@@ -82,7 +64,7 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         error: '',
-        message: action.payload,
+        message: 'User profile updated successfully.',
       }
     case USER_AUTH_CHECK_FAILURE:
       return {
@@ -98,6 +80,7 @@ export default function (state = INITIAL_STATE, action) {
       }
     case USER_UPDATE:
       return {
+        ...state,
         ...action.payload,
         error: ''
       }
