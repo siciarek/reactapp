@@ -1,5 +1,5 @@
 import axios from 'axios'
-import querystring from 'querystring'
+import querystring from 'query-string'
 import {browserHistory as routerHistory} from 'react-router'
 import AppStash from '../app/AppStash'
 import {getAuthHeaders}  from '../app/AppHelpers'
