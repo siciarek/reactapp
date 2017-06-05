@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {TextField, RaisedButton, FontIcon, DatePicker, FlatButton, Dialog} from 'material-ui'
 import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
-import GenreSelectField from '../genre/components/GenreSelectField'
+import {GenreSelectField} from '../genre/components'
 
 class SongEditorForm extends React.Component {
 

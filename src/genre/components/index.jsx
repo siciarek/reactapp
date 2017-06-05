@@ -1,5 +1,5 @@
 import GenreCategorySelectField from './GenreCategorySelectField'
-import GenreSelectfield from './GenreSelectField'
+import GenreSelectField from './GenreSelectField'
 import GenreForm from './GenreForm'
 
-export {GenreCategorySelectField, GenreSelectfield, GenreForm}
+export {GenreCategorySelectField, GenreSelectField, GenreForm}
