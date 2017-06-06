@@ -14,12 +14,17 @@ import AppDrawer from './components/AppDrawer'
 import config from './config'
 import './App.css'
 import {APP_ERROR_HIDE} from './AppActionTypes'
+import {checkIfIsAuthenticated} from '../user/UserActions'
 
 class App extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {isMenuOpened: false}
+  }
+
+  componentWillMount() {
+    this.props.dispatch(checkIfIsAuthenticated())
   }
 
   toggleMenu = () => {

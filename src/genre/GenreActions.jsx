@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 
-import {getAuthHeaders}  from '../app/AppHelpers'
+import {getAuthCheckConfig}  from '../app/AppHelpers'
 import config from '../app/config'
 
 import {
@@ -81,7 +81,7 @@ export const saveGenre = (data) => {
       dispatch({type: GENRE_ITEM_ADD})
 
       axios
-      .put(`${config.genreUrl}/${data.id}`, data, getAuthHeaders())
+      .put(`${config.genreUrl}/${data.id}`, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_ADD_FULLFILLED,
@@ -107,7 +107,7 @@ export const saveGenre = (data) => {
       dispatch({type: GENRE_ITEM_SAVE})
 
       axios
-      .post(config.genreUrl, data, getAuthHeaders())
+      .post(config.genreUrl, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_SAVE_FULLFILLED,
@@ -136,7 +136,7 @@ export const removeGenre = (id) => {
 
     const url = `${config.genreUrl}/${id}`
 
-    axios.delete(url, getAuthHeaders())
+    axios.delete(url, getAuthCheckConfig())
     .then((response) => {
       dispatch({
         type: GENRE_ITEM_REMOVE_FULLFILLED,

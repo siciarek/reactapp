@@ -1,7 +1,7 @@
 import axios from 'axios'
 import config from '../app/config'
 import {browserHistory as routerHistory} from 'react-router'
-import {getAuthHeaders} from '../app/AppHelpers'
+import {getAuthCheckConfig} from '../app/AppHelpers'
 
 import {
   AUTHOR_LIST_FETCH,
@@ -22,7 +22,7 @@ export const fetchAuthorList = () => {
     dispatch({type: AUTHOR_LIST_FETCH})
 
     axios
-    .get(config.authorUrl, getAuthHeaders())
+    .get(config.authorUrl, getAuthCheckConfig())
     .then((response) => {
       dispatch({type: AUTHOR_LIST_FETCH_FULLFILLED, payload: response.data})
     })
@@ -43,7 +43,7 @@ export const fetchAuthorItem = (id) => {
     dispatch({type: AUTHOR_ITEM_FETCH})
 
     axios
-    .get(`${config.authorUrl}/${id}`, getAuthHeaders())
+    .get(`${config.authorUrl}/${id}`, getAuthCheckConfig())
     .then((response) => {
       dispatch({type: AUTHOR_ITEM_FETCH_FULLFILLED, payload: response.data})
       return response.data
