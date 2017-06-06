@@ -2,13 +2,11 @@ import React from 'react'
 import FontIcon from 'material-ui/FontIcon'
 import {grey400} from 'material-ui/styles/colors'
 
-export default class AccessForbiden extends React.Component {
+function SystemPage(props) {
 
-  render() {
-    return (
-      <div className="container system-page">
-        <h1>{this.props.code}</h1>
-        <h2>{this.props.message}</h2>
+    return <div className="system-page">
+        <h1>{props.code}</h1>
+        <h2>{props.message}</h2>
         <br/>
         <FontIcon
           style={{
@@ -16,8 +14,8 @@ export default class AccessForbiden extends React.Component {
             color: grey400,
           }}
           className="material-icons"
-        >{this.props.icon}</FontIcon>
+        >{props.icon}</FontIcon>
       </div>
-    )
-  }
 }
+
+export default SystemPage

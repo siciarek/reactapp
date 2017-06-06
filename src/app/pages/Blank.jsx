@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default class Blank extends React.Component {
+function Blank(props) {
 
-  render() {
-    return null
-  }
+  return null
 }
+
+export default Blank

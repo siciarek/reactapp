@@ -1,11 +1,9 @@
 import React from 'react'
 import SystemPage from './SystemPage'
 
-export default class AccessForbiden extends React.Component {
+function AccessForbiden(params) {
 
-  render() {
-    return (
-      <SystemPage code="403" message="Access forbiden" icon="pan_tool"/>
-    )
-  }
+  return <SystemPage code="403" message="Access forbiden" icon="pan_tool"/>
 }
+
+export default AccessForbiden

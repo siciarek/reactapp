@@ -1,11 +1,8 @@
 import React from 'react'
 import SystemPage from './SystemPage'
 
-export default class PageNotFound extends React.Component {
-
-  render() {
-    return (
-      <SystemPage code="404" message="Page not found" icon="error_outline"/>
-    )
-  }
+function PageNotFound(params) {
+    return  <SystemPage code="404" message="Page not found" icon="error_outline"/>
 }
+
+export default PageNotFound
