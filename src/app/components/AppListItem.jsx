@@ -78,6 +78,8 @@ AppListItem.propTypes = {
 AppListItem.defaultProps = {
   editable: false,
   actions: {},
+  toolbarVisible: false,
+  selectFunction: event => console.log(event)
 }
 
 export default AppListItem

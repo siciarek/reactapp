@@ -7,8 +7,7 @@ import {List} from 'material-ui/List'
 
 function ConfigInfo(props) {
 
-  return
-  <div>
+  return <div>
     <AppHeader title="Config info"/>
     <List>
       {
