@@ -24,6 +24,7 @@ class ProfileForm extends React.Component {
       lastName: '',
       email: '',
       info: '',
+      description: '',
     }
   }
 

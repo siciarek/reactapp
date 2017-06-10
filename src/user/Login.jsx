@@ -5,7 +5,7 @@ import {authenticateUser} from './UserActions'
 import {AppHeader, AppSpinner} from '../app/components'
 
 const INITIAL_STATE = {
-  username: 'molak',
+  username: 'colak',
   password: 'pass',
 }
 

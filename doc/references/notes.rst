@@ -1,6 +1,8 @@
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
+    * Do daty używamy formatu ISO 8601 'YYYY-MM-DD' https://www.iso.org/iso-8601-date-and-time-format.html
+    * W reduxowym State trzymamy tylko proste wartości, bo przy zapisie stanu dane np. typu Date() nie odtworzą nam się dobrze
     * "single source of truth"
     * Obkumać https://github.com/pburtchaell/redux-promise-middleware i https://github.com/gaearon/redux-thunk
     * Zapomnij o średnikach!
@@ -19,7 +21,6 @@ Spostrzerzenia i notatki przy nauce react redux
     * Typizacja props w komponentach za pomocą 'prop-types' może być bardzo przydatna,
       zwłaszcza gdy wartości propsów przekazywane do argumentów komponentu są generowane przez funkcje.
     * ROUTING UWAGA
-
 ŹLE:
 
 .. code-block:: xml

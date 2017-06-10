@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import PropTypes from 'prop-types'
 import {TextField, RaisedButton, FontIcon, DatePicker, FlatButton, Dialog} from 'material-ui'
 import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
@@ -16,7 +17,7 @@ class SongEditorForm extends React.Component {
   initialState = {
     open: false,
     errors: {
-      createdAt: '',
+      firstPublishedAt: '',
       genre: '',
       title: '',
       lyrics: '',
@@ -38,8 +39,8 @@ class SongEditorForm extends React.Component {
   }
 
   updateDateValue = (event, value) => {
-    const key = 'createdAt'
-    const val = value
+    const key = 'firstPublishedAt'
+    const val = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD');
 
     this.props.updateEntity(key, val)
   }
@@ -106,15 +107,12 @@ class SongEditorForm extends React.Component {
         />
 
         <DatePicker
-          id="createdAt"
-          value={this.props.current.createdAt}
-          errorText={this.state.errors.createdAt}
-          floatingLabelText="Created at"
+          id="firstPublishedAt"
+          value={new Date(this.props.current.firstPublishedAt)}
+          errorText={this.state.errors.firstPublishedAt}
+          floatingLabelText="First published at"
           onChange={this.updateDateValue}
           autoOk={true}
-          // DateTimeFormat={global.Intl.DateTimeFormat}
-          // locale={config.locale}
-          hintText="Created at"
           fullWidth={true}
         />
 

@@ -12,7 +12,7 @@ class SongEditor extends React.Component {
     state.genre = null
     state.lyrics = ''
     state.title = ''
-    state.createdAt = new Date()
+    state.firstPublishedAt = null
     this.props.dispatch(updateSong(state))
 
     if (this.props.params.hasOwnProperty('id')) {
