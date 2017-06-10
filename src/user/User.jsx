@@ -9,6 +9,7 @@ export const
   USER_INITIAL_STATE = {
     error: '',
     message: '',
+    authenticated: false,
     id: null,
     dateOfBirth: null,
     gender: null,
@@ -17,9 +18,9 @@ export const
     username: '',
     email: '',
     level: 0,
+    description: null,
     info: null,
     profileVisibleToThePublic: false,
-    authenticated: false,
   },
   USER_PROFILE_FETCH = 'USER_PROFILE_FETCH',
   USER_PROFILE_FETCH_FULLFILLED = 'USER_PROFILE_FETCH_FULLFILLED',

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import axios from 'axios'
 import queryString from 'query-string'
 import {SelectField, MenuItem} from 'material-ui'

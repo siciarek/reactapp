@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import{
   TextField,
-  SelectField,
-  MenuItem,
   RaisedButton,
   Slider,
   Checkbox,
@@ -161,6 +159,15 @@ class ProfileForm extends React.Component {
             value={this.props.current.email}
             errorText={this.state.errors.email}
             floatingLabelText="Email"
+            fullWidth={true}
+            onChange={this.updateValue}
+          />
+
+          <TextField
+            id="description"
+            value={this.props.current.description ? this.props.current.description : ''}
+            errorText={this.state.errors.description}
+            floatingLabelText="Description"
             fullWidth={true}
             onChange={this.updateValue}
           />
