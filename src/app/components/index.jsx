@@ -5,6 +5,14 @@ import AppHeader from './AppHeader'
 import AppList from './AppList'
 import AppListItem from './AppListItem'
 import AppFloatingActionButton from './AppFloatingActionButton'
+import AppGenderSelectField from './AppGenderSelectField'
 
-export {AppSpinner, AppHeader, AppList, AppListItem, AppFloatingActionButton}
+export {
+  AppSpinner,
+  AppHeader,
+  AppList,
+  AppListItem,
+  AppFloatingActionButton,
+  AppGenderSelectField,
+}
 

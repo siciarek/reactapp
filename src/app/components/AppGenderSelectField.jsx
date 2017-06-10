@@ -1,0 +1,75 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import axios from 'axios'
+import queryString from 'query-string'
+import {SelectField, MenuItem} from 'material-ui'
+import config from '../../app/config'
+
+class AppGenderSelectField extends React.Component {
+
+  constructor(params) {
+    super(params)
+    this.state = {
+      items: []
+    }
+  }
+
+  componentWillMount() {
+
+    const key = 'gender'
+    const storage = localStorage
+
+    if(storage.getItem(key) === null) {
+      const url = `${config.dictionaryUrl}?${queryString.stringify({name: key})}`
+
+      axios.get(url)
+      .then((response) => {
+        storage.setItem(key, JSON.stringify(response.data))
+      })
+      .then(() => {
+        this.setState({items: JSON.parse(storage.getItem(key))})
+      })
+    }
+    else {
+     this.setState({items: JSON.parse(storage.getItem(key))})
+    }
+  }
+
+  onChange = (component, index, value) => {
+    const temp = this.state.items.filter(item => {
+      return item.value === value;
+    })
+
+    const val = temp.shift();
+    this.props.onChange(val)
+  }
+
+  render() {
+
+    if(typeof this.state.items.map !== 'function') {
+      return null
+    }
+
+    return <SelectField
+      {...this.props}
+    >
+      {
+        this.state.items.map(item => {
+          return <MenuItem
+            key={item.value}
+            value={item.value}
+            primaryText={item.name}
+          />
+        })
+      }
+    </SelectField>
+
+  }
+}
+
+AppGenderSelectField.defaultProps = {
+  floatingLabelText: 'Gender',
+}
+
+export default AppGenderSelectField
+

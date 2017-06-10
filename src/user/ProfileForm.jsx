@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import{
   TextField,
   SelectField,
@@ -11,6 +12,7 @@ import{
   FlatButton,
   Dialog,
 } from 'material-ui'
+import {AppGenderSelectField} from '../app/components'
 import {updateUser, saveUser} from './UserActions'
 
 class ProfileForm extends React.Component {
@@ -52,7 +54,8 @@ class ProfileForm extends React.Component {
 
 
   updateDateValue = (event, value) => {
-    this.updateEntity('dateOfBirth', value)
+    const dateOfBirth = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD');
+    this.updateEntity('dateOfBirth', dateOfBirth)
   }
 
   updateSelectValue = (component, index, value) => {
@@ -118,28 +121,22 @@ class ProfileForm extends React.Component {
 
           <span>{`Level (${this.props.current.level}%)`}</span>
 
-          <SelectField
-            id="gender"
-            ref="gender"
+          <AppGenderSelectField
             value={this.props.current.gender}
             errorText={this.state.errors.gender}
-            floatingLabelText="Gender"
             fullWidth={true}
             onChange={this.updateSelectValue}
-          >
-            <MenuItem value={'male'} primaryText="Male"/>
-            <MenuItem value={'female'} primaryText="Female"/>
-          </SelectField>
+          />
 
-            <DatePicker
-              id="dateOfBirth"
-              value={this.props.current.dateOfBirth}
-              errorText={this.state.errors.dateOfBirth}
-              floatingLabelText="Date of birth"
-              onChange={this.updateDateValue}
-              autoOk={true}
-              fullWidth={true}
-            />
+          <DatePicker
+            id="dateOfBirth"
+            value={new Date(this.props.current.dateOfBirth)}
+            errorText={this.state.errors.dateOfBirth}
+            floatingLabelText="Date of birth"
+            onChange={this.updateDateValue}
+            autoOk={true}
+            fullWidth={true}
+          />
 
           <TextField
             id="firstName"

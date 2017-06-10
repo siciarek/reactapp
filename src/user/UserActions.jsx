@@ -81,8 +81,6 @@ export function fetchUserProfile() {
     .get(config.userProfileUrl, getAuthCheckConfig())
     .then((response) => {
 
-      response.data.dateOfBirth = new Date(response.data.dateOfBirth)
-
       dispatch({
         type: USER_PROFILE_FETCH_FULLFILLED,
         payload: response.data,
