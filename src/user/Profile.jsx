@@ -18,7 +18,7 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <AppHeader title={`User #${this.props.current.id}`}/>
+        <AppHeader title={`User #${this.props.current.id} profile`}/>
         <ProfileForm
           current={this.props.current}
           dispatch={this.props.dispatch}
