@@ -27,7 +27,7 @@ import {
 export function checkIfIsAuthenticated() {
   return function (dispatch) {
     axios
-    .get(config.userProfileUrl, getAuthCheckConfig())
+    .get(config.pingUrl, getAuthCheckConfig())
     .then((response) => {
       dispatch({type: USER_AUTH_CHECK_SUCCESS})
     })
