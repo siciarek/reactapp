@@ -1,4 +1,7 @@
 import axios from 'axios'
+import queryString from 'query-string'
+import {browserHistory as routerHistory} from 'react-router'
+import {getAuthCheckConfig} from '../app/AppHelpers'
 import config from '../app/config'
 
 import {
@@ -9,7 +12,13 @@ import {
   TEST_ITEM_FETCH_FULLFILLED,
   TEST_ITEM_FETCH_REJECTED,
   TEST_ITEMS_SWAP,
+  TEST_ITEMS_SWAP_FULLFILLED,
+  TEST_ITEMS_SWAP_REJECTED,
 } from './Test'
+
+import {
+  APP_SET_TARGET_ROUTE
+} from '../app/AppActionTypes'
 
 export const fetchTestList = () => {
 
@@ -26,12 +35,28 @@ export const fetchTestList = () => {
   }
 }
 
-export const swapTwoTestListItems = (oldIndex, newIndex) => {
+export const swapTwoTestListItems = (src, trg) => {
 
   return (dispatch) => {
-    dispatch({type: TEST_ITEMS_SWAP, payload: [oldIndex, newIndex]})
+    dispatch({type: TEST_ITEM_FETCH})
 
-    console.log([oldIndex, newIndex])
+    const url = `${config.artistUrl}/${src.id}?${queryString.stringify({swap: trg.id})}`
+
+    dispatch({type: TEST_ITEMS_SWAP, payload: [src, trg]})
+
+    axios.put(url, {}, getAuthCheckConfig())
+    .then((response) => {
+      fetchTestList()
+    })
+    .catch((error) => {
+      dispatch({type: TEST_ITEMS_SWAP_REJECTED, payload: error})
+
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: `${config.artistUrl}`})
+        routerHistory.replace('/login')
+      }
+    })
+
   }
 }
 

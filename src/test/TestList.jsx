@@ -40,7 +40,9 @@ class TestList extends React.Component {
   }
 
   onSortEnd = ({oldIndex, newIndex}) => {
-    this.props.dispatch(swapTwoTestListItems(oldIndex, newIndex))
+    const src = {index: oldIndex, id: this.props.items[oldIndex].id}
+    const trg = {index: newIndex, id: this.props.items[newIndex].id}
+    this.props.dispatch(swapTwoTestListItems(src, trg))
   }
 
   render() {

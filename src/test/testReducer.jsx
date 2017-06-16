@@ -8,13 +8,13 @@ import {
   TEST_ITEM_FETCH_FULLFILLED,
   TEST_ITEM_FETCH_REJECTED,
   TEST_ITEMS_SWAP,
+  TEST_ITEMS_SWAP_FULLFILLED,
+  TEST_ITEMS_SWAP_REJECTED,
 } from './Test'
 
 const DEFAULT_STATE = {
   current: {},
   items: [],
-  fetching: false,
-  fetched: false,
   error: null,
 }
 
@@ -22,49 +22,41 @@ export default function reducer(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
     case TEST_ITEMS_SWAP: {
-      const [oldIndex,newIndex] = action.payload
+      const [src, trg] = action.payload
 
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        items: [...arrayMove(state.items, oldIndex, newIndex)],
+        items: [...arrayMove(state.items, src.index, trg.index)],
       }
     }
     case TEST_LIST_FETCH: {
       return {
         ...state,
-        fetching: true
       }
     }
     case TEST_ITEM_FETCH: {
       return {
         ...state,
         current: {},
-        fetching: true
       }
     }
     case TEST_LIST_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         items: action.payload
       }
     }
     case TEST_ITEM_FETCH_FULLFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         current: action.payload
       }
     }
+    case TEST_ITEMS_SWAP_FULLFILLED:
     case TEST_LIST_FETCH_REJECTED:
     case TEST_ITEM_FETCH_REJECTED: {
       return {
         ...state,
-        fetching: false,
         error: action.payload
       }
     }

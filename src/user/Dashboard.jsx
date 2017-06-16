@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
           label="Profile"
           labelPosition="before"
           icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-          onTouchTap={console.log('OK')}
+          onTouchTap={() => this.props.router.push('/profile')}
         />
 
       </div>
