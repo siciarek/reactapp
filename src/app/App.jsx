@@ -2,39 +2,38 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {Helmet} from 'react-helmet'
-
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {AppBar, FlatButton, FontIcon, Snackbar} from 'material-ui'
+import {teal200, teal900, red200, red900} from 'material-ui/styles/colors'
+import {typography} from 'material-ui/styles'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-injectTapEventPlugin()
-
-import AppDrawer from './components/AppDrawer'
+import {AppDrawer} from './components'
 import config from './config'
-import './App.css'
 import {
   APP_ERROR_HIDE,
   APP_NOTIFICATION_HIDE,
 } from './AppActionTypes'
 import {checkIfIsAuthenticated} from '../user/UserActions'
-import {teal200, teal900, red200, red900} from 'material-ui/styles/colors'
-import typography from 'material-ui/styles/typography'
+import './App.css'
+
+injectTapEventPlugin()
 
 class App extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {isMenuOpened: false}
+    this.state = {
+      isMenuOpened: false
+    }
   }
 
   componentWillMount() {
     this.props.dispatch(checkIfIsAuthenticated())
   }
 
-  toggleMenu = () => {
-    this.setState({isMenuOpened: !this.state.isMenuOpened})
-  }
+  toggleMenu = () => this.setState({isMenuOpened: !this.state.isMenuOpened})
 
   render() {
 
@@ -47,6 +46,7 @@ class App extends React.Component {
       fontWeight: typography.fontWeightNormal
     }
 
+    // TODO: Move to separate component
     const notification = this.props.error
       ? <Snackbar
         bodyStyle={{backgroundColor: red200}}

@@ -1,82 +1,8 @@
-export const routes = [
-  {
-    label: 'User Zone',
-    icon: 'person',
-    private: true,
-    children: [
-      {
-        label: 'Dashboard',
-        icon: 'dashboard',
-        route: '/dashboard',
-        private: true,
-      },
-      {
-        label: 'Profile',
-        icon: 'account_circle',
-        route: '/profile',
-        private: true,
-      },
-      {
-        label: 'Log out',
-        icon: 'power_settings_new',
-        route: '/logout',
-        private: true,
-      },
-    ]
-  },
-  null,
-  {
-    label: 'Home',
-    icon: 'home',
-    route: '/',
-  },
-  {
-    label: 'Authors',
-    icon: 'face',
-    route: '/authors',
-  },
-  {
-    label: 'Artists',
-    icon: 'mic',
-    route: '/artists',
-  },
-  {
-    label: 'Genres',
-    icon: 'stars',
-    route: '/genre/list',
-  },
-  null,
-  {
-    label: 'Lyrics',
-    icon: 'library_books',
-    route: '/lyrics',
-  },
-  {
-    label: 'Audio',
-    icon: 'volume_up',
-    route: '/audio',
-  },
-  {
-    label: 'Videos',
-    icon: 'theaters',
-    route: '/videos',
-  },
-  null,
-  {
-    label: 'Log In',
-    icon: 'lock_open',
-    route: '/login',
-    private: false,
-  },
-
-]
-
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
-
+import App from './App'
 import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
-
 import {GenreList, GenreItem, GenreEditor, GenreCreator} from '../genre/Genre'
 import {Login, Logout, Dashboard, Profile} from '../user/User'
 import {SongEditor} from '../song/Song'
@@ -87,14 +13,13 @@ import {AudioList, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItem} from '../video/Video'
 import {TestList, TestItem}  from '../test/Test'
 
-import App from './App'
 import store from './store'
 
 const history = syncHistoryWithStore(routerHistory, store)
 
 export default
 <Router history={history}>
-  <Route component={App}>
+  <Route component={App}>d
     <IndexRoute component={Home}/>
     <Route path="/" component={Home}/>
     <Route path="/config-info" component={ConfigInfo}/>
@@ -135,4 +60,3 @@ export default
     <Route path="*" component={PageNotFound}/>
   </Route>
 </Router>
-

@@ -7,13 +7,15 @@ import {
   LYRICS_ITEM_FETCH_REJECTED,
 } from './Lyrics'
 
-export default function reducer(state = {
+const DEFAULT_STATE = {
   current: {},
   items: [],
   fetching: false,
   fetched: false,
   error: null,
-}, action) {
+}
+
+export default function(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
     case LYRICS_LIST_FETCH: {

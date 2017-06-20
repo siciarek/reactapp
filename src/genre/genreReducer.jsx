@@ -36,7 +36,7 @@ const DEFAULT_STATE = {
   message: null,
 }
 
-export default function reducer(state = DEFAULT_STATE, action) {
+export default function(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
 

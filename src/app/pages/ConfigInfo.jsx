@@ -1,9 +1,7 @@
 import React from 'react'
-import AppHeader from "../components/AppHeader";
-
+import {List} from 'material-ui'
 import config from '../config'
-import AppListItem from "../components/AppListItem";
-import {List} from 'material-ui/List'
+import {AppHeader, AppListItem} from '../components';
 
 function ConfigInfo(props) {
 
@@ -11,7 +9,7 @@ function ConfigInfo(props) {
     <AppHeader title="Config info"/>
     <List>
       {
-        Object.keys(config).map(function (e) {
+        Object.keys(config).map(e => {
           return <AppListItem key={e} primaryText={e} secondaryText={config[e]}/>
         })
       }

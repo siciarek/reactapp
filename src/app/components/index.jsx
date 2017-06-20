@@ -1,5 +1,4 @@
-// TODO: dowiedzieć się dla czego się nie importuje WHY?
-// import AppDrawer from './AppDrawer'
+import AppDrawer from './AppDrawer'
 import AppSpinner from './AppSpinner'
 import AppHeader from './AppHeader'
 import AppList from './AppList'
@@ -8,6 +7,7 @@ import AppFloatingActionButton from './AppFloatingActionButton'
 import AppGenderSelectField from './AppGenderSelectField'
 
 export {
+  AppDrawer,
   AppSpinner,
   AppHeader,
   AppList,

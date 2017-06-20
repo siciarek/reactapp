@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import {Avatar, IconButton, ListItem} from 'material-ui'
 import ShowIcon from 'material-ui/svg-icons/action/visibility'
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
@@ -40,11 +39,11 @@ class AppListItem extends React.Component {
     let actions = editable === true && toolbarVisible === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
-    Object.keys(AppListItem.propTypes).map(function (key) {
+    Object.keys(AppListItem.propTypes).map((key) => {
       return delete(props[key])
     })
 
-    const buttons = Object.keys(actions).map(function (key, index) {
+    const buttons = Object.keys(actions).map((key, index) => {
       return <IconButton
         key={index}
         tooltip={key.toUpperCase()}
@@ -58,7 +57,7 @@ class AppListItem extends React.Component {
     return <ListItem
       {...props}
       onTouchTap={this.handleTap}
-      leftAvatar={<Avatar className={initial}>{initial}</Avatar>}
+      leftAvatar={<Avatar className={'initial'}>{initial}</Avatar>}
       rightAvatar={<span>{buttons}</span>}
     />
   }

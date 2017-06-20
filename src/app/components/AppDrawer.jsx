@@ -9,65 +9,61 @@ import {
   Divider,
 } from 'material-ui'
 import config from '../config'
-import {routes} from '../routes'
+import menu from '../menu'
 
 function AppDrawer(props) {
 
   const matchedRoute = props.router.getCurrentLocation().pathname
   const iconChecked = <FontIcon className="material-icons">check</FontIcon>
 
-  const items =
-    routes
-    .filter(e => {
-      return e === null || e.hasOwnProperty('private') === false || e.private === props.authenticated
-    })
-    .map((e, i) => {
+  const items = menu
+  .filter(e => {
+    return e === null || e.hasOwnProperty('private') === false || e.private === props.authenticated
+  })
+  .map((e, i) => {
 
       if (e === null) {
         return <Divider inset={false} key={i}/>
       }
 
-      let primaryTogglesNestedList = false
-      let nestedItems = []
-
-      if (e.hasOwnProperty('children') && e.children.length > 0) {
-        primaryTogglesNestedList = true
-        nestedItems = e.children.map((ce, ci) => {
+      const nestedItems = e.hasOwnProperty('children') && e.children.length > 0
+        ? e.children.map((ce, ci) => {
             return <MenuItem
               key={ci}
+              primaryText={ce.label}
               leftIcon={
                 <FontIcon className="material-icons">{ce.icon}</FontIcon>
               }
-              primaryText={ce.label}
-              onTouchTap={() => {
-                props.router.replace(ce.route)
-                props.toggleView()
-              }}
               rightIcon={
                 matchedRoute === ce.route ? iconChecked : null
               }
+              onTouchTap={() => {
+                props.router.push(ce.route)
+                props.toggleView()
+              }}
             />
           }
         )
-      }
+        : []
 
       return <MenuItem
         key={i}
         primaryText={e.label}
-        onTouchTap={() => {
-          props.router.push(e.route)
-          props.toggleView()
-        }}
         leftIcon={
           <FontIcon className="material-icons">{e.icon}</FontIcon>
         }
         rightIcon={
           matchedRoute === e.route ? iconChecked : null
         }
-        primaryTogglesNestedList={primaryTogglesNestedList}
+        onTouchTap={() => {
+          props.router.push(e.route)
+          props.toggleView()
+        }}
+        primaryTogglesNestedList={nestedItems.length > 0}
         nestedItems={nestedItems}
       />
-    })
+    }
+  )
 
   return (
     <Drawer
@@ -94,11 +90,11 @@ AppDrawer.propTypes = {
 }
 
 AppDrawer.defaultProps = {
-  opened: false,
+  opened: true,
   authenticated: false,
   toggleView: () => {
-
-  },
+    console.log('Not implemented yet.')
+  }
 }
 
 export default withRouter(AppDrawer)

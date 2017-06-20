@@ -14,7 +14,7 @@ import {
   USER_AUTH_CHECK_FAILURE,
 } from './User'
 
-export default function (state = USER_INITIAL_STATE, action) {
+export default function(state = USER_INITIAL_STATE, action) {
 
   switch (action.type) {
     case USER_PROFILE_FETCH_FULLFILLED:

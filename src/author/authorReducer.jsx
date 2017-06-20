@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
   items: [],
 }
 
-export default function reducer(state = DEFAULT_STATE, action) {
+export default function(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
     case AUTHOR_LIST_FETCH: {

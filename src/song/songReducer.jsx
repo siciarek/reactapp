@@ -19,7 +19,7 @@ const DEFAULT_STATE = {
   error: null,
 }
 
-export default function reducer(state = DEFAULT_STATE, action) {
+export default function(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
     case SONG_ITEM_UPDATE: {

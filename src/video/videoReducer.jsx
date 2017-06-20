@@ -6,7 +6,7 @@ import {
   FETCH_VIDEO_REJECTED
 } from './Video'
 
-export default function reducer(state = {
+export default function(state = {
   current: [],
   items: [],
   fetching: false,

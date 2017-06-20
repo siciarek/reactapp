@@ -25,7 +25,7 @@ import {
 } from '../app/AppActionTypes'
 
 export function checkIfIsAuthenticated() {
-  return function (dispatch) {
+  return (dispatch) => {
     axios
     .get(config.pingUrl, getAuthCheckConfig())
     .then((response) => {
@@ -39,7 +39,7 @@ export function checkIfIsAuthenticated() {
 
 export function authenticateUser(data) {
 
-  return function (dispatch) {
+  return (dispatch) =>  {
 
     dispatch({type: USER_AUTH})
 
@@ -64,7 +64,7 @@ export function authenticateUser(data) {
 }
 
 export function unauthenticateUser() {
-  return function (dispatch) {
+  return (dispatch) =>  {
     AppStash.remove('token')
     dispatch({type: USER_UNAUTH_FULLFILLED})
     routerHistory.replace('/')
@@ -73,7 +73,7 @@ export function unauthenticateUser() {
 
 export function fetchUserProfile() {
 
-  return function (dispatch) {
+  return (dispatch) =>  {
 
     dispatch({type: USER_PROFILE_FETCH})
 
@@ -98,14 +98,14 @@ export function fetchUserProfile() {
 }
 
 export function updateUser(data) {
-  return function (dispatch) {
+  return (dispatch) =>  {
     dispatch({type: USER_UPDATE, payload: data})
   }
 }
 
 export function saveUser(data) {
 
-  return function (dispatch) {
+  return (dispatch) =>  {
 
     dispatch({type: USER_SAVE})
 
