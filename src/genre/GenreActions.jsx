@@ -78,10 +78,31 @@ export const saveGenre = (data) => {
   return (dispatch) => {
 
     if (data.id !== null) {
-      dispatch({type: GENRE_ITEM_ADD})
+
+      dispatch({type: GENRE_ITEM_SAVE})
 
       axios
       .put(`${config.genreUrl}/${data.id}`, data, getAuthCheckConfig())
+      .then((response) => {
+        dispatch({
+          type: GENRE_ITEM_SAVE_FULLFILLED,
+          payload: response.data,
+        })
+      })
+      .catch((error) => {
+        dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: error})
+        if (error.hasOwnProperty('response') && error.response.status === 401) {
+          dispatch({type: APP_SET_TARGET_ROUTE, payload: '/genre/new'})
+          routerHistory.replace('/login')
+        }
+      })
+    }
+    else {
+
+      dispatch({type: GENRE_ITEM_ADD})
+
+      axios
+      .post(config.genreUrl, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
           type: GENRE_ITEM_ADD_FULLFILLED,
@@ -95,33 +116,7 @@ export const saveGenre = (data) => {
       .catch((error) => {
         dispatch({type: GENRE_ITEM_ADD_REJECTED, payload: error})
         if (error.hasOwnProperty('response') && error.response.status === 401) {
-          dispatch({type: APP_SET_TARGET_ROUTE, payload: '/genre/new'})
-          routerHistory.replace('/login')
-        }
-      })
-    }
-    else {
-
-      const url = `/genre/${data.id}/edit`
-
-      dispatch({type: GENRE_ITEM_SAVE})
-
-      axios
-      .post(config.genreUrl, data, getAuthCheckConfig())
-      .then((response) => {
-        dispatch({
-          type: GENRE_ITEM_SAVE_FULLFILLED,
-          payload: response.data,
-        })
-        return response.data
-      })
-      .then((data) => {
-        routerHistory.replace(`/genre/${data.id}/edit`)
-      })
-      .catch((error) => {
-        dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: error})
-        if (error.hasOwnProperty('response') && error.response.status === 401) {
-          dispatch({type: APP_SET_TARGET_ROUTE, payload: url})
+          dispatch({type: APP_SET_TARGET_ROUTE, payload: `/genre/list`})
           routerHistory.replace('/login')
         }
       })

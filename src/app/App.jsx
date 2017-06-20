@@ -13,8 +13,13 @@ injectTapEventPlugin()
 import AppDrawer from './components/AppDrawer'
 import config from './config'
 import './App.css'
-import {APP_ERROR_HIDE} from './AppActionTypes'
+import {
+  APP_ERROR_HIDE,
+  APP_NOTIFICATION_HIDE,
+} from './AppActionTypes'
 import {checkIfIsAuthenticated} from '../user/UserActions'
+import {black, teal300, red300} from 'material-ui/styles/colors'
+import typography from 'material-ui/styles/typography'
 
 class App extends React.Component {
 
@@ -33,23 +38,46 @@ class App extends React.Component {
 
   render() {
 
-    const notification = this.props.error ? <Snackbar
-      open={true}
-      message={`${this.props.error.data.code} ${this.props.error.data.message}`}
-      autoHideDuration={config.notificationTimeout * 1000}
-      onRequestClose={() => this.props.dispatch({type: APP_ERROR_HIDE})}
-    /> : null
+    const notificationContentStyle = {
+      color: black,
+      fontWeight: typography.fontWeightNormal
+    }
+
+    const notification = this.props.error
+      ? <Snackbar
+        bodyStyle={{backgroundColor: red300}}
+        contentStyle={notificationContentStyle}
+        open={true}
+        message={`${this.props.error.data.code} ${this.props.error.data.message}`}
+        autoHideDuration={config.notificationTimeout * 1000}
+        onActionTouchTap={() => this.props.dispatch({type: APP_ERROR_HIDE})}
+        onRequestClose={() => this.props.dispatch({type: APP_ERROR_HIDE})}
+      />
+      : (this.props.notification ? <Snackbar
+        bodyStyle={{backgroundColor: teal300}}
+        contentStyle={notificationContentStyle}
+        open={true}
+        message={`${this.props.notification}`}
+        autoHideDuration={config.notificationTimeout * 1000}
+        onActionTouchTap={() => this.props.dispatch({type: APP_NOTIFICATION_HIDE})}
+        onRequestClose={() => this.props.dispatch({type: APP_NOTIFICATION_HIDE})}
+      /> : null)
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
 
         <div>
-
-          {notification}
-
           <Helmet>
             <title>{config.appName}</title>
           </Helmet>
+
+          <AppDrawer
+            authenticated={this.props.authenticated}
+            opened={this.state.isMenuOpened}
+            toggleView={this.toggleMenu}
+          />
+
+          {notification}
 
           <AppBar
             title={config.appName}
@@ -71,12 +99,6 @@ class App extends React.Component {
 
           {this.props.children}
 
-          <AppDrawer
-            authenticated={this.props.authenticated}
-            opened={this.state.isMenuOpened}
-            toggleView={this.toggleMenu}
-          />
-
         </div>
 
       </MuiThemeProvider>
@@ -86,6 +108,7 @@ class App extends React.Component {
 
 export default connect((store) => {
   return {
+    notification: store.app.notification,
     error: store.app.error,
     authenticated: store.user.authenticated,
   }

@@ -1,10 +1,11 @@
-import {takeEvery, put, all} from 'redux-saga/effects'
+import {takeEvery, takeLatest, put, all} from 'redux-saga/effects'
 
 import {
   APP_START_PROCESSING,
   APP_END_PROCESSING,
   APP_ERROR_OCCURRED,
   APP_ERROR_HIDE,
+  APP_NOTIFICATION_OCCURRED,
 } from './AppActionTypes'
 
 import {
@@ -99,6 +100,10 @@ export function* showError(action) {
   yield put({type: APP_ERROR_OCCURRED, payload: action.payload.response})
 }
 
+export function* showNotification(action) {
+  yield put({type: APP_NOTIFICATION_OCCURRED, payload: 'Operation succeed.'})
+}
+
 export function* hideError() {
   yield put({type: APP_ERROR_HIDE})
 }
@@ -119,6 +124,13 @@ export function* watchErrors() {
   ], hideError)
 }
 
+export function* watchNotifications() {
+
+  yield takeLatest([
+    GENRE_ITEM_ADD_FULLFILLED,
+    GENRE_ITEM_SAVE_FULLFILLED,
+  ], showNotification)
+}
 
 export function* watchTheSpinner() {
   yield takeEvery([
@@ -192,6 +204,7 @@ export function* watchTheSpinner() {
 
 export default function* rootSaga() {
   yield all([
+    watchNotifications(),
     watchTheSpinner(),
     watchErrors(),
   ])

@@ -33,6 +33,7 @@ const DEFAULT_STATE = {
   fetching: false,
   fetched: false,
   error: null,
+  message: null,
 }
 
 export default function reducer(state = DEFAULT_STATE, action) {
@@ -60,6 +61,7 @@ export default function reducer(state = DEFAULT_STATE, action) {
         fetching: false,
         fetched: true,
         items: action.payload,
+        message: 'Operation succeed.',
       }
     }
     case GENRE_ITEM_REMOVE: {

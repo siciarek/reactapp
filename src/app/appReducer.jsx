@@ -5,13 +5,18 @@ import {
   APP_END_PROCESSING,
   APP_ERROR_OCCURRED,
   APP_ERROR_HIDE,
+  APP_NOTIFICATION_OCCURRED,
+  APP_NOTIFICATION_HIDE,
 } from './AppActionTypes'
 
-export default function reducer(state = {
+const DEFAULT_STATE = {
   processing: false,
   error: null,
+  notification: null,
   targetRoute: null,
-}, action) {
+}
+
+export default function reducer(state = DEFAULT_STATE, action) {
 
   switch (action.type) {
     case APP_SET_TARGET_ROUTE: {
@@ -51,6 +56,20 @@ export default function reducer(state = {
         error: null,
       }
     }
+    case APP_NOTIFICATION_OCCURRED: {
+      return {
+        ...state,
+        processing: false,
+        notification: action.payload,
+      }
+    }
+    case APP_NOTIFICATION_HIDE: {
+      return {
+        ...state,
+        notification: null,
+      }
+    }
+
     default:
       return state
   }
