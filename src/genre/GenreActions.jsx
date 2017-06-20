@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 
-import {getAuthCheckConfig}  from '../app/AppHelpers'
+import {getAuthCheckConfig, handleForbidenAccess}  from '../app/AppHelpers'
 import config from '../app/config'
 
 import {
@@ -22,10 +22,6 @@ import {
   GENRE_ITEM_REMOVE_FULLFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
-
-import {
-  APP_SET_TARGET_ROUTE,
-} from '../app/AppActionTypes'
 
 export const fetchListGenre = (onlyEnabled = false) => {
 
@@ -49,7 +45,7 @@ export const fetchItemGenre = (id) => {
   return (dispatch) => {
     dispatch({type: GENRE_ITEM_FETCH})
 
-    if(id === null) {
+    if (id === null) {
       dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: null})
     }
     else {
@@ -91,10 +87,7 @@ export const saveGenre = (data) => {
       })
       .catch((error) => {
         dispatch({type: GENRE_ITEM_SAVE_REJECTED, payload: error})
-        if (error.hasOwnProperty('response') && error.response.status === 401) {
-          dispatch({type: APP_SET_TARGET_ROUTE, payload: '/genre/new'})
-          routerHistory.replace('/login')
-        }
+        handleForbidenAccess(dispatch, error, `/genre/${data.id}/edit`)
       })
     }
     else {
@@ -115,10 +108,7 @@ export const saveGenre = (data) => {
       })
       .catch((error) => {
         dispatch({type: GENRE_ITEM_ADD_REJECTED, payload: error})
-        if (error.hasOwnProperty('response') && error.response.status === 401) {
-          dispatch({type: APP_SET_TARGET_ROUTE, payload: `/genre/list`})
-          routerHistory.replace('/login')
-        }
+        handleForbidenAccess(dispatch, error, '/genre/list')
       })
     }
   }
@@ -143,11 +133,7 @@ export const removeGenre = (id) => {
     })
     .catch((error) => {
       dispatch({type: GENRE_ITEM_REMOVE_REJECTED, payload: error})
-
-      if (error.hasOwnProperty('response') && error.response.status === 401) {
-        dispatch({type: APP_SET_TARGET_ROUTE, payload: `${url}/edit`})
-        routerHistory.replace('/login')
-      }
+      handleForbidenAccess(dispatch, error, `/genre/${id}/edit`)
     })
   }
 }

@@ -18,7 +18,7 @@ import {
   APP_NOTIFICATION_HIDE,
 } from './AppActionTypes'
 import {checkIfIsAuthenticated} from '../user/UserActions'
-import {black, teal300, red300} from 'material-ui/styles/colors'
+import {teal200, teal900, red200, red900} from 'material-ui/styles/colors'
 import typography from 'material-ui/styles/typography'
 
 class App extends React.Component {
@@ -38,15 +38,19 @@ class App extends React.Component {
 
   render() {
 
+    const errorContentStyle = {
+      color: red900,
+      fontWeight: typography.fontWeightNormal
+    }
     const notificationContentStyle = {
-      color: black,
+      color: teal900,
       fontWeight: typography.fontWeightNormal
     }
 
     const notification = this.props.error
       ? <Snackbar
-        bodyStyle={{backgroundColor: red300}}
-        contentStyle={notificationContentStyle}
+        bodyStyle={{backgroundColor: red200}}
+        contentStyle={errorContentStyle}
         open={true}
         message={`${this.props.error.data.code} ${this.props.error.data.message}`}
         autoHideDuration={config.notificationTimeout * 1000}
@@ -54,7 +58,7 @@ class App extends React.Component {
         onRequestClose={() => this.props.dispatch({type: APP_ERROR_HIDE})}
       />
       : (this.props.notification ? <Snackbar
-        bodyStyle={{backgroundColor: teal300}}
+        bodyStyle={{backgroundColor: teal200}}
         contentStyle={notificationContentStyle}
         open={true}
         message={`${this.props.notification}`}
