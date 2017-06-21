@@ -20,7 +20,7 @@ class SongEditor extends React.Component {
     }
   }
 
-  removeEntity = (id) => {
+  removeEntity = id => {
     this.props.dispatch(removeSong(id))
   }
 
@@ -41,16 +41,13 @@ class SongEditor extends React.Component {
   render() {
 
     if (this.props.authenticated === false) {
-      return (
-        <div>
-        </div>
-      )
+      return null
     }
 
     const title = this.props.current.id ? 'Edit song' : 'Add song'
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title={title}/>
         <SongEditorForm
           current={this.props.current}
@@ -63,7 +60,7 @@ class SongEditor extends React.Component {
   }
 }
 
-export default connect((store) => {
+export default connect(store => {
   return {
     current: store.song.current,
     authenticated: store.user.authenticated,

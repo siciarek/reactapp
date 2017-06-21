@@ -7,12 +7,7 @@ import {GenreSelectField} from '../genre/components'
 
 class SongEditorForm extends React.Component {
 
-  static propTypes = {
-    current: PropTypes.object.isRequired,
-    updateEntity: PropTypes.func.isRequired,
-    saveEntity: PropTypes.func.isRequired,
-    removeEntity: PropTypes.func.isRequired,
-  }
+
 
   initialState = {
     open: false,
@@ -40,7 +35,7 @@ class SongEditorForm extends React.Component {
 
   updateDateValue = (event, value) => {
     const key = 'firstPublishedAt'
-    const val = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD');
+    const val = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD')
 
     this.props.updateEntity(key, val)
   }
@@ -58,13 +53,16 @@ class SongEditorForm extends React.Component {
 
   submit = () => {
 
-    for (let key in this.initialState.errors) {
-      let temp = {...this.state}
+    Object.keys(this.initialState.errors).map(key => {
+      const temp = {...this.state}
       temp.errors[key] = (this.props.current[key] === null || this.props.current[key] === '')
         ? 'This field is requred'
         : ''
       this.setState({...temp})
-    }
+      return true
+    })
+
+    console.log(JSON.stringify(this.state, null, 4))
 
     if (JSON.stringify(this.state.errors) === JSON.stringify(this.initialState.errors)) {
       this.props.saveEntity()
@@ -159,6 +157,13 @@ class SongEditorForm extends React.Component {
       </form>
     )
   }
+}
+
+SongEditorForm.propTypes = {
+  current: PropTypes.object.isRequired,
+  updateEntity: PropTypes.func.isRequired,
+  saveEntity: PropTypes.func.isRequired,
+  removeEntity: PropTypes.func.isRequired,
 }
 
 export default SongEditorForm

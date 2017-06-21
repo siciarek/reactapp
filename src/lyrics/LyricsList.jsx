@@ -33,7 +33,7 @@ class LyricsList extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title="Lyrics"/>
         <AppList
           primaryTextIndexes={['title']}

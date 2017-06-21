@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from '../store'
 
 import AppSpinner from './AppSpinner'

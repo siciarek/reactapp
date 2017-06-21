@@ -21,7 +21,7 @@ class AudioList extends React.Component {
         <AppHeader title="Audio"/>
         <List>
           {
-            this.props.items.map((item) => {
+            this.props.items.map(item => {
               return <ListItem
                 key={item.id}
                 leftIcon={<ListItemIcon />}

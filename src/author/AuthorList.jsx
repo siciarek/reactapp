@@ -20,7 +20,7 @@ class AuthorList extends React.Component {
         <AppHeader title="Authors"/>
         <List>
           {
-            this.props.items.map((item) => {
+            this.props.items.map(item => {
               return <ListItem
                 key={item.id}
                 leftIcon={<ListItemIcon />}

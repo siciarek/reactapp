@@ -7,10 +7,6 @@ import AppSpinner from '../app/components/AppSpinner'
 import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class LyricsItem extends React.Component {
-  static propTypes = {
-    params: PropTypes.shape({
-    }).isRequired,
-  }
 
   componentWillMount() {
     this.props.dispatch(fetchLyricsItem(this.props.params.id))
@@ -19,7 +15,7 @@ class LyricsItem extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title={this.props.current.title}/>
         <pre className="text">{this.props.current.lyrics}</pre>
         <AppFloatingActionButton icon="keyboard_arrow_left" route="/lyrics"/>
@@ -27,6 +23,12 @@ class LyricsItem extends React.Component {
       </div>
     )
   }
+}
+
+LyricsItem.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
 }
 
 export default connect((store) => {

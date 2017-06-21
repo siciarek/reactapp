@@ -34,10 +34,10 @@ class GenreCategorySelectField extends React.Component {
 
   onChange = (component, index, value) => {
     const temp = this.state.items.filter(item => {
-      return item.id === value;
+      return item.id === value
     })
 
-    const val = temp.shift();
+    const val = temp.shift()
     this.props.onChange(val)
   }
 

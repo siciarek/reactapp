@@ -24,17 +24,17 @@ export default class AppList extends React.Component {
 
   generateList = () => {
 
-    const items = this.props.items.map((item) => {
+    const items = this.props.items.map(item => {
 
       const actions = this.props.generateActions(item.id, () => {
         this.setState({selectedItem: item.id}, this.openRemovalConfirmationDialog)
       })
 
-      const primaryText = this.props.primaryTextIndexes.map((e) => {
+      const primaryText = this.props.primaryTextIndexes.map(e => {
         return item[e]
       }).join(this.props.primaryTextSeparator)
 
-      const st = this.props.secondaryTextIndexes.map((e) => {
+      const st = this.props.secondaryTextIndexes.map(e => {
         const parts = e.split('.')
 
         let val = {...item}

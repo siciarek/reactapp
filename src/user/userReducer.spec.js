@@ -1,4 +1,4 @@
-import reducer from './userReducer';
+import reducer from './userReducer'
 import {
   USER_INITIAL_STATE,
   USER_UPDATE,
@@ -28,6 +28,6 @@ test('userReducer USER_UPDATE action', () => {
     payload: payload
   }
 
-  const state = reducer(previousState, action);
-  expect(state).toEqual(nextState);
-});
+  const state = reducer(previousState, action)
+  expect(state).toEqual(nextState)
+})

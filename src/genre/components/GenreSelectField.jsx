@@ -10,7 +10,7 @@ class GenreSelectField extends React.Component {
   }
 
   onChange = (component, index, value) => {
-    const temp = this.props.list.filter((item) => {
+    const temp = this.props.list.filter(item => {
       return item.id === value
     })
 
@@ -34,7 +34,7 @@ class GenreSelectField extends React.Component {
       onChange={this.onChange}
     >
       {
-        this.props.list.map((item) => {
+        this.props.list.map(item => {
           return <MenuItem key={item.id} value={item.id} primaryText={item.name} />
         })
       }

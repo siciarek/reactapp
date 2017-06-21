@@ -48,7 +48,7 @@ class TestList extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title="Tests"/>
         <SortableList
           items={this.props.items}

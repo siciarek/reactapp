@@ -15,7 +15,7 @@ class TestItem extends React.Component {
     const {description, info} = this.props.current
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title={description} />
         <pre className="text">{info}</pre>
         <AppFloatingActionButton route="/tests"/>

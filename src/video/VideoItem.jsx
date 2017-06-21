@@ -14,30 +14,26 @@ class VideoItem extends React.Component {
 
   render() {
 
-    let title = undefined;
+    let title = undefined
 
-    const temp = this.props.current.map((item) => {
+    const items = this.props.current.map(item => {
 
       title = item.song.title
-
-      const atemp = item.artists.map((artist) => {
-        return artist.name;
-      })
 
       return <ListItem
         leftIcon={<ListItemIcon />}
         key={item.id}
-        primaryText={atemp.join(', ')}
+        primaryText={item.artists.map(artist => {return artist.name}).join(', ')}
         secondaryText={item.description}
         href={item.path}
       />
     })
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title={title}/>
         <List>
-          {temp}
+          {items}
         </List>
         <AppFloatingActionButton route="/videos"/>
         <AppSpinner/>
@@ -49,7 +45,6 @@ class VideoItem extends React.Component {
 export default connect((store) => {
 
   return {
-    fetching: store.video.fetching,
     current: store.video.current,
   }
 })(VideoItem)

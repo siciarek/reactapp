@@ -19,7 +19,7 @@ class VideoList extends React.Component {
         <AppHeader title="Video"/>
         <List>
           {
-            this.props.items.map((item) => {
+            this.props.items.map(item => {
               return <ListItem
                 leftIcon={<ListItemIcon />}
                 containerElement={<Link to={`/video/${item.id}`}/>}

@@ -34,15 +34,6 @@ class AppGenderSelectField extends React.Component {
     }
   }
 
-  onChange = (component, index, value) => {
-    const temp = this.state.items.filter(item => {
-      return item.value === value;
-    })
-
-    const val = temp.shift();
-    this.props.onChange(val)
-  }
-
   render() {
 
     if(typeof this.state.items.map !== 'function') {

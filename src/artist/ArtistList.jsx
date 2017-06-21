@@ -20,7 +20,7 @@ class ArtistList extends React.Component {
         <AppHeader title="Artists"/>
         <List>
           {
-            this.props.items.map((item) => {
+            this.props.items.map(item => {
               return <ListItem
                 key={item.id}
                 leftIcon={<ListItemIcon />}

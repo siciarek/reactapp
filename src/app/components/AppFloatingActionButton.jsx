@@ -8,7 +8,7 @@ import './AppFloatingActionButton.css'
 
 function AppFloatingActionButton(props) {
 
-    const {icon, route} = props;
+    const {icon, route} = props
 
     return (
       <FloatingActionButton

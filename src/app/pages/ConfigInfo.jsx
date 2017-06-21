@@ -1,9 +1,9 @@
 import React from 'react'
 import {List} from 'material-ui'
 import config from '../config'
-import {AppHeader, AppListItem} from '../components';
+import {AppHeader, AppListItem} from '../components'
 
-function ConfigInfo(props) {
+function ConfigInfo() {
 
   return <div>
     <AppHeader title="Config info"/>

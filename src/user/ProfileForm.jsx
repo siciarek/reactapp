@@ -53,7 +53,7 @@ class ProfileForm extends React.Component {
 
 
   updateDateValue = (event, value) => {
-    const dateOfBirth = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD');
+    const dateOfBirth = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD')
     this.updateEntity('dateOfBirth', dateOfBirth)
   }
 
@@ -70,7 +70,7 @@ class ProfileForm extends React.Component {
 
   updateValue = (event) => {
     const key = event.target.id
-    let val = event.target.value === null || event.target.value.toString().trim().length === 0 ? null : event.target.value
+    const val = event.target.value === null || event.target.value.toString().trim().length === 0 ? null : event.target.value
 
     this.updateEntity(key, val)
   }

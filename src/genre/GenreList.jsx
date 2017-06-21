@@ -21,11 +21,11 @@ class GenreList extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div>
         <AppHeader title="Genres"/>
         <List>
           {
-            this.props.items.map((item) => {
+            this.props.items.map(item => {
               return <ListItem
                 leftIcon={<ListItemIcon />}
                 containerElement={<Link to={`/genre/${item.id}/show`}/>}

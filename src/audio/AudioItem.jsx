@@ -18,18 +18,18 @@ class AudioItem extends React.Component {
 
   render() {
 
+    let title = undefined
+
     if (this.props.current === undefined) {
-      return false
+      return null
     }
 
-    let title = undefined;
-
-    const temp = this.props.current.map((item) => {
+    const items = this.props.current.map(item => {
 
       title = item.song.title
 
-      const atemp = item.artists.map((artist) => {
-        return artist.name;
+      const atemp = item.artists.map(artist => {
+        return artist.name
       })
 
       return <ListItem
@@ -45,7 +45,7 @@ class AudioItem extends React.Component {
       <div>
         <AppHeader title={title}/>
         <List>
-          {temp}
+          {items}
         </List>
         <AppFloatingActionButton route="/audio"/>
         <AppSpinner/>
