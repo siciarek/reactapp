@@ -9,7 +9,7 @@ import {SongEditor} from '../song/Song'
 import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
-import {AudioList, AudioItem} from '../audio/Audio'
+import {AudioList, AudioItems, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItem} from '../video/Video'
 import {TestList, TestItem}  from '../test/Test'
 
@@ -42,7 +42,8 @@ export default
     <Route path="/lyrics/:id" component={LyricsItem}/>
 
     <Route path="/audio" component={AudioList}/>
-    <Route path="/audio/:id" component={AudioItem}/>
+    <Route path="/audio/:id" component={AudioItems}/>
+    <Route path="/audio/item/:id" component={AudioItem}/>
 
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>

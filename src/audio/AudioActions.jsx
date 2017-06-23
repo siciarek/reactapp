@@ -27,7 +27,7 @@ export const fetchAudioList = () => {
   }
 }
 
-export const fetchAudioItem = (id) => {
+export const fetchAudioItems = (id) => {
 
   return (dispatch) => {
     dispatch({type: FETCH_AUDIO_ITEM})

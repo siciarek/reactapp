@@ -1,8 +1,9 @@
 import AudioList from './AudioList'
+import AudioItems from './AudioItems'
 import AudioItem from './AudioItem'
 import AudioActions from './AudioActions'
 
-export {AudioList, AudioItem, AudioActions}
+export {AudioList, AudioItems, AudioItem, AudioActions}
 
 export const
   FETCH_AUDIO = 'FETCH_AUDIO',
