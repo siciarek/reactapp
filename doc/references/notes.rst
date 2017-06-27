@@ -1,6 +1,24 @@
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
+    * Na produkcji, KONIECZNIE trzeba użyć pliku .htaccess:
+
+.. code-block:: apache
+
+    # Map all non-existing URLs to be processed by index.html,
+    # so any URL that doesn't point to a JS file, CSS file, etc etc...
+    # goes through my React app.
+
+    <IfModule mod_rewrite.c>
+      RewriteEngine on
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteCond %{REQUEST_URI} !=/favicon.ico
+      RewriteRule ^ index.html [L]
+    </IfModule>
+
+    W przeciwnym razie każde odświeżenie strony na routingu, będzie powodować 404.
+
     * Do daty używamy formatu ISO 8601 'YYYY-MM-DD' https://www.iso.org/iso-8601-date-and-time-format.html
     * W reduxowym State trzymamy tylko proste wartości, bo przy zapisie stanu dane np. typu Date() nie odtworzą nam się dobrze
     * "single source of truth"
