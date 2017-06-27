@@ -43,7 +43,7 @@ export default
 
     <Route path="/audio" component={AudioList}/>
     <Route path="/audio/:id" component={AudioItems}/>
-    <Route path="/audio/item/:id" component={AudioItem}/>
+    <Route path="/audio/:id/item/:item_id" component={AudioItem}/>
 
     <Route path="/videos" component={VideoList}/>
     <Route path="/video/:id" component={VideoItem}/>

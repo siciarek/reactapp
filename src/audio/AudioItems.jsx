@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 
 import {List, ListItem} from 'material-ui/List'
 import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
@@ -37,7 +38,7 @@ class AudioItems extends React.Component {
         leftIcon={<ListItemIcon />}
         primaryText={atemp.join(', ')}
         secondaryText={item.description}
-        href={item.path}
+        onTouchTap={() => this.props.router.push(`/audio/${item.song.id}/item/${item.id}`)}
       />
     })
 
@@ -58,4 +59,4 @@ export default connect((store) => {
   return {
     current: store.audio.current,
   }
-})(AudioItems)
+})(withRouter(AudioItems))
