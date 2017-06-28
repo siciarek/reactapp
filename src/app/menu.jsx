@@ -1,5 +1,11 @@
 const menu = [
   {
+    label: 'Log In',
+    icon: 'lock_open',
+    route: '/login',
+    private: false,
+  },
+  {
     label: 'User Zone',
     icon: 'person',
     private: true,
@@ -60,13 +66,6 @@ const menu = [
     label: 'Videos',
     icon: 'theaters',
     route: '/videos',
-  },
-  null,
-  {
-    label: 'Log In',
-    icon: 'lock_open',
-    route: '/login',
-    private: false,
   },
 ]
 

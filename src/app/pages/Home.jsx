@@ -10,7 +10,7 @@ import {Responsive, WidthProvider} from 'react-grid-layout'
 
 const GridLayout = WidthProvider(Responsive)
 
-function Home(props) {
+const Home = ()  => {
 
   const {appName, appDescription, appPicture} = config
 

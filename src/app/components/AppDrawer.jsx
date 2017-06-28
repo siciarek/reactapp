@@ -11,14 +11,14 @@ import {
 import config from '../config'
 import menu from '../menu'
 
-function AppDrawer(props) {
+const AppDrawer = ({router, authenticated, opened, toggleView}) => {
 
-  const matchedRoute = props.router.getCurrentLocation().pathname
+  const matchedRoute = router.getCurrentLocation().pathname
   const iconChecked = <FontIcon className="material-icons">check</FontIcon>
 
   const items = menu
   .filter(e => {
-    return e === null || e.hasOwnProperty('private') === false || e.private === props.authenticated
+    return e === null || e.hasOwnProperty('private') === false || e.private === authenticated
   })
   .map((e, i) => {
 
@@ -38,8 +38,8 @@ function AppDrawer(props) {
                 matchedRoute === ce.route ? iconChecked : null
               }
               onTouchTap={() => {
-                props.router.push(ce.route)
-                props.toggleView()
+                router.push(ce.route)
+                toggleView()
               }}
             />
           }
@@ -56,8 +56,8 @@ function AppDrawer(props) {
           matchedRoute === e.route ? iconChecked : null
         }
         onTouchTap={() => {
-          props.router.push(e.route)
-          props.toggleView()
+          router.push(e.route)
+          toggleView()
         }}
         primaryTogglesNestedList={nestedItems.length > 0}
         nestedItems={nestedItems}
@@ -68,15 +68,15 @@ function AppDrawer(props) {
   return (
     <Drawer
       docked={false}
-      open={props.opened}
+      open={opened}
       onRequestChange={() => {
-        props.toggleView()
+        toggleView()
       }}
     >
       <AppBar
         title={config.appName}
         showMenuIconButton={false}
-        onTouchTap={() => props.toggleView()}
+        onTouchTap={() => toggleView()}
       />
       {items}
     </Drawer>

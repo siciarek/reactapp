@@ -1,6 +1,2 @@
-function Blank(props) {
-
-  return null
-}
-
+const Blank = () => null
 export default Blank

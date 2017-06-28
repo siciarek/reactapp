@@ -1,3 +1,47 @@
+Konferencja desmart
+-------------------
+
+Pierwszy
+========
+    * Wszystkie funkcje na arrow functions nie params tylko gotowe
+
+function Tada(props) { - NIE
+
+const Tada = ({title, icon}) => { - TAK
+
+Drugi
+=====
+    * Styleguide (opis jak komponenty mają wyglądać)
+    * Komunikacja (Jira)
+    * Wydajność (
+    * Storybook (apka)
+
+npm -i -g @storybook/cli  -- instalacja jako dev albo na globalu
+
+getstorybook
+
+npm run storybook
+
+
+yarn storybook
+
+
+pluginy:
+
+    * KNOBS (dodaje pola formularza)
+    * Storyshots
+
+style globalne:
+
+    plik .storybook/preview.head.html
+
+
+framework "bulma"
+
+
+
+
+
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
