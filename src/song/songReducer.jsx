@@ -19,7 +19,7 @@ const DEFAULT_STATE = {
   error: null,
 }
 
-export default function(state = DEFAULT_STATE, action) {
+export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
     case SONG_ITEM_UPDATE: {

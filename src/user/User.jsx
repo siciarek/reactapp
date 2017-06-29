@@ -6,7 +6,7 @@ import Profile from './Profile'
 export {Login, Logout, Dashboard, Profile}
 
 export const
-  USER_INITIAL_STATE = {
+  USER_DEFAULT_STATE = {
     error: '',
     message: '',
     authenticated: false,

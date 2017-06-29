@@ -1,5 +1,5 @@
 import {
-  USER_INITIAL_STATE,
+  USER_DEFAULT_STATE,
   USER_PROFILE_FETCH_FULLFILLED,
   USER_UPDATE,
   USER_SAVE_FULLFILLED,
@@ -14,7 +14,7 @@ import {
   USER_AUTH_CHECK_FAILURE,
 } from './User'
 
-export default function(state = USER_INITIAL_STATE, action) {
+export default (state = USER_DEFAULT_STATE, action) => {
 
   switch (action.type) {
     case USER_PROFILE_FETCH_FULLFILLED:
@@ -42,7 +42,7 @@ export default function(state = USER_INITIAL_STATE, action) {
         message: 'Unauthentication in progress.',
       }
     case USER_UNAUTH_FULLFILLED:
-      return {...USER_INITIAL_STATE}
+      return {...USER_DEFAULT_STATE}
     case USER_AUTH_ERROR:
       return {
         ...state,

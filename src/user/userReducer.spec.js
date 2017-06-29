@@ -1,6 +1,6 @@
 import reducer from './userReducer'
 import {
-  USER_INITIAL_STATE,
+  USER_DEFAULT_STATE,
   USER_UPDATE,
 } from './User'
 
@@ -16,7 +16,7 @@ test('userReducer USER_UPDATE action', () => {
     level: 24,
   }
 
-  const previousState = {...USER_INITIAL_STATE}
+  const previousState = {...USER_DEFAULT_STATE}
 
   const nextState = {
     ...previousState,

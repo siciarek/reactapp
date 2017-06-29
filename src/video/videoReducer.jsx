@@ -6,15 +6,17 @@ import {
   FETCH_VIDEO_REJECTED
 } from './Video'
 
-export default function(state = {
+const DEFAULT_STATE = {
   current: [],
   items: [],
   fetching: false,
   fetched: false,
   error: null,
-}, action) {
+}
 
-  switch (action.type) {
+export default (state = DEFAULT_STATE, action) => {
+
+    switch (action.type) {
     case FETCH_VIDEO: {
       return {
         ...state,
