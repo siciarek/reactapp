@@ -13,7 +13,7 @@ class RecordItem extends React.Component {
 
   render() {
 
-    if(typeof this.props.current.artists === 'undefined'){
+    if (typeof this.props.current.artists === 'undefined') {
       return <AppSpinner/>
     }
 
@@ -22,21 +22,22 @@ class RecordItem extends React.Component {
     return <div>
       <AppHeader title={title}/>
 
-      <Card>
-        <CardMedia
-          overlay={<CardTitle title={title} subtitle={artists.map(e => e.name).join(', ')} />}
-        >
-          <img src={cover} alt={title} />
-        </CardMedia>
-      </Card>
+      <br/>
+      <div style={{padding: 16}}>
+        <h2>{artists.map(e => e.name).join(', ')}</h2>
+        <br/>
 
-      <ul>
-        {
-          tracks.map(e => {
-            return <li>{e.title}/{e.length}</li>
-          })
-        }
-      </ul>
+        <img src={cover} alt={title} style={{width: 300}}/>
+
+        <ul>
+          {
+            tracks.map(e => {
+              return <li key={e.id}>{e.title}/{e.length}</li>
+            })
+          }
+        </ul>
+
+      </div>
 
       <AppFloatingActionButton route={`/records`}/>
       <AppSpinner/>
