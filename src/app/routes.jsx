@@ -11,6 +11,8 @@ import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
 import {AudioList, AudioItems, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItem} from '../video/Video'
+import {RecordList, RecordItem} from '../record/Record'
+
 import {TestList, TestItem}  from '../test/Test'
 
 import store from './store'
@@ -55,6 +57,9 @@ export default
 
     <Route path="/tests" component={TestList}/>
     <Route path="/tests/:id" component={TestItem}/>
+
+    <Route path="/records" component={RecordList}/>
+    <Route path="/records/:id" component={RecordItem}/>
 
     <Route path="/blank" component={Blank}/>
     <Route path="/access-forbiden" component={AccessForbiden}/>

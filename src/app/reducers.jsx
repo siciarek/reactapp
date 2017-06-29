@@ -10,6 +10,7 @@ import song from '../song/songReducer'
 import user from '../user/userReducer'
 import test from '../test/testReducer'
 import genre from '../genre/genreReducer'
+import record from '../record/recordReducer'
 
 export default combineReducers({
   test,
@@ -23,4 +24,5 @@ export default combineReducers({
   audio,
   video,
   song,
+  record,
 })
