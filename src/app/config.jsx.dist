@@ -25,6 +25,7 @@ export default {
   storageType: STORAGE_TYPE_COOKIES,
   notificationTimeout: 5,
 
+  authUrl: `${API_BASE_URL}/auth`,
   pingUrl: `${API_BASE_URL}/ping`,
   userDashboardUrl: `${API_BASE_URL}/user/dashboard`,
   userProfileUrl: `${API_BASE_URL}/user/profile`,
@@ -37,5 +38,4 @@ export default {
   audioUrl: `${API_BASE_URL}/audio`,
   videoUrl: `${API_BASE_URL}/video`,
   songUrl: `${API_BASE_URL}/song`,
-  authUrl: `${API_BASE_URL}/auth`,
 }
