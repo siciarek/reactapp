@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {Card, CardMedia, CardTitle} from 'material-ui'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchRecordItem} from './RecordActions'
 
@@ -23,19 +22,27 @@ class RecordItem extends React.Component {
       <AppHeader title={title}/>
 
       <br/>
+
       <div style={{padding: 16}}>
         <h2>{artists.map(e => e.name).join(', ')}</h2>
-        <br/>
 
-        <img src={cover} alt={title} style={{width: 300}}/>
+        <img src={cover} alt={title} style={{width: 300, marginTop: 16, marginBottom: 16}}/>
 
-        <ul>
+        <ul style={{margin:0, padding:0, listStyleType: 'none'}}>
           {
             tracks.map(e => {
-              return <li key={e.id}>{e.title}/{e.length}</li>
+              return <li key={e.id}>
+                <span style={{display: 'inline-block', paddingRight: 16}}>{e.length}</span>
+                {e.title}
+                </li>
             })
           }
         </ul>
+
+
+        <br/>
+        <br/>
+        <br/>
 
       </div>
 

@@ -1,8 +1,8 @@
 [
   {
-    "id": 94567,
+    "id": 1001,
     "title": "Highway to Hell",
-    "cover": "https://2.bp.blogspot.com/-ljwB206khEo/V08WNIkueYI/AAAAAAAAYko/6IDn-Q27_o4MSvehg0TA6Pt8j_K_sHrPQCLcB/s1600/819vvPioe7L._SL1500_.jpg",
+    "cover": "http://nightflight.com/wp-content/uploads/ACDC-HIGHWAY-TO-HELL-2.jpg",
     "artists": [
       {
         "name": "AC/DC"
@@ -10,39 +10,51 @@
     ],
     "tracks": [
       {
-        "title": "Highway Star",
-        "length": "06:45"
+        "title": "Highway to Hell",
+        "length": "03:28"
       },
       {
-        "title": "Child in Time",
-        "length": "12:19"
+        "title": "Girls Got Rhythm",
+        "length": "03:23"
       },
       {
-        "title": "Smoke on The Water",
-        "length": "07:27"
+        "title": "Walk All Over You",
+        "length": "05:10"
       },
       {
-        "title": "The Mule",
-        "length": "09:45"
+        "title": "Touch Too Much",
+        "length": "04:26"
       },
       {
-        "title": "Strange Kind of Woman",
-        "length": "09:26"
+        "title": "Beating Around the Bush",
+        "length": "03:55"
       },
       {
-        "title": "Lazy",
-        "length": "10:59"
+        "title": "Shot Down in Flames",
+        "length": "03:22"
       },
       {
-        "title": "Space Truckin",
-        "length": "20:02"
+        "title": "Get It Hot",
+        "length": "02:34"
+      },
+      {
+        "title": "If You Want Blood (You've Got It)",
+        "length": "04:36"
+      },
+      {
+        "title": "Love Hungry Man",
+        "length": "04:17"
+      },
+      {
+        "title": "Night Prowler",
+        "length": "06:17"
       }
     ],
     "decription": null,
     "info": null
   },
   {
-    "id": 12345,
+    "id": 1002,
     "title": "Made In Japan",
     "cover": "https://2.bp.blogspot.com/-ljwB206khEo/V08WNIkueYI/AAAAAAAAYko/6IDn-Q27_o4MSvehg0TA6Pt8j_K_sHrPQCLcB/s1600/819vvPioe7L._SL1500_.jpg",
     "artists": [
