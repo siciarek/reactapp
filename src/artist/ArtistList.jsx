@@ -1,43 +1,24 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
-import {AppHeader, AppSpinner} from '../app/components'
 import {fetchArtistList} from './ArtistActions'
+import {AppSimpleComponentList} from '../app/components'
 
+// https://github.com/reactjs/react-redux/blob/master/docs/api.md
 
-class ArtistList extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchArtistList())
-  }
-
-  render() {
-
-    return (
-      <div>
-        <AppHeader title="Artists"/>
-        <List>
-          {
-            this.props.items.map(item => {
-              return <ListItem
-                key={item.id}
-                leftIcon={<ListItemIcon />}
-                containerElement={<Link to={`artists/${item.id}`}/>}
-                primaryText={item.description}
-              />
-            })
-          }
-        </List>
-        <AppSpinner/>
-      </div>
-    )
+const mapStateToProps = (state) => {
+  return {
+    title: 'Artists',
+    icon: <ListItemIcon/>,
+    items: state.artist.items,
   }
 }
 
-export default connect((store) => {
+function mapDispatchToProps(dispatch) {
   return {
-    items: store.artist.items,
+    'fetchList': bindActionCreators(fetchArtistList, dispatch)
   }
-})(ArtistList)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleComponentList)

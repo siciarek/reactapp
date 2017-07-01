@@ -10,7 +10,10 @@ import {
   APP_NOTIFICATION_HIDE,
 } from './AppActionTypes'
 
+import config from './config'
+
 const DEFAULT_STATE = {
+  version: config.version,
   processing: false,
   error: null,
   notification: null,
