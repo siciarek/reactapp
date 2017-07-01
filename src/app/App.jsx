@@ -27,10 +27,6 @@ class App extends React.Component {
     this.props.dispatch(checkIfIsAuthenticated())
   }
 
-  toggleMenu = () => {
-    this.props.dispatch({type: APP_TOGGLE_MENU})
-  }
-
   render() {
 
     const errorContentStyle = {
@@ -77,7 +73,7 @@ class App extends React.Component {
 
           <AppBar
             title={config.appName}
-            onLeftIconButtonTouchTap={this.toggleMenu}
+            onLeftIconButtonTouchTap={() => this.props.dispatch({type: APP_TOGGLE_MENU})}
             iconElementRight={
               this.props.authenticated === true
                 ? <FlatButton
