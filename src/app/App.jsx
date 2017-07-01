@@ -12,6 +12,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import {AppDrawer} from './components'
 import config from './config'
 import {
+  APP_TOGGLE_MENU,
   APP_ERROR_HIDE,
   APP_NOTIFICATION_HIDE,
 } from './AppActionTypes'
@@ -22,18 +23,13 @@ injectTapEventPlugin()
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMenuOpened: false
-    }
-  }
-
   componentWillMount() {
     this.props.dispatch(checkIfIsAuthenticated())
   }
 
-  toggleMenu = () => this.setState({isMenuOpened: !this.state.isMenuOpened})
+  toggleMenu = () => {
+    this.props.dispatch({type: APP_TOGGLE_MENU})
+  }
 
   render() {
 
@@ -75,11 +71,7 @@ class App extends React.Component {
             <title>{config.appName}</title>
           </Helmet>
 
-          <AppDrawer
-            authenticated={this.props.authenticated}
-            opened={this.state.isMenuOpened}
-            toggleView={this.toggleMenu}
-          />
+          <AppDrawer/>
 
           {notification}
 

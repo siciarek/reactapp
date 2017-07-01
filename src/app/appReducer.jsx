@@ -1,4 +1,5 @@
 import {
+  APP_TOGGLE_MENU,
   APP_SET_TARGET_ROUTE,
   APP_UNSET_TARGET_ROUTE,
   APP_START_PROCESSING,
@@ -14,11 +15,18 @@ const DEFAULT_STATE = {
   error: null,
   notification: null,
   targetRoute: null,
+  menu: false,
 }
 
 export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
+    case APP_TOGGLE_MENU: {
+      return {
+        ...state,
+        menu: !state.menu
+      }
+    }
     case APP_SET_TARGET_ROUTE: {
       return {
         ...state,
