@@ -1,6 +1,7 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import {browserHistory as router} from 'react-router'
 import ListItemIcon from 'material-ui/svg-icons/av/mic'
 import {fetchArtistList as loadList} from './ArtistActions'
 import {AppSimpleAutoloadingList} from '../app/components'
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
     title: 'Artists',
     icon: <ListItemIcon/>,
     items: state.artist.items,
+    goTo: id => router.push(`artists/${id}`),
   }
 }
 

@@ -1,4 +1,5 @@
 import AppDrawer from './AppDrawer'
+import AppDrawerComponent from './AppDrawerComponent'
 import AppSpinner from './AppSpinner'
 import AppHeader from './AppHeader'
 import AppSimpleList from './AppSimpleList'
@@ -10,6 +11,7 @@ import AppGenderSelectField from './AppGenderSelectField'
 
 export {
   AppDrawer,
+  AppDrawerComponent,
   AppSpinner,
   AppHeader,
   AppSimpleList,

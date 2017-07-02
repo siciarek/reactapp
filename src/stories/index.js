@@ -7,18 +7,20 @@ injectTapEventPlugin()
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import ListItemIcon from 'material-ui/svg-icons/action/stars'
 
 import '../app/App.css'
 import '../app/components/AppHeader.css'
 import '../app/components/AppFloatingActionButton.css'
-import {AppHeader} from '../app/components'
-import AppDrawerComponent from '../app/components/AppDrawerComponent'
+import {AppHeader, AppDrawerComponent, AppSimpleList} from '../app/components'
 
 storiesOf('AppHeader', module)
 .add('with no params', () => <AppHeader/>)
 .add('with title', () => <AppHeader title="Zażółć gęślą jaźń!"/>)
 
-storiesOf('AppDrawerComponent', module)
+const appDrawerComponentStories = storiesOf('AppDrawerComponent', module)
+
+appDrawerComponentStories
 .add('with no params (closed)', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
     <AppDrawerComponent/>
@@ -32,5 +34,47 @@ storiesOf('AppDrawerComponent', module)
 .add('opened and authenticated', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
     <AppDrawerComponent opened={true} authenticated={true} toggleVisibility={action('toggleVisibility')}/>
+  </MuiThemeProvider>
+)
+
+const appSimpleListStories = storiesOf('AppSimpleList', module)
+const items = [
+  {
+    id: 1,
+    description: 'John Lennon',
+  },
+  {
+    id: 2,
+    description: 'Paul McCartney',
+  },
+  {
+    id: 3,
+    description: 'George Harrison',
+  },
+  {
+    id: 4,
+    description: 'Ringo Starr',
+  },
+]
+
+appSimpleListStories
+.add('with no params', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList/>
+  </MuiThemeProvider>
+)
+.add('with items', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList items={items}/>
+  </MuiThemeProvider>
+)
+.add('with items and title', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title="The Beatles" items={items}/>
+  </MuiThemeProvider>
+)
+.add('with items, title and icon', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title="The Beatles" icon={<ListItemIcon/>} items={items}/>
+  </MuiThemeProvider>
+)
+.add('with items, title, icon and action', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title="The Beatles" icon={<ListItemIcon/>} items={items} goTo={action('goTo')}/>
   </MuiThemeProvider>
 )
