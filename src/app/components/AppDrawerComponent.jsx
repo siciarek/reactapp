@@ -34,13 +34,13 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
             leftIcon={
               <FontIcon className="material-icons">{ce.icon}</FontIcon>
             }
+            onTouchTap={() => {
+              router.push(ce.route)
+              toggleVisibility()
+            }}
             rightIcon={
               matchedRoute === ce.route ? iconChecked : null
             }
-            onTouchTap={() => {
-              toggleVisibility()
-              router.push(ce.route)
-            }}
           />
         }
       )
