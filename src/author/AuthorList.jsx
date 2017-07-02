@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ListItemIcon from 'material-ui/svg-icons/action/face'
-import {fetchAuthorList as fetchList} from './AuthorActions'
+import {fetchAuthorList as loadList} from './AuthorActions'
 import {AppSimpleList} from '../app/components'
 
 const mapStateToProps = (state) => {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(fetchList())
+  dispatch(loadList())
 
   return {
   }
