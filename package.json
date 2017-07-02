@@ -30,6 +30,7 @@
     "video-react": "^0.8.5"
   },
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.4.0",
     "@kadira/storybook": "^2.35.3",
     "@kadira/storybook-addon-knobs": "^1.7.1",
     "babel-loader": "^7.0.0",
