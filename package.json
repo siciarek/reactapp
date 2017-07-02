@@ -30,6 +30,7 @@
     "video-react": "^0.8.5"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
     "babel-loader": "^7.0.0",
     "enzyme": "^2.8.2",
     "jasmine-core": "^2.6.2",
@@ -54,6 +55,8 @@
     "build": "npm run build-css && react-scripts build",
     "postbuild": "rm -rvf build/*/*/*.map",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   }
 }

@@ -16,14 +16,19 @@ Drugi
     * Wydajność (
     * Storybook (apka)
 
-npm -i -g @storybook/cli  -- instalacja jako dev albo na globalu
+
+Instalacja storybook
+====================
+
+npm i -g getstorybook
+
+cd songbook
+
+npm i --save-dev @kadira/storybook
 
 getstorybook
 
 npm run storybook
-
-
-yarn storybook
 
 
 pluginy:
