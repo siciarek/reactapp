@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   dispatch(fetchList())
 
   return {

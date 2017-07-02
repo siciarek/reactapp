@@ -1,20 +1,18 @@
-import React from 'react'
 import {connect} from 'react-redux'
+import {APP_TOGGLE_MENU} from '../AppActionTypes'
 import AppDrawerComponent from './AppDrawerComponent'
-import {
-  APP_TOGGLE_MENU
-} from '../AppActionTypes'
 
-export default connect(
-  (store) => {
-    return {
-      opened: store.app.menu,
-      authenticated: store.user.authenticated,
-    }
-  },
-  (dispatch) => {
-    return {
-      toggleVisibility: () => { dispatch({type: APP_TOGGLE_MENU}) },
-    }
+const mapStateToProps = (state) => {
+  return {
+    opened: state.app.menu,
+    authenticated: state.user.authenticated,
   }
-)(AppDrawerComponent)
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleVisibility: () => dispatch({type: APP_TOGGLE_MENU}),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppDrawerComponent)
