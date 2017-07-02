@@ -10,42 +10,52 @@
     ],
     "tracks": [
       {
+        "id": 11,
         "title": "Highway to Hell",
         "length": "03:28"
       },
       {
+        "id": 12,
         "title": "Girls Got Rhythm",
         "length": "03:23"
       },
       {
+        "id": 13,
         "title": "Walk All Over You",
         "length": "05:10"
       },
       {
+        "id": 14,
         "title": "Touch Too Much",
         "length": "04:26"
       },
       {
+        "id": 15,
         "title": "Beating Around the Bush",
         "length": "03:55"
       },
       {
+        "id": 16,
         "title": "Shot Down in Flames",
         "length": "03:22"
       },
       {
+        "id": 17,
         "title": "Get It Hot",
         "length": "02:34"
       },
       {
+        "id": 18,
         "title": "If You Want Blood (You've Got It)",
         "length": "04:36"
       },
       {
+        "id": 19,
         "title": "Love Hungry Man",
         "length": "04:17"
       },
       {
+        "id": 20,
         "title": "Night Prowler",
         "length": "06:17"
       }
@@ -64,30 +74,37 @@
     ],
     "tracks": [
       {
+        "id": 21,
         "title": "Highway Star",
         "length": "06:45"
       },
       {
+        "id": 22,
         "title": "Child in Time",
         "length": "12:19"
       },
       {
+        "id": 23,
         "title": "Smoke on The Water",
         "length": "07:27"
       },
       {
+        "id": 24,
         "title": "The Mule",
         "length": "09:45"
       },
       {
+        "id": 25,
         "title": "Strange Kind of Woman",
         "length": "09:26"
       },
       {
+        "id": 26,
         "title": "Lazy",
         "length": "10:59"
       },
       {
+        "id": 27,
         "title": "Space Truckin",
         "length": "20:02"
       }

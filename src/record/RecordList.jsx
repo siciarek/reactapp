@@ -1,47 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
+import {bindActionCreators} from 'redux'
 import ListItemIcon from 'material-ui/svg-icons/av/album'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
-import {fetchRecordList} from './RecordActions'
-import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
+import {fetchRecordList as fetchList} from './RecordActions'
+import {RecordList} from './components'
 
-class RecordList extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchRecordList())
-  }
-
-  render() {
-
-    return (
-      <div>
-        <AppHeader title="Records"/>
-        <List>
-          {
-            this.props.items.map(item => {
-              const artists = item.artists.map(e => e.name).join(', ')
-              return <ListItem
-                key={item.id}
-                leftIcon={<ListItemIcon />}
-                containerElement={<Link to={`/records/${item.id}`}/>}
-                primaryText={`${item.title}/${artists}`}
-                secondaryText={`number of tracks: ${item.tracks.length}`}
-              />
-            })
-          }
-        </List>
-        <AppFloatingActionButton route="/"/>
-        <AppSpinner/>
-      </div>
-    )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    icon: <ListItemIcon/>,
+    items: state.record.items,
   }
 }
 
-export default connect((store) => {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    items: store.record.items,
+    'fetchList': bindActionCreators(fetchList, dispatch)
   }
-})(RecordList)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordList)

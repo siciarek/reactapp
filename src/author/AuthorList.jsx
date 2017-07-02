@@ -1,9 +1,8 @@
 import React from 'react'
-import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import ListItemIcon from 'material-ui/svg-icons/action/face'
-import {fetchAuthorList} from './AuthorActions'
-import {AppSimpleComponentList} from '../app/components'
+import {fetchAuthorList as fetchList} from './AuthorActions'
+import {AppSimpleList} from '../app/components'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,9 +13,10 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
+  dispatch(fetchList())
+
   return {
-    'fetchList': bindActionCreators(fetchAuthorList,dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleComponentList)
+export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleList)

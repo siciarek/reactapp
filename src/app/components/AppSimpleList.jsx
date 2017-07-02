@@ -5,17 +5,17 @@ import ListItemIcon from 'material-ui/svg-icons/av/fiber-manual-record'
 import {List, ListItem} from 'material-ui'
 import {AppHeader, AppSpinner} from '../components'
 
-const AppSimpleList = (props) => {
+const AppSimpleList = ({title, icon, items}) => {
   return <div>
-    <AppHeader title={props.title}/>
+    <AppHeader title={title}/>
     <AppSpinner/>
     <List>
       {
-        props.items.map(item => <ListItem
+        items.map(item => <ListItem
             key={item.id}
             primaryText={item.description}
             containerElement={<Link to={`artists/${item.id}`}/>}
-            leftIcon={props.icon}
+            leftIcon={icon}
           />
         )
       }

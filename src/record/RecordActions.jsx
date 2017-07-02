@@ -12,7 +12,7 @@ import {
 
 export const fetchRecordList = () => {
 
-  const url = '/record.json' // config.recordUrl
+  const url = config.recordUrl
 
   return (dispatch) => {
     dispatch({type: FETCH_RECORD_LIST})
@@ -32,7 +32,7 @@ export const fetchRecordList = () => {
 
 export const fetchRecordItem = id => {
 
-  const url = '/record.json' // config.recordUrl
+  const url = config.recordUrl
 
   return (dispatch) => {
     dispatch({type: FETCH_RECORD_ITEM})
