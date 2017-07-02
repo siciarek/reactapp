@@ -1,5 +1,16 @@
 import React from 'react';
-import {storiesOf, action, linkTo} from '@kadira/storybook';
+import {storiesOf, action, linkTo, addDecorator} from '@kadira/storybook';
+import {
+  withKnobs,
+  boolean,
+  text,
+  array,
+  number,
+  object,
+  color,
+  date,
+  select,
+} from '@kadira/storybook-addon-knobs'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
@@ -14,13 +25,13 @@ import '../app/components/AppHeader.css'
 import '../app/components/AppFloatingActionButton.css'
 import {AppHeader, AppDrawerComponent, AppSimpleList} from '../app/components'
 
+addDecorator(withKnobs)
+
 storiesOf('AppHeader', module)
 .add('with no params', () => <AppHeader/>)
-.add('with title', () => <AppHeader title="Zażółć gęślą jaźń!"/>)
+.add('with title', () => <AppHeader title={text('title', 'Zażółć gęślą jaźń!')}/>)
 
-const appDrawerComponentStories = storiesOf('AppDrawerComponent', module)
-
-appDrawerComponentStories
+storiesOf('AppDrawerComponent', module)
 .add('with no params (closed)', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
     <AppDrawerComponent/>
@@ -28,16 +39,16 @@ appDrawerComponentStories
 )
 .add('opened and not authenticated', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={true} toggleVisibility={action('toggleVisibility')}/>
+    <AppDrawerComponent opened={boolean('opened', true)} authenticated={boolean('authenticated', false)} toggleVisibility={action('toggleVisibility')}/>
   </MuiThemeProvider>
 )
 .add('opened and authenticated', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={true} authenticated={true} toggleVisibility={action('toggleVisibility')}/>
+    <AppDrawerComponent opened={boolean('opened', true)} authenticated={boolean('authenticated', true)}
+                        toggleVisibility={action('toggleVisibility')}/>
   </MuiThemeProvider>
 )
 
-const appSimpleListStories = storiesOf('AppSimpleList', module)
 const items = [
   {
     id: 1,
@@ -57,24 +68,24 @@ const items = [
   },
 ]
 
-appSimpleListStories
-.add('with no params', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+storiesOf('AppSimpleList', module)
+.add('with no params', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
     <AppSimpleList/>
   </MuiThemeProvider>
 )
-.add('with items', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+.add('with items', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
     <AppSimpleList items={items}/>
   </MuiThemeProvider>
 )
-.add('with items and title', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title="The Beatles" items={items}/>
+.add('with items and title', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title={text('title', 'The Beatles')} items={items}/>
   </MuiThemeProvider>
 )
-.add('with items, title and icon', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title="The Beatles" icon={<ListItemIcon/>} items={items}/>
+.add('with items, title and icon', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title={select('title', ['The Beatles', 'Rolling Stones', 'Led Zeppelin'], 'The Beatles')} icon={<ListItemIcon/>} items={items}/>
   </MuiThemeProvider>
 )
-.add('with items, title, icon and action', () =>  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title="The Beatles" icon={<ListItemIcon/>} items={items} goTo={action('goTo')}/>
+.add('with items, title, icon and action', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+    <AppSimpleList title={text('title', 'The Beatles')} icon={<ListItemIcon/>} items={items} goTo={action('goTo')}/>
   </MuiThemeProvider>
 )

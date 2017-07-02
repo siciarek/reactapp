@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
     "babel-loader": "^7.0.0",
     "enzyme": "^2.8.2",
     "jasmine-core": "^2.6.2",
