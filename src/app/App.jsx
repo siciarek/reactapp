@@ -8,7 +8,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {AppBar, FlatButton, FontIcon, Snackbar} from 'material-ui'
 import {teal200, teal900, red200, red900} from 'material-ui/styles/colors'
 import {typography} from 'material-ui/styles'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import {AppDrawer} from './components'
 import config from './config'
 import {
@@ -19,6 +18,7 @@ import {
 import {checkIfIsAuthenticated} from '../user/UserActions'
 import './App.css'
 
+import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 class App extends React.Component {
