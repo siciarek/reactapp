@@ -1,9 +1,9 @@
 import React from 'react';
 import {storiesOf, action, linkTo} from '@kadira/storybook';
+
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-import {browserHistory as router} from 'react-router'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -26,11 +26,11 @@ storiesOf('AppDrawerComponent', module)
 )
 .add('opened and not authenticated', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={true}/>
+    <AppDrawerComponent opened={true} toggleVisibility={action('toggleVisibility')}/>
   </MuiThemeProvider>
 )
 .add('opened and authenticated', () =>
   <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={true} authenticated={true}/>
+    <AppDrawerComponent opened={true} authenticated={true} toggleVisibility={action('toggleVisibility')}/>
   </MuiThemeProvider>
 )
