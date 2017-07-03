@@ -4,7 +4,7 @@ import { setOptions } from '@kadira/storybook-addon-options';
 
 setOptions({
   name: 'Songbook Storybook',
-  url: 'http://localhost',
+  url: 'http://songbook.siciarek.pl',
   goFullScreen: false,
   showSearchBox: false,
   sortStoriesByKind: true,
