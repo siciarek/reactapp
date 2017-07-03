@@ -18,6 +18,10 @@ injectTapEventPlugin()
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+const MuiDecorator = (storyFn) => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+  {storyFn()}
+</MuiThemeProvider>
+
 import ListItemIcon from 'material-ui/svg-icons/action/stars'
 
 import '../app/App.css'
@@ -26,30 +30,22 @@ import '../app/components/AppFloatingActionButton.css'
 import {AppHeader, AppDrawerComponent, AppSimpleList} from '../app/components'
 
 addDecorator(withKnobs)
+addDecorator(MuiDecorator)
 
 storiesOf('AppHeader', module)
-.addWithInfo('with no params', () => <AppHeader/>)
+.addWithInfo('with no params',
+  `This is test description.`,
+  () => <AppHeader/>)
 .addWithInfo('with title', () => <AppHeader title={text('title', 'Zażółć gęślą jaźń!')}/>)
 
 storiesOf('AppDrawerComponent', module)
-.addWithInfo('with no params (closed)', () =>
-  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent/>
-  </MuiThemeProvider>
-)
-.addWithInfo('opened and not authenticated', () =>
-  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={boolean('opened', true)} authenticated={boolean('authenticated', false)}
-                        toggleVisibility={action('toggleVisibility')}/>
-  </MuiThemeProvider>
-)
-.addWithInfo('opened and authenticated', () =>
-  <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppDrawerComponent opened={boolean('opened', true)} authenticated={boolean('authenticated', true)}
-                        toggleVisibility={action('toggleVisibility')}/>
-  </MuiThemeProvider>
-)
-
+.addWithInfo('with no params (closed)', () => <AppDrawerComponent/>)
+.addWithInfo('opened and not authenticated', () => <AppDrawerComponent opened={boolean('opened', true)}
+                                                                       authenticated={boolean('authenticated', false)}
+                                                                       toggleVisibility={action('toggleVisibility')}/>)
+.addWithInfo('opened and authenticated', () => <AppDrawerComponent opened={boolean('opened', true)}
+                                                                   authenticated={boolean('authenticated', true)}
+                                                                   toggleVisibility={action('toggleVisibility')}/>)
 const items = [
   {
     id: 1,
@@ -70,24 +66,12 @@ const items = [
 ]
 
 storiesOf('AppSimpleList', module)
-.addWithInfo('with no params', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList/>
-  </MuiThemeProvider>
-)
-.addWithInfo('with items', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList items={items}/>
-  </MuiThemeProvider>
-)
-.addWithInfo('with items and title', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title={text('title', 'The Beatles')} items={items}/>
-  </MuiThemeProvider>
-)
-.addWithInfo('with items, title and icon', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title={select('title', ['The Beatles', 'Rolling Stones', 'Led Zeppelin'], 'The Beatles')}
-                   icon={<ListItemIcon/>} items={items}/>
-  </MuiThemeProvider>
-)
-.addWithInfo('with items, title, icon and action', () => <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
-    <AppSimpleList title={text('title', 'The Beatles')} icon={<ListItemIcon/>} items={items} goTo={action('goTo')}/>
-  </MuiThemeProvider>
-)
+.addWithInfo('with no params', () => <AppSimpleList/>)
+.addWithInfo('with items', () => <AppSimpleList items={items}/>)
+.addWithInfo('with items and title', () => <AppSimpleList title={text('title', 'The Beatles')} items={items}/>)
+.addWithInfo('with items, title and icon', () => <AppSimpleList
+  title={select('title', ['The Beatles', 'Rolling Stones', 'Led Zeppelin'], 'The Beatles')}
+  icon={<ListItemIcon/>} items={items}/>)
+.addWithInfo('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
+                                                                        icon={<ListItemIcon/>} items={items}
+                                                                        goTo={action('goTo')}/>)
