@@ -1,20 +1,56 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {browserHistory as router} from 'react-router'
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 import {
   AppBar,
   Drawer,
-  MenuItem,
-  FontIcon,
   Divider,
 } from 'material-ui'
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from 'material-ui/List'
+
 import config from '../config'
 import menu from '../menu'
+
+
+import IconCheck from 'material-ui-icons/Check'
+import IconLockOpen from 'material-ui-icons/LockOpen'
+import IconPerson from 'material-ui-icons/Person'
+import IconDashboard from 'material-ui-icons/Dashboard'
+import IconAccountCircle from 'material-ui-icons/AccountCircle'
+import IconPowerSettingsNew from 'material-ui-icons/PowerSettingsNew'
+import IconHome from 'material-ui-icons/Home'
+import IconFace from 'material-ui-icons/Face'
+import IconMic from 'material-ui-icons/Mic'
+import IconStars from 'material-ui-icons/Stars'
+import IconLibraryBooks from 'material-ui-icons/LibraryBooks'
+import IconVolumeUp from 'material-ui-icons/VolumeUp'
+import IconTheaters from 'material-ui-icons/Theaters'
+
+const icons = {
+  check: <IconCheck/>,
+  lock_open: <IconLockOpen/>,
+  person: <IconPerson/>,
+  dashboard: <IconDashboard/>,
+  account_circle: <IconAccountCircle/>,
+  power_settings_new: <IconPowerSettingsNew/>,
+  home: <IconHome/>,
+  face: <IconFace/>,
+  mic: <IconMic/>,
+  stars: <IconStars/>,
+  library_books: <IconLibraryBooks/>,
+  volume_up: <IconVolumeUp/>,
+  theaters: <IconTheaters/>,
+}
 
 const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
 
   const matchedRoute = router.getCurrentLocation().pathname
-  const iconChecked = <FontIcon className="material-icons">check</FontIcon>
 
   const items = menu
   .filter(e => {
@@ -23,49 +59,44 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
   .map((e, i) => {
 
     if (e === null) {
-      return <Divider inset={false} key={i}/>
+      return <Divider classes={{}} inset={false} key={i}/>
     }
 
     const nestedItems = e.hasOwnProperty('children') && e.children.length > 0
       ? e.children.map((ce, ci) => {
-          return <MenuItem
-            key={ci}
-            primaryText={ce.label}
-            leftIcon={
-              <FontIcon className="material-icons">{ce.icon}</FontIcon>
-            }
-            onTouchTap={() => {
-              router.push(ce.route)
-              toggleVisibility()
-            }}
-            rightIcon={
-              matchedRoute === ce.route ? iconChecked : null
-            }
-          />
+          return <ListItem style={{width: 250}} classes={{}} key={ci} button onTouchTap={() => {
+            router.push(ce.route)
+            toggleVisibility()
+          }}>
+            <ListItemIcon classes={{}}>
+              {icons[ce.icon]}
+            </ListItemIcon>
+            <ListItemText classes={{}} primary={ce.label}/>
+            {ce.route === matchedRoute ? <ListItemIcon classes={{}}><IconCheck/></ListItemIcon> : null}
+          </ListItem>
         }
       )
       : []
 
-    return <MenuItem
-      key={i}
-      primaryText={e.label}
-      leftIcon={
-        <FontIcon className="material-icons">{e.icon}</FontIcon>
-      }
-      rightIcon={
-        matchedRoute === e.route ? iconChecked : null
-      }
-      onTouchTap={() => {
-        toggleVisibility()
-        router.push(e.route)
-      }}
-      primaryTogglesNestedList={nestedItems.length > 0}
-      nestedItems={nestedItems}
-    />
+    return <ListItem classes={{}} style={{width: 250}} key={i} button onTouchTap={() => {
+      router.push(e.route)
+      toggleVisibility()
+    }}>
+      <ListItemIcon classes={{}}>
+        {icons[e.icon]}
+      </ListItemIcon>
+
+      <ListItemText classes={{}} primary={e.label}/>
+      {e.route === matchedRoute ? <ListItemIcon classes={{}}><IconCheck/></ListItemIcon> : null}
+    </ListItem>
   })
 
-  return <Drawer docked={false} open={opened} onRequestChange={() => toggleVisibility()}>
-    <AppBar title={config.appName} showMenuIconButton={false} onTouchTap={() => toggleVisibility()}/>
+  return <Drawer classes={{}} style={{width: 250}} open={opened} onRequestClose={() => toggleVisibility()}>
+    <AppBar classes={{}} position="static" onTouchTap={() => toggleVisibility()}>
+      <Toolbar>
+        <Typography type="title" color="inherit">{config.appName}</Typography>
+      </Toolbar>
+    </AppBar>
     {items}
   </Drawer>
 }

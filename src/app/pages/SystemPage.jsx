@@ -1,5 +1,4 @@
 import React from 'react'
-import {FontIcon} from 'material-ui'
 import {grey400} from 'material-ui/styles/colors'
 
 const SystemPage = ({code, message, icon}) =>
@@ -7,13 +6,7 @@ const SystemPage = ({code, message, icon}) =>
     <h1>{code}</h1>
     <h2>{message}</h2>
     <br/>
-    <FontIcon
-      style={{
-        fontSize: '10em',
-        color: grey400,
-      }}
-      className="material-icons"
-    >{icon}</FontIcon>
+    {icon}
   </div>
 
 export default SystemPage

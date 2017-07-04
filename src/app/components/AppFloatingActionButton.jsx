@@ -1,24 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router'
-import {FloatingActionButton, FontIcon} from 'material-ui'
+import {browserHistory as routerHistory} from 'react-router'
+import Button from 'material-ui/Button'
+import IconKeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft'
 
-import './AppFloatingActionButton.css'
-
-const AppFloatingActionButton = ({icon, route}) =>
-  <FloatingActionButton
-    className="button-fixed-bottom-right"
-    containerElement={<Link to={route}/>}>
-    <FontIcon className="material-icons">{icon}</FontIcon>
-  </FloatingActionButton>
+const AppFloatingActionButton = ({icon, color, route}) =>
+  <Button fab
+          style={{
+            margin: 0,
+            zIndex: 2147483647,
+            position: 'fixed',
+            top: 'auto',
+            right: 20,
+            bottom: 20,
+            left: 'auto',
+          }}
+          color={color}
+          onTouchTap={() => routerHistory.push(route)}
+  >
+    {icon}
+  </Button>
 
 AppFloatingActionButton.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  color: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
 }
 
 AppFloatingActionButton.defaultProps = {
-  icon: 'keyboard_arrow_left',
+  icon: <IconKeyboardArrowLeft/>,
+  color: 'primary',
   route: '/',
 }
 

@@ -25,8 +25,8 @@ class GenreForm extends React.Component {
     }
   }
 
-  constructor(params) {
-    super(params)
+  constructor(props) {
+    super(props)
 
     this.state = {...this.DEFAULT_STATE, errors: {...this.DEFAULT_STATE.errors}}
   }

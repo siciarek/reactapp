@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui/svg-icons/action/theaters'
+import ListItemIcon from 'material-ui-icons/Theaters'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchVideoList} from './VideoActions'
 

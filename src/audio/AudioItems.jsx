@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 
 import {List, ListItem} from 'material-ui/List'
-import ListItemIcon from 'material-ui/svg-icons/av/volume-up'
+import ListItemIcon from 'material-ui-icons/VolumeUp'
 
 import {fetchAudioItems} from './AudioActions'
 import AppHeader from '../app/components/AppHeader'
@@ -12,8 +12,7 @@ import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 
 class AudioItems extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchAudioItems(this.props.params.id))
   }
 

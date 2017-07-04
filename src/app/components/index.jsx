@@ -1,6 +1,7 @@
 import AppDrawer from './AppDrawer'
 import AppDrawerComponent from './AppDrawerComponent'
 import AppSpinner from './AppSpinner'
+import AppSpinnerComponent from './AppSpinnerComponent'
 import AppHeader from './AppHeader'
 import AppSimpleList from './AppSimpleList'
 import AppSimpleAutoloadingList from './AppSimpleAutoloadingList'
@@ -13,6 +14,7 @@ export {
   AppDrawer,
   AppDrawerComponent,
   AppSpinner,
+  AppSpinnerComponent,
   AppHeader,
   AppSimpleList,
   AppSimpleAutoloadingList,

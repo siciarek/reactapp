@@ -5,8 +5,7 @@ import {fetchTestItem} from './TestActions'
 
 class TestItem extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchTestItem(this.props.params.id))
   }
 
@@ -16,7 +15,7 @@ class TestItem extends React.Component {
 
     return (
       <div>
-        <AppHeader title={description} />
+        <AppHeader title={description}/>
         <pre className="text">{info}</pre>
         <AppFloatingActionButton route="/tests"/>
         <AppSpinner/>

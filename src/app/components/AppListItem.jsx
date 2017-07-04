@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Avatar, IconButton, ListItem} from 'material-ui'
-import ShowIcon from 'material-ui/svg-icons/action/visibility'
-import EditIcon from 'material-ui/svg-icons/editor/mode-edit'
-import RemoveIcon from 'material-ui/svg-icons/action/delete'
+import ShowIcon from 'material-ui-icons/Visibility'
+import EditIcon from 'material-ui-icons/ModeEdit'
+import RemoveIcon from 'material-ui-icons/Delete'
 
 import './AppListItem.css'
 

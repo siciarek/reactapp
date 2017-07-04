@@ -27,9 +27,8 @@ class SongEditorForm extends React.Component {
     this.setState({open: false})
   }
 
-  constructor(props, context) {
-    super(props, context)
-
+  constructor(props) {
+    super(props)
     this.state = {...this.initialState, errors: {...this.initialState.errors}}
   }
 

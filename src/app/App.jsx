@@ -2,12 +2,18 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {Helmet} from 'react-helmet'
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import {AppBar, FlatButton, FontIcon, Snackbar} from 'material-ui'
+
+import {MuiThemeProvider} from 'material-ui/styles';
+
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+
+import {Snackbar} from 'material-ui'
 import {teal200, teal900, red200, red900} from 'material-ui/styles/colors'
-import {typography} from 'material-ui/styles'
 import {AppDrawer} from './components'
 import config from './config'
 import {
@@ -31,11 +37,11 @@ class App extends React.Component {
 
     const errorContentStyle = {
       color: red900,
-      fontWeight: typography.fontWeightNormal
+      fontWeight: Typography.fontWeightNormal
     }
     const notificationContentStyle = {
       color: teal900,
-      fontWeight: typography.fontWeightNormal
+      fontWeight: Typography.fontWeightNormal
     }
 
     // TODO: Move to separate component
@@ -60,7 +66,7 @@ class App extends React.Component {
       /> : null)
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(baseTheme)}>
+      <MuiThemeProvider>
 
         <div>
           <Helmet>
@@ -71,23 +77,23 @@ class App extends React.Component {
 
           {notification}
 
-          <AppBar
-            title={config.appName}
-            onLeftIconButtonTouchTap={() => this.props.dispatch({type: APP_TOGGLE_MENU})}
-            iconElementRight={
-              this.props.authenticated === true
-                ? <FlatButton
-                label="Log Out"
-                labelPosition="before"
-                icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-                onTouchTap={() => this.props.router.push('/logout')}/>
-                : <FlatButton
-                label="Log In"
-                labelPosition="before"
-                icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-                onTouchTap={() => this.props.router.push('/login')}/>
-            }
-          />
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton color="contrast" aria-label="Menu" onTouchTap={() => this.props.dispatch({type: APP_TOGGLE_MENU})}>
+                <MenuIcon />
+              </IconButton>
+              <Typography type="title" color="inherit">{config.appName}</Typography>
+              {/*{*/}
+                {/*this.props.authenticated === true*/}
+                  {/*? <FlatButton*/}
+                  {/*icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}*/}
+                  {/*onTouchTap={() => this.props.router.push('/logout')}>Log Out</FlatButton>*/}
+                  {/*: <FlatButton*/}
+                  {/*icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}*/}
+                  {/*onTouchTap={() => this.props.router.push('/login')}>Log In</FlatButton>*/}
+              {/*}*/}
+            </Toolbar>
+          </AppBar>
 
           {this.props.children}
 

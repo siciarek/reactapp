@@ -28,9 +28,8 @@ class ProfileForm extends React.Component {
     }
   }
 
-  constructor(props, context) {
-    super(props, context)
-
+  constructor(props) {
+    super(props)
     this.state = {...this.initialState, errors: {...this.initialState.errors}}
   }
 

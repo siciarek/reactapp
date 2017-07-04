@@ -6,8 +6,8 @@ import config from '../../app/config'
 
 class AppGenderSelectField extends React.Component {
 
-  constructor(params) {
-    super(params)
+  constructor(props) {
+    super(props)
     this.state = {
       items: []
     }

@@ -7,7 +7,6 @@ export default class AppList extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
       removalInProgress: false,
       selectedItem: 0,

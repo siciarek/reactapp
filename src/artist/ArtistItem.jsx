@@ -5,21 +5,19 @@ import {fetchArtistItem} from './ArtistActions'
 
 class ArtistItem extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchArtistItem(this.props.params.id))
   }
 
   render() {
 
-    return (
-      <div>
-        <AppHeader title={this.props.current.description} />
-        <pre className="text">{this.props.current.info}</pre>
-        <AppFloatingActionButton route="/artists"/>
-        <AppSpinner/>
-      </div>
-    )
+    const {description, info} = this.props.current
+    return <div>
+      <AppHeader title={description}/>
+      <pre className="text">{info}</pre>
+      <AppFloatingActionButton route="/artists"/>
+      <AppSpinner/>
+    </div>
   }
 }
 

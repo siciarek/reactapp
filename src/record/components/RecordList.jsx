@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router'
 import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui/svg-icons/av/fiber-manual-record'
+import ListItemIcon from 'material-ui-icons/FiberManualRecord'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
 
 class RecordList extends React.Component {

@@ -1,14 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui/svg-icons/av/video-label'
+import ListItemIcon from 'material-ui-icons/VideoLabel'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 import {fetchVideoItem} from './VideoActions'
 
 class VideoItem extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchVideoItem(this.props.params.id))
   }
 

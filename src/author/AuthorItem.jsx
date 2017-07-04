@@ -5,21 +5,19 @@ import {fetchAuthorItem} from './AuthorActions'
 
 class AuthorItem extends React.Component {
 
-  constructor(props) {
-    super(props)
+  componentWillMount() {
     this.props.dispatch(fetchAuthorItem(this.props.params.id))
   }
 
   render() {
+    const {description, info} = this.props.current
 
-    return (
-      <div>
-        <AppHeader title={this.props.current.description} />
-        <pre className="text">{this.props.current.info}</pre>
-        <AppFloatingActionButton route="/authors"/>
-        <AppSpinner/>
-      </div>
-    )
+    return <div>
+      <AppHeader title={description}/>
+      <AppFloatingActionButton route="/authors"/>
+      <AppSpinner/>
+      <pre className="text">{info}</pre>
+    </div>
   }
 }
 

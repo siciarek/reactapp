@@ -1,21 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ListItemIcon from 'material-ui/svg-icons/av/fiber-manual-record'
-import {List, ListItem} from 'material-ui'
+import DefaultListItemIcon from 'material-ui-icons/FiberManualRecord'
+import List, {ListItem, ListItemText, ListItemIcon} from 'material-ui/List'
 import {AppHeader, AppSpinner} from '../components'
 
 const AppSimpleList = ({title, icon, items, goTo}) => {
 
   return <div>
     <AppHeader title={title}/>
-    <List>
+    <List classes={{}}>
       {
-        items.map(item => <ListItem
-            key={item.id}
-            primaryText={item.description}
-            onTouchTap={() => goTo(item.id)}
-            leftIcon={icon}
-          />
+        items.map(item => <ListItem classes={{}} key={item.id} onTouchTap={() => goTo(item.id)}>
+            <ListItemIcon classes={{}}>{icon}</ListItemIcon>
+            <ListItemText classes={{}} primary={item.description}/>
+          </ListItem>
         )
       }
     </List>
@@ -31,7 +29,7 @@ AppSimpleList.propTypes = {
 
 AppSimpleList.defaultProps = {
   title: 'List',
-  icon: <ListItemIcon/>,
+  icon: <DefaultListItemIcon/>,
   items: [],
   goTo: id => console.log('Not implemented yet.'),
 }
