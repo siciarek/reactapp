@@ -1,5 +1,5 @@
 import React from 'react'
-import {List} from 'material-ui'
+import List from 'material-ui/List'
 import config from '../config'
 import {AppHeader, AppListItem} from '../components'
 

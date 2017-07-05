@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import{
   TextField,
-  RaisedButton,
+  Button,
   Slider,
   Checkbox,
   DatePicker,
@@ -186,26 +186,15 @@ class ProfileForm extends React.Component {
           <br/>
           <br/>
 
-          <RaisedButton
-            primary={true}
-            label="Save"
-            labelPosition="before"
-            onTouchTap={this.submit}
-          />
+          <Button classes={{}} raised onTouchTap={this.submit}>Save</Button>
         </form>
 
 
-        <Dialog
+        <Dialog classes={{}}
           title="Confirmation"
           actions={[
-            <FlatButton
-              label="No"
-              onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-              label="Yes"
-              onTouchTap={() => this.props.remove(this.props.profile.id)}
-            />,
+            <Button classes={{}} onTouchTap={() => this.handleClose()}>No</Button>,
+            <Button classes={{}} onTouchTap={() => this.props.remove(this.props.profile.id)}>Yes</Button>,
           ]}
           modal={true}
           open={this.state.open}

@@ -7,8 +7,8 @@ class AppSpinnerComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      width: 0,
-      height: 0
+      width: window.innerWidth,
+      height: window.innerHeight,
     }
   }
 
@@ -20,7 +20,6 @@ class AppSpinnerComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
   }
 
@@ -31,29 +30,20 @@ class AppSpinnerComponent extends React.Component {
   render() {
 
     const {width, height} = this.state
-
-    let props = {...this.props}
-
-    Object.keys(AppSpinnerComponent.propTypes).map((key) => {
-      return delete(props[key])
-    })
-
-    const {size} = props
-
+    const {show, size} = this.props
     const style = {
-      display: this.props.show === true ? 'block' : 'none',
       position: 'absolute',
+      display: show === true ? 'block' : 'none',
       left: (width - size) / 2,
       top: (height - size) / 2,
     }
 
-    return <div style={style}>
-      <CircularProgress classes={{}} {...props}/>
-    </div>
+    return <div style={style}><CircularProgress classes={{}} size={size}/></div>
   }
 }
 
 AppSpinnerComponent.propTypes = {
+  size: PropTypes.number.isRequired,
   show: PropTypes.bool.isRequired,
 }
 

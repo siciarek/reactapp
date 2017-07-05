@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {RaisedButton, FontIcon} from 'material-ui'
+import Button from 'material-ui/Button'
+import LoginIcon from 'material-ui-icons/PowerSettingsNew'
 import {AppHeader} from '../app/components'
 import {
   APP_UNSET_TARGET_ROUTE
@@ -53,13 +54,8 @@ class Dashboard extends React.Component {
 
         <br/>
 
-        <RaisedButton
-          primary={true}
-          label="Profile"
-          labelPosition="before"
-          icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-          onTouchTap={() => this.props.router.push('/profile')}
-        />
+        <Button raised onTouchTap={() => this.props.router.push('/profile')}
+        ><LoginIcon style={{marginRight: 12}}/> Profile</Button>
 
       </div>
     )

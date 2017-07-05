@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {TextField, RaisedButton, FontIcon} from 'material-ui'
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
+import LoginIcon from 'material-ui-icons/PowerSettingsNew'
 import {authenticateUser} from './UserActions'
 import {AppHeader, AppSpinner} from '../app/components'
 
@@ -61,13 +63,9 @@ class Login extends React.Component {
           <br/>
           <br/>
 
-          <RaisedButton
-            primary={true}
-            label="Log In"
-            labelPosition="before"
-            icon={<FontIcon className="material-icons">power_settings_new</FontIcon>}
-            onTouchTap={this.submit}
-          />
+          <Button raised onTouchTap={this.submit}>
+            <LoginIcon style={{marginRight: 12}}/>Log In
+          </Button>
 
         </form>
         <AppSpinner/>

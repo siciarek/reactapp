@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Avatar, IconButton, ListItem} from 'material-ui'
+import IconButton from 'material-ui/IconButton'
+import Avatar from 'material-ui/Avatar'
+import {ListItem} from 'material-ui/List'
 import ShowIcon from 'material-ui-icons/Visibility'
 import EditIcon from 'material-ui-icons/ModeEdit'
 import RemoveIcon from 'material-ui-icons/Delete'
@@ -32,11 +34,11 @@ class AppListItem extends React.Component {
       remove: (<RemoveIcon/>),
     }
 
+    const {editable, toolbarVisible, primaryText} = this.props
+
+    const actions = editable === true && toolbarVisible === true ? {...this.props.actions} : {}
+
     let props = {...this.props}
-
-    let {editable, toolbarVisible, primaryText} = props
-
-    let actions = editable === true && toolbarVisible === true ? {...props.actions} : {}
 
     // Remove props unsupported by ListItem
     Object.keys(AppListItem.propTypes).map((key) => {

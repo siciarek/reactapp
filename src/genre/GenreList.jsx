@@ -1,6 +1,7 @@
+import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchListGenre} from './GenreActions'
+import {fetchListGenre as loadList} from './GenreActions'
 import {GenreListComponent} from './components'
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    loadList: bindActionCreators(fetchListGenre, dispatch)
+    loadList: bindActionCreators(loadList, dispatch)
   }
 }
 

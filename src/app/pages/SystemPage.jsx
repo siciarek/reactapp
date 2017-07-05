@@ -1,5 +1,4 @@
 import React from 'react'
-import {grey400} from 'material-ui/styles/colors'
 
 const SystemPage = ({code, message, icon}) =>
   <div className="system-page">
