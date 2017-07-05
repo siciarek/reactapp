@@ -14,12 +14,16 @@ import {
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
+import {Provider} from 'react-redux'
+import store from '../app/store'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-const MuiDecorator = (storyFn) => <MuiThemeProvider>
-  {storyFn()}
-</MuiThemeProvider>
-
+const MuiDecorator = (storyFn) =>
+  <Provider store={store}>
+    <MuiThemeProvider>
+      {storyFn()}
+    </MuiThemeProvider>
+  </Provider>
 
 import '../app/App.css'
 import '../app/components/AppHeader.css'
@@ -30,6 +34,13 @@ import {
   AppFloatingActionButton,
   AppSpinnerComponent,
 } from '../app/components'
+
+import {
+  SystemPage,
+  PageNotFound,
+  AccessForbiden,
+  Blank,
+} from '../app/pages'
 
 
 import IconAdd from 'material-ui-icons/Add'
@@ -47,6 +58,7 @@ import IconLibraryBooks from 'material-ui-icons/LibraryBooks'
 import IconVolumeUp from 'material-ui-icons/VolumeUp'
 import IconTheaters from 'material-ui-icons/Theaters'
 import IconKeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft'
+import IconErrorOutline from 'material-ui-icons/ErrorOutline'
 
 const icons = {
   add: <IconAdd/>,
@@ -64,6 +76,7 @@ const icons = {
   library_books: <IconLibraryBooks/>,
   volume_up: <IconVolumeUp/>,
   theaters: <IconTheaters/>,
+  error_outline: <IconErrorOutline/>
 }
 
 const items = [
@@ -87,6 +100,16 @@ const items = [
 
 addDecorator(withKnobs)
 addDecorator(MuiDecorator)
+
+storiesOf('System pages', module)
+.addWithInfo('SystemPage', 'System pages basic class.', () => <SystemPage
+    code={number('code', 200)}
+    message={text('message', 'OK')}
+    icon={select('icon', ['thumb_up', 'error_outline', 'pan_tool'], 'thumb_up')}
+  />)
+.addWithInfo('Blank', 'Blank page, sometimes is helpful.', () => <Blank/>)
+.addWithInfo('404 Page not found', () => <PageNotFound/>)
+.addWithInfo('403 Access forbiden.', () => <AccessForbiden/>)
 
 storiesOf('AppSpinnerComponent', module)
 .addWithInfo('with no params (hidden)', () => <AppSpinnerComponent/>)

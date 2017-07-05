@@ -8,7 +8,7 @@ const AppSimpleList = ({title, icon, items, goTo}) => {
 
   return <div>
     <AppHeader title={title}/>
-    {/*<AppSpinner/>*/}
+    <AppSpinner/>
     <List classes={{}}>
       {
         items.map(item => <ListItem button classes={{}} key={item.id} onTouchTap={() => goTo(item.id)}>
