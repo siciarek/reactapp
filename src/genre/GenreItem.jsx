@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {RaisedButton, FontIcon} from 'material-ui'
+import {Button, FontIcon} from 'material-ui'
 import {fetchItemGenre, removeGenre} from './GenreActions'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 
@@ -49,22 +49,20 @@ class GenreItem extends React.Component {
         <br/>
         <br/>
 
-        <RaisedButton
-          primary={true}
-          label="Edit"
-          labelPosition="before"
-          icon={<FontIcon className="material-icons">edit</FontIcon>}
+        <Button raised
+          color="primary"
           onTouchTap={() => this.props.router.push(`/genre/${this.props.params.id}/edit`)}
-        />
+        >
+          Edit
+        </Button>
 
-        <RaisedButton
-          secondary={true}
-          style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
-          label="Remove"
-          labelPosition="before"
-          icon={<FontIcon className="material-icons">remove_circle_outline</FontIcon>}
+        <Button raised
+          color="accent"
           onTouchTap={() => this.props.dispatch(removeGenre(this.props.params.id))}
-        />
+          style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+        >
+          Remove
+        </Button>
 
         <AppFloatingActionButton route="/genre/list"/>
       </div>

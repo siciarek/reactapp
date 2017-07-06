@@ -22,7 +22,7 @@ class GenreListComponent extends React.Component {
       <List>
         {
           items.map(({id, name, category}) =>
-            <ListItem key={id} classes={{}} onTouchTap={() => routerHistory.push(`/genre/${id}/show`)}>
+            <ListItem button key={id} classes={{}} onTouchTap={() => routerHistory.push(`/genre/${id}/show`)}>
               <ListItemIcon classes={{}}><IconStars/></ListItemIcon>
               <ListItemText classes={{}} primary={name} secondary={`${category.name}`}/>
             </ListItem>)

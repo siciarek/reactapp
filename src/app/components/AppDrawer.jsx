@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import {APP_TOGGLE_MENU} from '../AppActionTypes'
 import AppDrawerComponent from './AppDrawerComponent'
+import {APP_TOGGLE_MENU} from '../AppActionTypes'
 
 const mapStateToProps = (state) => {
   return {
