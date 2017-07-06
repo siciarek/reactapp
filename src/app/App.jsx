@@ -31,7 +31,7 @@ class App extends React.Component {
 
     // TODO: Move to separate component
 
-    const errogrContentStyle = {
+    const errorContentStyle = {
       color: red[900],
       fontWeight: Typography.fontWeightNormal
     }

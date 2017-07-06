@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Button, FontIcon} from 'material-ui'
+import {Button} from 'material-ui'
 import {fetchItemGenre, removeGenre} from './GenreActions'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
 

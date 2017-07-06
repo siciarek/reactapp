@@ -7,7 +7,6 @@ import{
   Slider,
   Checkbox,
   DatePicker,
-  FlatButton,
   Dialog,
 } from 'material-ui'
 import {AppGenderSelectField} from '../app/components'
