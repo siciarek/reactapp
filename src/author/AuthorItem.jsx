@@ -1,28 +1,19 @@
-import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
-import {fetchAuthorItem} from './AuthorActions'
+import {fetchAuthorItem as loadContent} from './AuthorActions'
+import {AppSimpleAutoloadingItem} from '../app/components'
 
-class AuthorItem extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchAuthorItem(this.props.params.id))
-  }
-
-  render() {
-    const {description, info} = this.props.current
-
-    return <div>
-      <AppHeader title={description}/>
-      <AppFloatingActionButton route="/authors"/>
-      <AppSpinner/>
-      <pre className="text">{info}</pre>
-    </div>
+const mapStateToProps = (state, ownProps) => {
+  return {
+    returnRoute: '/authors',
+    content: state.author.current,
   }
 }
 
-export default connect((store) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    current: store.author.current,
+    loadContent: bindActionCreators(() => loadContent(ownProps.params.id), dispatch)
   }
-})(AuthorItem)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleAutoloadingItem)

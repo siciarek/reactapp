@@ -1,9 +1,10 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {browserHistory as router} from 'react-router'
 import ListItemIcon from 'material-ui-icons/Face'
 import {fetchAuthorList as loadList} from './AuthorActions'
-import {AppSimpleList} from '../app/components'
+import {AppSimpleAutoloadingList} from '../app/components'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,11 +15,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  dispatch(loadList())
 
+const mapDispatchToProps = (dispatch) => {
   return {
+    loadList: bindActionCreators(loadList, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleList)
+export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleAutoloadingList)
