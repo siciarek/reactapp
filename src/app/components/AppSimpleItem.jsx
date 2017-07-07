@@ -4,7 +4,11 @@ import {AppFloatingActionButton, AppHeader, AppSpinner} from '../../app/componen
 const AppSimpleItem = ({description, info, returnRoute}) => {
 
   return <div>
-    {returnRoute === undefined ? null : <AppFloatingActionButton route={returnRoute}/>}
+    {
+      (returnRoute === undefined || returnRoute === null || returnRoute.trim().length === 0)
+        ? null
+        : <AppFloatingActionButton route={returnRoute}/>
+    }
     <AppSpinner/>
     <AppHeader title={description}/>
     <pre className='text'>{info}</pre>

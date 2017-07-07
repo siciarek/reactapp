@@ -31,6 +31,7 @@ import {
   AppHeader,
   AppDrawerComponent,
   AppSimpleList,
+  AppSimpleItem,
   AppFloatingActionButton,
   AppSpinnerComponent,
 } from '../app/components'
@@ -101,12 +102,13 @@ const items = [
 addDecorator(withKnobs)
 addDecorator(MuiDecorator)
 
+
 storiesOf('System pages', module)
 .addWithInfo('SystemPage', 'System pages basic class.', () => <SystemPage
-    code={number('code', 200)}
-    message={text('message', 'OK')}
-    icon={select('icon', ['thumb_up', 'error_outline', 'pan_tool'], 'thumb_up')}
-  />)
+  code={number('code', 200)}
+  message={text('message', 'OK')}
+  icon={select('icon', ['thumb_up', 'error_outline', 'pan_tool'], 'thumb_up')}
+/>)
 .addWithInfo('Blank', 'Blank page, sometimes is helpful.', () => <Blank/>)
 .addWithInfo('404 Page not found', () => <PageNotFound/>)
 .addWithInfo('403 Access forbiden.', () => <AccessForbiden/>)
@@ -164,3 +166,10 @@ storiesOf('AppSimpleList', module)
 .addWithInfo('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
                                                                         icon={icons.stars} items={items}
                                                                         goTo={action('goTo')}/>)
+storiesOf('AppSimpleItem', module)
+.addWithInfo('with no params', () => <AppSimpleItem/>)
+.addWithInfo('with description, info and returnRoute', () => <AppSimpleItem
+  description={text('description', 'Lady Gaga')}
+  info={text('info', 'Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter, and actress. At the beginning of her career, Gaga became known for her unconventionality and provocative work. A popular contemporary recording artist, she is noted for constantly experimenting with new musical ideas and images.')}
+  returnRoute={select('route', [null, '/artists'], null)}
+/>)
