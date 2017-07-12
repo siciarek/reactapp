@@ -6,7 +6,7 @@ import {Helmet} from 'react-helmet'
 import Typography from 'material-ui/Typography';
 import Snackbar from 'material-ui/Snackbar'
 import {MuiThemeProvider} from 'material-ui/styles';
-import {teal, red} from 'material-ui/styles/colors'
+import {teal, red} from 'material-ui/colors'
 import config from './config'
 import {
   APP_TOGGLE_MENU,
@@ -39,6 +39,7 @@ class App extends React.Component {
       color: teal[900],
       fontWeight: Typography.fontWeightNormal
     }
+
 
     const notificationComponent = this.props.error
       ? <Snackbar classes={{}}

@@ -4,6 +4,7 @@ import {browserHistory as router} from 'react-router'
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import {
+  List,
   AppBar,
   Drawer,
   Divider,
@@ -78,16 +79,22 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
       )
       : []
 
-    return <ListItem classes={{}} style={{width: 250}} key={i} button onTouchTap={() => {
-      router.push(e.route)
-      toggleVisibility()
-    }}>
+    return <ListItem button classes={{}}
+                     style={{width: 250}}
+                     key={i}
+                     onTouchTap={() => {
+                       router.push(e.route)
+                       toggleVisibility()
+                     }}>
+
       <ListItemIcon classes={{}}>
         {icons[e.icon]}
       </ListItemIcon>
 
       <ListItemText classes={{}} primary={e.label}/>
+
       {e.route === matchedRoute ? <ListItemIcon classes={{}}><IconCheck/></ListItemIcon> : null}
+
     </ListItem>
   })
 

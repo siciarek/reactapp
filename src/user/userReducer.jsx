@@ -69,7 +69,7 @@ export default (state = USER_DEFAULT_STATE, action) => {
     case USER_AUTH_CHECK_FAILURE:
       return {
         ...state,
-        error: '',
+        error: action.payload,
         authenticated: false
       }
     case USER_AUTH_CHECK_SUCCESS:

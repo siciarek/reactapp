@@ -57,9 +57,5 @@ class AppGenderSelectField extends React.Component {
   }
 }
 
-AppGenderSelectField.defaultProps = {
-  floatingLabelText: 'Gender',
-}
-
 export default AppGenderSelectField
 

@@ -39,7 +39,7 @@ export function checkIfIsAuthenticated() {
 
 export function authenticateUser(data) {
 
-  return (dispatch) =>  {
+  return (dispatch) => {
 
     dispatch({type: USER_AUTH})
 
@@ -54,17 +54,22 @@ export function authenticateUser(data) {
         routerHistory.replace('/dashboard')
       }
       else {
-        dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response})
+        console.log(response.status)
+        // dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response})
+        // routerHistory.replace('/login')
       }
     })
     .catch((error) => {
       dispatch({type: USER_AUTH_ERROR, payload: error})
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        routerHistory.replace('/login')
+      }
     })
   }
 }
 
 export function unauthenticateUser() {
-  return (dispatch) =>  {
+  return (dispatch) => {
     AppStash.remove('token')
     dispatch({type: USER_UNAUTH_FULLFILLED})
     routerHistory.replace('/')
@@ -73,7 +78,7 @@ export function unauthenticateUser() {
 
 export function fetchUserProfile() {
 
-  return (dispatch) =>  {
+  return (dispatch) => {
 
     dispatch({type: USER_PROFILE_FETCH})
 
@@ -98,14 +103,14 @@ export function fetchUserProfile() {
 }
 
 export function updateUser(data) {
-  return (dispatch) =>  {
+  return (dispatch) => {
     dispatch({type: USER_UPDATE, payload: data})
   }
 }
 
 export function saveUser(data) {
 
-  return (dispatch) =>  {
+  return (dispatch) => {
 
     dispatch({type: USER_SAVE})
 
