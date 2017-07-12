@@ -75,6 +75,7 @@ import {
   USER_DASHBOARD_FETCH_FULLFILLED,
   USER_DASHBOARD_FETCH_REJECTED,
   USER_AUTH,
+  USER_AUTH_ERROR,
   USER_AUTH_FULLFILLED,
   USER_AUTH_REJECTED,
   USER_UNAUTH,
@@ -97,7 +98,8 @@ export function* stopTheSpinner() {
 }
 
 export function* showError(action) {
-  yield put({type: APP_ERROR_OCCURRED, payload: action.payload.response})
+  const payload = action.payload.hasOwnProperty('response') ? action.payload.response : action.payload
+  yield put({type: APP_ERROR_OCCURRED, payload: payload})
 }
 
 export function* showNotification(action) {
@@ -111,6 +113,7 @@ export function* hideError() {
 export function* watchErrors() {
 
   yield takeEvery([
+    USER_AUTH_ERROR,
     USER_DASHBOARD_FETCH_REJECTED,
     USER_PROFILE_FETCH_REJECTED,
     GENRE_ITEM_ADD_REJECTED,

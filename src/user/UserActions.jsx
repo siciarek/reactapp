@@ -54,16 +54,12 @@ export function authenticateUser(data) {
         routerHistory.replace('/dashboard')
       }
       else {
-        console.log(response.status)
-        // dispatch({type: USER_AUTH_CHECK_FAILURE, payload: response})
-        // routerHistory.replace('/login')
+        const error = {data: response}
+        dispatch({type: USER_AUTH_ERROR, payload: error})
       }
     })
     .catch((error) => {
       dispatch({type: USER_AUTH_ERROR, payload: error})
-      if (error.hasOwnProperty('response') && error.response.status === 401) {
-        routerHistory.replace('/login')
-      }
     })
   }
 }

@@ -29,6 +29,10 @@ class App extends React.Component {
 
     const {children, dispatch, error, notification, toggleMenu, authenticated} = this.props
 
+    if(error !== undefined && error !== null && error.hasOwnProperty('data')) {
+      console.log([error.data.code, error.data.message]);
+    }
+
     // TODO: Move to separate component
 
     const errorContentStyle = {
@@ -41,12 +45,12 @@ class App extends React.Component {
     }
 
 
-    const notificationComponent = this.props.error
+    const notificationComponent = error !== undefined &&  error !== null && error.hasOwnProperty('data')
       ? <Snackbar classes={{}}
                   bodyStyle={{backgroundColor: red[200]}}
                   contentStyle={errorContentStyle}
                   open={true}
-                  message={`${this.error.data.code} ${error.data.message}`}
+                  message={`${error.data.code} ${error.data.message}`}
                   autoHideDuration={config.notificationTimeout * 1000}
                   onActionTouchTap={() => dispatch({type: APP_ERROR_HIDE})}
                   onRequestClose={() => dispatch({type: APP_ERROR_HIDE})}
