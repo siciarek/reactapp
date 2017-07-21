@@ -36,13 +36,14 @@ import {
   AppSpinnerComponent,
 } from '../app/components'
 
+import ConfirmationDialog from '../app/components/dialogs/Confirmation'
+
 import {
   SystemPage,
   PageNotFound,
   AccessForbiden,
   Blank,
 } from '../app/pages'
-
 
 import IconAdd from 'material-ui-icons/Add'
 import IconCheck from 'material-ui-icons/Check'
@@ -102,6 +103,31 @@ const items = [
 addDecorator(withKnobs)
 addDecorator(MuiDecorator)
 
+
+storiesOf('Dialogs', module)
+.addWithInfo('Confirmation - no params', () => <ConfirmationDialog/>)
+.addWithInfo('Confirmation - default params no actions handling', () => {
+    const opened = boolean('opened', true)
+
+    return <ConfirmationDialog
+      open={opened}
+      title={text('title', ConfirmationDialog.defaultProps.title)}
+      message={text('message', ConfirmationDialog.defaultProps.message)}
+    />
+  }
+)
+.addWithInfo('Confirmation - default params, actions handling', () => {
+    const opened = boolean('opened', true)
+
+    return <ConfirmationDialog
+      open={opened}
+      title={text('title', ConfirmationDialog.defaultProps.title)}
+      message={text('message', ConfirmationDialog.defaultProps.message)}
+      actionNo={action('actionNo')}
+      actionYes={action('actionYes')}
+    />
+  }
+)
 
 storiesOf('System pages', module)
 .addWithInfo('SystemPage', 'System pages basic class.', () => <SystemPage

@@ -6,16 +6,13 @@ import{
   Button,
   Slider,
   LabelCheckbox,
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  DialogActions,
 } from 'material-ui'
 
 // import DatePicker from 'material-ui/DatePicker'
 import {AppGenderSelectField} from '../../app/components/index'
 import {updateUser, saveUser} from '../UserActions'
+
+import ConfirmationDialog from '../../app/components/dialogs/Confirmation'
 
 class ProfileForm extends React.Component {
 
@@ -44,16 +41,6 @@ class ProfileForm extends React.Component {
   saveEntity = () => {
     this.props.dispatch(saveUser(this.props.current))
   }
-
-
-  handleOpen = () => {
-    this.setState({open: true})
-  }
-
-  handleClose = () => {
-    this.setState({open: false})
-  }
-
 
   updateDateValue = (event, value) => {
     const dateOfBirth = moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD')
@@ -177,25 +164,14 @@ class ProfileForm extends React.Component {
         <br/>
         <br/>
 
-        <Button classes={{}} raised color="accent" onTouchTap={() => this.handleOpen()}>Remove</Button>
+        <Button classes={{}} raised color="accent" onTouchTap={() => this.setState({open: true})}>Remove</Button>
         <Button classes={{}} raised onTouchTap={this.submit}>Save</Button>
       </form>
 
-
-      <Dialog classes={{}} open={this.state.open} onEscapeKeyUp={() => this.handleClose()}>
-        <DialogTitle classes={{}}>Confirmation</DialogTitle>
-        <DialogContent classes={{}}>
-          <DialogContentText classes={{}}>
-            Are you sure you want to remove it?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions classes={{}}>
-          <Button classes={{}} onTouchTap={() => this.handleClose()}>NO</Button>
-          <Button classes={{}}
-                  onTouchTap={() => alert(`Remove: ${this.props.current.id}, Not implemented yet.`)}>Yes</Button>
-        </DialogActions>
-      </Dialog>
-
+      <ConfirmationDialog open={this.state.open}
+                          message={'Are you sure you want to remove it?'}
+                          actionYes={() => alert(`Remove: ${this.props.current.id}, Not implemented yet.`)}
+                          actionNo={() => this.setState({open: false})}/>
     </div>
   }
 }
