@@ -15,13 +15,13 @@ import {
   USER_AUTH,
   USER_AUTH_FULLFILLED,
   USER_UNAUTH_FULLFILLED,
-  USER_AUTH_ERROR,
+  USER_AUTH_REJECTED,
   USER_AUTH_CHECK_SUCCESS,
   USER_AUTH_CHECK_FAILURE,
 } from './User'
-
 import {
   APP_SET_TARGET_ROUTE,
+  APP_UNSET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
 
 export function checkIfIsAuthenticated() {
@@ -55,11 +55,11 @@ export function authenticateUser(data) {
       }
       else {
         const error = {data: response}
-        dispatch({type: USER_AUTH_ERROR, payload: error})
+        dispatch({type: USER_AUTH_REJECTED, payload: error})
       }
     })
     .catch((error) => {
-      dispatch({type: USER_AUTH_ERROR, payload: error})
+      dispatch({type: USER_AUTH_REJECTED, payload: error})
     })
   }
 }
@@ -69,6 +69,40 @@ export function unauthenticateUser() {
     AppStash.remove('token')
     dispatch({type: USER_UNAUTH_FULLFILLED})
     routerHistory.replace('/')
+  }
+}
+
+export function fetchUserDashboardData(props) {
+
+  return (dispatch) => {
+
+    if (typeof props.redirectTo !== 'undefined' && props.redirectTo !== null) {
+      const route = props.redirectTo
+      dispatch({type: APP_UNSET_TARGET_ROUTE})
+      routerHistory.replace(route)
+      return true
+    }
+
+    // TODO: move to separate function
+    dispatch({type: USER_PROFILE_FETCH})
+
+    axios
+    .get(config.userProfileUrl, getAuthCheckConfig())
+    .then((response) => {
+
+      dispatch({
+        type: USER_PROFILE_FETCH_FULLFILLED,
+        payload: response.data,
+      })
+    })
+    .catch((error) => {
+      dispatch({type: USER_PROFILE_FETCH_REJECTED, payload: error})
+
+      if (error.hasOwnProperty('response') && error.response.status === 401) {
+        dispatch({type: APP_SET_TARGET_ROUTE, payload: '/profile'})
+        routerHistory.replace('/login')
+      }
+    })
   }
 }
 

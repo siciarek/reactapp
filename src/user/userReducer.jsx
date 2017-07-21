@@ -5,10 +5,11 @@ import {
   USER_SAVE_FULLFILLED,
   USER_SAVE_REJECTED,
   USER_AUTH,
-  USER_UNAUTH,
   USER_AUTH_FULLFILLED,
+  USER_AUTH_REJECTED,
+  USER_UNAUTH,
   USER_UNAUTH_FULLFILLED,
-  USER_AUTH_ERROR,
+  USER_UNAUTH_REJECTED,
   USER_AUTH_CHECK,
   USER_AUTH_CHECK_SUCCESS,
   USER_AUTH_CHECK_FAILURE,
@@ -36,6 +37,11 @@ export default (state = USER_DEFAULT_STATE, action) => {
         message: 'User authentication succeeed.',
         authenticated: true
       }
+    case USER_AUTH_REJECTED:
+      return {
+        ...state,
+        error: action.payload
+      }
     case USER_UNAUTH:
       return {
         ...state,
@@ -43,7 +49,7 @@ export default (state = USER_DEFAULT_STATE, action) => {
       }
     case USER_UNAUTH_FULLFILLED:
       return {...USER_DEFAULT_STATE}
-    case USER_AUTH_ERROR:
+    case USER_UNAUTH_REJECTED:
       return {
         ...state,
         error: action.payload

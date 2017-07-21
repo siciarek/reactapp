@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {AppHeader,AppSpinner} from '../app/components'
 import {fetchUserProfile} from './UserActions'
-import ProfileForm from './ProfileForm'
+import ProfileForm from './components/ProfileForm'
 
 class Profile extends React.Component {
 

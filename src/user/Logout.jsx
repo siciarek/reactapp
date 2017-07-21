@@ -1,19 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import {unauthenticateUser} from './UserActions'
+import LogoutComponent from './components/LogoutComponent'
 
-class Logout extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(unauthenticateUser())
-  }
-
-  render() {
-    return null
-  }
-}
-
-export default connect((store) => {
+const mapStateToProps = (state, ownProps) => {
   return {
 
   }
-})(Logout)
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    unauthenticate: bindActionCreators(unauthenticateUser, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutComponent)
