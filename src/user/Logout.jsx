@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 import {unauthenticateUser} from './UserActions'
-import LogoutComponent from './components/LogoutComponent'
+import Logout from './components/Logout'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogoutComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(Logout)

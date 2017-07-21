@@ -1,36 +1,19 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {AppHeader,AppSpinner} from '../app/components'
 import {fetchUserProfile} from './UserActions'
-import ProfileForm from './components/ProfileForm'
+import Profile from './components/Profile'
 
-class Profile extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchUserProfile())
-  }
-
-  render() {
-
-    if(this.props.current.id === null) {
-      return null
-    }
-
-    return (
-      <div>
-        <AppHeader title={`User #${this.props.current.id} profile`}/>
-        <ProfileForm
-          current={this.props.current}
-          dispatch={this.props.dispatch}
-        />
-        <AppSpinner/>
-      </div>
-    )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    current: state.user,
   }
 }
 
-export default connect((store) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    current: store.user,
+    init: bindActionCreators(fetchUserProfile, dispatch)
   }
-})(Profile)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

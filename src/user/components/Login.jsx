@@ -2,7 +2,7 @@ import React from 'react'
 import {AppHeader, AppSpinner} from '../../app/components'
 import LoginForm from './LoginForm'
 
-class LoginComponent extends React.Component {
+class Login extends React.Component {
 
   constructor(props) {
     super(props)
@@ -28,4 +28,4 @@ class LoginComponent extends React.Component {
   }
 }
 
-export default LoginComponent
+export default Login

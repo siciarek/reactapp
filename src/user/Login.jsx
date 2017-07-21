@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {authenticateUser} from './UserActions'
-import LoginComponent from './components/LoginComponent'
+import Login from './components/Login'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,9 +1,7 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {
-  fetchUserDashboardData,
-} from './UserActions'
+import {fetchUserDashboardData} from './UserActions'
 import Dashboard from './components/Dashboard'
 
 const mapStateToProps = (state, ownProps) => {

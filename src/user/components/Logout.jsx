@@ -1,6 +1,6 @@
 import React from 'react'
 
-class LogoutComponent extends React.Component {
+class Logout extends React.Component {
 
   componentWillMount() {
     this.props.unauthenticate()
@@ -11,4 +11,4 @@ class LogoutComponent extends React.Component {
   }
 }
 
-export default LogoutComponent
+export default Logout
