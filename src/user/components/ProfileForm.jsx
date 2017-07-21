@@ -65,27 +65,27 @@ class ProfileForm extends React.Component {
     this.updateEntity('level', value)
   }
 
-  remove = () => {
-    this.handleOpen()
-  }
-
-  submit = () => {
-    this.saveEntity()
-  }
-
   render() {
 
+    const {id, profileVisibleToThePublic, firstName, lastName, email, description, info} = this.props.current
 
     return <div>
 
-      <form>
+      <ConfirmationDialog open={this.state.open}
+                          message="Are you sure you want to remove it?"
+                          actionYes={() => {
+                            alert(`Remove: ${id}, Not implemented yet.`)
+                            this.setState({open: false})
+                          }}
+                          actionNo={() => this.setState({open: false})}/>
 
+      <form>
         <br/>
 
         <LabelCheckbox
           label="Profile visible to the public"
-          checked={this.props.current.profileVisibleToThePublic}
-          onClick={() => this.updateEntity('profileVisibleToThePublic', !this.props.current.profileVisibleToThePublic)}
+          checked={profileVisibleToThePublic}
+          onClick={() => this.updateEntity('profileVisibleToThePublic', !profileVisibleToThePublic)}
         />
 
         <br/>
@@ -101,7 +101,6 @@ class ProfileForm extends React.Component {
         {/*value={this.props.current.level}*/}
         {/*onChange={this.updateNumericalValue}*/}
         {/*/>*/}
-
         {/*<span>{`Level (${this.props.current.level}%)`}</span>*/}
 
         {/*<AppGenderSelectField*/}
@@ -123,7 +122,7 @@ class ProfileForm extends React.Component {
         <TextField marginForm
                    label="First name"
                    id="firstName"
-                   value={this.props.current.firstName}
+                   value={firstName}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
@@ -131,7 +130,7 @@ class ProfileForm extends React.Component {
         <TextField marginForm
                    label="Last name"
                    id="lastName"
-                   value={this.props.current.lastName}
+                   value={lastName}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
@@ -139,7 +138,7 @@ class ProfileForm extends React.Component {
         <TextField marginForm
                    label="Email"
                    id="email"
-                   value={this.props.current.email}
+                   value={email}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
@@ -147,7 +146,7 @@ class ProfileForm extends React.Component {
         <TextField marginForm
                    label="Description"
                    id="description"
-                   value={this.props.current.description ? this.props.current.description : ''}
+                   value={description ? description : ''}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
@@ -155,7 +154,8 @@ class ProfileForm extends React.Component {
         <TextField marginForm
                    label="Info"
                    id="info"
-                   value={this.props.current.info ? this.props.current.info : ''}
+                   value={info ? info : ''}
+                   multiline={true}
                    fullWidth={true}
                    rowsMax={8}
                    onChange={this.updateValue}
@@ -164,14 +164,9 @@ class ProfileForm extends React.Component {
         <br/>
         <br/>
 
-        <Button classes={{}} raised color="accent" onTouchTap={() => this.setState({open: true})}>Remove</Button>
-        <Button classes={{}} raised onTouchTap={this.submit}>Save</Button>
+        <Button classes={{}} raised onTouchTap={() => this.setState({open: true})} color="accent">Remove</Button>
+        <Button classes={{}} raised onTouchTap={() => this.saveEntity()}>Save</Button>
       </form>
-
-      <ConfirmationDialog open={this.state.open}
-                          message={'Are you sure you want to remove it?'}
-                          actionYes={() => alert(`Remove: ${this.props.current.id}, Not implemented yet.`)}
-                          actionNo={() => this.setState({open: false})}/>
     </div>
   }
 }

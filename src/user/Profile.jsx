@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    init: bindActionCreators(fetchUserProfile, dispatch)
+    init: bindActionCreators(fetchUserProfile, dispatch),
+    dispatch: dispatch,
   }
 }
 

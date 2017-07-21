@@ -11,7 +11,7 @@ const AppSimpleList = ({title, icon, items, goTo}) => {
     <AppSpinner/>
     <List classes={{}}>
       {
-        items.map(item => <ListItem button classes={{}} key={item.id} onTouchTap={() => goTo(item.id)}>
+        items.map((item, index) => <ListItem button classes={{}} key={index} onTouchTap={() => goTo(item.id)}>
             <ListItemIcon classes={{}}>{icon}</ListItemIcon>
             <ListItemText classes={{}} primary={item.description}/>
           </ListItem>

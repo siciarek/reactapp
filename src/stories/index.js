@@ -181,13 +181,35 @@ storiesOf('AppSimpleList', module)
 .addWithInfo('with items', () => <AppSimpleList items={items}/>)
 .addWithInfo('with items and title', () => <AppSimpleList title={text('title', 'The Beatles')} items={items}/>)
 .addWithInfo('with items, title and icon', () => {
-  const choice = select('icon', ['check', 'lock_open', 'person', 'dashboard', 'account_circle', 'power_settings_new', 'home', 'face', 'mic', 'stars', 'library_books', 'volume_up', 'theaters',]
-    , 'face')
+  const choice = select('icon', [
+      'check',
+      'lock_open',
+      'person',
+      'dashboard',
+      'account_circle',
+      'power_settings_new',
+      'home',
+      'face',
+      'mic',
+      'stars',
+      'library_books',
+      'volume_up',
+      'theaters',
+    ],
+    'face')
   const icon = icons[choice]
+
+  let _items = []
+  try {
+    _items = JSON.parse(text('items', JSON.stringify(items, null, 4)))
+  }
+  catch (e) {
+    _items = items
+  }
 
   return <AppSimpleList
     title={select('title', ['The Beatles', 'Rolling Stones', 'Led Zeppelin'], 'The Beatles')}
-    icon={icon} items={items}/>
+    icon={icon} items={_items}/>
 })
 .addWithInfo('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
                                                                         icon={icons.stars} items={items}
