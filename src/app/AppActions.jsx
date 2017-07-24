@@ -5,13 +5,13 @@ import {getAuthCheckConfig} from './AppHelpers'
 import config from './config'
 import {
   AUTHOR_ITEMS_SWAP,
-  AUTHOR_ITEMS_SWAP_FULFILLED,
+  AUTHOR_ITEMS_SWAP_FULFILLED, AUTHOR_ITEMS_SWAP_PENDING,
   AUTHOR_ITEMS_SWAP_REJECTED,
 } from '../author/Author'
 
 import {
   ARTIST_ITEMS_SWAP,
-  ARTIST_ITEMS_SWAP_FULFILLED,
+  ARTIST_ITEMS_SWAP_FULFILLED, ARTIST_ITEMS_SWAP_PENDING,
   ARTIST_ITEMS_SWAP_REJECTED,
 } from '../artist/Artist'
 
@@ -28,13 +28,13 @@ export const swapListItems = (modelName, src, trg, onError) => {
   const models = {
     author: {
       url: config.authorUrl,
-      pending: AUTHOR_ITEMS_SWAP,
+      pending: AUTHOR_ITEMS_SWAP_PENDING,
       fulfilled: AUTHOR_ITEMS_SWAP_FULFILLED,
       rejected: AUTHOR_ITEMS_SWAP_REJECTED,
     },
     artist: {
       url: config.artistUrl,
-      pending: ARTIST_ITEMS_SWAP,
+      pending: ARTIST_ITEMS_SWAP_PENDING,
       fulfilled: ARTIST_ITEMS_SWAP_FULFILLED,
       rejected: ARTIST_ITEMS_SWAP_REJECTED,
     }
