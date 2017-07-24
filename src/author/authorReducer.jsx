@@ -57,7 +57,7 @@ export default (state = DEFAULT_STATE, action) => {
     case AUTHOR_ITEM_FETCH_REJECTED: {
       return {
         ...state,
-        error: action.payload.data
+        error: action.payload.response.data
       }
     }
     default:
