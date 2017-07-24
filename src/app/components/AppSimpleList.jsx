@@ -4,7 +4,7 @@ import DefaultListItemIcon from 'material-ui-icons/FiberManualRecord'
 import List, {ListItem, ListItemText, ListItemIcon} from 'material-ui/List'
 import {AppHeader, AppSpinner} from '../components'
 
-const AppSimpleList = ({title, icon, items, goTo}) => {
+const AppSimpleList = ({title, icon, items, goTo = (id) => console.log(id)}) => {
 
   return <div>
     <AppHeader title={title}/>

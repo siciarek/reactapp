@@ -1,10 +1,15 @@
+import {arrayMove} from 'react-sortable-hoc'
+
 import {
   ARTIST_LIST_FETCH,
   ARTIST_LIST_FETCH_FULLFILLED,
   ARTIST_LIST_FETCH_REJECTED,
   ARTIST_ITEM_FETCH,
   ARTIST_ITEM_FETCH_FULLFILLED,
-  ARTIST_ITEM_FETCH_REJECTED
+  ARTIST_ITEM_FETCH_REJECTED,
+  ARTIST_ITEMS_SWAP,
+  ARTIST_ITEMS_SWAP_FULLFILLED,
+  ARTIST_ITEMS_SWAP_REJECTED,
 } from './Artist'
 
 const DEFAULT_STATE = {
@@ -13,8 +18,15 @@ const DEFAULT_STATE = {
 }
 
 export default (state = DEFAULT_STATE, action) => {
-
   switch (action.type) {
+    case ARTIST_ITEMS_SWAP: {
+      const [src, trg] = action.payload
+
+      return {
+        ...state,
+        items: [...arrayMove(state.items, src.index, trg.index)],
+      }
+    }
     case ARTIST_LIST_FETCH: {
       return {
         ...state,

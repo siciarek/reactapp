@@ -9,6 +9,7 @@ import AppListItem from './AppListItem'
 import AppFloatingActionButton from './AppFloatingActionButton'
 import AppGenderSelectField from './AppGenderSelectField'
 import AppSimpleList from './AppSimpleList'
+import AppSortableList from './AppSortableList'
 import AppSimpleAutoloadingList from './AppSimpleAutoloadingList'
 import AppSimpleItem from './AppSimpleItem'
 import AppSimpleAutoloadingItem from './AppSimpleAutoloadingItem'
@@ -24,6 +25,7 @@ export {
   AppSpinner,
   AppSpinnerComponent,
   AppHeader,
+  AppSortableList,
   AppList,
   AppListItem,
   AppFloatingActionButton,

@@ -1,18 +1,8 @@
 import axios from 'axios'
 import queryString from 'query-string'
 import {browserHistory as routerHistory} from 'react-router'
-import {getAuthCheckConfig} from '../app/AppHelpers'
-import config from '../app/config'
-
-import {
-  TEST_LIST_FETCH,
-  TEST_LIST_FETCH_FULLFILLED,
-  TEST_LIST_FETCH_REJECTED,
-  TEST_ITEM_FETCH,
-  TEST_ITEM_FETCH_FULLFILLED,
-  TEST_ITEM_FETCH_REJECTED,
-} from './Test'
-
+import {getAuthCheckConfig} from './AppHelpers'
+import config from './config'
 import {
   AUTHOR_ITEMS_SWAP,
   AUTHOR_ITEMS_SWAP_FULLFILLED,
@@ -27,7 +17,7 @@ import {
 
 import {
   APP_SET_TARGET_ROUTE
-} from '../app/AppActionTypes'
+} from './AppActionTypes'
 
 
 export const swapListItems = (modelName, src, trg, onError) => {
@@ -73,36 +63,5 @@ export const swapListItems = (modelName, src, trg, onError) => {
       }
     })
 
-  }
-}
-
-export const fetchTestList = () => {
-
-  return (dispatch) => {
-    dispatch({type: TEST_LIST_FETCH})
-
-    axios.get(config.artistUrl)
-    .then((response) => {
-      dispatch({type: TEST_LIST_FETCH_FULLFILLED, payload: response.data})
-    })
-    .catch((err) => {
-      dispatch({type: TEST_LIST_FETCH_REJECTED, payload: err})
-    })
-  }
-}
-
-
-export const fetchTestItem = (id) => {
-  return (dispatch) => {
-    dispatch({type: TEST_ITEM_FETCH})
-
-    axios.get(`${config.artistUrl}/${id}`)
-    .then((response) => {
-      dispatch({type: TEST_ITEM_FETCH_FULLFILLED, payload: response.data})
-      return response.data
-    })
-    .catch((err) => {
-      dispatch({type: TEST_ITEM_FETCH_REJECTED, payload: err})
-    })
   }
 }

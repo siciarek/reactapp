@@ -1,72 +1,31 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-import {SortableContainer, SortableElement} from 'react-sortable-hoc'
-import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui-icons/Face'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
-import {fetchTestList, swapTwoTestListItems} from './TestActions'
+import {browserHistory as router} from 'react-router'
+import ItemIcon from 'material-ui-icons/Mic'
+import {fetchArtistList} from '../artist/ArtistActions'
+import {swapListItems} from '../app/AppActions'
+import {AppSortableList} from '../app/components'
 
 
-const SortableItem = SortableElement((props) => {
+const mapStateToProps = (state, ownProps) => {
 
-  const {id, name} = props.data
-
-  return <ListItem
-    leftIcon={<ListItemIcon />}
-    containerElement={<Link to={`tests/${id}`}/>}
-    key={id}
-    primaryText={name}
-  />
-})
-
-const SortableList = SortableContainer(({items}) => {
-  return (
-    <List>
-      {
-        items.map((item, index) => {
-          return <SortableItem key={item.id} index={index} data={item}/>
-        })
-      }
-    </List>
-  )
-})
-
-class TestList extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchTestList())
-  }
-
-  onSortEnd = ({oldIndex, newIndex}) => {
-    const src = {index: oldIndex, id: this.props.items[oldIndex].id}
-    const trg = {index: newIndex, id: this.props.items[newIndex].id}
-    this.props.dispatch(swapTwoTestListItems(src, trg))
-  }
-
-  render() {
-
-    return (
-      <div>
-        <AppHeader title="Tests"/>
-        <SortableList
-          items={this.props.items}
-          lockAxis="y"
-          helperClass="selected-row"
-          lockToContainerEdges={true}
-          hideSortableGhost={true}
-          onSortEnd={this.onSortEnd}
-          showCheckboxes={false}
-        />
-        <AppSpinner/>
-      </div>
-    )
+  return {
+    model: 'artist',
+    title: 'Artists',
+    icon: <ItemIcon/>,
+    goTo: id => router.push(`/artists/${id}`),
+    items: state.artist.items,
+    sortable: state.user.authenticated,
   }
 }
 
-export default connect((store) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+
   return {
-    items: store.test.items,
+    init: bindActionCreators(fetchArtistList, dispatch),
+    swap: bindActionCreators((model, src, trg, onError) => swapListItems(model, src, trg, onError), dispatch),
   }
-})(TestList)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)
