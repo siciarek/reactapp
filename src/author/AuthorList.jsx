@@ -4,9 +4,8 @@ import {connect} from 'react-redux'
 import {browserHistory as router} from 'react-router'
 import ItemIcon from 'material-ui-icons/Face'
 import {swapListItems} from '../app/AppActions'
-import {AppSortableList} from '../app/components'
 import {fetchAuthorList} from '../author/AuthorActions'
-
+import {AppSortableList} from '../app/components'
 
 const mapStateToProps = (state, ownProps) => {
 

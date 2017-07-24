@@ -4,14 +4,14 @@ import {browserHistory as routerHistory} from 'react-router'
 import {getAuthCheckConfig} from './AppHelpers'
 import config from './config'
 import {
-  AUTHOR_ITEMS_SWAP,
-  AUTHOR_ITEMS_SWAP_FULFILLED, AUTHOR_ITEMS_SWAP_PENDING,
+  AUTHOR_ITEMS_SWAP_PENDING,
+  AUTHOR_ITEMS_SWAP_FULFILLED,
   AUTHOR_ITEMS_SWAP_REJECTED,
 } from '../author/Author'
 
 import {
-  ARTIST_ITEMS_SWAP,
-  ARTIST_ITEMS_SWAP_FULFILLED, ARTIST_ITEMS_SWAP_PENDING,
+  ARTIST_ITEMS_SWAP_PENDING,
+  ARTIST_ITEMS_SWAP_FULFILLED,
   ARTIST_ITEMS_SWAP_REJECTED,
 } from '../artist/Artist'
 
@@ -22,8 +22,6 @@ import {
 import {PENDING, FULFILLED, REJECTED} from 'redux-promise-middleware'
 
 export const swapListItems = (modelName, src, trg, onError) => {
-
-  console.log([PENDING, FULFILLED, REJECTED])
 
   const models = {
     author: {
