@@ -1,31 +1,38 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {browserHistory as router} from 'react-router'
-import ItemIcon from 'material-ui-icons/Mic'
-import {fetchArtistList} from '../artist/ArtistActions'
-import {swapListItems} from '../app/AppActions'
-import {AppSortableList} from '../app/components'
+import {fetchTestList} from './TestActions'
 
+class TestList extends React.Component {
+
+  componentWillMount() {
+    this.props.init()
+  }
+
+  render() {
+    const {items} = this.props
+
+    return <div>
+      <h1>Test List</h1>
+      <pre>
+        {JSON.stringify(this.props.items, null, 4)}
+      </pre>
+    </div>
+  }
+}
+
+// export default TestList
 
 const mapStateToProps = (state, ownProps) => {
-
   return {
-    model: 'artist',
-    title: 'Artists',
-    icon: <ItemIcon/>,
-    goTo: id => router.push(`/artists/${id}`),
     items: state.artist.items,
-    sortable: state.user.authenticated,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
   return {
-    init: bindActionCreators(fetchArtistList, dispatch),
-    swap: bindActionCreators((model, src, trg, onError) => swapListItems(model, src, trg, onError), dispatch),
+    init: bindActionCreators(fetchTestList, dispatch),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)
+export default connect(mapStateToProps, mapDispatchToProps)(TestList)

@@ -6,20 +6,20 @@ import config from '../app/config'
 
 import {
   GENRE_LIST_FETCH,
-  GENRE_LIST_FETCH_FULLFILLED,
+  GENRE_LIST_FETCH_FULFILLED,
   GENRE_LIST_FETCH_REJECTED,
   GENRE_ITEM_FETCH,
-  GENRE_ITEM_FETCH_FULLFILLED,
+  GENRE_ITEM_FETCH_FULFILLED,
   GENRE_ITEM_FETCH_REJECTED,
   GENRE_ITEM_ADD,
-  GENRE_ITEM_ADD_FULLFILLED,
+  GENRE_ITEM_ADD_FULFILLED,
   GENRE_ITEM_ADD_REJECTED,
   GENRE_ITEM_SAVE,
-  GENRE_ITEM_SAVE_FULLFILLED,
+  GENRE_ITEM_SAVE_FULFILLED,
   GENRE_ITEM_SAVE_REJECTED,
   GENRE_ITEM_UPDATE,
   GENRE_ITEM_REMOVE,
-  GENRE_ITEM_REMOVE_FULLFILLED,
+  GENRE_ITEM_REMOVE_FULFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
 
@@ -32,7 +32,7 @@ export const fetchListGenre = (onlyEnabled = false) => {
 
     axios.get(url)
     .then((response) => {
-      dispatch({type: GENRE_LIST_FETCH_FULLFILLED, payload: response.data})
+      dispatch({type: GENRE_LIST_FETCH_FULFILLED, payload: response.data})
     })
     .catch((err) => {
       dispatch({type: GENRE_LIST_FETCH_REJECTED, payload: err})
@@ -46,12 +46,12 @@ export const fetchItemGenre = (id) => {
     dispatch({type: GENRE_ITEM_FETCH})
 
     if (id === null) {
-      dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: null})
+      dispatch({type: GENRE_ITEM_FETCH_FULFILLED, payload: null})
     }
     else {
       axios.get(`${config.genreUrl}/${id}`)
       .then((response) => {
-        dispatch({type: GENRE_ITEM_FETCH_FULLFILLED, payload: response.data})
+        dispatch({type: GENRE_ITEM_FETCH_FULFILLED, payload: response.data})
         return response.data
       })
       .catch((err) => {
@@ -81,7 +81,7 @@ export const saveGenre = (data) => {
       .put(`${config.genreUrl}/${data.id}`, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
-          type: GENRE_ITEM_SAVE_FULLFILLED,
+          type: GENRE_ITEM_SAVE_FULFILLED,
           payload: response.data,
         })
       })
@@ -98,7 +98,7 @@ export const saveGenre = (data) => {
       .post(config.genreUrl, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
-          type: GENRE_ITEM_ADD_FULLFILLED,
+          type: GENRE_ITEM_ADD_FULFILLED,
           payload: response.data,
         })
         return response.data
@@ -124,7 +124,7 @@ export const removeGenre = (id) => {
     axios.delete(url, getAuthCheckConfig())
     .then((response) => {
       dispatch({
-        type: GENRE_ITEM_REMOVE_FULLFILLED,
+        type: GENRE_ITEM_REMOVE_FULFILLED,
         payload: response.data,
       })
     })

@@ -1,13 +1,13 @@
 import {
   SONG_ITEM_SAVE,
-  SONG_ITEM_SAVE_FULLFILLED,
+  SONG_ITEM_SAVE_FULFILLED,
   SONG_ITEM_SAVE_REJECTED,
   SONG_ITEM_UPDATE,
   SONG_ITEM_FETCH,
-  SONG_ITEM_FETCH_FULLFILLED,
+  SONG_ITEM_FETCH_FULFILLED,
   SONG_ITEM_FETCH_REJECTED,
   SONG_ITEM_REMOVE,
-  SONG_ITEM_REMOVE_FULLFILLED,
+  SONG_ITEM_REMOVE_FULFILLED,
   SONG_ITEM_REMOVE_REJECTED,
 } from './Song'
 
@@ -34,7 +34,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true,
       }
     }
-    case SONG_ITEM_FETCH_FULLFILLED: {
+    case SONG_ITEM_FETCH_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -48,7 +48,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true,
       }
     }
-    case SONG_ITEM_SAVE_FULLFILLED: {
+    case SONG_ITEM_SAVE_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -62,7 +62,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true,
       }
     }
-    case SONG_ITEM_REMOVE_FULLFILLED: {
+    case SONG_ITEM_REMOVE_FULFILLED: {
       return {
         ...state,
         fetching: false,

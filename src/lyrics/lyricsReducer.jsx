@@ -1,9 +1,9 @@
 import {
   LYRICS_LIST_FETCH,
-  LYRICS_LIST_FETCH_FULLFILLED,
+  LYRICS_LIST_FETCH_FULFILLED,
   LYRICS_LIST_FETCH_REJECTED,
   LYRICS_ITEM_FETCH,
-  LYRICS_ITEM_FETCH_FULLFILLED,
+  LYRICS_ITEM_FETCH_FULFILLED,
   LYRICS_ITEM_FETCH_REJECTED,
 } from './Lyrics'
 
@@ -31,7 +31,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true
       }
     }
-    case LYRICS_LIST_FETCH_FULLFILLED: {
+    case LYRICS_LIST_FETCH_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -39,7 +39,7 @@ export default (state = DEFAULT_STATE, action) => {
         items: action.payload
       }
     }
-    case LYRICS_ITEM_FETCH_FULLFILLED: {
+    case LYRICS_ITEM_FETCH_FULFILLED: {
       return {
         ...state,
         fetching: false,

@@ -3,9 +3,9 @@ import config from '../app/config'
 
 import {
   FETCH_VIDEO,
-  FETCH_VIDEO_FULLFILLED,
+  FETCH_VIDEO_FULFILLED,
   FETCH_VIDEO_ITEM,
-  FETCH_VIDEO_ITEM_FULLFILLED,
+  FETCH_VIDEO_ITEM_FULFILLED,
   FETCH_VIDEO_REJECTED
 } from './Video'
 
@@ -17,7 +17,7 @@ export const fetchVideoList = () => {
     axios.get(config.videoUrl)
     .then((response) => {
       dispatch({
-        type: FETCH_VIDEO_FULLFILLED,
+        type: FETCH_VIDEO_FULFILLED,
         payload: response.data,
       })
     })
@@ -35,7 +35,7 @@ export const fetchVideoItem = (id) => {
     axios.get(config.videoUrl + '/' + id)
     .then((response) => {
       dispatch({
-        type: FETCH_VIDEO_ITEM_FULLFILLED,
+        type: FETCH_VIDEO_ITEM_FULFILLED,
         payload: response.data,
       })
     })

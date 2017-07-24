@@ -4,7 +4,7 @@ import {AppSimpleList} from '../components'
 class AppSimpleAutoloadingList extends React.Component {
 
   componentWillMount() {
-    this.props.loadList()
+    this.props.init()
   }
 
   render() {

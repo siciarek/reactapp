@@ -5,10 +5,10 @@ import {getAuthCheckConfig} from '../app/AppHelpers'
 
 import {
   AUTHOR_LIST_FETCH,
-  AUTHOR_LIST_FETCH_FULLFILLED,
+  AUTHOR_LIST_FETCH_FULFILLED,
   AUTHOR_LIST_FETCH_REJECTED,
   AUTHOR_ITEM_FETCH,
-  AUTHOR_ITEM_FETCH_FULLFILLED,
+  AUTHOR_ITEM_FETCH_FULFILLED,
   AUTHOR_ITEM_FETCH_REJECTED
 } from './Author'
 
@@ -24,7 +24,7 @@ export const fetchAuthorList = () => {
     axios
     .get(config.authorUrl, getAuthCheckConfig())
     .then((response) => {
-      dispatch({type: AUTHOR_LIST_FETCH_FULLFILLED, payload: response.data})
+      dispatch({type: AUTHOR_LIST_FETCH_FULFILLED, payload: response.data})
     })
     .catch((error) => {
       dispatch({type: AUTHOR_LIST_FETCH_REJECTED, payload: error})
@@ -45,7 +45,7 @@ export const fetchAuthorItem = (id) => {
     axios
     .get(`${config.authorUrl}/${id}`, getAuthCheckConfig())
     .then((response) => {
-      dispatch({type: AUTHOR_ITEM_FETCH_FULLFILLED, payload: response.data})
+      dispatch({type: AUTHOR_ITEM_FETCH_FULFILLED, payload: response.data})
       return response.data
     })
     .catch((error) => {

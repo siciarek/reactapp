@@ -4,14 +4,14 @@ import {getAuthCheckConfig}  from '../app/AppHelpers'
 import config from '../app/config'
 import {
   SONG_ITEM_SAVE,
-  SONG_ITEM_SAVE_FULLFILLED,
+  SONG_ITEM_SAVE_FULFILLED,
   SONG_ITEM_SAVE_REJECTED,
   SONG_ITEM_UPDATE,
   SONG_ITEM_REMOVE,
-  SONG_ITEM_REMOVE_FULLFILLED,
+  SONG_ITEM_REMOVE_FULFILLED,
   SONG_ITEM_REMOVE_REJECTED,
   SONG_ITEM_FETCH,
-  SONG_ITEM_FETCH_FULLFILLED,
+  SONG_ITEM_FETCH_FULFILLED,
   SONG_ITEM_FETCH_REJECTED,
 } from './Song'
 
@@ -30,7 +30,7 @@ export const fetchSong = (id) => {
     axios.get(`${config.lyricsUrl}/${id}`)
     .then((response) => {
       dispatch({
-        type: SONG_ITEM_FETCH_FULLFILLED,
+        type: SONG_ITEM_FETCH_FULFILLED,
         payload: response.data,
       })
     })
@@ -48,7 +48,7 @@ export const removeSong = (id) => {
     axios.delete(`${config.songUrl}/${id}`, getAuthCheckConfig())
     .then((response) => {
       dispatch({
-        type: SONG_ITEM_REMOVE_FULLFILLED,
+        type: SONG_ITEM_REMOVE_FULFILLED,
         payload: response.data,
       })
     })
@@ -73,7 +73,7 @@ export const saveSong = (data) => {
       axios.put(`${config.songUrl}/${data.id}`, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
-          type: SONG_ITEM_SAVE_FULLFILLED,
+          type: SONG_ITEM_SAVE_FULFILLED,
           payload: response.data,
         })
         return response.data
@@ -86,7 +86,7 @@ export const saveSong = (data) => {
       axios.post(config.songUrl, data, getAuthCheckConfig())
       .then((response) => {
         dispatch({
-          type: SONG_ITEM_SAVE_FULLFILLED,
+          type: SONG_ITEM_SAVE_FULFILLED,
           payload: response.data,
         })
         return response.data

@@ -8,7 +8,7 @@ import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/componen
 class GenreListComponent extends React.Component {
 
   componentWillMount() {
-    this.props.loadList()
+    this.props.init()
   }
 
   render() {

@@ -1,6 +1,12 @@
 Konferencja desmart
 -------------------
 
+Obsługa redux-promise-middleware (skróty nazw akcji PENDING, REJECTED, FULFILLED)
+
+https://github.com/acdlite/flux-standard-action
+
+
+
 Pierwszy
 ========
     * Wszystkie funkcje na arrow functions nie params tylko gotowe

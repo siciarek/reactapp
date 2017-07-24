@@ -8,7 +8,7 @@ import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/componen
 class RecordList extends React.Component {
 
   componentWillMount() {
-    this.props.loadList()
+    this.props.init()
   }
 
   render() {
@@ -46,14 +46,14 @@ RecordList.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
   items: PropTypes.arrayOf(PropTypes.object),
-  loadList: PropTypes.func.isRequired,
+  init: PropTypes.func.isRequired,
 }
 
 RecordList.defaultProps = {
   title: 'Records',
   icon: <ListItemIcon/>,
   items: [],
-  loadList: () => [],
+  init: () => [],
 }
 
 export default RecordList

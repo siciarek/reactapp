@@ -1,6 +1,6 @@
 import {
-  FETCH_RECORD_LIST_FULLFILLED,
-  FETCH_RECORD_ITEM_FULLFILLED,
+  FETCH_RECORD_LIST_FULFILLED,
+  FETCH_RECORD_ITEM_FULFILLED,
 } from './Record'
 
 const DEFAULT_STATE = {
@@ -11,13 +11,13 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
-    case FETCH_RECORD_LIST_FULLFILLED: {
+    case FETCH_RECORD_LIST_FULFILLED: {
       return {
         ...state,
         items: action.payload
       }
     }
-    case FETCH_RECORD_ITEM_FULLFILLED: {
+    case FETCH_RECORD_ITEM_FULFILLED: {
       return {
         ...state,
         current:  action.payload

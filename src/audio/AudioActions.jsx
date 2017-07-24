@@ -3,9 +3,9 @@ import config from '../app/config'
 
 import {
   FETCH_AUDIO,
-  FETCH_AUDIO_FULLFILLED,
+  FETCH_AUDIO_FULFILLED,
   FETCH_AUDIO_ITEM,
-  FETCH_AUDIO_ITEM_FULLFILLED,
+  FETCH_AUDIO_ITEM_FULFILLED,
   FETCH_AUDIO_REJECTED
 } from './Audio'
 
@@ -17,7 +17,7 @@ export const fetchAudioList = () => {
     axios.get(config.audioUrl)
     .then((response) => {
       dispatch({
-        type: FETCH_AUDIO_FULLFILLED,
+        type: FETCH_AUDIO_FULFILLED,
         payload: response.data,
       })
     })
@@ -35,7 +35,7 @@ export const fetchAudioItems = (id) => {
     axios.get(config.audioUrl + '/' + id)
     .then((response) => {
       dispatch({
-        type: FETCH_AUDIO_ITEM_FULLFILLED,
+        type: FETCH_AUDIO_ITEM_FULFILLED,
         payload: response.data,
       })
     })

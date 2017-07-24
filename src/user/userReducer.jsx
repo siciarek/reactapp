@@ -1,14 +1,14 @@
 import {
   USER_DEFAULT_STATE,
-  USER_PROFILE_FETCH_FULLFILLED,
+  USER_PROFILE_FETCH_FULFILLED,
   USER_UPDATE,
-  USER_SAVE_FULLFILLED,
+  USER_SAVE_FULFILLED,
   USER_SAVE_REJECTED,
   USER_AUTH,
-  USER_AUTH_FULLFILLED,
+  USER_AUTH_FULFILLED,
   USER_AUTH_REJECTED,
   USER_UNAUTH,
-  USER_UNAUTH_FULLFILLED,
+  USER_UNAUTH_FULFILLED,
   USER_UNAUTH_REJECTED,
   USER_AUTH_CHECK,
   USER_AUTH_CHECK_SUCCESS,
@@ -18,7 +18,7 @@ import {
 export default (state = USER_DEFAULT_STATE, action) => {
 
   switch (action.type) {
-    case USER_PROFILE_FETCH_FULLFILLED:
+    case USER_PROFILE_FETCH_FULFILLED:
       return {
         ...state,
         ...action.payload,
@@ -31,7 +31,7 @@ export default (state = USER_DEFAULT_STATE, action) => {
         error: '',
         message: 'Authentication in progress.',
       }
-    case USER_AUTH_FULLFILLED:
+    case USER_AUTH_FULFILLED:
       return {
         ...state,
         message: 'User authentication succeeed.',
@@ -47,7 +47,7 @@ export default (state = USER_DEFAULT_STATE, action) => {
         ...state,
         message: 'Unauthentication in progress.',
       }
-    case USER_UNAUTH_FULLFILLED:
+    case USER_UNAUTH_FULFILLED:
       return {...USER_DEFAULT_STATE}
     case USER_UNAUTH_REJECTED:
       return {
@@ -66,7 +66,7 @@ export default (state = USER_DEFAULT_STATE, action) => {
         error: (typeof action.payload.data.msg !== 'undefined' ? action.payload.data.msg : 'User profile can not be saved.'),
         message: '',
       }
-    case USER_SAVE_FULLFILLED:
+    case USER_SAVE_FULFILLED:
       return {
         ...state,
         error: '',

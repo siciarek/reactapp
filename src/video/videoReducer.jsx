@@ -1,8 +1,8 @@
 import {
   FETCH_VIDEO,
-  FETCH_VIDEO_FULLFILLED,
+  FETCH_VIDEO_FULFILLED,
   FETCH_VIDEO_ITEM,
-  FETCH_VIDEO_ITEM_FULLFILLED,
+  FETCH_VIDEO_ITEM_FULFILLED,
   FETCH_VIDEO_REJECTED
 } from './Video'
 
@@ -36,7 +36,7 @@ export default (state = DEFAULT_STATE, action) => {
         error: action.payload
       }
     }
-    case FETCH_VIDEO_FULLFILLED: {
+    case FETCH_VIDEO_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -44,7 +44,7 @@ export default (state = DEFAULT_STATE, action) => {
         items: action.payload
       }
     }
-    case FETCH_VIDEO_ITEM_FULLFILLED: {
+    case FETCH_VIDEO_ITEM_FULFILLED: {
       return {
         ...state,
         fetching: false,

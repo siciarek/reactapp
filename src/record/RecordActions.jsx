@@ -3,10 +3,10 @@ import config from '../app/config'
 
 import {
   FETCH_RECORD_LIST,
-  FETCH_RECORD_LIST_FULLFILLED,
+  FETCH_RECORD_LIST_FULFILLED,
   FETCH_RECORD_LIST_REJECTED,
   FETCH_RECORD_ITEM,
-  FETCH_RECORD_ITEM_FULLFILLED,
+  FETCH_RECORD_ITEM_FULFILLED,
   FETCH_RECORD_ITEM_REJECTED,
 } from './Record'
 
@@ -20,7 +20,7 @@ export const fetchRecordList = () => {
     axios.get(url)
     .then((response) => {
       dispatch({
-        type: FETCH_RECORD_LIST_FULLFILLED,
+        type: FETCH_RECORD_LIST_FULFILLED,
         payload: response.data,
       })
     })
@@ -43,7 +43,7 @@ export const fetchRecordItem = id => {
       const payload = temp.length > 0 ? temp.shift() : {}
 
       dispatch({
-        type: FETCH_RECORD_ITEM_FULLFILLED,
+        type: FETCH_RECORD_ITEM_FULFILLED,
         payload: payload,
       })
     })

@@ -1,8 +1,8 @@
 import {
   FETCH_AUDIO,
-  FETCH_AUDIO_FULLFILLED,
+  FETCH_AUDIO_FULFILLED,
   FETCH_AUDIO_ITEM,
-  FETCH_AUDIO_ITEM_FULLFILLED,
+  FETCH_AUDIO_ITEM_FULFILLED,
   FETCH_AUDIO_REJECTED
 } from './Audio'
 
@@ -36,7 +36,7 @@ export default (state = DEFAULT_STATE, action) => {
         error: action.payload
       }
     }
-    case FETCH_AUDIO_FULLFILLED: {
+    case FETCH_AUDIO_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -44,7 +44,7 @@ export default (state = DEFAULT_STATE, action) => {
         items: action.payload
       }
     }
-    case FETCH_AUDIO_ITEM_FULLFILLED: {
+    case FETCH_AUDIO_ITEM_FULFILLED: {
       return {
         ...state,
         fetching: false,

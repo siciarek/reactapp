@@ -5,34 +5,37 @@ import {getAuthCheckConfig} from './AppHelpers'
 import config from './config'
 import {
   AUTHOR_ITEMS_SWAP,
-  AUTHOR_ITEMS_SWAP_FULLFILLED,
+  AUTHOR_ITEMS_SWAP_FULFILLED,
   AUTHOR_ITEMS_SWAP_REJECTED,
 } from '../author/Author'
 
 import {
   ARTIST_ITEMS_SWAP,
-  ARTIST_ITEMS_SWAP_FULLFILLED,
+  ARTIST_ITEMS_SWAP_FULFILLED,
   ARTIST_ITEMS_SWAP_REJECTED,
 } from '../artist/Artist'
 
 import {
-  APP_SET_TARGET_ROUTE
+  APP_SET_TARGET_ROUTE,
 } from './AppActionTypes'
 
+import {PENDING, FULFILLED, REJECTED} from 'redux-promise-middleware'
 
 export const swapListItems = (modelName, src, trg, onError) => {
+
+  console.log([PENDING, FULFILLED, REJECTED])
 
   const models = {
     author: {
       url: config.authorUrl,
       pending: AUTHOR_ITEMS_SWAP,
-      fullfilled: AUTHOR_ITEMS_SWAP_FULLFILLED,
+      fulfilled: AUTHOR_ITEMS_SWAP_FULFILLED,
       rejected: AUTHOR_ITEMS_SWAP_REJECTED,
     },
     artist: {
       url: config.artistUrl,
       pending: ARTIST_ITEMS_SWAP,
-      fullfilled: ARTIST_ITEMS_SWAP_FULLFILLED,
+      fulfilled: ARTIST_ITEMS_SWAP_FULFILLED,
       rejected: ARTIST_ITEMS_SWAP_REJECTED,
     }
   }
@@ -42,16 +45,15 @@ export const swapListItems = (modelName, src, trg, onError) => {
   }
 
   const model = models[modelName]
+  const url = `${model.url}/${src.id}?${queryString.stringify({swap: trg.id})}`
 
   return (dispatch) => {
-
-    const url = `${model.url}/${src.id}?${queryString.stringify({swap: trg.id})}`
 
     dispatch({type: model.pending, payload: [src, trg]})
 
     axios.put(url, {}, getAuthCheckConfig())
     .then((response) => {
-      dispatch({type: model.fullfilled})
+      dispatch({type: model.fulfilled})
     })
     .catch((error) => {
       dispatch({type: model.rejected, payload: error})

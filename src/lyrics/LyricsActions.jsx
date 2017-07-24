@@ -3,10 +3,10 @@ import config from '../app/config'
 
 import {
   LYRICS_LIST_FETCH,
-  LYRICS_LIST_FETCH_FULLFILLED,
+  LYRICS_LIST_FETCH_FULFILLED,
   LYRICS_LIST_FETCH_REJECTED,
   LYRICS_ITEM_FETCH,
-  LYRICS_ITEM_FETCH_FULLFILLED,
+  LYRICS_ITEM_FETCH_FULFILLED,
   LYRICS_ITEM_FETCH_REJECTED,
 } from './Lyrics'
 
@@ -18,7 +18,7 @@ export const fetchLyricsList = () => {
     axios.get(config.lyricsUrl)
     .then((response) => {
       dispatch({
-        type: LYRICS_LIST_FETCH_FULLFILLED,
+        type: LYRICS_LIST_FETCH_FULFILLED,
         payload: response.data,
       })
     })
@@ -36,7 +36,7 @@ export const fetchLyricsItem = (id) => {
     axios.get(config.lyricsUrl + '/' + id)
     .then((response) => {
       dispatch({
-        type: LYRICS_ITEM_FETCH_FULLFILLED,
+        type: LYRICS_ITEM_FETCH_FULFILLED,
         payload: response.data,
       })
     })

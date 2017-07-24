@@ -2,24 +2,30 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {browserHistory as router} from 'react-router'
-import ListItemIcon from 'material-ui-icons/Face'
-import {fetchAuthorList as loadList} from './AuthorActions'
-import {AppSimpleAutoloadingList} from '../app/components'
+import ItemIcon from 'material-ui-icons/Face'
+import {swapListItems} from '../app/AppActions'
+import {AppSortableList} from '../app/components'
+import {fetchAuthorList} from '../author/AuthorActions'
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = (state, ownProps) => {
+
   return {
+    model: 'author',
     title: 'Authors',
-    icon: <ListItemIcon/>,
-    items: state.author.items,
+    icon: <ItemIcon/>,
     goTo: id => router.push(`/authors/${id}`),
+    items: state.author.items,
+    sortable: state.user.authenticated,
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
 
-const mapDispatchToProps = (dispatch) => {
   return {
-    loadList: bindActionCreators(loadList, dispatch)
+    init: bindActionCreators(fetchAuthorList, dispatch),
+    swap: bindActionCreators((model, src, trg, onError) => swapListItems(model, src, trg, onError), dispatch),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleAutoloadingList)
+export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)

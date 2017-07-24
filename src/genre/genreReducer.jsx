@@ -1,19 +1,19 @@
 import {
   GENRE_LIST_FETCH,
-  GENRE_LIST_FETCH_FULLFILLED,
+  GENRE_LIST_FETCH_FULFILLED,
   GENRE_LIST_FETCH_REJECTED,
   GENRE_ITEM_FETCH,
-  GENRE_ITEM_FETCH_FULLFILLED,
+  GENRE_ITEM_FETCH_FULFILLED,
   GENRE_ITEM_FETCH_REJECTED,
   GENRE_ITEM_ADD,
-  GENRE_ITEM_ADD_FULLFILLED,
+  GENRE_ITEM_ADD_FULFILLED,
   GENRE_ITEM_ADD_REJECTED,
   GENRE_ITEM_SAVE,
-  GENRE_ITEM_SAVE_FULLFILLED,
+  GENRE_ITEM_SAVE_FULFILLED,
   GENRE_ITEM_SAVE_REJECTED,
   GENRE_ITEM_UPDATE,
   GENRE_ITEM_REMOVE,
-  GENRE_ITEM_REMOVE_FULLFILLED,
+  GENRE_ITEM_REMOVE_FULFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
 
@@ -54,8 +54,8 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true,
       }
     }
-    case GENRE_ITEM_ADD_FULLFILLED:
-    case GENRE_ITEM_SAVE_FULLFILLED: {
+    case GENRE_ITEM_ADD_FULFILLED:
+    case GENRE_ITEM_SAVE_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -70,7 +70,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true,
       }
     }
-    case GENRE_ITEM_REMOVE_FULLFILLED: {
+    case GENRE_ITEM_REMOVE_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -91,7 +91,7 @@ export default (state = DEFAULT_STATE, action) => {
         fetching: true
       }
     }
-    case GENRE_LIST_FETCH_FULLFILLED: {
+    case GENRE_LIST_FETCH_FULFILLED: {
       return {
         ...state,
         fetching: false,
@@ -99,7 +99,7 @@ export default (state = DEFAULT_STATE, action) => {
         items: action.payload
       }
     }
-    case GENRE_ITEM_FETCH_FULLFILLED: {
+    case GENRE_ITEM_FETCH_FULFILLED: {
       const current = action.payload === null
         ? DEFAULT_STATE.current
         : action.payload

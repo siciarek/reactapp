@@ -5,16 +5,16 @@ import {getAuthCheckConfig, getAuthConfig}  from '../app/AppHelpers'
 import config from '../app/config'
 import {
   USER_PROFILE_FETCH,
-  USER_PROFILE_FETCH_FULLFILLED,
+  USER_PROFILE_FETCH_FULFILLED,
   USER_PROFILE_FETCH_REJECTED,
 
   USER_UPDATE,
   USER_SAVE,
-  USER_SAVE_FULLFILLED,
+  USER_SAVE_FULFILLED,
   USER_SAVE_REJECTED,
   USER_AUTH,
-  USER_AUTH_FULLFILLED,
-  USER_UNAUTH_FULLFILLED,
+  USER_AUTH_FULFILLED,
+  USER_UNAUTH_FULFILLED,
   USER_AUTH_REJECTED,
   USER_AUTH_CHECK_SUCCESS,
   USER_AUTH_CHECK_FAILURE,
@@ -49,7 +49,7 @@ export function authenticateUser(data) {
     })
     .then(response => {
       if (response.hasOwnProperty('token')) {
-        dispatch({type: USER_AUTH_FULLFILLED})
+        dispatch({type: USER_AUTH_FULFILLED})
         AppStash.set('token', response.token)
         routerHistory.replace('/dashboard')
       }
@@ -67,7 +67,7 @@ export function authenticateUser(data) {
 export function unauthenticateUser() {
   return (dispatch) => {
     AppStash.remove('token')
-    dispatch({type: USER_UNAUTH_FULLFILLED})
+    dispatch({type: USER_UNAUTH_FULFILLED})
     routerHistory.replace('/')
   }
 }
@@ -91,7 +91,7 @@ export function fetchUserDashboardData(props) {
     .then((response) => {
 
       dispatch({
-        type: USER_PROFILE_FETCH_FULLFILLED,
+        type: USER_PROFILE_FETCH_FULFILLED,
         payload: response.data,
       })
     })
@@ -117,7 +117,7 @@ export function fetchUserProfile() {
     .then((response) => {
 
       dispatch({
-        type: USER_PROFILE_FETCH_FULLFILLED,
+        type: USER_PROFILE_FETCH_FULFILLED,
         payload: response.data,
       })
     })
@@ -147,7 +147,7 @@ export function saveUser(data) {
     axios
     .post(config.userProfileUrl, data, getAuthCheckConfig())
     .then(() => {
-      dispatch({type: USER_SAVE_FULLFILLED})
+      dispatch({type: USER_SAVE_FULFILLED})
     })
     .catch((error) => {
       dispatch({type: USER_SAVE_REJECTED, payload: error})

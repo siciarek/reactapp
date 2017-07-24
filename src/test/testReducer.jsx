@@ -2,13 +2,13 @@ import {arrayMove} from 'react-sortable-hoc'
 
 import {
   TEST_LIST_FETCH,
-  TEST_LIST_FETCH_FULLFILLED,
+  TEST_LIST_FETCH_FULFILLED,
   TEST_LIST_FETCH_REJECTED,
   TEST_ITEM_FETCH,
-  TEST_ITEM_FETCH_FULLFILLED,
+  TEST_ITEM_FETCH_FULFILLED,
   TEST_ITEM_FETCH_REJECTED,
   TEST_ITEMS_SWAP,
-  TEST_ITEMS_SWAP_FULLFILLED,
+  TEST_ITEMS_SWAP_FULFILLED,
 } from './Test'
 
 const DEFAULT_STATE = {
@@ -39,19 +39,19 @@ export default (state = DEFAULT_STATE, action) => {
         current: {},
       }
     }
-    case TEST_LIST_FETCH_FULLFILLED: {
+    case TEST_LIST_FETCH_FULFILLED: {
       return {
         ...state,
         items: action.payload
       }
     }
-    case TEST_ITEM_FETCH_FULLFILLED: {
+    case TEST_ITEM_FETCH_FULFILLED: {
       return {
         ...state,
         current: action.payload
       }
     }
-    case TEST_ITEMS_SWAP_FULLFILLED:
+    case TEST_ITEMS_SWAP_FULFILLED:
     case TEST_LIST_FETCH_REJECTED:
     case TEST_ITEM_FETCH_REJECTED: {
       return {
