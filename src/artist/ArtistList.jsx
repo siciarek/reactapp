@@ -21,10 +21,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
-  return {
-    init: bindActionCreators(fetchArtistList, dispatch),
-    swap: bindActionCreators((model, src, trg, onError) => swapListItems(model, src, trg, onError), dispatch),
-  }
+  return bindActionCreators({
+    init: fetchArtistList,
+    swap: (model, src, trg, onError) => swapListItems(model, src, trg, onError)
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)

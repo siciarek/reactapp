@@ -1,8 +1,9 @@
 import TestList from './TestList'
 import TestItem from './TestItem'
 import TestActions from './TestActions'
+import TestDummy from './TestDummy'
 
-export {TestList, TestItem, TestActions}
+export {TestList, TestItem, TestActions, TestDummy}
 
 export const
   TEST_LIST_FETCH = 'TEST_LIST_FETCH',

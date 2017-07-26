@@ -1,6 +1,6 @@
 import React from 'react'
-import {Router, Route, IndexRoute, browserHistory as routerHistory} from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
+import {Route, IndexRoute} from 'react-router'
+
 import App from './App'
 import {Home, Blank, ConfigInfo, PageNotFound, AccessForbiden} from './pages'
 import {GenreList, GenreItem, GenreEditor, GenreCreator} from '../genre/Genre'
@@ -13,16 +13,12 @@ import {AudioList, AudioItems, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItem} from '../video/Video'
 import {RecordList, RecordItem} from '../record/Record'
 
-import {TestList, TestItem}  from '../test/Test'
+import {TestList, TestItem, TestDummy} from '../test/Test'
 
-import store from './store'
-
-const history = syncHistoryWithStore(routerHistory, store)
-
-export default
-<Router history={history}>
-  <Route component={App}>d
+export default (
+  <Route component={App}>
     <IndexRoute component={Home}/>
+
     <Route path="/" component={Home}/>
     <Route path="/config-info" component={ConfigInfo}/>
 
@@ -55,6 +51,7 @@ export default
     <Route path="/genre/new" component={GenreCreator}/>
     <Route path="/genre/:id/edit" component={GenreEditor}/>
 
+    <Route path="/dummy" component={TestDummy}/>
     <Route path="/tests" component={TestList}/>
     <Route path="/tests/:id" component={TestItem}/>
 
@@ -65,4 +62,4 @@ export default
     <Route path="/access-forbiden" component={AccessForbiden}/>
     <Route path="*" component={PageNotFound}/>
   </Route>
-</Router>
+)
