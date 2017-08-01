@@ -44,9 +44,7 @@ export function authenticateUser(data) {
     dispatch({type: USER_AUTH})
 
     fetch(config.authUrl, getAuthConfig(data))
-    .then(response => {
-      return response.json()
-    })
+    .then(response => response.json())
     .then(response => {
       if (response.hasOwnProperty('token')) {
         dispatch({type: USER_AUTH_FULFILLED})
@@ -54,8 +52,9 @@ export function authenticateUser(data) {
         routerHistory.replace('/dashboard')
       }
       else {
-        const error = {data: response}
-        dispatch({type: USER_AUTH_REJECTED, payload: error})
+        let error = new Error()
+        error.data = {data: response}
+        throw error
       }
     })
     .catch((error) => {

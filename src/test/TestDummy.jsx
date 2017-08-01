@@ -4,76 +4,80 @@ import {connect} from 'react-redux'
 import {Table, TableHead, TableBody, TableRow, TableCell, TableSortLabel, Checkbox} from 'material-ui'
 import {AppSpinner, AppHeader} from '../app/components'
 import {debounce} from 'lodash'
-
 import YTSearch from 'youtube-api-search'
-
-function* go() {
-  yield 8456
-  yield 'ABCD'
-  yield [1, 2, 3, 4]
-}
-
-function* xgo() {
-  yield* 8456 // nie zadziała
-  yield* 'ABCD'
-  yield* [1, 2, 3, 4]
-}
-
-function rungo() {
-  let result = []
-
-  let x = null
-
-  result.push('go() {}')
-  let iterator = go()
-  do {
-    x = iterator.next()
-    result.push(x)
-  } while (x.done === false)
-
-  result.push('xgo() {}')
-  iterator = xgo()
-  do {
-    x = iterator.next()
-    result.push(x)
-  } while (x.done === false)
-
-  return result
-}
-
-const API_KEY = 'AIzaSyD_tTrRai6XYHPXK9qFka3zBJ5-AMzx3Ok'
+import {reduxForm} from 'redux-form'
+import {createPost} from './TestActions'
 
 class TestDummy extends React.Component {
 
-  componentWillMount() {
-    YTSearch({key: API_KEY, term: 'james brown'}, data => {
-      this.setState(data)
-    })
-  }
-
   render() {
 
-    const clickButton = debounce(() => {console.log('Abażur')}, 500)
+    const {fields: { title, categories, content}, handleSubmit, createPost} = this.props
 
     return (
-      <div>
-        <button onClick={clickButton}>Click</button>
-        <pre>
-          {JSON.stringify(this.state, null, 4)}
-        </pre>
-      </div>
+      <form onSubmit={handleSubmit(createPost)}>
+        <h3>Create Form</h3>
+        <br/>
+        <br/>
+
+        <label>Title</label>
+        <br/>
+        {/*categories.touched && categories.invalid ? 'has-danger' : ''*/}
+        <input type="text" {...title}/>
+        <div>{title.touched ? title.error : ''}</div>
+
+        <br/>
+
+        <label>Categories</label>
+        <br/>
+        <input type="text" {...categories}/>
+        <div>{categories.touched ? categories.error : ''}</div>
+
+        <br/>
+
+        <label>Content</label>
+        <br/>
+        <input type="textarea" {...content} />
+
+        <div>{content.touched ? content.error : ''}</div>
+
+        <br/>
+
+        <button type="submit">OK</button>
+
+      </form>
     )
   }
 }
 
-// export default TestList
+const validate = values => {
+  const errors = {}
+
+  if(!values.title) {
+    errors.title = 'Title is required.'
+  }
+
+  if(!values.categories) {
+    errors.categories = 'At least one category is required.'
+  }
+
+  if(!values.content) {
+    errors.content = 'Content is required.'
+  }
+
+  return errors
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {}
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {}
+  return {createPost}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestDummy)
+export default reduxForm({
+  form: 'PostNewForm',
+  fields: ['title', 'categories', 'content'],
+  validate,
+}, mapStateToProps, mapDispatchToProps)(TestDummy)

@@ -13,6 +13,10 @@ import {
   TEST_ITEM_FETCH_REJECTED,
 } from './Test'
 
+export const createPost = props => {
+  console.warn(props)
+}
+
 export const fetchTestList = () => {
 
   return (dispatch) => {
@@ -20,7 +24,7 @@ export const fetchTestList = () => {
   }
 }
 
-export const fetchTestItem = (id) => {
+export const fetchTestItem = id => {
   return (dispatch) => {
     dispatch({type: 'ARTIST_LIST_FETCH', payload: axios.get(`${config.artistUrl}/${id}`)})
   }

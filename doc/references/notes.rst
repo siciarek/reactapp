@@ -1,3 +1,10 @@
+Testowanie
+==========
+
+http://www.hammerlab.org/2015/02/14/testing-react-web-apps-with-mocha/
+
+
+
 Konferencja desmart
 -------------------
 

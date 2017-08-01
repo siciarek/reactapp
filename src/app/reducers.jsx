@@ -1,5 +1,7 @@
 import {combineReducers} from 'redux'
+import {reducer as formReducer} from 'redux-form'
 import {routerReducer as routing} from 'react-router-redux'
+
 import app from '../app/appReducer'
 import lyrics from '../lyrics/lyricsReducer'
 import author from '../author/authorReducer'
@@ -13,7 +15,7 @@ import genre from '../genre/genreReducer'
 import record from '../record/recordReducer'
 
 export default combineReducers({
-  test,
+  form: formReducer,
   routing,
   app,
   user,
@@ -25,4 +27,5 @@ export default combineReducers({
   video,
   song,
   record,
+  test,
 })

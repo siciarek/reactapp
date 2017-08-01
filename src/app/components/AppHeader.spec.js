@@ -1,35 +1,51 @@
 import React from 'react'
-import ReactTestUtils from 'react-dom/test-utils'
+import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
 import AppHeader from './AppHeader'
+import {expect} from 'chai'
+import {lorem} from 'faker'
 
-/**
- * For wrapping functional components
- */
-class W extends React.Component {
-  render() {
-    return this.props.children
-  }
-}
+// https://www.npmjs.com/package/faker
+// https://facebook.github.io/react/docs/shallow-renderer.html
+// http://chaijs.com/api/bdd/
 
 describe('AppHeader', () => {
 
-  it('can render without error', () => {
+  let element = null
 
+  beforeEach(() => {
+    element = <AppHeader/>
+  })
+
+  it('can render without error', () => {
     expect(function () {
-      const component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>)
-    }).not.toThrow()
+      const component = renderComponent(element)
+    }).not.to.throw()
+  })
+
+  it('has a proper tag and class name', () => {
+    const component = renderShallowComponent(element)
+
+    expect(component.type).to.equal('h2')
+    expect(component.props.className).to.equal('page-header')
   })
 
   it('has a proper default title', () => {
+    const title = '…'
+    const component = renderComponent(element)
+    const props = getProps(component)
 
-    const component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>).props.children
-    expect(component.props.title).toBe('…')
+    expect(props.title).to.equal(title)
   })
 
   it('sets a proper custom title', () => {
+    for(let i = 0; i < 10; i++) {
+      const title = lorem.sentence()
 
-    const title = 'Zażółć gęślą jaźń'
-    const component = ReactTestUtils.renderIntoDocument(<W><AppHeader title={title}/></W>).props.children
-    expect(component.props.title).toBe(title)
+      element = <AppHeader title={title}/>
+      const component = renderComponent(element)
+      const props = getProps(component)
+
+      expect(props.title).to.equal(title)
+    }
   })
 })

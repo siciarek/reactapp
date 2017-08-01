@@ -15,51 +15,53 @@ import {RecordList, RecordItem} from '../record/Record'
 
 import {TestList, TestItem, TestDummy} from '../test/Test'
 
+import {onEnterArtist, onEnterAuthor} from './router_actions'
+
 export default (
-  <Route component={App}>
+  <Route path="/" component={App}>
     <IndexRoute component={Home}/>
 
-    <Route path="/" component={Home}/>
-    <Route path="/config-info" component={ConfigInfo}/>
+    <Route path="config-info" component={ConfigInfo}/>
 
-    <Route path="/login" component={Login}/>
-    <Route path="/logout" component={Logout}/>
-    <Route path="/dashboard" component={Dashboard}/>
-    <Route path="/profile" component={Profile}/>
+    <Route path="login" component={Login}/>
+    <Route path="logout" component={Logout}/>
+    <Route path="dashboard" component={Dashboard}/>
+    <Route path="profile" component={Profile}/>
 
-    <Route path="/song/add" component={SongEditor}/>
-    <Route path="/song/:id/edit" component={SongEditor}/>
+    <Route path="song/add" component={SongEditor}/>
+    <Route path="song/:id/edit" component={SongEditor}/>
 
-    <Route path="/artists" component={ArtistList}/>
-    <Route path="/artists/:id" component={ArtistItem}/>
+    <Route path="artists" component={ArtistList} onEnter={onEnterArtist}/>
+    <Route path="artists/:id" component={ArtistItem}/>
 
-    <Route path="/authors" component={AuthorList}/>
-    <Route path="/authors/:id" component={AuthorItem}/>
+    <Route path="authors" component={AuthorList} onEnter={onEnterAuthor}/>
+    <Route path="authors/:id" component={AuthorItem}/>
 
-    <Route path="/lyrics" component={LyricsList}/>
-    <Route path="/lyrics/:id" component={LyricsItem}/>
+    <Route path="lyrics" component={LyricsList}/>
+    <Route path="lyrics/:id" component={LyricsItem}/>
 
-    <Route path="/audio" component={AudioList}/>
-    <Route path="/audio/:id" component={AudioItems}/>
-    <Route path="/audio/:id/item/:item_id" component={AudioItem}/>
+    <Route path="audio" component={AudioList}/>
+    <Route path="audio/:id" component={AudioItems}/>
+    <Route path="audio/:id/item/:item_id" component={AudioItem}/>
 
-    <Route path="/videos" component={VideoList}/>
-    <Route path="/video/:id" component={VideoItem}/>
+    <Route path="videos" component={VideoList}/>
+    <Route path="video/:id" component={VideoItem}/>
 
-    <Route path="/genre/list" component={GenreList}/>
-    <Route path="/genre/:id/show" component={GenreItem}/>
-    <Route path="/genre/new" component={GenreCreator}/>
-    <Route path="/genre/:id/edit" component={GenreEditor}/>
+    <Route path="genre/list" component={GenreList}/>
+    <Route path="genre/:id/show" component={GenreItem}/>
+    <Route path="genre/new" component={GenreCreator}/>
+    <Route path="genre/:id/edit" component={GenreEditor}/>
 
-    <Route path="/dummy" component={TestDummy}/>
-    <Route path="/tests" component={TestList}/>
-    <Route path="/tests/:id" component={TestItem}/>
+    <Route path="dummy" component={TestDummy}/>
+    <Route path="tests" component={TestList}/>
+    <Route path="tests/:id" component={TestItem}/>
 
-    <Route path="/records" component={RecordList}/>
-    <Route path="/records/:id" component={RecordItem}/>
+    <Route path="records" component={RecordList}/>
+    <Route path="records/:id" component={RecordItem}/>
 
-    <Route path="/blank" component={Blank}/>
-    <Route path="/access-forbiden" component={AccessForbiden}/>
+    <Route path="blank" component={Blank}/>
+    <Route path="access-forbiden" component={AccessForbiden}/>
+
     <Route path="*" component={PageNotFound}/>
   </Route>
 )
