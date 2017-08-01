@@ -12,25 +12,24 @@ class W extends React.Component {
 }
 
 describe('AppHeader', () => {
-  let component
 
   it('can render without error', () => {
 
     expect(function () {
-      component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>)
+      const component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>)
     }).not.toThrow()
   })
 
   it('has a proper default title', () => {
 
-    component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>).props.children
+    const component = ReactTestUtils.renderIntoDocument(<W><AppHeader/></W>).props.children
     expect(component.props.title).toBe('…')
   })
 
   it('sets a proper custom title', () => {
 
     const title = 'Zażółć gęślą jaźń'
-    component = ReactTestUtils.renderIntoDocument(<W><AppHeader title={title}/></W>).props.children
+    const component = ReactTestUtils.renderIntoDocument(<W><AppHeader title={title}/></W>).props.children
     expect(component.props.title).toBe(title)
   })
 })

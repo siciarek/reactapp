@@ -1,8 +1,8 @@
-import reducer from './userReducer'
+import reducer from '../../user/userReducer'
 import {
   USER_DEFAULT_STATE,
   USER_UPDATE,
-} from './User'
+} from '../../user/User'
 
 test('userReducer USER_UPDATE action', () => {
 

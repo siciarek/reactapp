@@ -24,10 +24,6 @@ const SortableList = SortableContainer(({items, icon}) => {
 
 class AppSortableList extends React.Component {
 
-  componentWillMount() {
-    this.props.init()
-  }
-
   onSortEnd = ({oldIndex, newIndex}) => {
     const {items, model, goTo, init, swap} = this.props
 
