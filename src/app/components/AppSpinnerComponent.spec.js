@@ -11,7 +11,7 @@ describe('AppSpinnerComponent', () => {
     }).not.toThrow()
   })
 
-  it('has properly set default params', () => {
+  it('has default props set up', () => {
 
     const show = false
     const size = 60

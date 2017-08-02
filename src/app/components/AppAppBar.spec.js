@@ -1,12 +1,12 @@
 import React from 'react'
-import {renderComponent, renderShallowComponent, getProps} from '../../../utils/testHelper'
-import Confirmation from './Confirmation'
+import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
+import AppAppBar from './AppAppBar'
 
-describe('Dialog Confirmation', () => {
+describe('AppAppBar', () => {
   let element = null
 
   beforeEach(() => {
-    element = <Confirmation/>
+    element = <AppAppBar/>
   })
 
   it('can render without error', () => {
@@ -19,8 +19,8 @@ describe('Dialog Confirmation', () => {
     const component = renderComponent(element)
     const props = getProps(component)
 
-    Object.keys(Confirmation.defaultProps).map(key => {
-      expect(props[key]).toBe(Confirmation.defaultProps[key])
+    Object.keys(AppAppBar.defaultProps).map(key => {
+      expect(props[key]).toBe(AppAppBar.defaultProps[key])
     })
   })
 })

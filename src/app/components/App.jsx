@@ -1,17 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Helmet} from 'react-helmet'
 import {
   Typography,
   Snackbar,
 } from 'material-ui'
-import {MuiThemeProvider} from 'material-ui/styles';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import {teal, red} from 'material-ui/colors'
+
 import config from '../config'
 import {
   APP_ERROR_HIDE,
   APP_NOTIFICATION_HIDE,
 } from '../AppActionTypes'
-import AppAppBar from  './AppAppBar'
+import AppAppBar from './AppAppBar'
 import AppDrawer from './AppDrawer'
 import '../App.css'
 
@@ -58,7 +60,7 @@ class App extends React.Component {
                     onRequestClose={() => dispatch({type: APP_NOTIFICATION_HIDE})}
         /> : null)
 
-    return <MuiThemeProvider>
+    return <MuiThemeProvider theme={createMuiTheme({})}>
       <div>
         <Helmet>
           <title>{config.appName}</title>
@@ -70,6 +72,18 @@ class App extends React.Component {
       </div>
     </MuiThemeProvider>
   }
+}
+
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  checkAuth: PropTypes.func.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
+}
+
+App.defaultProps = {
+  dispatch: () => console.log('dispatch'),
+  checkAuth: () => console.log('checkAuth'),
+  toggleMenu: () => console.log('toggleMenu'),
 }
 
 export default App
