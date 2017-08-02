@@ -13,7 +13,6 @@ describe('AppSpinner', () => {
 
   it('is hidden when show is set to false', () => {
 
-
     const component = renderComponent(<AppSpinner show={false}/>)
     const props = getProps(component)
     expect(props.show).toBe(false)
