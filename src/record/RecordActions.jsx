@@ -14,7 +14,7 @@ export const fetchRecordList = () => {
 
   const url = config.recordUrl
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_RECORD_LIST})
 
     axios.get(url)
@@ -34,7 +34,7 @@ export const fetchRecordItem = id => {
 
   const url = config.recordUrl
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_RECORD_ITEM})
 
     axios.get(url)

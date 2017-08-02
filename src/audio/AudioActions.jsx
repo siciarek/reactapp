@@ -11,7 +11,7 @@ import {
 
 export const fetchAudioList = () => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_AUDIO})
 
     axios.get(config.audioUrl)
@@ -29,7 +29,7 @@ export const fetchAudioList = () => {
 
 export const fetchAudioItems = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_AUDIO_ITEM})
 
     axios.get(config.audioUrl + '/' + id)

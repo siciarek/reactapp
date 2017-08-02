@@ -27,7 +27,7 @@ export const fetchListGenre = (onlyEnabled = false) => {
 
   const url = onlyEnabled === true ? `${config.genreUrl}?enabled=1` : config.genreUrl
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: GENRE_LIST_FETCH})
 
     axios.get(url)
@@ -42,7 +42,7 @@ export const fetchListGenre = (onlyEnabled = false) => {
 
 export const fetchItemGenre = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: GENRE_ITEM_FETCH})
 
     if (id === null) {
@@ -64,14 +64,14 @@ export const fetchItemGenre = (id) => {
 
 export const updateGenre = (data) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: GENRE_ITEM_UPDATE, payload: data})
   }
 }
 
 export const saveGenre = (data) => {
 
-  return (dispatch) => {
+  return dispatch => {
 
     if (data.id !== null) {
 
@@ -116,7 +116,7 @@ export const saveGenre = (data) => {
 
 export const removeGenre = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: GENRE_ITEM_REMOVE})
 
     const url = `${config.genreUrl}/${id}`

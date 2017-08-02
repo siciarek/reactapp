@@ -6,7 +6,7 @@ describe('AppSpinnerComponent', () => {
 
   it('can render without error', () => {
 
-    expect(function () {
+    expect(() =>  {
       const component = renderComponent(<AppSpinnerComponent/>)
     }).not.toThrow()
   })

@@ -11,7 +11,7 @@ import {
 
 export const fetchVideoList = () => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_VIDEO})
 
     axios.get(config.videoUrl)
@@ -29,7 +29,7 @@ export const fetchVideoList = () => {
 
 export const fetchVideoItem = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: FETCH_VIDEO_ITEM})
 
     axios.get(config.videoUrl + '/' + id)

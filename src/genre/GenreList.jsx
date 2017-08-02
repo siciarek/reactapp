@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     init: bindActionCreators(init, dispatch)
   }

@@ -7,7 +7,7 @@ describe('AppSimpleList', () => {
 
   it('can render without error', () => {
 
-    expect(function () {
+    expect(() =>  {
       const component = renderComponent(<AppSimpleList/>)
     }).not.toThrow()
   })

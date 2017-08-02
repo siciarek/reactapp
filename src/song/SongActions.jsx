@@ -17,14 +17,14 @@ import {
 
 export const updateSong = (data) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: SONG_ITEM_UPDATE, payload: data})
   }
 }
 
 export const fetchSong = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: SONG_ITEM_FETCH})
 
     axios.get(`${config.lyricsUrl}/${id}`)
@@ -42,7 +42,7 @@ export const fetchSong = (id) => {
 
 export const removeSong = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: SONG_ITEM_REMOVE})
 
     axios.delete(`${config.songUrl}/${id}`, getAuthCheckConfig())
@@ -65,7 +65,7 @@ export const removeSong = (id) => {
 export const saveSong = (data) => {
 
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: SONG_ITEM_SAVE})
 
     if (data.id !== null) {

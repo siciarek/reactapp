@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 import AppStash from '../app/AppStash'
-import {getAuthCheckConfig, getAuthConfig}  from '../app/AppHelpers'
+import {getAuthCheckConfig, getAuthConfig} from '../app/AppHelpers'
 import config from '../app/config'
 import {
   USER_PROFILE_FETCH,
@@ -24,8 +24,27 @@ import {
   APP_UNSET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
 
-export function checkIfIsAuthenticated() {
-  return (dispatch) => {
+export const authenticateUser = data => {
+
+  return dispatch => {
+
+    dispatch({type: USER_AUTH})
+
+    axios
+    .post(config.authUrl, getAuthConfig(data))
+    .then(({data}) => {
+      dispatch({type: USER_AUTH_FULFILLED})
+      AppStash.set('token', data.token)
+      routerHistory.replace('/dashboard')
+    })
+    .catch((error) => {
+      dispatch({type: USER_AUTH_REJECTED, payload: error})
+    })
+  }
+}
+
+export const checkIfIsAuthenticated = () => {
+  return dispatch => {
     axios
     .get(config.pingUrl, getAuthCheckConfig())
     .then((response) => {
@@ -37,43 +56,17 @@ export function checkIfIsAuthenticated() {
   }
 }
 
-export function authenticateUser(data) {
-
-  return (dispatch) => {
-
-    dispatch({type: USER_AUTH})
-
-    fetch(config.authUrl, getAuthConfig(data))
-    .then(response => response.json())
-    .then(response => {
-      if (response.hasOwnProperty('token')) {
-        dispatch({type: USER_AUTH_FULFILLED})
-        AppStash.set('token', response.token)
-        routerHistory.replace('/dashboard')
-      }
-      else {
-        let error = new Error()
-        error.data = {data: response}
-        throw error
-      }
-    })
-    .catch((error) => {
-      dispatch({type: USER_AUTH_REJECTED, payload: error})
-    })
-  }
-}
-
-export function unauthenticateUser() {
-  return (dispatch) => {
+export const unauthenticateUser = () => {
+  return dispatch => {
     AppStash.remove('token')
     dispatch({type: USER_UNAUTH_FULFILLED})
     routerHistory.replace('/')
   }
 }
 
-export function fetchUserDashboardData(props) {
+export const fetchUserDashboardData = props => {
 
-  return (dispatch) => {
+  return dispatch => {
 
     if (typeof props.redirectTo !== 'undefined' && props.redirectTo !== null) {
       const route = props.redirectTo
@@ -105,9 +98,9 @@ export function fetchUserDashboardData(props) {
   }
 }
 
-export function fetchUserProfile() {
+export  const fetchUserProfile = () => {
 
-  return (dispatch) => {
+  return dispatch => {
 
     dispatch({type: USER_PROFILE_FETCH})
 
@@ -131,15 +124,15 @@ export function fetchUserProfile() {
   }
 }
 
-export function updateUser(data) {
-  return (dispatch) => {
+export const updateUser = data => {
+  return dispatch => {
     dispatch({type: USER_UPDATE, payload: data})
   }
 }
 
-export function saveUser(data) {
+export const saveUser = data => {
 
-  return (dispatch) => {
+  return dispatch => {
 
     dispatch({type: USER_SAVE})
 

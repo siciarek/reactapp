@@ -12,7 +12,7 @@ import {
 
 export const fetchLyricsList = () => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: LYRICS_LIST_FETCH})
 
     axios.get(config.lyricsUrl)
@@ -30,7 +30,7 @@ export const fetchLyricsList = () => {
 
 export const fetchLyricsItem = (id) => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: LYRICS_ITEM_FETCH})
 
     axios.get(config.lyricsUrl + '/' + id)

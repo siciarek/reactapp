@@ -17,7 +17,7 @@ describe('AppHeader', () => {
   })
 
   it('can render without error', () => {
-    expect(function () {
+    expect(() =>  {
       const component = renderComponent(element)
     }).not.to.throw()
   })

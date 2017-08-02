@@ -45,7 +45,7 @@ export const swapListItems = (modelName, src, trg, onError) => {
   const model = models[modelName]
   const url = `${model.url}/${src.id}?${queryString.stringify({swap: trg.id})}`
 
-  return (dispatch) => {
+  return dispatch => {
 
     dispatch({type: model.pending, payload: [src, trg]})
 

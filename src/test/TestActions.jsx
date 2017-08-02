@@ -19,13 +19,13 @@ export const createPost = props => {
 
 export const fetchTestList = () => {
 
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: 'ARTIST_LIST_FETCH', payload: axios.get(config.artistUrl)})
   }
 }
 
 export const fetchTestItem = id => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({type: 'ARTIST_LIST_FETCH', payload: axios.get(`${config.artistUrl}/${id}`)})
   }
 }

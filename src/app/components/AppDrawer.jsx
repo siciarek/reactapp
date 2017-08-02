@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     toggleVisibility: () => dispatch({type: APP_TOGGLE_MENU}),
   }
