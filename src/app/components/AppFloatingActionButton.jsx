@@ -21,16 +21,40 @@ const AppFloatingActionButton = ({icon, color, route}) =>
     {icon}
   </Button>
 
+// class AppFloatingActionButton extends React.Component {
+//
+//   render() {
+//
+//     const {icon, color, route} = this.props
+//
+//     return <Button fab
+//                    style={{
+//                      margin: 0,
+//                      zIndex: 2147483647,
+//                      position: 'fixed',
+//                      top: 'auto',
+//                      right: 20,
+//                      bottom: 20,
+//                      left: 'auto',
+//                    }}
+//                    color={color}
+//                    onTouchTap={() => routerHistory.push(route)}
+//     >
+//       {icon}
+//     </Button>
+//   }
+// }
+
 AppFloatingActionButton.propTypes = {
   icon: PropTypes.node.isRequired,
   color: PropTypes.string.isRequired,
-  route: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired,
 }
 
 AppFloatingActionButton.defaultProps = {
   icon: <IconKeyboardArrowLeft/>,
   color: 'primary',
-  route: '/',
+  action: () => {},
 }
 
 export default AppFloatingActionButton

@@ -9,7 +9,11 @@ injectTapEventPlugin()
 
 import store from '../app/store'
 
-const renderComponent = (component) => {
+const simulateClick = component => {
+  ReactTestUtils.Simulate.click(component);
+}
+
+const renderComponent = component => {
   return ReactTestUtils.renderIntoDocument(
     <Provider store={store}>
       <MuiThemeProvider theme={createMuiTheme({})}>
@@ -19,14 +23,14 @@ const renderComponent = (component) => {
   )
 }
 
-const renderShallowComponent = (element) => {
+const renderShallowComponent = element => {
   const renderer = new ShallowRenderer()
   renderer.render(element)
   return renderer.getRenderOutput();
 }
 
-const getProps = (component) => {
+const getProps = component => {
   return component.props.children.props.children.props
 }
 
-export {renderComponent, renderShallowComponent, getProps}
+export {renderComponent, renderShallowComponent, getProps, simulateClick}

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {browserHistory as routerHistory} from 'react-router'
 import {AppFloatingActionButton, AppHeader, AppSpinner} from '../../app/components'
 
 const AppSimpleItem = ({description, info, returnRoute}) => {
@@ -8,7 +9,7 @@ const AppSimpleItem = ({description, info, returnRoute}) => {
     {
       (returnRoute === undefined || returnRoute === null || returnRoute.trim().length === 0)
         ? null
-        : <AppFloatingActionButton route={returnRoute}/>
+        : <AppFloatingActionButton action={() => routerHistory.push(returnRoute)}/>
     }
     <AppSpinner/>
     <AppHeader title={description}/>
