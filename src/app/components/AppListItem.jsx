@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import IconButton from 'material-ui/IconButton'
 import Avatar from 'material-ui/Avatar'
-import {ListItem} from 'material-ui/List'
+import {ListItem, ListItemAvatar, ListItemText} from 'material-ui/List'
 import ShowIcon from 'material-ui-icons/Visibility'
 import EditIcon from 'material-ui-icons/ModeEdit'
 import RemoveIcon from 'material-ui-icons/Delete'
@@ -34,7 +34,7 @@ class AppListItem extends React.Component {
       remove: (<RemoveIcon/>),
     }
 
-    const {editable, toolbarVisible, primaryText} = this.props
+    const {editable, toolbarVisible, primaryText, secondaryText} = this.props
 
     const actions = editable === true && toolbarVisible === true ? {...this.props.actions} : {}
 
@@ -56,12 +56,16 @@ class AppListItem extends React.Component {
 
     const initial = primaryText.substring(-1, 1).toLocaleUpperCase()
 
-    return <ListItem
-      {...props}
-      onTouchTap={this.handleTap}
-      leftAvatar={<Avatar className={'initial'}>{initial}</Avatar>}
-      rightAvatar={<span>{buttons}</span>}
-    />
+    return <ListItem button classes={{}} key={primaryText} onTouchTap={this.handleTap}>
+      <ListItemText classes={{}} primary={primaryText} secondary={secondaryText}/>
+    </ListItem>
+
+    // return <ListItem
+    //   {...props}
+    //   onTouchTap={this.handleTap}
+    //   // leftAvatar={<Avatar className={'initial'}>{initial}</Avatar>}
+    //   // rightAvatar={<span>{buttons}</span>}
+    // />
   }
 }
 

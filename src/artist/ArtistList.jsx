@@ -6,6 +6,9 @@ import ItemIcon from 'material-ui-icons/Mic'
 import {swapListItems} from '../app/AppActions'
 import {fetchArtistList} from '../artist/ArtistActions'
 import {AppSortableList} from '../app/components'
+import Authentication from '../app/Authentication'
+
+const SecuredList = Authentication(AppSortableList)
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -26,4 +29,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)
+export default connect(mapStateToProps, mapDispatchToProps)(SecuredList)

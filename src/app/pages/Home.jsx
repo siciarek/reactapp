@@ -24,4 +24,6 @@ const Home = () => {
   )
 }
 
+Home.defaultProps = {}
+
 export default Home

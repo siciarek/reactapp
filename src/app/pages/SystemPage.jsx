@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import IconErrorOutline from 'material-ui-icons/ErrorOutline'
 import IconPanTool from 'material-ui-icons/PanTool'
 import IconThumbUp from 'material-ui-icons/ThumbUp'
@@ -20,6 +20,12 @@ const SystemPage = ({code, message, icon}) => {
     <br/>
     {icons[i]}
   </div>
+}
+
+SystemPage.propTypes = {
+  code: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 }
 
 export default SystemPage
