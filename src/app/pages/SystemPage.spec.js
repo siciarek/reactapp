@@ -1,5 +1,5 @@
 /**
- * AppSortableList.spec.js
+ * SystemPage.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
@@ -7,14 +7,14 @@ import {lorem} from 'faker'
 import {expect} from 'chai'
 import {map} from 'lodash'
 
-import AppSortableList from './AppSortableList'
+import SystemPage from './SystemPage'
 
-describe('AppSortableList', () => {
+describe('SystemPage', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <AppSortableList/>
+    element = <SystemPage/>
   })
 
   it('can render without error', () => {

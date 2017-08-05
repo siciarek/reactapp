@@ -1,7 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
 import AppFloatingActionButton from "../app/components/AppFloatingActionButton"
+import IconAdd from 'material-ui-icons/Add'
 
 import {fetchLyricsList} from './LyricsActions'
 import {removeSong} from '../song/SongActions'
@@ -11,15 +14,15 @@ import AppList from '../app/components/AppList'
 
 class LyricsList extends React.Component {
 
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       selectedItem: 0,
     }
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchLyricsList())
+    this.props.init()
   }
 
   generateActions = (id, handleRemoval) => {
@@ -35,29 +38,36 @@ class LyricsList extends React.Component {
     return (
       <div>
         <AppHeader title="Lyrics"/>
+        <AppSpinner/>
+        <AppFloatingActionButton icon={<IconAdd/>} action={() => this.props.router.push("/song/add")}/>
         <AppList
           primaryTextIndexes={['title']}
-          secondaryTextIndexes={['genre.name','firstPublishedAt']}
+          secondaryTextIndexes={['genre.name', 'firstPublishedAt']}
 
-          removeItemFunction={(id) => this.props.dispatch(removeSong(id))}
-          selectFunction={(id) => this.setState({selectedItem: id})}
+          removeItemFunction={id => this.props.dispatch(removeSong(id))}
+          selectFunction={id => this.setState({selectedItem: id})}
           generateActions={this.generateActions}
 
           selectedItem={this.state.selectedItem}
           items={this.props.items}
           editable={this.props.authenticated}
         />
-        <AppFloatingActionButton icon="add" route="/song/add"/>
-        <AppSpinner/>
       </div>
     )
   }
 }
 
-export default connect((store) => {
-
+const mapStateToProps = (state, ownProps) => {
   return {
-    authenticated: true, // store.user.authenticated,
-    items: store.lyrics.items,
+    authenticated: state.user.authenticated,
+    items: state.lyrics.items,
   }
-})(LyricsList)
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: () => fetchLyricsList(),
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LyricsList)

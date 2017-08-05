@@ -17,7 +17,7 @@ import IconKeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft'
 //             left: 'auto',
 //           }}
 //           color={color}
-//           onTouchTap={() => routerHistory.push(route)}
+//           onTouchTap={() => this.props.action()}
 //   >
 //     {icon}
 //   </Button>
@@ -39,7 +39,7 @@ class AppFloatingActionButton extends React.Component {
                      left: 'auto',
                    }}
                    color={color}
-                   onTouchTap={() => routerHistory.push(route)}
+                   onTouchTap={() => this.props.action() }
     >
       {icon}
     </Button>

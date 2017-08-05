@@ -8,8 +8,6 @@ import {fetchArtistList} from '../artist/ArtistActions'
 import {AppSortableList} from '../app/components'
 import Authentication from '../app/Authentication'
 
-const SecuredList = Authentication(AppSortableList)
-
 const mapStateToProps = (state, ownProps) => {
 
   return {
@@ -29,4 +27,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SecuredList)
+export default connect(mapStateToProps, mapDispatchToProps)(AppSortableList)

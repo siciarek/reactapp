@@ -1,6 +1,6 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {fetchArtistItem as loadContent} from './ArtistActions'
+import {fetchArtistItem} from './ArtistActions'
 import {AppSimpleAutoloadingItem} from '../app/components'
 
 const mapStateToProps = (state, ownProps) => {
@@ -11,9 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    loadContent: bindActionCreators(() => loadContent(ownProps.params.id), dispatch)
-  }
+  return bindActionCreators({
+    init: () => fetchArtistItem(ownProps.params.id)
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppSimpleAutoloadingItem)

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {List, Dialog, FlatButton} from 'material-ui'
+import {List, Dialog, Button} from 'material-ui'
 import AppListItem from './AppListItem'
 
-export default class AppList extends React.Component {
+class AppList extends React.Component {
 
   constructor(props) {
     super(props)
@@ -69,8 +69,8 @@ export default class AppList extends React.Component {
       modal={true}
       open={this.state.removalInProgress}
       actions={[
-        <FlatButton label="No" onTouchTap={this.closeRemovalConfirmationDialog}/>,
-        <FlatButton label="Yes" onTouchTap={() => {
+        <Button flat label="No" onTouchTap={this.closeRemovalConfirmationDialog}/>,
+        <Button flat label="Yes" onTouchTap={() => {
           this.closeRemovalConfirmationDialog()
           this.props.removeItemFunction(this.state.selectedItem)
         }}/>,
@@ -91,22 +91,34 @@ export default class AppList extends React.Component {
 
 AppList.propTypes = {
   editable: PropTypes.bool.isRequired,
+  primaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  primaryTextSeparator: PropTypes.string.isRequired,
+  secondaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  secondaryTextSeparator: PropTypes.string.isRequired,
+
   selectFunction: PropTypes.func.isRequired,
   removeItemFunction: PropTypes.func.isRequired,
   generateActions: PropTypes.func.isRequired,
+
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
   })).isRequired,
   selectedItem: PropTypes.number.isRequired,
-  primaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  secondaryTextIndexes: PropTypes.arrayOf(PropTypes.string).isRequired,
-  primaryTextSeparator: PropTypes.string.isRequired,
-  secondaryTextSeparator: PropTypes.string.isRequired,
 }
 
 AppList.defaultProps = {
   editable: false,
+  primaryTextIndexes: [],
   primaryTextSeparator: ' ',
-  secondaryTextSeparator: '/',
   secondaryTextIndexes: [],
+  secondaryTextSeparator: '/',
+
+  selectFunction: () => {},
+  removeItemFunction: () => {},
+  generateActions: () => {},
+
+  items: [],
+  selectedItem: 0,
 }
+
+export default AppList

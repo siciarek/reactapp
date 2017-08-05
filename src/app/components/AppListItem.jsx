@@ -54,7 +54,7 @@ class AppListItem extends React.Component {
       </IconButton>
     })
 
-    const initial = primaryText.substring(-1, 1).toLocaleUpperCase()
+    const initial = primaryText ? primaryText.substring(-1, 1).toLocaleUpperCase() : '?'
 
     return <ListItem button classes={{}} key={primaryText} onTouchTap={this.handleTap}>
       <ListItemText classes={{}} primary={primaryText} secondary={secondaryText}/>

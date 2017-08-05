@@ -1,5 +1,5 @@
 /**
- * AppSortableList.spec.js
+ * AppListItem.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
@@ -7,14 +7,14 @@ import {lorem} from 'faker'
 import {expect} from 'chai'
 import {map} from 'lodash'
 
-import AppSortableList from './AppSortableList'
+import AppListItem from './AppListItem'
 
-describe('AppSortableList', () => {
+describe('AppListItem', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <AppSortableList/>
+    element = <AppListItem/>
   })
 
   it('can render without error', () => {
