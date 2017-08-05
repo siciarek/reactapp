@@ -81,9 +81,9 @@ App.propTypes = {
 }
 
 App.defaultProps = {
-  dispatch: () => console.log('dispatch'),
-  checkAuth: () => console.log('checkAuth'),
-  toggleMenu: () => console.log('toggleMenu'),
+  dispatch: () => {},
+  checkAuth: () => {},
+  toggleMenu: () => {},
 }
 
 export default App
