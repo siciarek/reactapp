@@ -8,7 +8,12 @@ import IconMenu from 'material-ui-icons/Menu'
 import ReactTestUtils from 'react-dom/test-utils'
 import ReactDom from 'react-dom'
 
+import sinon from 'sinon'
+import { expect } from 'chai'
+import { mount } from 'enzyme'
+
 describe('AppFloatingActionButton', () => {
+  let variable = 0
   let element = null
   let icons = []
   let colors = ['primary', 'accent', 'default']
@@ -25,6 +30,7 @@ describe('AppFloatingActionButton', () => {
   ]
 
   beforeEach(() => {
+    variable = 0;
     element = <AppFloatingActionButton/>
     icons.push(<IconMail/>)
     icons.push(<IconMemory/>)
@@ -35,7 +41,7 @@ describe('AppFloatingActionButton', () => {
 
     expect(() => {
       const component = renderComponent(element)
-    }).not.toThrow()
+    }).not.to.throw()
   })
 
   it('has default props set up', () => {
@@ -44,7 +50,7 @@ describe('AppFloatingActionButton', () => {
     const props = getProps(component)
 
     Object.keys(AppFloatingActionButton.defaultProps).map(key => {
-      expect(props[key]).toBe(AppFloatingActionButton.defaultProps[key])
+      expect(props[key]).to.equal(AppFloatingActionButton.defaultProps[key])
     })
   })
 
@@ -54,16 +60,27 @@ describe('AppFloatingActionButton', () => {
         actions.map(action => {
           const component = renderComponent(<AppFloatingActionButton icon={icon} color={color} action={action}/>)
           const props = getProps(component)
-          expect(props.icon).toBe(icon)
-          expect(props.color).toBe(color)
-          expect(props.action()).toBe(action())
+          expect(props.icon).to.equal(icon)
+          expect(props.color).to.equal(color)
+          expect(props.action()).to.equal(action())
         })
       })
     })
   })
 
   it('runs proper action on click', () => {
-    // const element = <AppFloatingActionButton action={() => console.log('Zażółć gęślą jaźń.')}/>
+
+    // Problems, problems, problems.
+
+    // const wrapper = mount(<AppFloatingActionButton action={() => { variable = 100 }}/>)
+    //
+    // const node = ReactDom.findDOMNode(
+    //   ReactTestUtils.findRenderedDOMComponentWithTag(
+    //     wrapper.instance(), 'button'
+    //   )
+    // );
+    // ReactTestUtils.Simulate.touchTap(node);
+
     //
     // // const component = renderComponent(element)
     // const component = ReactTestUtils.renderIntoDocument(element)

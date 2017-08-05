@@ -185,7 +185,9 @@ Redux middleware
 .. code-block::javascript
 
     /**
-     * Sample middleware logger
+     * Sample middleware
+     *
+     * ES6
      */
     const simpleLogger = store => next => action => {
       console.log(action.type)
@@ -197,6 +199,27 @@ Redux middleware
       // console.groupEnd(action.type)
 
       return result
+    }
+
+    /**
+     * Sample middleware
+     *
+     * Vanilla JS
+     */
+    function simpleLogger(store) {
+        return function(next) {
+            return function(action) {
+                console.log(action.type)
+
+                // console.group(action.type)
+                // console.info('dispatching', action)
+                let result = next(action)
+                // console.log('next state', store.getState())
+                // console.groupEnd(action.type)
+
+                return result
+            }
+        }
     }
 
 Własne walidatory PropType

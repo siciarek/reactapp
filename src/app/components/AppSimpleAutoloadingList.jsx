@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {AppSimpleList} from '../components'
 
 class AppSimpleAutoloadingList extends React.Component {
@@ -10,6 +11,14 @@ class AppSimpleAutoloadingList extends React.Component {
   render() {
     return <AppSimpleList {...this.props}/>
   }
+}
+
+AppSimpleAutoloadingList.props = {
+  init: PropTypes.func.isRequired,
+}
+
+AppSimpleAutoloadingList.defaultProps = {
+  init: () => {}
 }
 
 export default AppSimpleAutoloadingList

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {map} from 'lodash'
 import List from 'material-ui/List'
 import config from '../config'
 import {AppHeader, AppListItem} from '../components'
@@ -7,11 +8,7 @@ import {AppHeader, AppListItem} from '../components'
 const ConfigInfo = ({title}) => <div>
   <AppHeader title={title}/>
   <List>
-    {
-      Object.keys(config).map(e => {
-        return <AppListItem key={e} primaryText={e} secondaryText={config[e]}/>
-      })
-    }
+    {map(config, (value, key) => <AppListItem key={key} primaryText={key} secondaryText={value}/>)}
   </List>
 </div>
 
