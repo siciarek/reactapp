@@ -16,7 +16,7 @@ class GenreItem extends React.Component {
       return <AppSpinner/>
     }
 
-    const {name, info, description, category} = this.props.current
+    const {name, info, description, category} = this.props.item
 
     const nameContent = name === null ? '' : name
 
@@ -59,12 +59,12 @@ class GenreItem extends React.Component {
         <Button raised
           color="accent"
           onTouchTap={() => this.props.dispatch(removeGenre(this.props.params.id))}
-          style={{marginLeft: 12, display: (this.props.current.id ? 'inline-block' : 'none')}}
+          style={{marginLeft: 12, display: (this.props.item.id ? 'inline-block' : 'none')}}
         >
           Remove
         </Button>
 
-        <AppFloatingActionButton route="/genre/list"/>
+        <AppFloatingActionButton action={() => this.props.router.push('genre/list')}/>
       </div>
     )
   }
@@ -73,6 +73,6 @@ class GenreItem extends React.Component {
 export default connect((store) => {
   return {
     processing: store.app.processing,
-    current: store.genre.current,
+    item: store.genre.current,
   }
 })(GenreItem)

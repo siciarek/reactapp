@@ -15,9 +15,13 @@ class GenreListComponent extends React.Component {
 
     const {items, title} = this.props
 
+    if(typeof items.map !== 'function') {
+      return null
+    }
+
     return <div>
       <AppHeader title={title}/>
-      <AppFloatingActionButton icon={<IconAdd/>} route="/genre/new"/>
+      <AppFloatingActionButton icon={<IconAdd/>} action={() => routerHistory.push('/genre/new')}/>
       <AppSpinner/>
       <List>
         {

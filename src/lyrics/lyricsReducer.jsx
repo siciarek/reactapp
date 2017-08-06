@@ -1,8 +1,6 @@
 import {
-  LYRICS_LIST_FETCH,
   LYRICS_LIST_FETCH_FULFILLED,
   LYRICS_LIST_FETCH_REJECTED,
-  LYRICS_ITEM_FETCH,
   LYRICS_ITEM_FETCH_FULFILLED,
   LYRICS_ITEM_FETCH_REJECTED,
 } from './Lyrics'
@@ -10,49 +8,30 @@ import {
 const DEFAULT_STATE = {
   current: {},
   items: [],
-  fetching: false,
-  fetched: false,
   error: null,
 }
 
 export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
-    case LYRICS_LIST_FETCH: {
-      return {
-        ...state,
-        fetching: true
-      }
-    }
-    case LYRICS_ITEM_FETCH: {
-      return {
-        ...state,
-        current: {},
-        fetching: true
-      }
-    }
     case LYRICS_LIST_FETCH_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        items: action.payload
+        items: action.payload.data
       }
     }
     case LYRICS_ITEM_FETCH_FULFILLED: {
+      console.log(action.payload)
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        current: action.payload
+        current: action.payload.data
       }
     }
     case LYRICS_LIST_FETCH_REJECTED:
     case LYRICS_ITEM_FETCH_REJECTED: {
       return {
         ...state,
-        fetching: false,
-        error: action.payload
+        error: action.payload.data
       }
     }
     default:

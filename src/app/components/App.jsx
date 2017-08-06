@@ -27,10 +27,6 @@ class App extends React.Component {
 
     const {children, dispatch, error, notification, toggleMenu, authenticated} = this.props
 
-    if (error !== undefined && error !== null && error.hasOwnProperty('data')) {
-      console.log([error.data.code, error.data.message]);
-    }
-
     // TODO: Move to separate component
 
     const errorContentStyle = {

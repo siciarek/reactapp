@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchLyricsItem} from './LyricsActions'
 import AppHeader from '../app/components/AppHeader'
@@ -9,30 +10,40 @@ import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
 class LyricsItem extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchLyricsItem(this.props.params.id))
+    this.props.init()
   }
 
   render() {
 
-    return (
-      <div>
-        <AppHeader title={this.props.current.title}/>
-        <pre className="text">{this.props.current.lyrics}</pre>
-        <AppFloatingActionButton icon="keyboard_arrow_left" route="/lyrics"/>
-        <AppSpinner/>
-      </div>
-    )
+    return <div>
+      <AppHeader title={this.props.current.title}/>
+      <AppSpinner/>
+      <AppFloatingActionButton action={() => this.props.router.push('/lyrics')}/>
+      <pre className="text">{this.props.current.lyrics}</pre>
+    </div>
   }
 }
 
 LyricsItem.propTypes = {
   params: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 }
 
-export default connect((store) => {
+LyricsItem.defaultProps = {
+  params: {id: "0"}
+}
+
+const mapStateToProps = (state, ownProps) => {
   return {
-    current: store.lyrics.current,
+    current: state.lyrics.current,
   }
-})(LyricsItem)
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: () => fetchLyricsItem(ownProps.params.id),
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LyricsItem)

@@ -1,40 +1,38 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {AppHeader, AppFloatingActionButton, AppSpinner} from '../app/components'
-import {GenreForm}  from './components'
-import {fetchItemGenre} from './GenreActions'
+import GenreForm from './components/GenreForm'
+import {saveGenre} from './GenreActions'
 
-class GenreCreator extends React.Component {
+const GenreCreator = ({title, onSubmit, router}) => {
 
-  componentWillMount() {
-    this.props.dispatch(fetchItemGenre(null))
-  }
+  return <div>
+    <AppSpinner/>
+    <AppHeader title={title}/>
 
-  render() {
+    <br/>
 
-    if(this.props.item.id !== null) {
-      return <AppSpinner/>
-    }
+    <GenreForm onSubmit={onSubmit}/>
 
-    return (
-      <div>
-        <AppSpinner/>
-        <AppHeader title="Add genre"/>
+    <AppFloatingActionButton action={() => router.push('/genre/list')}/>
+  </div>
+}
 
-        <GenreForm
-          item={this.props.item}
-          dispatch={this.props.dispatch}
-        />
-
-        <AppFloatingActionButton route="/genre/list"/>
-      </div>
-    )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    title: 'Add genre',
   }
 }
 
-export default connect((store) => {
-
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    item: store.genre.current,
+    onSubmit: data => {
+      const categories = JSON.parse(localStorage.getItem('genrecategory'))
+      const category = categories.filter(e => e.id === parseInt(data.category)).shift()
+      dispatch(saveGenre({...data, category: category}))
+    }
   }
-})(GenreCreator)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenreCreator)

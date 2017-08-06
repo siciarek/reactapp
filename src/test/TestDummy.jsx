@@ -59,13 +59,17 @@ class TestDummy extends React.Component {
     )
   }
 
+  showResult(data) {
+    console.log(data)
+  }
+
   render() {
 
     const {handleSubmit} = this.props
 
 
     return (
-      <form onSubmit={handleSubmit(createPost)}>
+      <form onSubmit={handleSubmit(this.showResult)}>
         <h3>Create Form</h3>
         <br/>
         <br/>
@@ -125,9 +129,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {handleSubmit: (data) => createPost(data)}
+  return {}
 }
 
-export default reduxForm({
+TestDummy = reduxForm({
   form: 'DummyForm',
 }, mapStateToProps, mapDispatchToProps)(TestDummy)
+
+export default TestDummy

@@ -57,6 +57,7 @@ class AppListItem extends React.Component {
     const initial = primaryText ? primaryText.substring(-1, 1).toLocaleUpperCase() : '?'
 
     return <ListItem button classes={{}} key={primaryText} onTouchTap={this.handleTap}>
+      <Avatar classes={{}} className={'initial'}>{initial}</Avatar>
       <ListItemText classes={{}} primary={primaryText} secondary={secondaryText}/>
     </ListItem>
 

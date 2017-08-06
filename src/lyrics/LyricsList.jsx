@@ -44,7 +44,7 @@ class LyricsList extends React.Component {
           primaryTextIndexes={['title']}
           secondaryTextIndexes={['genre.name', 'firstPublishedAt']}
 
-          removeItemFunction={id => this.props.dispatch(removeSong(id))}
+          removeItemFunction={id => this.props.removeItem(id)}
           selectFunction={id => this.setState({selectedItem: id})}
           generateActions={this.generateActions}
 
@@ -67,7 +67,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({
     init: () => fetchLyricsList(),
-  })
+    removeItem: removeSong,
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LyricsList)

@@ -1,41 +1,55 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {AppHeader, AppFloatingActionButton, AppSpinner} from '../app/components'
-import {GenreForm}  from './components'
-import {fetchItemGenre} from './GenreActions'
+import {GenreForm} from './components'
+import {fetchItemGenre, saveGenre} from './GenreActions'
 
 class GenreEditor extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchItemGenre(this.props.router.params.id))
+    this.props.init()
   }
 
   render() {
 
-    if(this.props.item.id === null) {
-      return <AppSpinner/>
+    const {title, onSubmit, router, item} = this.props
+
+    if (typeof item.id === 'undefined' || item.id === null) {
+      return null
     }
 
     return (
       <div>
         <AppSpinner/>
-        <AppHeader title="Edit genre"/>
+        <AppHeader title={title}/>
 
-        <GenreForm
-          item={this.props.item}
-          dispatch={this.props.dispatch}
-        />
+        <br/>
+        <GenreForm onSubmit={onSubmit} initialValues={item}/>
 
-        <AppFloatingActionButton route="/genre/list"/>
+        <AppFloatingActionButton action={() => router.push('/genre/list')}/>
       </div>
     )
   }
 }
 
-export default connect((store) => {
-
+const mapStateToProps = (state, ownProps) => {
   return {
-    item: store.genre.current,
+    title: 'Edit genre',
+    item: state.genre.current,
   }
-})(withRouter(GenreEditor))
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    init: bindActionCreators(() => fetchItemGenre(ownProps.params.id), dispatch),
+    onSubmit: data => {
+      const categories = JSON.parse(localStorage.getItem('genrecategory'))
+      const category = categories.filter(e => e.id === parseInt(data.category)).shift()
+      dispatch(saveGenre({...data, id: ownProps.params.id, category: category}))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenreEditor)

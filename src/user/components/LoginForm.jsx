@@ -5,11 +5,11 @@ import Button from 'material-ui/Button'
 const LoginForm = ({setValue, submit, username, password}) => {
 
   return <form>
-    <TextField marginForm id="username" label="Username" type="text" value={username}
+    <TextField id="username" label="Username" type="text" value={username}
                onChange={event => setValue({[event.target.id]: event.target.value})}/>
     <br/>
 
-    <TextField marginForm id="password" label="Password" type="password" value={password}
+    <TextField id="password" label="Password" type="password" value={password}
                onChange={event => setValue({[event.target.id]: event.target.value})}/>
     <br/>
     <br/>

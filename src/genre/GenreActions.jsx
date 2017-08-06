@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 
-import {getAuthCheckConfig, handleForbidenAccess}  from '../app/AppHelpers'
+import {getAuthCheckConfig, handleForbidenAccess} from '../app/AppHelpers'
 import config from '../app/config'
 
 import {
@@ -22,6 +22,7 @@ import {
   GENRE_ITEM_REMOVE_FULFILLED,
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
+
 
 export const fetchListGenre = (onlyEnabled = false) => {
 
@@ -51,8 +52,9 @@ export const fetchItemGenre = (id) => {
     else {
       axios.get(`${config.genreUrl}/${id}`)
       .then((response) => {
-        dispatch({type: GENRE_ITEM_FETCH_FULFILLED, payload: response.data})
-        return response.data
+        const data = {...response.data, category: response.data.category.id}
+        dispatch({type: GENRE_ITEM_FETCH_FULFILLED, payload: data})
+        return data
       })
       .catch((err) => {
         dispatch({type: GENRE_ITEM_FETCH_REJECTED, payload: err})
@@ -61,19 +63,11 @@ export const fetchItemGenre = (id) => {
   }
 }
 
-
-export const updateGenre = (data) => {
-
-  return dispatch => {
-    dispatch({type: GENRE_ITEM_UPDATE, payload: data})
-  }
-}
-
-export const saveGenre = (data) => {
+export const saveGenre = data => {
 
   return dispatch => {
 
-    if (data.id !== null) {
+    if (typeof data.id !== 'undefined' && data.id !== null) {
 
       dispatch({type: GENRE_ITEM_SAVE})
 
@@ -103,10 +97,10 @@ export const saveGenre = (data) => {
         })
         return response.data
       })
-      .then((data) => {
+      .then(data => {
         routerHistory.replace(`/genre/${data.id}/edit`)
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({type: GENRE_ITEM_ADD_REJECTED, payload: error})
         handleForbidenAccess(dispatch, error, '/genre/list')
       })

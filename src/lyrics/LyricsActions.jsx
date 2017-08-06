@@ -12,36 +12,10 @@ import {
 
 export const fetchLyricsList = () => {
 
-  return dispatch => {
-    dispatch({type: LYRICS_LIST_FETCH})
-
-    axios.get(config.lyricsUrl)
-    .then((response) => {
-      dispatch({
-        type: LYRICS_LIST_FETCH_FULFILLED,
-        payload: response.data,
-      })
-    })
-    .catch((err) => {
-      dispatch({type: LYRICS_LIST_FETCH_REJECTED, payload: err})
-    })
-  }
+  return dispatch => dispatch({type: LYRICS_LIST_FETCH, payload: axios.get(config.lyricsUrl)})
 }
 
-export const fetchLyricsItem = (id) => {
+export const fetchLyricsItem = id => {
 
-  return dispatch => {
-    dispatch({type: LYRICS_ITEM_FETCH})
-
-    axios.get(config.lyricsUrl + '/' + id)
-    .then((response) => {
-      dispatch({
-        type: LYRICS_ITEM_FETCH_FULFILLED,
-        payload: response.data,
-      })
-    })
-    .catch((err) => {
-      dispatch({type: LYRICS_ITEM_FETCH_REJECTED, payload: err})
-    })
-  }
+  return dispatch => dispatch({type: LYRICS_ITEM_FETCH, payload: axios.get(`${config.lyricsUrl}/${id}`)})
 }

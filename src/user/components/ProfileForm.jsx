@@ -110,7 +110,7 @@ class ProfileForm extends React.Component {
         {/*onChange={this.updateSelectValue}*/}
         {/*/>*/}
 
-        {/*<DatePicker marginForm*/}
+        {/*<DatePicker*/}
         {/*label="Date of birth"*/}
         {/*id="dateOfBirth"*/}
         {/*value={new Date(this.props.current.dateOfBirth)}*/}
@@ -119,40 +119,35 @@ class ProfileForm extends React.Component {
         {/*fullWidth={true}*/}
         {/*/>*/}
 
-        <TextField marginForm
-                   label="First name"
+        <TextField label="First name"
                    id="firstName"
                    value={firstName}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
 
-        <TextField marginForm
-                   label="Last name"
+        <TextField label="Last name"
                    id="lastName"
                    value={lastName}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
 
-        <TextField marginForm
-                   label="Email"
+        <TextField label="Email"
                    id="email"
                    value={email}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
 
-        <TextField marginForm
-                   label="Description"
+        <TextField label="Description"
                    id="description"
                    value={description ? description : ''}
                    fullWidth={true}
                    onChange={this.updateValue}
         />
 
-        <TextField marginForm
-                   label="Info"
+        <TextField label="Info"
                    id="info"
                    value={info ? info : ''}
                    multiline={true}
