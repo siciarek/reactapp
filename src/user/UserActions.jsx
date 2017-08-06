@@ -1,8 +1,10 @@
 import axios from 'axios'
 import {browserHistory as routerHistory} from 'react-router'
 import AppStash from '../app/AppStash'
-import {getAuthCheckConfig, getAuthConfig} from '../app/AppHelpers'
+import {getAuthCheckConfig} from '../app/AppHelpers'
 import config from '../app/config'
+import {map} from 'lodash'
+
 import {
   USER_PROFILE_FETCH,
   USER_PROFILE_FETCH_FULFILLED,
@@ -26,12 +28,18 @@ import {
 
 export const authenticateUser = data => {
 
+  let params = new URLSearchParams();
+
+  map(data, (value, key) => {
+    params.append(key, value);
+  })
+
   return dispatch => {
 
     dispatch({type: USER_AUTH})
 
     axios
-    .post(config.authUrl, getAuthConfig(data))
+    .post(config.authUrl, params)
     .then(({data}) => {
       dispatch({type: USER_AUTH_FULFILLED})
       AppStash.set('token', data.token)

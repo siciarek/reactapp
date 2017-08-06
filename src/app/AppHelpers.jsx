@@ -18,23 +18,3 @@ export const getAuthCheckConfig = () => {
     ? {headers: {'Authorization': `Bearer ${AppStash.get('token')}`}}
     : {}
 }
-
-export const getAuthConfig = (data) => {
-  let params = new URLSearchParams();
-
-  Object.keys(data).map(key => {
-    params.append(key, data[key]);
-  })
-
-  return params
-}
-
-export const xgetAuthConfig = (data) => {
-  return  {
-    method: 'post',
-    headers: new Headers({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }),
-    body: queryString.stringify(data),
-  }
-}
