@@ -1,13 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {TextField, Button} from 'material-ui'
-
-// http://redux-form.com/7.0.3/examples/material-ui/
-
-const renderTextField = props => {
-  const {label, input, meta, ...custom} = props
-  return <TextField label={label} {...input} {...custom}/>
-}
+import {renderTextField, renderSubmitButton} from '../../utils/formHelper'
 
 let GenreForm = ({handleSubmit, pristine, reset, submitting}) => {
 
@@ -29,9 +22,8 @@ let GenreForm = ({handleSubmit, pristine, reset, submitting}) => {
     </div>
 
     <br/>
-
     <div>
-      <Button raised type="submit" color="primary">Submit</Button>
+      {renderSubmitButton()}
     </div>
   </form>
 }

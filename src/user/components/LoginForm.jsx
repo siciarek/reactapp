@@ -1,21 +1,23 @@
 import React from 'react'
-import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button'
+import {Field, reduxForm} from 'redux-form'
+import {renderTextField, renderSubmitButton} from '../../utils/formHelper'
 
-const LoginForm = ({setValue, submit, username, password}) => {
+const LoginForm = ({handleSubmit, pristine, reset, submitting}) => {
 
-  return <form>
-    <TextField id="username" label="Username" type="text" value={username}
-               onChange={event => setValue({[event.target.id]: event.target.value})}/>
+  return <form onSubmit={handleSubmit}>
+    <div>
+      <Field name="username" label="Username" component={renderTextField}/>
+    </div>
+    <div>
+      <Field name="password" label="Password" component={renderTextField}/>
+    </div>
     <br/>
-
-    <TextField id="password" label="Password" type="password" value={password}
-               onChange={event => setValue({[event.target.id]: event.target.value})}/>
-    <br/>
-    <br/>
-
-    <Button raised onTouchTap={() => submit()}>Log In</Button>
+    <div>
+      {renderSubmitButton()}
+    </div>
   </form>
 }
 
-export default LoginForm
+export default reduxForm({
+  form:'loginForm'
+})(LoginForm)

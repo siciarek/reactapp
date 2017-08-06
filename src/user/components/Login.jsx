@@ -1,30 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {AppHeader, AppSpinner} from '../../app/components'
 import LoginForm from './LoginForm'
+import {ENV_PROD} from '../../app/config'
 
-class Login extends React.Component {
+const Login = ({title, onSubmit, initialValues}) => {
 
-  constructor(props) {
-    super(props)
-    this.state = props.initialState
-  }
+  return <div>
+    <AppHeader title={title}/>
+    <AppSpinner/>
+    <LoginForm onSubmit={onSubmit} initialValues={initialValues}/>
+  </div>
+}
 
-  submit = () => {
-    this.props.authenticate(this.state)
-  }
+Login.propTypes = {
+  title: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  })
+}
 
-  render() {
-
-    const {title, authenticate} = this.props
-
-    return <div>
-      <AppHeader title={title}/>
-      <AppSpinner/>
-      <LoginForm username={this.state.username}
-                 password={this.state.password}
-                 setValue={state => this.setState(state)}
-                 submit={() => this.submit()}/>
-    </div>
+Login.defaultProps = {
+  title: 'Log In',
+  onSubmit: (data) => console.log(JSON.strigify(data)),
+  initialValues: {
+    username: (process.env.NODE_ENV === ENV_PROD ? '' : 'molak'),
+    password: (process.env.NODE_ENV === ENV_PROD ? '' : 'pass'),
   }
 }
 
