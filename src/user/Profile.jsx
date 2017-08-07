@@ -1,19 +1,19 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {fetchUserProfile} from './UserActions'
+import {fetchUserProfile, saveUser} from './UserActions'
 import Profile from './components/Profile'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    current: state.user,
+    item: state.user,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     init: bindActionCreators(fetchUserProfile, dispatch),
-    dispatch: dispatch,
+    submit: bindActionCreators(saveUser, dispatch),
   }
 }
 

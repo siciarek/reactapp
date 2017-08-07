@@ -1,7 +1,7 @@
 import reducer from './userReducer'
 import {
   USER_DEFAULT_STATE,
-  USER_UPDATE,
+  USER_PROFILE_FETCH_FULFILLED,
 } from './User'
 
 test('userReducer USER_UPDATE action', () => {
@@ -24,7 +24,7 @@ test('userReducer USER_UPDATE action', () => {
   }
 
   const action = {
-    type: USER_UPDATE,
+    type: USER_PROFILE_FETCH_FULFILLED,
     payload: payload
   }
 

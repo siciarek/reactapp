@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {AppHeader, AppSpinner} from '../../app/components'
 import ProfileForm from './ProfileForm'
 
@@ -10,19 +11,34 @@ class Profile extends React.Component {
 
   render() {
 
-    if (this.props.current.id === null) {
+    const {item, submit} = this.props
+
+    if (item.id === null) {
       return null
     }
 
     return <div>
-      <AppHeader title={`User #${this.props.current.id} profile`}/>
-      <ProfileForm
-        current={this.props.current}
-        dispatch={this.props.dispatch}
-      />
+      <AppHeader title={`User #${item.id} profile`}/>
       <AppSpinner/>
+      <br/>
+      <ProfileForm
+        onSubmit={submit}
+        initialValues={item}
+      />
     </div>
   }
+}
+
+Profile.propTypes = {
+  item: PropTypes.object.isRequired,
+  init: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
+}
+
+Profile.defaultProps = {
+  item: {},
+  init: () => {},
+  submit: () => {},
 }
 
 export default Profile

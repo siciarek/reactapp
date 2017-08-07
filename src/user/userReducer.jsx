@@ -1,31 +1,23 @@
 import {
   USER_DEFAULT_STATE,
   USER_PROFILE_FETCH_FULFILLED,
-  USER_UPDATE,
   USER_SAVE_FULFILLED,
   USER_SAVE_REJECTED,
-  USER_AUTH,
+  USER_AUTH_PENDING,
   USER_AUTH_FULFILLED,
   USER_AUTH_REJECTED,
   USER_UNAUTH,
   USER_UNAUTH_FULFILLED,
   USER_UNAUTH_REJECTED,
   USER_AUTH_CHECK,
-  USER_AUTH_CHECK_SUCCESS,
-  USER_AUTH_CHECK_FAILURE,
+  USER_AUTH_CHECK_FULFILLED,
+  USER_AUTH_CHECK_REJECTED,
 } from './User'
 
 export default (state = USER_DEFAULT_STATE, action) => {
 
   switch (action.type) {
-    case USER_PROFILE_FETCH_FULFILLED:
-      return {
-        ...state,
-        ...action.payload,
-        error: '',
-        message: '',
-      }
-    case USER_AUTH:
+    case USER_AUTH_PENDING:
       return {
         ...state,
         error: '',
@@ -42,6 +34,15 @@ export default (state = USER_DEFAULT_STATE, action) => {
         ...state,
         error: action.payload
       }
+
+    case USER_PROFILE_FETCH_FULFILLED:
+      return {
+        ...state,
+        ...action.payload,
+        error: '',
+        message: '',
+      }
+
     case USER_UNAUTH:
       return {
         ...state,
@@ -72,23 +73,15 @@ export default (state = USER_DEFAULT_STATE, action) => {
         error: '',
         message: 'User profile updated successfully.',
       }
-    case USER_AUTH_CHECK_FAILURE:
+    case USER_AUTH_CHECK_REJECTED:
       return {
         ...state,
-        error: action.payload,
         authenticated: false
       }
-    case USER_AUTH_CHECK_SUCCESS:
+    case USER_AUTH_CHECK_FULFILLED:
       return {
         ...state,
-        error: '',
         authenticated: true,
-      }
-    case USER_UPDATE:
-      return {
-        ...state,
-        ...action.payload,
-        error: ''
       }
     default:
       return state

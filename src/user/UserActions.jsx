@@ -6,25 +6,37 @@ import config from '../app/config'
 import {map} from 'lodash'
 
 import {
+  USER_UNAUTH_FULFILLED,
+
   USER_PROFILE_FETCH,
+  USER_PROFILE_FETCH_PENDING,
   USER_PROFILE_FETCH_FULFILLED,
   USER_PROFILE_FETCH_REJECTED,
 
-  USER_UPDATE,
   USER_SAVE,
+  USER_SAVE_PENDING,
   USER_SAVE_FULFILLED,
   USER_SAVE_REJECTED,
+
   USER_AUTH,
+  USER_AUTH_PENDING,
   USER_AUTH_FULFILLED,
-  USER_UNAUTH_FULFILLED,
   USER_AUTH_REJECTED,
-  USER_AUTH_CHECK_SUCCESS,
-  USER_AUTH_CHECK_FAILURE,
+
+  USER_AUTH_CHECK,
+  USER_AUTH_CHECK_PENDING,
+  USER_AUTH_CHECK_FULFILLED,
+  USER_AUTH_CHECK_REJECTED,
 } from './User'
 import {
   APP_SET_TARGET_ROUTE,
   APP_UNSET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
+
+export const checkIfIsAuthenticated = () => dispatch => dispatch({
+  type: USER_AUTH_CHECK,
+  payload: axios.get(config.pingUrl, getAuthCheckConfig())
+})
 
 export const authenticateUser = data => {
 
@@ -34,42 +46,20 @@ export const authenticateUser = data => {
     params.append(key, value);
   })
 
-  return dispatch => {
-
-    dispatch({type: USER_AUTH})
-
-    axios
-    .post(config.authUrl, params)
+  return dispatch => dispatch({
+    type: USER_AUTH,
+    payload: axios.post(config.authUrl, params)
     .then(({data}) => {
-      dispatch({type: USER_AUTH_FULFILLED})
       AppStash.set('token', data.token)
-      routerHistory.replace('/dashboard')
+      routerHistory.push('/dashboard')
     })
-    .catch((error) => {
-      dispatch({type: USER_AUTH_REJECTED, payload: error})
-    })
-  }
+  })
 }
 
-export const checkIfIsAuthenticated = () => {
-  return dispatch => {
-    axios
-    .get(config.pingUrl, getAuthCheckConfig())
-    .then((response) => {
-      dispatch({type: USER_AUTH_CHECK_SUCCESS})
-    })
-    .catch((error) => {
-      dispatch({type: USER_AUTH_CHECK_FAILURE})
-    })
-  }
-}
-
-export const unauthenticateUser = () => {
-  return dispatch => {
-    AppStash.remove('token')
-    dispatch({type: USER_UNAUTH_FULFILLED})
-    routerHistory.replace('/')
-  }
+export const unauthenticateUser = () => dispatch => {
+  AppStash.remove('token')
+  dispatch({type: USER_UNAUTH_FULFILLED})
+  routerHistory.replace('/')
 }
 
 export const fetchUserDashboardData = props => {
@@ -106,7 +96,7 @@ export const fetchUserDashboardData = props => {
   }
 }
 
-export  const fetchUserProfile = () => {
+export const fetchUserProfile = () => {
 
   return dispatch => {
 
@@ -132,25 +122,9 @@ export  const fetchUserProfile = () => {
   }
 }
 
-export const updateUser = data => {
-  return dispatch => {
-    dispatch({type: USER_UPDATE, payload: data})
-  }
-}
+export const updateUser = data => dispatch => dispatch({type: 'DUMMY', payload: data})
 
-export const saveUser = data => {
-
-  return dispatch => {
-
-    dispatch({type: USER_SAVE})
-
-    axios
-    .post(config.userProfileUrl, data, getAuthCheckConfig())
-    .then(() => {
-      dispatch({type: USER_SAVE_FULFILLED})
-    })
-    .catch((error) => {
-      dispatch({type: USER_SAVE_REJECTED, payload: error})
-    })
-  }
-}
+export const saveUser = data => dispatch => dispatch({
+  type: USER_SAVE,
+  payload: axios.post(config.userProfileUrl, data, getAuthCheckConfig())
+})

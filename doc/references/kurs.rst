@@ -6,6 +6,16 @@ SecureShow
 SecureHide
 
 
+można zwracać np. z helpera arejki obiektów
+
+np.
+
+return [
+    <li>A</>,
+    <li>B</>,
+    <li>C</>,
+]
+
 
 https://www.udemy.com
 

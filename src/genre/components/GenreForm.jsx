@@ -1,6 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {renderTextField, renderSubmitButton} from '../../utils/formHelper'
+import {renderTextField, SubmitButton} from '../../utils/formHelpers'
 
 let GenreForm = ({handleSubmit, pristine, reset, submitting}) => {
 
@@ -23,7 +23,7 @@ let GenreForm = ({handleSubmit, pristine, reset, submitting}) => {
 
     <br/>
     <div>
-      {renderSubmitButton()}
+      <SubmitButton/>
     </div>
   </form>
 }

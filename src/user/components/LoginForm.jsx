@@ -1,6 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {renderTextField, renderSubmitButton} from '../../utils/formHelper'
+import {renderTextField, SubmitButton} from '../../utils/formHelpers'
 
 const LoginForm = ({handleSubmit, pristine, reset, submitting}) => {
 
@@ -9,11 +9,11 @@ const LoginForm = ({handleSubmit, pristine, reset, submitting}) => {
       <Field name="username" label="Username" component={renderTextField}/>
     </div>
     <div>
-      <Field name="password" label="Password" component={renderTextField}/>
+      <Field name="password" type="password" label="Password" component={renderTextField}/>
     </div>
     <br/>
     <div>
-      {renderSubmitButton()}
+      <SubmitButton/>
     </div>
   </form>
 }

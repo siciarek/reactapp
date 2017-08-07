@@ -6,9 +6,9 @@ import Login from './components/Login'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
-  return {
-    onSubmit: bindActionCreators(authenticateUser, dispatch)
-  }
+  return bindActionCreators({
+    onSubmit: authenticateUser,
+  }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(Login)

@@ -1,11 +1,12 @@
 import React from 'react'
-import {AppHeader} from '../../app/components'
+import PropTypes from 'prop-types'
 import Button from 'material-ui/Button'
-import LoginIcon from 'material-ui-icons/PowerSettingsNew'
+import {filter} from 'lodash'
+import {AppHeader} from '../../app/components'
 
 const DashboardComponent = ({user, router}) => {
 
-  if (!user.username) {
+  if (!(user && user.id !== null)) {
     return null
   }
 
@@ -34,11 +35,18 @@ const DashboardComponent = ({user, router}) => {
     <br/>
 
     <Button raised onTouchTap={() => router.push('/profile')}>
-      <LoginIcon style={{marginRight: 12}}/>
       Profile
     </Button>
 
   </div>
+}
+
+DashboardComponent.propTypes = {
+  user: PropTypes.object.isRequired,
+}
+
+DashboardComponent.defaultProps = {
+  user: {id: null}
 }
 
 export default DashboardComponent

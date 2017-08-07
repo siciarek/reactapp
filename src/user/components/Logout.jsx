@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Logout extends React.Component {
 
@@ -9,6 +10,14 @@ class Logout extends React.Component {
   render() {
     return null
   }
+}
+
+Logout.propTypes = {
+  unauthenticate: PropTypes.func.isRequired,
+}
+
+Logout.defaultProps = {
+  unauthenticate: () => {},
 }
 
 export default Logout
