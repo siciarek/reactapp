@@ -15,9 +15,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
-  return {
-    init: bindActionCreators(() => fetchUserDashboardData(ownProps), dispatch),
-  }
+  return bindActionCreators({
+    init: () => fetchUserDashboardData(ownProps),
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

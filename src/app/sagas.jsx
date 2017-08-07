@@ -100,16 +100,15 @@ export function* showError(action) {
   yield put({type: APP_ERROR_OCCURRED, payload: payload})
 }
 
-export function* showNotification(action) {
-  yield put({type: APP_NOTIFICATION_OCCURRED, payload: 'Operation succeed.'})
-}
-
 export function* hideError() {
   yield put({type: APP_ERROR_HIDE})
 }
 
-export function* watchErrors() {
+export function* showNotification(action) {
+  yield put({type: APP_NOTIFICATION_OCCURRED, payload: 'Operation succeed.'})
+}
 
+export function* watchErrors() {
   yield takeEvery(action => !action.type.startsWith(USER_AUTH_CHECK) && action.type.endsWith(REJECTED), showError)
   yield takeLatest(action => !action.type.startsWith(USER_AUTH_CHECK) && action.type.endsWith(FULFILLED), hideError)
 }
