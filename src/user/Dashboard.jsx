@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {fetchUserDashboardData} from './UserActions'
 import Dashboard from './components/Dashboard'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 
   return {
     redirectTo: state.app.targetRoute,
