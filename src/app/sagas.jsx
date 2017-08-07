@@ -1,4 +1,5 @@
 import {takeEvery, takeLatest, put, all} from 'redux-saga/effects'
+import {PENDING, FULFILLED, REJECTED} from 'redux-promise-middleware'
 
 import {
   APP_START_PROCESSING,
@@ -81,11 +82,9 @@ import {
   USER_UNAUTH_FULFILLED,
   USER_UNAUTH_REJECTED,
   USER_AUTH_CHECK,
-  USER_AUTH_CHECK_SUCCESS,
-  USER_AUTH_CHECK_FAILURE,
   USER_SAVE,
   USER_SAVE_FULFILLED,
-  USER_SAVE_REJECTED,
+  USER_SAVE_REJECTED, USER_SAVE_PENDING,
 } from '../user/User'
 
 export function* runTheSpinner() {
@@ -111,26 +110,15 @@ export function* hideError() {
 
 export function* watchErrors() {
 
-  yield takeEvery([
-    USER_AUTH_REJECTED,
-    USER_DASHBOARD_FETCH_REJECTED,
-    USER_PROFILE_FETCH_REJECTED,
-    GENRE_ITEM_ADD_REJECTED,
-    GENRE_ITEM_SAVE_REJECTED,
-    GENRE_ITEM_REMOVE_REJECTED,
-    AUTHOR_LIST_FETCH_REJECTED,
-  ], showError)
-
-  yield takeEvery([
-    USER_AUTH_FULFILLED,
-  ], hideError)
+  yield takeEvery(action => !action.type.startsWith(USER_AUTH_CHECK) && action.type.endsWith(REJECTED), showError)
+  yield takeLatest(action => !action.type.startsWith(USER_AUTH_CHECK) && action.type.endsWith(FULFILLED), hideError)
 }
 
 export function* watchNotifications() {
-
   yield takeLatest([
     GENRE_ITEM_ADD_FULFILLED,
     GENRE_ITEM_SAVE_FULFILLED,
+    USER_SAVE_FULFILLED,
   ], showNotification)
 }
 
@@ -149,7 +137,7 @@ export function* watchTheSpinner() {
     USER_AUTH,
     USER_UNAUTH,
     USER_AUTH_CHECK,
-    USER_SAVE,
+    USER_SAVE_PENDING,
     LYRICS_LIST_FETCH,
     LYRICS_ITEM_FETCH,
     AUTHOR_LIST_FETCH,
@@ -183,8 +171,6 @@ export function* watchTheSpinner() {
     GENRE_ITEM_REMOVE_REJECTED,
     USER_SAVE_FULFILLED,
     USER_SAVE_REJECTED,
-    USER_AUTH_CHECK_SUCCESS,
-    USER_AUTH_CHECK_FAILURE,
     USER_AUTH_FULFILLED,
     USER_AUTH_REJECTED,
     USER_UNAUTH_FULFILLED,
