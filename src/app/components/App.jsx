@@ -56,6 +56,8 @@ class App extends React.Component {
                     onRequestClose={() => dispatch({type: APP_NOTIFICATION_HIDE})}
         /> : null)
 
+    // ENDTODO
+
     return <MuiThemeProvider theme={createMuiTheme({})}>
       <div>
         <Helmet>
@@ -74,12 +76,14 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   checkAuth: PropTypes.func.isRequired,
   toggleMenu: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired,
 }
 
 App.defaultProps = {
   dispatch: () => {},
   checkAuth: () => {},
   toggleMenu: () => {},
+  authenticated: false,
 }
 
 export default App

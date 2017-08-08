@@ -14,19 +14,8 @@ import {
   USER_PROFILE_FETCH_REJECTED,
 
   USER_SAVE,
-  USER_SAVE_PENDING,
-  USER_SAVE_FULFILLED,
-  USER_SAVE_REJECTED,
-
   USER_AUTH,
-  USER_AUTH_PENDING,
-  USER_AUTH_FULFILLED,
-  USER_AUTH_REJECTED,
-
   USER_AUTH_CHECK,
-  USER_AUTH_CHECK_PENDING,
-  USER_AUTH_CHECK_FULFILLED,
-  USER_AUTH_CHECK_REJECTED,
 } from './User'
 import {
   APP_SET_TARGET_ROUTE,
@@ -96,35 +85,23 @@ export const fetchUserDashboardData = props => {
   }
 }
 
-export const fetchUserProfile = () => {
-
-  return dispatch => {
-
-    dispatch({type: USER_PROFILE_FETCH})
-
-    axios
-    .get(config.userProfileUrl, getAuthCheckConfig())
-    .then((response) => {
-
-      dispatch({
-        type: USER_PROFILE_FETCH_FULFILLED,
-        payload: response.data,
-      })
-    })
-    .catch((error) => {
-      dispatch({type: USER_PROFILE_FETCH_REJECTED, payload: error})
-
-      if (error.hasOwnProperty('response') && error.response.status === 401) {
-        dispatch({type: APP_SET_TARGET_ROUTE, payload: '/profile'})
-        routerHistory.replace('/login')
-      }
-    })
-  }
-}
-
-export const updateUser = data => dispatch => dispatch({type: 'DUMMY', payload: data})
+export const fetchUserProfile = () => dispatch => dispatch({
+  type: USER_PROFILE_FETCH, payload: axios.get(config.userProfileUrl, getAuthCheckConfig())
+  .catch(error => {
+    if (error.hasOwnProperty('response') && error.response.status === 401) {
+      dispatch({type: APP_SET_TARGET_ROUTE, payload: '/profile'})
+      routerHistory.replace('/login')
+    }
+  })
+})
 
 export const saveUser = data => dispatch => dispatch({
   type: USER_SAVE,
   payload: axios.post(config.userProfileUrl, data, getAuthCheckConfig())
+  .catch(error => {
+    if (error.hasOwnProperty('response') && error.response.status === 401) {
+      dispatch({type: APP_SET_TARGET_ROUTE, payload: '/profile'})
+      routerHistory.replace('/login')
+    }
+  })
 })
