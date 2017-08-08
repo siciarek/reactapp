@@ -1,19 +1,19 @@
 /**
- * Dashboard.spec.js
+ * Logout.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../utils/testHelper'
 import {lorem} from 'faker'
 import {expect} from 'chai'
 
-import Dashboard from './Dashboard'
+import Logout from './Logout'
 
-describe('Dashboard (container)', () => {
+describe('Logout (container)', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <Dashboard/>
+    element = <Logout/>
   })
 
   it('can render without error', () => {

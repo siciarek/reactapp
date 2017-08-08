@@ -1,19 +1,19 @@
 /**
- * Dashboard.spec.js
+ * Login.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../utils/testHelper'
 import {lorem} from 'faker'
 import {expect} from 'chai'
 
-import Dashboard from './Dashboard'
+import Login from './Login'
 
-describe('Dashboard (container)', () => {
+describe('Login (container)', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <Dashboard/>
+    element = <Login/>
   })
 
   it('can render without error', () => {
