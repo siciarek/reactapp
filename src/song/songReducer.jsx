@@ -1,5 +1,5 @@
 import {
-  SONG_ITEM_SAVE,
+  SONG_ITEM_SAVE_PENDING,
   SONG_ITEM_SAVE_FULFILLED,
   SONG_ITEM_SAVE_REJECTED,
   SONG_ITEM_UPDATE,
@@ -11,62 +11,19 @@ import {
   SONG_ITEM_REMOVE_REJECTED,
 } from './Song'
 
-const DEFAULT_STATE = {
+const initialState = {
   current: {},
   items: [],
-  fetching: false,
-  fetched: false,
   error: null,
 }
 
-export default (state = DEFAULT_STATE, action) => {
+export default (state = initialState, action) => {
 
   switch (action.type) {
-    case SONG_ITEM_UPDATE: {
-      return {
-        ...state,
-        current: {...action.payload},
-      }
-    }
-    case SONG_ITEM_FETCH: {
-      return {
-        ...state,
-        fetching: true,
-      }
-    }
     case SONG_ITEM_FETCH_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        current: {...action.payload}
-      }
-    }
-    case SONG_ITEM_SAVE: {
-      return {
-        ...state,
-        fetching: true,
-      }
-    }
-    case SONG_ITEM_SAVE_FULFILLED: {
-      return {
-        ...state,
-        fetching: false,
-        fetched: true,
-        items: action.payload,
-      }
-    }
-    case SONG_ITEM_REMOVE: {
-      return {
-        ...state,
-        fetching: true,
-      }
-    }
-    case SONG_ITEM_REMOVE_FULFILLED: {
-      return {
-        ...state,
-        fetching: false,
-        fetched: true,
+        current: {...action.payload.data}
       }
     }
     case SONG_ITEM_REMOVE_REJECTED:
@@ -74,8 +31,7 @@ export default (state = DEFAULT_STATE, action) => {
     case SONG_ITEM_SAVE_REJECTED: {
       return {
         ...state,
-        fetching: false,
-        error: action.payload,
+        error: action.payload.data,
       }
     }
     default:

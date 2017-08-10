@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+
+const redirectRoute = '/login'
+
+// TODO: send action with error
 
 export default ComposedComponent => {
 
-  class Authentication extends React.Component {
+  class Secure extends React.Component {
 
     static contextTypes = {
       router: PropTypes.object.isRequired,
@@ -12,13 +16,13 @@ export default ComposedComponent => {
 
     componentWillMount() {
       if(this.props.granted === false) {
-        this.context.router.push(('/'))
+        this.context.router.push(redirectRoute)
       }
     }
 
     componentWillUpdate(nextProps) {
       if(nextProps.granted === false) {
-        this.context.router.push(('/'))
+        this.context.router.push(redirectRoute)
       }
     }
 
@@ -33,5 +37,5 @@ export default ComposedComponent => {
     }
   }
 
-  return connect(mapStateToProps)(Authentication)
+  return connect(mapStateToProps)(Secure)
 }

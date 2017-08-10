@@ -1,68 +1,46 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import AppHeader from '../app/components/AppHeader'
-import {fetchSong, updateSong, saveSong, removeSong} from './SongActions'
+import {AppHeader, AppSpinner} from '../app/components'
+import {fetchSong, saveSong, removeSong} from './SongActions'
 import SongEditorForm from './SongEditorForm'
 
 class SongEditor extends React.Component {
 
   componentWillMount() {
-    let state = {...this.props.current}
-    state.id = null
-    state.genre = null
-    state.lyrics = ''
-    state.title = ''
-    state.firstPublishedAt = null
-    this.props.dispatch(updateSong(state))
-
-    if (this.props.params.hasOwnProperty('id')) {
-      this.props.dispatch(fetchSong(this.props.params.id))
-    }
-  }
-
-  removeEntity = id => {
-    this.props.dispatch(removeSong(id))
-  }
-
-  updateEntity = (key, value) => {
-    let state = {...this.props.current}
-    state[key] = value
-    this.props.dispatch(updateSong(state))
-  }
-
-  saveEntity = () => {
-    let state = {...this.props.current}
-    if (this.props.params.hasOwnProperty('id')) {
-      state['id'] = this.props.current.id
-    }
-    this.props.dispatch(saveSong(state))
+    this.props.init()
   }
 
   render() {
 
-    if (this.props.authenticated === false) {
+    const {authenticated, item, saveSong} = this.props
+
+    if (typeof item.id === 'undefined' || authenticated === false) {
       return null
     }
 
-    const title = this.props.current.id ? 'Edit song' : 'Add song'
+    const title = item.id ? `Edit (${item.title})` : 'Add song'
 
-    return (
-      <div>
-        <AppHeader title={title}/>
-        <SongEditorForm
-          current={this.props.current}
-          updateEntity={this.updateEntity}
-          saveEntity={this.saveEntity}
-          removeEntity={this.removeEntity}
-        />
-      </div>
-    )
+    return <div>
+      <AppHeader title={title}/>
+      <AppSpinner/>
+      <SongEditorForm initialValues={item} onSubmit={saveSong}/>
+    </div>
   }
 }
 
-export default connect(store => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    current: store.song.current,
-    authenticated: store.user.authenticated,
+    item: state.song.current,
+    authenticated: state.user.authenticated,
   }
-})(SongEditor)
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: () => fetchSong(ownProps.params.id),
+    saveSong: data => saveSong({...data, id: ownProps.params.id}),
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongEditor)

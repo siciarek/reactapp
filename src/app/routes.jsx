@@ -16,6 +16,8 @@ import {RecordList, RecordItem} from '../record/Record'
 import {TestList, TestItem, TestDummy} from '../test/Test'
 
 import {onEnterArtist, onEnterAuthor} from './router_actions'
+import Secure from '../app/Secure'
+
 
 export default (
   <Route path="/" component={App}>
@@ -31,7 +33,7 @@ export default (
     <Route path="song/add" component={SongEditor}/>
     <Route path="song/:id/edit" component={SongEditor}/>
 
-    <Route path="artists" component={ArtistList} onEnter={onEnterArtist}/>
+    <Route path="artists" component={Secure(ArtistList)} onEnter={onEnterArtist}/>
     <Route path="artists/:id" component={ArtistItem}/>
 
     <Route path="authors" component={AuthorList} onEnter={onEnterAuthor}/>

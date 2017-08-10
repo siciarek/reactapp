@@ -20,11 +20,30 @@ const email = value =>
     ? 'Invalid email address'
     : undefined
 
+const username = value =>
+  value && !/^[a-z]{8,16}$/.test(value)
+    ? 'Username should be 8-16 characters long string of lowercase latin letters (a-z)'
+    : undefined
+
+const password = value =>
+  value && !/^\w{8,16}$/.test(value)
+    ? 'Password should be 8-16 characters long and contain letters, numbers and at least one special character'
+    : undefined
+
 const minLength3 = minLength(3)
 const maxLength32 = maxLength(32)
 const maxLength127 = maxLength(127)
 const maxLength255 = maxLength(255)
 const maxLength10000 = maxLength(10000)
 
-
-export {required, email, minLength3, maxLength32, maxLength127, maxLength255, maxLength10000}
+export {
+  required,
+  email,
+  username,
+  password,
+  minLength3,
+  maxLength32,
+  maxLength127,
+  maxLength255,
+  maxLength10000,
+}

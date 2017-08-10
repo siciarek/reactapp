@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {TextField, Button} from 'material-ui'
 
 // http://redux-form.com/7.0.3/examples/material-ui/
@@ -17,6 +18,23 @@ const renderTextField = props => {
   />
 }
 
-const SubmitButton = ({caption = 'Submit', color = 'primary'}) => <Button raised type="submit" color={color}>{caption}</Button>
+const SubmitButton = ({caption, color, enabled}) => <Button
+    raised
+    disabled={enabled === false}
+    color={color}
+    type="submit"
+  >{caption}</Button>
+
+SubmitButton.propTypes = {
+  caption: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  enabled: PropTypes.bool.isRequired,
+}
+
+SubmitButton.defaultProps = {
+  caption: 'Submit',
+  color: 'primary',
+  enabled: true,
+}
 
 export {renderTextField, SubmitButton}

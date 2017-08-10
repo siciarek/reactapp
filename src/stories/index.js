@@ -11,19 +11,12 @@ import {
   date,
   select,
 } from '@kadira/storybook-addon-knobs'
-
+import {MuiDecorator} from './MuiDecorator'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
-import {Provider} from 'react-redux'
-import store from '../app/store'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-const MuiDecorator = (storyFn) =>
-  <Provider store={store}>
-    <MuiThemeProvider>
-      {storyFn()}
-    </MuiThemeProvider>
-  </Provider>
+addDecorator(withKnobs)
+addDecorator(MuiDecorator)
 
 import '../app/App.css'
 import '../app/components/AppHeader.css'
@@ -99,9 +92,6 @@ const items = [
     description: 'Ringo Starr',
   },
 ]
-
-addDecorator(withKnobs)
-addDecorator(MuiDecorator)
 
 
 storiesOf('Dialogs', module)
@@ -221,3 +211,5 @@ storiesOf('AppSimpleItem', module)
   info={text('info', 'Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter, and actress. At the beginning of her career, Gaga became known for her unconventionality and provocative work. A popular contemporary recording artist, she is noted for constantly experimenting with new musical ideas and images.')}
   returnRoute={select('route', [null, '/artists'], null)}
 />)
+
+import './forms'

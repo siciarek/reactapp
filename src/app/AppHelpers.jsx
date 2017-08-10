@@ -1,15 +1,18 @@
 import AppStash from './AppStash'
 import queryString from 'query-string'
 import {browserHistory as routerHistory} from 'react-router'
+import {unauthenticateUser} from '../user/UserActions'
 
 import {
   APP_SET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
 
-export const handleForbidenAccess = (dispatch, error, url) => {
-  if (error.hasOwnProperty('response') && error.response.status === 401) {
+export const handleForbidenAccess = (dispatch, action, url) => {
+  dispatch(action)
+
+  if (action.payload.response.status === 401) {
     dispatch({type: APP_SET_TARGET_ROUTE, payload: url})
-    routerHistory.replace('/login')
+    routerHistory.push('/login')
   }
 }
 

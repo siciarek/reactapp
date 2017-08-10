@@ -6,7 +6,6 @@ import ItemIcon from 'material-ui-icons/Mic'
 import {swapListItems} from '../app/AppActions'
 import {fetchArtistList} from '../artist/ArtistActions'
 import {AppSortableList} from '../app/components'
-import Authentication from '../app/Authentication'
 
 const mapStateToProps = (state, ownProps) => {
 
