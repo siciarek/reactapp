@@ -56,7 +56,7 @@ const username = value =>
     : undefined
 
 const password = value =>
-  value && !/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*\W)\S{8,16}$/.test(value)
+  value && !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W)(?=.*_?)\S{8,16}$/.test(value)
     ? 'Should be 8-16 chars long only letters, digits and at least one special char'
     : undefined
 
