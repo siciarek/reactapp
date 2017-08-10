@@ -39,8 +39,8 @@ storiesOf('Dialogs', module)
       open={opened}
       title={text('title', ConfirmationDialog.defaultProps.title)}
       message={text('message', ConfirmationDialog.defaultProps.message)}
-      actionNo={action('actionNo')}
-      actionYes={action('actionYes')}
+      actionNo={action('User clicked NO')}
+      actionYes={action('User clicked YES')}
     />
   }
 )

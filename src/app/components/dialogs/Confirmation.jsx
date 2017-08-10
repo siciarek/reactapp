@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import{
+import {
   Button,
   Dialog,
   DialogContent,
@@ -9,22 +9,24 @@ import{
   DialogActions,
 } from 'material-ui'
 
-const ConfirmationDialog = ({open, actionNo, actionYes, message, title}) => {
+import {truncate} from 'lodash'
 
-  return <Dialog classes={{}} open={open} onEscapeKeyUp={() => actionNo()}>
-    <DialogTitle classes={{}}>{title}</DialogTitle>
-    <DialogContent classes={{}}>
-      <DialogContentText classes={{}}>
-        {message}
-      </DialogContentText>
-    </DialogContent>
-    <DialogActions classes={{}}>
-      <Button classes={{}} onTouchTap={() => actionNo()}>NO</Button>
-      <Button classes={{}}
-              onTouchTap={() => actionYes()}>Yes</Button>
-    </DialogActions>
-  </Dialog>
-}
+const ConfirmationDialog = ({
+                              open,
+                              title,
+                              message,
+                              actionNo,
+                              actionYes,
+                            }) => <Dialog classes={{}} open={open} onEscapeKeyUp={actionNo}>
+  <DialogTitle classes={{}}>{truncate(title, {length: 255})}</DialogTitle>
+  <DialogContent classes={{}}>
+    <DialogContentText classes={{}}>{truncate(message, {length: 10000})}</DialogContentText>
+  </DialogContent>
+  <DialogActions classes={{}}>
+    <Button classes={{}} onTouchTap={actionNo}>NO</Button>
+    <Button classes={{}} onTouchTap={actionYes}>Yes</Button>
+  </DialogActions>
+</Dialog>
 
 ConfirmationDialog.propTypes = {
   open: PropTypes.bool.isRequired,
@@ -38,8 +40,10 @@ ConfirmationDialog.defaultProps = {
   open: false,
   title: 'Confirmation',
   message: 'Are you sure?',
-  actionYes: () => console.warn('Action not implemented yet.'),
-  actionNo: () => console.warn('Action not implemented yet.'),
+  actionYes: () => {
+  },
+  actionNo: () => {
+  },
 }
 
 export default ConfirmationDialog

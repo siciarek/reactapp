@@ -1,24 +1,22 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {renderTextField, SubmitButton} from '../../utils/formHelpers'
+import {required, maxLength127, maxLength255} from '../../utils/formValidators'
 
 let GenreForm = ({handleSubmit, pristine, reset, submitting}) => {
 
   return <form onSubmit={handleSubmit}>
     <div>
-      <Field name="id" label="Id" component={renderTextField}/>
+      <Field name="category" label="Category" validate={[required, integer]} component={renderTextField}/>
     </div>
     <div>
-      <Field name="category" label="Category" component={renderTextField}/>
+      <Field name="name" label="Name"  validate={[required, maxLength127]} component={renderTextField}/>
     </div>
     <div>
-      <Field name="name" label="Name" component={renderTextField}/>
+      <Field name="description" label="Description" validate={[required, maxLength255]} component={renderTextField}/>
     </div>
     <div>
-      <Field name="description" label="Description" component={renderTextField}/>
-    </div>
-    <div>
-      <Field name="info" label="Info" component={renderTextField} multiline={true} rowsMax={8}/>
+      <Field name="info" label="Info" validate={[maxLength127]} component={renderTextField} multiline={true} rowsMax={8}/>
     </div>
 
     <br/>

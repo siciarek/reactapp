@@ -21,20 +21,26 @@ addDecorator(withKnobs)
 import {SubmitButton} from '../utils/formHelpers'
 import LoginForm from '../user/components/LoginForm'
 import SignUpForm from '../user/components/SignUpForm'
+import GenreForm from '../genre/components/GenreForm'
+import SongEditorForm from '../song/SongEditorForm'
 
 storiesOf('Forms', module)
-.addWithInfo('SubmitButton - no params', () => <SubmitButton />)
+.addWithInfo('SubmitButton - no params', () => <SubmitButton/>)
 .addWithInfo('SubmitButton - params (interactive)', () => <SubmitButton
   caption={text('caption', SubmitButton.defaultProps.caption)}
   color={select('color', ['primary', 'accent', 'default'], SubmitButton.defaultProps.color)}
   enabled={boolean('enabled', SubmitButton.defaultProps.enabled)}
 />)
 
-.addWithInfo('LoginForm - onSubimt action', () => <LoginForm onSubmit={action('onSubmit')} />)
-.addWithInfo('LoginForm - default values onSubmit action', () => <LoginForm onSubmit={action('onSubmit')}
-                                                                                 initialValues={{
-                                                                                   username: 'colak',
-                                                                                   password: 'helloworld'
-                                                                                 }}/>)
+.addWithInfo('LoginForm', () => <LoginForm onSubmit={action('onSubmit')}/>)
+.addWithInfo('LoginForm with inital values', () => <LoginForm onSubmit={action('LoginForm.onSubmit')}
+                                                                            initialValues={{
+                                                                              username: 'colak',
+                                                                              password: 'helloworld'
+                                                                            }}/>)
 
-.addWithInfo('SignUpForm - onSubimt action', () => <SignUpForm onSubmit={action('onSubmit')} />)
+.addWithInfo('SignUpForm', () => <SignUpForm onSubmit={action('SongEditorForm.onSubmit')}/>)
+
+.addWithInfo('GenreForm', () => <GenreForm onSubmit={action('SongEditorForm.onSubmit')}/>)
+
+.addWithInfo('SongEditorForm', () => <SongEditorForm onSubmit={action('SongEditorForm.onSubmit')}/>)
