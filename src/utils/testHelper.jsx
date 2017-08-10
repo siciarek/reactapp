@@ -2,7 +2,6 @@ import React from 'react'
 import ReactTestUtils from 'react-dom/test-utils'
 import ShallowRenderer from 'react-test-renderer/shallow';
 import {Provider} from 'react-redux'
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
@@ -16,9 +15,9 @@ const simulateClick = component => {
 const renderComponent = component => {
   return ReactTestUtils.renderIntoDocument(
     <Provider store={store}>
-      <MuiThemeProvider theme={createMuiTheme({})}>
+      <div>
         {component}
-      </MuiThemeProvider>
+      </div>
     </Provider>
   )
 }

@@ -51,8 +51,8 @@ const integer = value =>
     : undefined
 
 const numeric = value =>
-  value && isNan(value)
-    ? 'Invalid integer value'
+  value && isNaN(value)
+    ? 'Invalid numeric value'
     : undefined
 
 const username = value =>

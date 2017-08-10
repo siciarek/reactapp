@@ -1,8 +1,14 @@
+Testowanie rx online
+====================
+
+https://regex101.com/
+
 Testowanie
 ==========
 
 http://www.hammerlab.org/2015/02/14/testing-react-web-apps-with-mocha/
 
+Mocha sucks (starocie, za to chai i owszem)
 
 
 Konferencja desmart
@@ -63,7 +69,9 @@ framework "bulma"
 Spostrzerzenia i notatki przy nauce react redux
 -----------------------------------------------
 
-    * Na produkcji, KONIECZNIE trzeba użyć pliku .htaccess:
+    * Na produkcji, jeżeli mamy Apache, KONIECZNIE trzeba użyć pliku .htaccess:
+
+TODO: wersja dla nginx
 
 .. code-block:: apache
 

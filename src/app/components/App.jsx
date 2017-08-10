@@ -58,8 +58,7 @@ class App extends React.Component {
 
     // ENDTODO
 
-    return <MuiThemeProvider theme={createMuiTheme({})}>
-      <div>
+    return <div>
         <Helmet>
           <title>{config.appName}</title>
         </Helmet>
@@ -68,7 +67,6 @@ class App extends React.Component {
         {notificationComponent}
         {children}
       </div>
-    </MuiThemeProvider>
   }
 }
 
