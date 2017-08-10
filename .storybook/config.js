@@ -3,7 +3,7 @@ import infoAddon from '@kadira/react-storybook-addon-info';
 import {setOptions} from '@kadira/storybook-addon-options';
 
 setOptions({
-  name: 'Songbook Storybook',
+  name: 'Songbook',
   url: 'http://songbook.siciarek.pl',
   goFullScreen: false,
   showSearchBox: false,
