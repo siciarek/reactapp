@@ -52,12 +52,12 @@ const numeric = value =>
 
 const username = value =>
   value && !/^[a-z]{8,16}$/.test(value)
-    ? 'Username should be 8-16 characters long string of lowercase latin letters (a-z)'
+    ? 'Should be 8-16 characters long, lowercase latin letters (a-z) only'
     : undefined
 
 const password = value =>
-  value && !/^\w{8,16}$/.test(value)
-    ? 'Password should be 8-16 characters long and contain letters, numbers and at least one special character'
+  value && !/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*\W)\S{8,16}$/.test(value)
+    ? 'Should be 8-16 chars long only letters, digits and at least one special char'
     : undefined
 
 const minLength3 = minLength(3)
