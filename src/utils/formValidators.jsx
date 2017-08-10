@@ -40,6 +40,11 @@ const email = value =>
     ? 'Invalid email address'
     : undefined
 
+const ip = value =>
+  value && !/^(0|[1-9]\d?|1\d\d|2[0-5][0-5])(\.(0|[1-9]\d?|1\d\d|2[0-5][0-5])){3}$/.test(value)
+    ? 'Invalid ip number'
+    : undefined
+
 const integer = value =>
   value && !/^\d+$/i.test(value)
     ? 'Invalid integer value'
@@ -73,6 +78,7 @@ export {
   password,
   numeric,
   integer,
+  ip,
   lt,
   lte,
   gt,
