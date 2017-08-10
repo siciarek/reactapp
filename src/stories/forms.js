@@ -11,10 +11,12 @@ import {
   date,
   select,
 } from '@kadira/storybook-addon-knobs'
-import {MuiDecorator} from './MuiDecorator'
+import {Decorator} from './Decorator'
 
+addDecorator(Decorator)
 addDecorator(withKnobs)
-addDecorator(MuiDecorator)
+
+// ------------------------------------------------------------------
 
 import {SubmitButton} from '../utils/formHelpers'
 import LoginForm from '../user/components/LoginForm'

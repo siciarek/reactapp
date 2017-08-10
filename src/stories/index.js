@@ -11,12 +11,14 @@ import {
   date,
   select,
 } from '@kadira/storybook-addon-knobs'
-import {MuiDecorator} from './MuiDecorator'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
+import {Decorator} from './Decorator'
 
+addDecorator(Decorator)
 addDecorator(withKnobs)
-addDecorator(MuiDecorator)
+
+// ------------------------------------------------------------------
 
 import '../app/App.css'
 import '../app/components/AppHeader.css'
