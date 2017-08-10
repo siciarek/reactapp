@@ -30,11 +30,11 @@ storiesOf('Forms', module)
   enabled={boolean('enabled', SubmitButton.defaultProps.enabled)}
 />)
 
-.addWithInfo('User LoginForm - onSubimt action', () => <LoginForm onSubmit={action('onSubmit')} />)
-.addWithInfo('User LoginForm - default values onSubmit action', () => <LoginForm onSubmit={action('onSubmit')}
+.addWithInfo('LoginForm - onSubimt action', () => <LoginForm onSubmit={action('onSubmit')} />)
+.addWithInfo('LoginForm - default values onSubmit action', () => <LoginForm onSubmit={action('onSubmit')}
                                                                                  initialValues={{
                                                                                    username: 'colak',
                                                                                    password: 'helloworld'
                                                                                  }}/>)
 
-.addWithInfo('User SignUpForm - onSubimt action', () => <SignUpForm onSubmit={action('onSubmit')} />)
+.addWithInfo('SignUpForm - onSubimt action', () => <SignUpForm onSubmit={action('onSubmit')} />)
