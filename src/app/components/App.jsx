@@ -5,7 +5,6 @@ import {
   Typography,
   Snackbar,
 } from 'material-ui'
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
 import {teal, red} from 'material-ui/colors'
 
 import config from '../config'
@@ -20,7 +19,7 @@ import '../App.css'
 class App extends React.Component {
 
   componentWillMount() {
-    this.props.checkAuth()
+    this.props.init()
   }
 
   render() {
@@ -72,14 +71,14 @@ class App extends React.Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  checkAuth: PropTypes.func.isRequired,
+  init: PropTypes.func.isRequired,
   toggleMenu: PropTypes.func.isRequired,
   authenticated: PropTypes.bool.isRequired,
 }
 
 App.defaultProps = {
   dispatch: () => {},
-  checkAuth: () => {},
+  init: () => {},
   toggleMenu: () => {},
   authenticated: false,
 }

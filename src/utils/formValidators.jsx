@@ -46,7 +46,7 @@ const ip = value =>
     : undefined
 
 const integer = value =>
-  value && !/^\d+$/i.test(value)
+  value && (isNaN(value) || !/^0|[1-9]\d*$/.test('' + value) || parseInt(value) !== 1 * value)
     ? 'Invalid integer value'
     : undefined
 

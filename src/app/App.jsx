@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     dispatch: dispatch,
-    checkAuth: bindActionCreators(checkIfIsAuthenticated, dispatch),
+    init: bindActionCreators(checkIfIsAuthenticated, dispatch),
     toggleMenu: () => dispatch({type: APP_TOGGLE_MENU}),
   }
 }

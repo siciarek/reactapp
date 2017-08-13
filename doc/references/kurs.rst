@@ -17,11 +17,7 @@ return [
 ]
 
 
-https://www.udemy.com
 
-lukasz.toporek@enovatis.pl
-
-EnoUd3my
 
 ste.grider@gmail.com
 @sg_in_sf
