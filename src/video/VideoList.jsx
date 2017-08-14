@@ -1,45 +1,25 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui-icons/Theaters'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
+import ItemIcon from 'material-ui-icons/Theaters'
 import {fetchVideoList} from './VideoActions'
+import AutoloadingList from '../app/components/AppSimpleAutoloadingList'
 
-class VideoList extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchVideoList())
-  }
-
-  render() {
-
-    return (
-      <div>
-        <AppHeader title="Video"/>
-        <List>
-          {
-            this.props.items.map(item => {
-              return <ListItem
-                leftIcon={<ListItemIcon />}
-                containerElement={<Link to={`/video/${item.id}`}/>}
-                key={item.id}
-                primaryText={item.title}
-                secondaryText={`results: ${item.videoCount}`}
-              />
-            })
-          }
-        </List>
-        <AppFloatingActionButton route="/"/>
-        <AppSpinner/>
-      </div>
-    )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    model: 'video',
+    title: 'Videos',
+    icon: <ItemIcon/>,
+    goTo: id => ownProps.router.push(`/video/${id}`),
+    items: state.video.items,
+    sortable: state.user.authenticated,
   }
 }
 
-export default connect((store) => {
-  return {
-    fetching: store.video.fetching,
-    items: store.video.items,
-  }
-})(VideoList)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: fetchVideoList,
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AutoloadingList)
