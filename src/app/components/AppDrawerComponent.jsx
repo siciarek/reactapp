@@ -1,23 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {browserHistory as router} from 'react-router'
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import {
-  List,
+  Toolbar,
   AppBar,
   Drawer,
   Divider,
-} from 'material-ui'
-import {
+  List,
   ListItem,
   ListItemIcon,
   ListItemText,
-} from 'material-ui/List'
-
-import config from '../config'
-import menu from '../menu'
-
+} from 'material-ui'
+import Typography from 'material-ui/Typography';
 
 import IconCheck from 'material-ui-icons/Check'
 import IconLockOpen from 'material-ui-icons/LockOpen'
@@ -32,6 +26,10 @@ import IconStars from 'material-ui-icons/Stars'
 import IconLibraryBooks from 'material-ui-icons/LibraryBooks'
 import IconVolumeUp from 'material-ui-icons/VolumeUp'
 import IconTheaters from 'material-ui-icons/Theaters'
+import IconDiscFull from 'material-ui-icons/DiscFull'
+
+import config from '../config'
+import menu from '../menu'
 
 const icons = {
   check: <IconCheck/>,
@@ -47,6 +45,7 @@ const icons = {
   library_books: <IconLibraryBooks/>,
   volume_up: <IconVolumeUp/>,
   theaters: <IconTheaters/>,
+  disc_full: <IconDiscFull/>,
 }
 
 const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
@@ -117,7 +116,7 @@ AppDrawerComponent.propTypes = {
 AppDrawerComponent.defaultProps = {
   opened: false,
   authenticated: false,
-  toggleVisibility: () => console.log('Visibility toggling is not implemented yet.')
+  toggleVisibility: () => {}
 }
 
 export default AppDrawerComponent

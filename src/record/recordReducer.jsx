@@ -3,24 +3,24 @@ import {
   FETCH_RECORD_ITEM_FULFILLED,
 } from './Record'
 
-const DEFAULT_STATE = {
+const defaultState = {
   current: {},
   items: [],
 }
 
-export default (state = DEFAULT_STATE, action) => {
+export default (state = defaultState, action) => {
 
   switch (action.type) {
     case FETCH_RECORD_LIST_FULFILLED: {
       return {
         ...state,
-        items: action.payload
+        items: action.payload.data
       }
     }
     case FETCH_RECORD_ITEM_FULFILLED: {
       return {
         ...state,
-        current:  action.payload
+        current:  action.payload.data
       }
     }
     default:

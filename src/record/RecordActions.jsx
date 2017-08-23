@@ -10,25 +10,7 @@ import {
   FETCH_RECORD_ITEM_REJECTED,
 } from './Record'
 
-export const fetchRecordList = () => {
-
-  const url = config.recordUrl
-
-  return dispatch => {
-    dispatch({type: FETCH_RECORD_LIST})
-
-    axios.get(url)
-    .then((response) => {
-      dispatch({
-        type: FETCH_RECORD_LIST_FULFILLED,
-        payload: response.data,
-      })
-    })
-    .catch((err) => {
-      dispatch({type: FETCH_RECORD_LIST_REJECTED, payload: err})
-    })
-  }
-}
+export const fetchRecordList = () => ({type: FETCH_RECORD_LIST, payload: axios.get(config.recordUrl)})
 
 export const fetchRecordItem = id => {
 
@@ -39,12 +21,11 @@ export const fetchRecordItem = id => {
 
     axios.get(url)
     .then((response) => {
-      const temp = response.data.filter(e => e.id === parseInt(id, 10))
-      const payload = temp.length > 0 ? temp.shift() : {}
+      const data = response.data.find(e => e.id.toString() == id) || {}
 
       dispatch({
         type: FETCH_RECORD_ITEM_FULFILLED,
-        payload: payload,
+        payload: {data: data},
       })
     })
     .catch((err) => {

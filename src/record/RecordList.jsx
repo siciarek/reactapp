@@ -10,9 +10,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return bindActionCreators({
-    init: fetchRecordList
-  }, dispatch)
+  return {
+    init: bindActionCreators(fetchRecordList, dispatch),
+    goto: id => ownProps.router.push(`/records/${id}`),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordList)

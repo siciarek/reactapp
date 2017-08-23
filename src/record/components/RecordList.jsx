@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui-icons/FiberManualRecord'
+import {List, ListItem, ListItemIcon, ListItemText} from 'material-ui'
+import ItemIcon from 'material-ui-icons/DiscFull'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
 
 class RecordList extends React.Component {
@@ -13,28 +12,28 @@ class RecordList extends React.Component {
 
   render() {
 
-    const {title, icon, items} = this.props
+    const {title, icon, items, goto, router} = this.props
 
-    if(items.map === undefined) {
+    if (!items) {
       return null
     }
 
     return (
       <div>
         <AppHeader title={title}/>
-        <AppFloatingActionButton route="/"/>
+        <AppFloatingActionButton action={() => router.push('/')}/>
         <AppSpinner/>
         <List>
           {
-            items.map(item => {
-              return <ListItem
-                key={item.id}
-                leftIcon={icon}
-                containerElement={<Link to={`/records/${item.id}`}/>}
-                primaryText={`${item.title}/${item.artists.map(e => e.name).join(', ')}`}
-                secondaryText={`number of tracks: ${item.tracks.length}`}
-              />
-            })
+            items.map(({id, title, artists, tracks, audioCount}) => <ListItem button classes={{}} key={id}
+                                                                              onTouchTap={() => goto(id)}>
+                <ListItemIcon classes={{}}>
+                  {icon}
+                </ListItemIcon>
+                <ListItemText classes={{}} primary={`${title}/${artists.map(e => e.name).join(', ')}`}
+                              secondary={`number of tracks: ${tracks.length}`}/>
+              </ListItem>
+            )
           }
         </List>
       </div>
@@ -51,7 +50,7 @@ RecordList.propTypes = {
 
 RecordList.defaultProps = {
   title: 'Records',
-  icon: <ListItemIcon/>,
+  icon: <ItemIcon/>,
   items: [],
   init: () => [],
 }

@@ -67,6 +67,12 @@ const menu = [
     icon: 'theaters',
     route: '/video',
   },
+  {
+    label: 'Records',
+    icon: 'disc_full',
+    route: '/records',
+    private: true,
+  },
 ]
 
 export default menu

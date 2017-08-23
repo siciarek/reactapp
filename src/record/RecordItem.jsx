@@ -1,4 +1,5 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
@@ -7,16 +8,18 @@ import {fetchRecordItem} from './RecordActions'
 class RecordItem extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchRecordItem(this.props.params.id))
+    this.props.init()
   }
 
   render() {
 
-    if (typeof this.props.current.artists === 'undefined') {
-      return <AppSpinner/>
-    }
 
     const {title, artists, cover, tracks} = this.props.current
+
+
+    if (!artists) {
+      return null
+    }
 
     return <div>
       <AppHeader title={title}/>
@@ -46,18 +49,22 @@ class RecordItem extends React.Component {
 
       </div>
 
-      <AppFloatingActionButton route={`/records`}/>
+      <AppFloatingActionButton action={() => this.props.router.push(`/records`)}/>
       <AppSpinner/>
     </div>
   }
 }
 
-RecordItem.defaultProps = {
-  id: PropTypes.number.isRequired,
+const mapStateToProps = (state, ownProps) => {
+  return {
+    current: state.record.current,
+  }
 }
 
-export default connect((store) => {
-  return {
-    current: store.record.current,
-  }
-})(RecordItem)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: () => fetchRecordItem(ownProps.params.id)
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordItem)
