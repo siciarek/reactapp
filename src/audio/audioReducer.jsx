@@ -17,39 +17,22 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
-    case FETCH_AUDIO: {
-      return {
-        ...state,
-        fetching: true
-      }
-    }
-    case FETCH_AUDIO_ITEM: {
-      return {
-        ...state,
-        fetching: true
-      }
-    }
     case FETCH_AUDIO_REJECTED: {
       return {
         ...state,
-        fetching: false,
         error: action.payload
       }
     }
     case FETCH_AUDIO_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        items: action.payload
+        items: action.payload.data
       }
     }
     case FETCH_AUDIO_ITEM_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        current: action.payload
+        current: action.payload.data
       }
     }
     default:

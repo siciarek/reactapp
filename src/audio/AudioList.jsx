@@ -1,46 +1,20 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui-icons/VolumeUp'
-import AppHeader from '../app/components/AppHeader'
-import AppSpinner from '../app/components/AppSpinner'
 import {fetchAudioList} from './AudioActions'
-import AppFloatingActionButton from '../app/components/AppFloatingActionButton'
+import AudioList from './components/AudioList'
 
-class AudioList extends React.Component {
-
-  componentWillMount() {
-    this.props.dispatch(fetchAudioList())
-  }
-
-  render() {
-
-    return (
-      <div>
-        <AppHeader title="Audio"/>
-        <List>
-          {
-            this.props.items.map(item => {
-              return <ListItem
-                key={item.id}
-                leftIcon={<ListItemIcon />}
-                containerElement={<Link to={`audio/${item.id}`}/>}
-                primaryText={item.title}
-                secondaryText={`items: ${item.audioCount}`}
-              />
-            })
-          }
-        </List>
-        <AppFloatingActionButton route="/"/>
-        <AppSpinner/>
-      </div>
-    )
+const mapStateToProps = (state, ownProps) => {
+  return {
+    items: state.audio.items,
   }
 }
 
-export default connect((store) => {
-  return {
-    items: store.audio.items,
-  }
-})(AudioList)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    init: fetchAudioList,
+    goto: id => ownProps.router.push(`/audio/${id}`),
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudioList)

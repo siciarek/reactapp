@@ -7,11 +7,7 @@ const Home = () => {
 
   const {appName, appDescription, appPicture} = config
 
-  return (
-    <Card>
-      <CardMedia>
-        <img style={{width: '100%'}} src={appPicture} alt="Mircorphone"/>
-      </CardMedia>
+  return <Card>
       <CardContent>
         <Typography type="headline" component="h2">
           {appName}
@@ -21,7 +17,6 @@ const Home = () => {
         </Typography>
       </CardContent>
     </Card>
-  )
 }
 
 Home.defaultProps = {}
