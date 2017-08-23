@@ -12,18 +12,17 @@ import {ArtistList, ArtistItem} from '../artist/Artist'
 import {AudioList, AudioItems, AudioItem} from '../audio/Audio'
 import {VideoList, VideoItems, VideoItem} from '../video/Video'
 import {RecordList, RecordItem} from '../record/Record'
-
-import {TestList, TestItem, TestDummy} from '../test/Test'
-
 import {onEnterArtist, onEnterAuthor} from './router_actions'
-import Secure from '../app/Secure'
 
+import {TestDummy} from '../test/Test'
+
+import Secure from '../app/Secure'
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home}/>
 
-    <Route path="config-info" component={ConfigInfo}/>
+    <Route path="dummy" component={TestDummy}/>
 
     <Route path="login" component={Login}/>
     <Route path="logout" component={Logout}/>
@@ -33,7 +32,7 @@ export default (
     <Route path="song/add" component={SongEditor}/>
     <Route path="song/:id/edit" component={SongEditor}/>
 
-    <Route path="artists" component={Secure(ArtistList)} onEnter={onEnterArtist}/>
+    <Route path="artists" component={ArtistList} onEnter={onEnterArtist}/>
     <Route path="artists/:id" component={ArtistItem}/>
 
     <Route path="authors" component={AuthorList} onEnter={onEnterAuthor}/>
@@ -51,17 +50,14 @@ export default (
     <Route path="video/:id/item/:item_id" component={VideoItem}/>
 
     <Route path="genre/list" component={GenreList}/>
-    <Route path="genre/:id/show" component={GenreItem}/>
     <Route path="genre/new" component={GenreCreator}/>
+    <Route path="genre/:id/show" component={GenreItem}/>
     <Route path="genre/:id/edit" component={GenreEditor}/>
-
-    <Route path="dummy" component={TestDummy}/>
-    <Route path="tests" component={TestList}/>
-    <Route path="tests/:id" component={TestItem}/>
 
     <Route path="records" component={RecordList}/>
     <Route path="records/:id" component={RecordItem}/>
 
+    <Route path="config-info" component={ConfigInfo}/>
     <Route path="blank" component={Blank}/>
     <Route path="access-forbiden" component={AccessForbiden}/>
 
