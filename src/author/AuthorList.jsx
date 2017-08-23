@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     model: 'author',
     title: 'Authors',
     icon: <ItemIcon/>,
-    goTo: id => router.push(`/authors/${id}`),
+    goto: id => router.push(`/authors/${id}`),
     items: state.author.items,
     sortable: state.user.authenticated,
   }

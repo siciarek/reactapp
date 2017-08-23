@@ -158,7 +158,7 @@ storiesOf('AppSimpleList', module)
 })
 .addWithInfo('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
                                                                         icon={icons.stars} items={items}
-                                                                        goTo={action('goTo')}/>)
+                                                                        goto={action('goto')}/>)
 storiesOf('AppSimpleItem', module)
 .addWithInfo('with no params', () => <AppSimpleItem/>)
 .addWithInfo('with description, info and returnRoute', () => <AppSimpleItem

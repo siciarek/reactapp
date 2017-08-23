@@ -33,7 +33,9 @@ class AudioItem extends React.Component {
       <br/>
       <h3>{performedBy} ─ {description}</h3>
       <br/>
-      <YouTube videoId={path.replace(/^.*?v=([^&]+)(&.*?)$/, '$1')}/>
+      <div>
+        <YouTube videoId={path.replace(/^.*?v=([^&]+)(&?.*?)$/, '$1')}/>
+      </div>
       <p>{info}</p>
     </div>
   }

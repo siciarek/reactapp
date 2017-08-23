@@ -16,7 +16,7 @@ class AudioList extends React.Component {
 
     const {title, items, icon, goto, router} = this.props
 
-    if(typeof items.map !== 'function') {
+    if (typeof items.map !== 'function') {
       return null
     }
 
@@ -26,10 +26,14 @@ class AudioList extends React.Component {
       <AppSpinner/>
       <List>
         {
-          items.map((item, index) => <ListItem button classes={{}} key={index} onTouchTap={() => goto(item.id)}>
-              <ListItemIcon classes={{}}>{icon}</ListItemIcon>
-              <ListItemText classes={{}} primary={item.title} secondary={`items: ${item.audioCount}`}/>
-            </ListItem>
+          items.map(({id, title, audioCount}) => (
+              <ListItem button classes={{}} key={id} onTouchTap={() => goto(id)}>
+                <ListItemIcon classes={{}}>
+                  {icon}
+                </ListItemIcon>
+                <ListItemText classes={{}} primary={title} secondary={`items: ${audioCount}`}/>
+              </ListItem>
+            )
           )
         }
       </List>
@@ -47,8 +51,10 @@ AudioList.propTypes = {
 AudioList.defaultProps = {
   title: 'Audio',
   icon: <ItemIcon/>,
-  init: () => {},
-  goto: () => {},
+  init: () => {
+  },
+  goto: () => {
+  },
 }
 
 export default AudioList

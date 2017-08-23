@@ -25,10 +25,10 @@ const SortableList = SortableContainer(({items, icon}) => {
 class AppSortableList extends React.Component {
 
   onSortEnd = ({oldIndex, newIndex}) => {
-    const {items, model, goTo, init, swap} = this.props
+    const {items, model, goto, init, swap} = this.props
 
     if (oldIndex === newIndex) {
-      goTo(items[oldIndex].id)
+      goto(items[oldIndex].id)
       return
     }
 

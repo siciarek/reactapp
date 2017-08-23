@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchRecordList as init} from './RecordActions'
+import {fetchRecordList} from './RecordActions'
 import {RecordList} from './components'
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,9 +10,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    init: bindActionCreators(init, dispatch)
-  }
+  return bindActionCreators({
+    init: fetchRecordList
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecordList)

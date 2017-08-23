@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchAudioList} from './AudioActions'
-import AudioList from './components/AudioList'
+import {AudioList} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {
