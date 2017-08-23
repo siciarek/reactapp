@@ -7,6 +7,6 @@ import {
 } from './Video'
 
 const fetchVideoList = () => ({type: FETCH_VIDEO, payload: axios.get(config.videoUrl)})
-const fetchVideoItems = id => { return {type: FETCH_VIDEO_ITEM, payload: axios.get(`${config.videoUrl}/${id}`)}}
+const fetchVideoItems = id => ({type: FETCH_VIDEO_ITEM, payload: axios.get(`${config.videoUrl}/${id}`)})
 
 export {fetchVideoList, fetchVideoItems}
