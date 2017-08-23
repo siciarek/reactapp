@@ -1,12 +1,16 @@
-
 import VideoList from './VideoList'
+import VideoItems from './VideoItems'
 import VideoItem from './VideoItem'
 import VideoActions from './VideoActions'
 
-export {VideoList, VideoItem, VideoActions}
+export {VideoList, VideoItems, VideoItem, VideoActions}
 
-export const FETCH_VIDEO = 'FETCH_VIDEO'
-export const FETCH_VIDEO_ITEM = 'FETCH_VIDEO_ITEM'
-export const FETCH_VIDEO_ITEM_FULFILLED = 'FETCH_VIDEO_ITEM_FULFILLED'
-export const FETCH_VIDEO_FULFILLED = 'FETCH_VIDEO_FULFILLED'
-export const FETCH_VIDEO_REJECTED = 'FETCH_LYRICS_REJECTED'
+export const
+  FETCH_VIDEO = 'FETCH_VIDEO',
+  FETCH_VIDEO_PENDING = 'FETCH_VIDEO_PENDING',
+  FETCH_VIDEO_FULFILLED = 'FETCH_VIDEO_FULFILLED',
+  FETCH_VIDEO_REJECTED = 'FETCH_LYRICS_REJECTED',
+  FETCH_VIDEO_ITEM = 'FETCH_VIDEO_ITEM',
+  FETCH_VIDEO_ITEM_PENDING = 'FETCH_VIDEO_ITEM_PENDING',
+  FETCH_VIDEO_ITEM_FULFILLED = 'FETCH_VIDEO_ITEM_FULFILLED',
+  FETCH_VIDEO_ITEM_REJECTED = 'FETCH_VIDEO_ITEM_REJECTED'

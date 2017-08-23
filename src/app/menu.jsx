@@ -63,9 +63,9 @@ const menu = [
     route: '/audio',
   },
   {
-    label: 'Videos',
+    label: 'Video',
     icon: 'theaters',
-    route: '/videos',
+    route: '/video',
   },
 ]
 

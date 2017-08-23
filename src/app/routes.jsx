@@ -10,7 +10,7 @@ import {LyricsList, LyricsItem} from '../lyrics/Lyrics'
 import {AuthorList, AuthorItem} from '../author/Author'
 import {ArtistList, ArtistItem} from '../artist/Artist'
 import {AudioList, AudioItems, AudioItem} from '../audio/Audio'
-import {VideoList, VideoItem} from '../video/Video'
+import {VideoList, VideoItems, VideoItem} from '../video/Video'
 import {RecordList, RecordItem} from '../record/Record'
 
 import {TestList, TestItem, TestDummy} from '../test/Test'
@@ -46,8 +46,9 @@ export default (
     <Route path="audio/:id" component={AudioItems}/>
     <Route path="audio/:id/item/:item_id" component={AudioItem}/>
 
-    <Route path="videos" component={VideoList}/>
-    <Route path="video/:id" component={VideoItem}/>
+    <Route path="video" component={VideoList}/>
+    <Route path="video/:id" component={VideoItems}/>
+    <Route path="video/:id/item/:item_id" component={VideoItem}/>
 
     <Route path="genre/list" component={GenreList}/>
     <Route path="genre/:id/show" component={GenreItem}/>

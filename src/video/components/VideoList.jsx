@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router'
-import {List, ListItem} from 'material-ui'
-import ListItemIcon from 'material-ui-icons/Theaters'
-import {AppHeader, AppSpinner} from '../../app/components'
+import {List, ListItem, ListItemText, ListItemIcon} from 'material-ui'
+import ItemIcon from 'material-ui-icons/VolumeUp'
+import AppHeader from '../../app/components/AppHeader'
+import AppSpinner from '../../app/components/AppSpinner'
+import AppFloatingActionButton from '../../app/components/AppFloatingActionButton'
 
 class VideoList extends React.Component {
 
@@ -13,22 +14,23 @@ class VideoList extends React.Component {
 
   render() {
 
-    const {title, items} = this.props
+    const {title, items, icon, goto, router} = this.props
+
+    if(!items) {
+      return null
+    }
 
     return <div>
       <AppHeader title={title}/>
+      <AppFloatingActionButton action={() => router.push('/')}/>
       <AppSpinner/>
       <List>
         {
-          items.map(item => {
-            return <ListItem
-              leftIcon={<ListItemIcon/>}
-              containerElement={<Link to={`/video/${item.id}`}/>}
-              key={item.id}
-              primaryText={item.title}
-              secondaryText={`results: ${item.videoCount}`}
-            />
-          })
+          items.map((item, index) => <ListItem button classes={{}} key={index} onTouchTap={() => goto(item.id)}>
+              <ListItemIcon classes={{}}>{icon}</ListItemIcon>
+              <ListItemText classes={{}} primary={item.title} secondary={`items: ${item.videoCount}`}/>
+            </ListItem>
+          )
         }
       </List>
     </div>
@@ -37,12 +39,16 @@ class VideoList extends React.Component {
 
 VideoList.propTypes = {
   title: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired,
+  icon: PropTypes.node.isRequired,
+  init: PropTypes.func.isRequired,
+  goto: PropTypes.func.isRequired,
 }
 
 VideoList.defaultProps = {
   title: 'Video',
-  items: [],
+  icon: <ItemIcon/>,
+  init: () => {},
+  goto: () => {},
 }
 
 export default VideoList

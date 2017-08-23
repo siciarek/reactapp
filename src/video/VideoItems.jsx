@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchVideoItems} from './VideoActions'
-import VideoItem from './components/VideoItem'
+import VideoItems from './components/VideoItems'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoItem)
+export default connect(mapStateToProps, mapDispatchToProps)(VideoItems)
