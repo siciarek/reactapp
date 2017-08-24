@@ -1,5 +1,5 @@
 import React from 'react'
-import {AppHeader, AppFloatingActionButton, AppSpinner} from '../../app/components'
+import {AppHeader, AppFloatingActionButton, AppSpinner} from '../../app/widgets'
 import GenreForm from './GenreForm'
 
 const GenreCreator = ({title, onSubmit, router}) => {

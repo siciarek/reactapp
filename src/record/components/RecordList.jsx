@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {List, ListItem, ListItemIcon, ListItemText} from 'material-ui'
 import ItemIcon from 'material-ui-icons/DiscFull'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 
 class RecordList extends React.Component {
 

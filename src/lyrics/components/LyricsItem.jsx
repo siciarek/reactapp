@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AppHeader from '../../app/components/AppHeader'
-import AppSpinner from '../../app/components/AppSpinner'
-import AppFloatingActionButton from '../../app/components/AppFloatingActionButton'
+import AppHeader from '../../app/widgets/AppHeader'
+import AppSpinner from '../../app/widgets/AppSpinner'
+import AppFloatingActionButton from '../../app/widgets/AppFloatingActionButton'
 
 class LyricsItem extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 
 class RecordItem extends React.Component {
 

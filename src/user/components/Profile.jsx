@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {AppHeader, AppSpinner} from '../../app/components'
+import {AppHeader, AppSpinner} from '../../app/widgets'
 import ProfileForm from './ProfileForm'
 
 class Profile extends React.Component {

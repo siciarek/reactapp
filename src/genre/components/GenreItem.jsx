@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button} from 'material-ui'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 
 class GenreItem extends React.Component {
 

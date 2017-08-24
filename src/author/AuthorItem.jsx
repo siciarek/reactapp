@@ -1,7 +1,7 @@
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchAuthorItem} from './AuthorActions'
-import {AppSimpleAutoloadingItem} from '../app/components'
+import {AppSimpleAutoloadingItem} from '../app/widgets'
 
 const mapStateToProps = (state, ownProps) => {
   return {

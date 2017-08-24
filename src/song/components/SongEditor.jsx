@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {AppHeader, AppSpinner} from '../../app/components'
+import {AppHeader, AppSpinner} from '../../app/widgets'
 import SongEditorForm from './SongEditorForm'
 
 class SongEditor extends React.Component {

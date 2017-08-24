@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'material-ui/Button'
 import {filter} from 'lodash'
-import {AppHeader} from '../../app/components'
+import {AppHeader} from '../../app/widgets'
 
 const DashboardComponent = ({user, router}) => {
 

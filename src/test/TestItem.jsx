@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../app/widgets'
 import {fetchTestItem} from './TestActions'
 
 class TestItem extends React.Component {

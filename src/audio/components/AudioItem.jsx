@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import YouTube from 'react-youtube'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 
 class AudioItem extends React.Component {
 

@@ -4,7 +4,7 @@ import {browserHistory as routerHistory} from 'react-router'
 import List, {ListItem, ListItemText, ListItemIcon} from 'material-ui/List'
 import IconStars from 'material-ui-icons/Stars'
 import IconAdd from 'material-ui-icons/Add'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 
 class GenreList extends React.Component {
 

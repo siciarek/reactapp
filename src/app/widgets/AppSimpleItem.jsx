@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {browserHistory as routerHistory} from 'react-router'
-import {AppFloatingActionButton, AppHeader, AppSpinner} from '../../app/components'
+import {AppFloatingActionButton, AppHeader, AppSpinner} from '../../app/widgets'
 
 const AppSimpleItem = ({description, info, returnRoute}) => {
 

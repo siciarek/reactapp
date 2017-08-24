@@ -19,7 +19,7 @@ addDecorator(withKnobs)
 // ------------------------------------------------------------------
 
 import '../app/App.css'
-import '../app/components/AppHeader.css'
+import '../app/widgets/AppHeader.css'
 import {
   AppHeader,
   AppDrawerComponent,
@@ -27,7 +27,7 @@ import {
   AppSimpleItem,
   AppFloatingActionButton,
   AppSpinnerComponent,
-} from '../app/components'
+} from '../app/widgets'
 
 import IconAdd from 'material-ui-icons/Add'
 import IconCheck from 'material-ui-icons/Check'

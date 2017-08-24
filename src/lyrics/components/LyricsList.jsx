@@ -1,6 +1,6 @@
 import React from 'react'
 import IconAdd from 'material-ui-icons/Add'
-import {AppHeader, AppSpinner, AppList, AppFloatingActionButton} from '../../app/components'
+import {AppHeader, AppSpinner, AppList, AppFloatingActionButton} from '../../app/widgets'
 
 class LyricsList extends React.Component {
 

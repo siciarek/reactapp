@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Table, TableHead, TableBody, TableRow, TableCell, TableSortLabel, Checkbox} from 'material-ui'
-import {AppSpinner, AppHeader} from '../app/components'
+import {AppSpinner, AppHeader} from '../app/widgets'
 import {fetchTestList} from './TestActions'
 
 class TestList extends React.Component {

@@ -18,8 +18,8 @@ addDecorator(withKnobs)
 
 // ------------------------------------------------------------------
 
-import ConfirmationDialog from '../app/components/dialogs/Confirmation'
-import AppNotification from '../app/components/components/AppNotification'
+import ConfirmationDialog from '../app/widgets/dialogs/Confirmation'
+import AppNotification from '../app/widgets/components/AppNotification'
 
 
 storiesOf('Dialogs and notifications', module)
