@@ -26,21 +26,22 @@ describe('formValidators', () => {
         1,
         '0005',
         1234567890,
+        -5.23,
+        -200,
         4.0,
       ].forEach(function (string) {
-        expect(integer(string)).to.equal(undefined, `Test failed on: ${string}`)
+        expect(numeric(string)).to.equal(undefined, `Test failed on: ${string}`)
       })
     })
 
     it('should recognize input as invalid numeric', () => {
       [
-        4.8933,
-        '4.5',
+        'a4.5',
         'A',
         'ą',
         '#',
       ].forEach(function (string) {
-        expect(integer(string)).to.equal('Invalid numeric value', `Test failed on: ${string}`)
+        expect(numeric(string)).to.equal('Invalid numeric value', `Test failed on: ${string}`)
       })
     })
   })

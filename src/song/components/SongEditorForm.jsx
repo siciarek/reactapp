@@ -2,8 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import {Field, reduxForm} from 'redux-form'
-import {renderTextField, SubmitButton} from '../utils/formHelpers'
-import {required, maxLength255} from '../utils/formValidators'
+import {renderTextField, SubmitButton} from '../../utils/formHelpers'
+import {required, maxLength255} from '../../utils/formValidators'
 
 class SongEditorForm extends React.Component {
 
@@ -98,6 +98,17 @@ class SongEditorForm extends React.Component {
       </form>
     )
   }
+}
+
+SongEditorForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
+}
+
+SongEditorForm.defaultProps = {
+  handleSubmit: data => {
+  },
+  initialValues: {},
 }
 
 export default reduxForm({form: 'songForm'})(SongEditorForm)

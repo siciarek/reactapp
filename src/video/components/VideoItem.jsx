@@ -40,13 +40,17 @@ class VideoItem extends React.Component {
 }
 
 VideoItem.propTypes = {
-  init: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
+  init: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired,
 }
 
 VideoItem.defaultProps = {
-  init: () => {},
   items: [],
+  init: () => {},
+  params: {
+    item_id: 0,
+  }
 }
 
 export default VideoItem

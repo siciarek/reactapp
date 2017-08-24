@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {fetchListGenre as init} from './GenreActions'
-import {GenreListComponent} from './components'
+import {fetchListGenre} from './GenreActions'
+import {GenreList} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,9 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    init: bindActionCreators(init, dispatch)
-  }
+  return bindActionCreators({
+    init: fetchListGenre,
+  }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GenreListComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(GenreList)

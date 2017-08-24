@@ -24,7 +24,7 @@ Login.propTypes = {
 
 Login.defaultProps = {
   title: 'Log In',
-  onSubmit: data => console.log(JSON.strigify(data)),
+  onSubmit: data => {},
   initialValues: {
     username: (process.env.NODE_ENV === ENV_PROD ? '' : 'molak'),
     password: (process.env.NODE_ENV === ENV_PROD ? '' : 'pass'),

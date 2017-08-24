@@ -2,7 +2,7 @@
   {
     "id": 1001,
     "title": "Highway to Hell",
-    "cover": "http://nightflight.com/wp-content/uploads/ACDC-HIGHWAY-TO-HELL-2.jpg",
+    "cover": "https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG",
     "artists": [
       {
         "name": "AC/DC"
@@ -12,52 +12,160 @@
       {
         "id": 11,
         "title": "Highway to Hell",
-        "length": "03:28"
+        "length": "03:28",
+        "side": 1
       },
       {
         "id": 12,
         "title": "Girls Got Rhythm",
-        "length": "03:23"
+        "length": "03:23",
+        "side": 1
       },
       {
         "id": 13,
         "title": "Walk All Over You",
-        "length": "05:10"
+        "length": "05:10",
+        "side": 1
       },
       {
         "id": 14,
         "title": "Touch Too Much",
-        "length": "04:26"
+        "length": "04:26",
+        "side": 1
       },
       {
         "id": 15,
         "title": "Beating Around the Bush",
-        "length": "03:55"
+        "length": "03:55",
+        "side": 1
       },
       {
         "id": 16,
         "title": "Shot Down in Flames",
-        "length": "03:22"
+        "length": "03:22",
+        "side": 2
       },
       {
         "id": 17,
         "title": "Get It Hot",
-        "length": "02:34"
+        "length": "02:34",
+        "side": 2
       },
       {
         "id": 18,
         "title": "If You Want Blood (You've Got It)",
-        "length": "04:36"
+        "length": "04:36",
+        "side": 2
       },
       {
         "id": 19,
         "title": "Love Hungry Man",
-        "length": "04:17"
+        "length": "04:17",
+        "side": 2
       },
       {
         "id": 20,
         "title": "Night Prowler",
-        "length": "06:17"
+        "length": "06:17",
+        "side": 2
+      }
+    ],
+    "decription": null,
+    "info": null
+  },
+  {
+    "id": 2001,
+    "title": "Revolver",
+    "cover": "https://www.cambridgeaudio.com/sites/default/files/revolver.jpg",
+    "artists": [
+      {
+        "name": "The Beatles"
+      }
+    ],
+    "tracks": [
+      {
+        "id": 31,
+        "title": "Taxman",
+        "length": "02:39",
+        "side": 1
+      },
+      {
+        "id": 32,
+        "title": "Eleanor Rigby",
+        "length": "02:07",
+        "side": 1
+      },
+      {
+        "id": 33,
+        "title": "I'm Only Sleeping",
+        "length": "03.02",
+        "side": 1
+      },
+      {
+        "id": 34,
+        "title": "Love You To",
+        "length": "03:01",
+        "side": 1
+      },
+      {
+        "id": 35,
+        "title": "Here, There and Everywhere",
+        "length": "02:25",
+        "side": 1
+      },
+      {
+        "id": 36,
+        "title": "Yellow Submarine",
+        "length": "02:40",
+        "side": 1
+      },
+      {
+        "id": 37,
+        "title": "She Said, She Said",
+        "length": "02:38",
+        "side": 1
+      },
+      {
+        "id": 38,
+        "title": "Good Day Sunshine",
+        "length": "02:09",
+        "side": 2
+      },
+      {
+        "id": 39,
+        "title": "And Your Bird Can Sing",
+        "length": "02:01",
+        "side": 2
+      },
+      {
+        "id": 40,
+        "title": "For No One",
+        "length": "02:01",
+        "side": 2
+      },
+      {
+        "id": 41,
+        "title": "Doctor Robert",
+        "length": "02:16",
+        "side": 2
+      },
+      {
+        "id": 42,
+        "title": "I Want to Tell You",
+        "length": "02:29",
+        "side": 2
+      },
+      {
+        "id": 43,
+        "title": "Got to Get You into My Life",
+        "length": "02:30",
+        "side": 2
+      },
+      {
+        "id": 44,
+        "title": "Tomorrow Never Knows",
+        "length": "02:57",
+        "side": 2
       }
     ],
     "decription": null,
@@ -76,37 +184,44 @@
       {
         "id": 21,
         "title": "Highway Star",
-        "length": "06:45"
+        "length": "06:45",
+        "side": 1
       },
       {
         "id": 22,
         "title": "Child in Time",
-        "length": "12:19"
+        "length": "12:19",
+        "side": 1
       },
       {
         "id": 23,
         "title": "Smoke on The Water",
-        "length": "07:27"
+        "length": "07:27",
+        "side": 2
       },
       {
         "id": 24,
         "title": "The Mule",
-        "length": "09:45"
+        "length": "09:45",
+        "side": 3
       },
       {
         "id": 25,
         "title": "Strange Kind of Woman",
-        "length": "09:26"
+        "length": "09:26",
+        "side": 3
       },
       {
         "id": 26,
         "title": "Lazy",
-        "length": "10:59"
+        "length": "10:59",
+        "side": 3
       },
       {
         "id": 27,
         "title": "Space Truckin",
-        "length": "20:02"
+        "length": "20:02",
+        "side": 4
       }
     ],
     "decription": null,

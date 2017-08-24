@@ -1,38 +1,8 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
-import {AppHeader, AppFloatingActionButton, AppSpinner} from '../app/components'
-import {GenreForm} from './components'
 import {fetchItemGenre, saveGenre} from './GenreActions'
-
-class GenreEditor extends React.Component {
-
-  componentWillMount() {
-    this.props.init()
-  }
-
-  render() {
-
-    const {title, onSubmit, router, item} = this.props
-
-    if (typeof item.id === 'undefined' || item.id === null) {
-      return null
-    }
-
-    return (
-      <div>
-        <AppSpinner/>
-        <AppHeader title={title}/>
-
-        <br/>
-        <GenreForm onSubmit={onSubmit} initialValues={item}/>
-
-        <AppFloatingActionButton action={() => router.push('/genre/list')}/>
-      </div>
-    )
-  }
-}
+import {GenreEditor} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {

@@ -16,7 +16,7 @@ class AudioList extends React.Component {
 
     const {title, items, icon, goto, router} = this.props
 
-    if (typeof items.map !== 'function') {
+    if (!items) {
       return null
     }
 

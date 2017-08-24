@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {browserHistory as routerHistory} from 'react-router'
 import List, {ListItem, ListItemText, ListItemIcon} from 'material-ui/List'
 import IconStars from 'material-ui-icons/Stars'
 import IconAdd from 'material-ui-icons/Add'
 import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/components'
 
-class GenreListComponent extends React.Component {
+class GenreList extends React.Component {
 
   componentWillMount() {
     this.props.init()
@@ -36,4 +37,14 @@ class GenreListComponent extends React.Component {
   }
 }
 
-export default GenreListComponent
+GenreList.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+}
+
+GenreList.defaultProps = {
+  title: 'Bim',
+  items: [],
+}
+
+export default GenreList

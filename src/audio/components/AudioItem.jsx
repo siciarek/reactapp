@@ -42,13 +42,17 @@ class AudioItem extends React.Component {
 }
 
 AudioItem.propTypes = {
-  init: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
+  init: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired,
 }
 
 AudioItem.defaultProps = {
-  init: () => {},
   items: [],
+  init: () => {},
+  params: {
+    item_id: 0,
+  }
 }
 
 export default AudioItem
