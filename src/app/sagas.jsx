@@ -51,7 +51,7 @@ export function* showErrorNotification(action) {
 }
 
 export function* watchErrorNotifications() {
-  yield takeEvery(({type}) => type.endsWith(REJECTED), showErrorNotification)
+  yield takeEvery(({type}) => true === type.endsWith(REJECTED) && false === type.startsWith(USER_AUTH_CHECK) , showErrorNotification)
 }
 
 // Notification
