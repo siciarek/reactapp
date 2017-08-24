@@ -9,14 +9,13 @@ import {
   USER_UNAUTH_FULFILLED,
 
   USER_PROFILE_FETCH,
-  USER_PROFILE_FETCH_PENDING,
   USER_PROFILE_FETCH_FULFILLED,
   USER_PROFILE_FETCH_REJECTED,
 
   USER_SAVE,
   USER_AUTH,
-  USER_AUTH_CHECK,
 } from './User'
+
 import {
   APP_SET_TARGET_ROUTE,
   APP_UNSET_TARGET_ROUTE,
@@ -30,14 +29,14 @@ export const authenticateUser = data => {
     params.append(key, value);
   })
 
-  return dispatch => dispatch({
+  return {
     type: USER_AUTH,
     payload: axios.post(config.authUrl, params)
     .then(response => {
       AppStash.set('token', response.data.token)
       routerHistory.push('/dashboard')
     })
-  })
+  }
 }
 
 export const unauthenticateUser = () => dispatch => {

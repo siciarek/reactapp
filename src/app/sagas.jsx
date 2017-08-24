@@ -37,7 +37,17 @@ export function* watchTheSpinner() {
 // Error notification
 
 export function* showErrorNotification(action) {
-  yield put({type: APP_ERROR_OCCURRED, payload: action.payload.response.data})
+
+  let payload = {code: 500, message: action.type}
+
+  try {
+    payload = action.payload.response.data
+  }
+  catch (e) {
+
+  }
+
+  yield put({type: APP_ERROR_OCCURRED, payload: payload})
 }
 
 export function* watchErrorNotifications() {
