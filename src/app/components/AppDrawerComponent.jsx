@@ -53,9 +53,7 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
   const matchedRoute = router.getCurrentLocation().pathname
 
   const items = menu
-  .filter(e => {
-    return e === null || e.hasOwnProperty('private') === false || e.private === authenticated
-  })
+  .filter(e => e === null || e.hasOwnProperty('private') === false || e.private === authenticated)
   .map((e, i) => {
 
     if (e === null) {
@@ -63,8 +61,7 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
     }
 
     const nestedItems = e.hasOwnProperty('children') && e.children.length > 0
-      ? e.children.map((ce, ci) => {
-          return <ListItem style={{width: 250}} classes={{}} key={ci} button onTouchTap={() => {
+      ? e.children.map((ce, ci) => <ListItem style={{width: 250}} classes={{}} key={ci} button onTouchTap={() => {
             router.push(ce.route)
             toggleVisibility()
           }}>
@@ -74,7 +71,6 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
             <ListItemText classes={{}} primary={ce.label}/>
             {ce.route === matchedRoute ? <ListItemIcon classes={{}}><IconCheck/></ListItemIcon> : null}
           </ListItem>
-        }
       )
       : []
 
