@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {browserHistory as router} from 'react-router'
 import ItemIcon from 'material-ui-icons/Face'
 import {swapListItems} from '../app/AppActions'
-import {fetchAuthorList} from '../author/AuthorActions'
 import {AppSortableList} from '../app/components'
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return bindActionCreators({
-    init: fetchAuthorList,
     swap: (model, src, trg, onError) => swapListItems(model, src, trg, onError)
   }, dispatch)
 }

@@ -15,10 +15,10 @@ import config from './config'
 const DEFAULT_STATE = {
   version: config.version,
   processing: false,
-  error: null,
-  notification: null,
-  targetRoute: null,
   menu: false,
+  targetRoute: null,
+  notificationType: null,
+  notification: null,
 }
 
 export default (state = DEFAULT_STATE, action) => {
@@ -58,25 +58,23 @@ export default (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         processing: false,
-        error: action.payload,
+        notificationType: 'error',
+        notification: action.payload,
       }
     }
-    case APP_ERROR_HIDE: {
-      return {
-        ...state,
-        error: null,
-      }
-    }
+
     case APP_NOTIFICATION_OCCURRED: {
       return {
         ...state,
         processing: false,
+        notificationType: 'notification',
         notification: action.payload,
       }
     }
     case APP_NOTIFICATION_HIDE: {
       return {
         ...state,
+        notificationType: null,
         notification: null,
       }
     }

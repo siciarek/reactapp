@@ -31,29 +31,23 @@ export function* stopTheSpinner() {
 
 export function* watchTheSpinner() {
   yield takeEvery(({type}) =>  type.endsWith(PENDING), runTheSpinner)
-  yield takeLatest(({type}) =>  type.endsWith(FULFILLED), stopTheSpinner)
-  yield takeLatest(({type}) =>  type.endsWith(REJECTED), stopTheSpinner)
+  yield takeLatest(({type}) =>  type.endsWith(FULFILLED) || type.endsWith(REJECTED), stopTheSpinner)
 }
 
 // Error notification
 
 export function* showErrorNotification(action) {
-  yield put({type: APP_ERROR_OCCURRED, payload: action.payload})
-}
-
-export function* hideErrorNotification() {
-  yield put({type: APP_ERROR_HIDE})
+  yield put({type: APP_ERROR_OCCURRED, payload: action.payload.response.data})
 }
 
 export function* watchErrorNotifications() {
-  yield takeEvery(({type}) => !type.startsWith(USER_AUTH_CHECK) && type.endsWith(REJECTED), showErrorNotification)
-  yield takeLatest(({type}) => !type.startsWith(USER_AUTH_CHECK) && type.endsWith(FULFILLED), hideErrorNotification)
+  yield takeEvery(({type}) => type.endsWith(REJECTED), showErrorNotification)
 }
 
 // Notification
 
 export function* showNotification(action) {
-  yield put({type: APP_NOTIFICATION_OCCURRED, payload: 'Operation succeed.'})
+  yield put({type: APP_NOTIFICATION_OCCURRED, payload: {code: 200, message: 'Operation succeed'}})
 }
 
 export function* watchNotifications() {

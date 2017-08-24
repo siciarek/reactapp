@@ -22,7 +22,7 @@ import {SubmitButton} from '../utils/formHelpers'
 import LoginForm from '../user/components/LoginForm'
 import SignUpForm from '../user/components/SignUpForm'
 import GenreForm from '../genre/components/GenreForm'
-import SongEditorForm from '../song/SongEditorForm'
+import SongEditorForm from '../song/components/SongEditorForm'
 
 storiesOf('Forms', module)
 .addWithInfo('SubmitButton - no params', () => <SubmitButton/>)

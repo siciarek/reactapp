@@ -1,4 +1,5 @@
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import AppDrawerComponent from './AppDrawerComponent'
 import {APP_TOGGLE_MENU} from '../AppActionTypes'
 
@@ -10,9 +11,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    toggleVisibility: () => dispatch({type: APP_TOGGLE_MENU}),
-  }
+  return bindActionCreators({
+    toggleMenu: () => ({type: APP_TOGGLE_MENU}),
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppDrawerComponent)

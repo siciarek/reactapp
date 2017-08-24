@@ -1,28 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {APP_ERROR_OCCURRED} from './AppActionTypes'
 
 const redirectRoute = '/login'
 
-// TODO: send action with error
+const error =  {
+  code: 401,
+  message: 'Bad credentials'
+}
 
 export default ComposedComponent => {
 
   class Secure extends React.Component {
 
-    static contextTypes = {
-      router: PropTypes.object.isRequired,
-    }
-
     componentWillMount() {
       if(this.props.granted === false) {
-        this.context.router.push(redirectRoute)
+        this.props.dispatch({type: APP_ERROR_OCCURRED, payload: error})
+        this.props.router.push(redirectRoute)
       }
     }
 
     componentWillUpdate(nextProps) {
       if(nextProps.granted === false) {
-        this.context.router.push(redirectRoute)
+        this.props.dispatch({type: APP_ERROR_OCCURRED, payload: error})
+        this.props.router.push(redirectRoute)
       }
     }
 

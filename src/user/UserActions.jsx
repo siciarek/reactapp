@@ -22,11 +22,6 @@ import {
   APP_UNSET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
 
-export const checkIfIsAuthenticated = () => dispatch => dispatch({
-  type: USER_AUTH_CHECK,
-  payload: axios.get(config.pingUrl, getAuthCheckConfig())
-})
-
 export const authenticateUser = data => {
 
   let params = new URLSearchParams();
@@ -38,8 +33,8 @@ export const authenticateUser = data => {
   return dispatch => dispatch({
     type: USER_AUTH,
     payload: axios.post(config.authUrl, params)
-    .then(({data}) => {
-      AppStash.set('token', data.token)
+    .then(response => {
+      AppStash.set('token', response.data.token)
       routerHistory.push('/dashboard')
     })
   })
