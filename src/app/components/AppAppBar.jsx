@@ -1,44 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import {browserHistory as routerHistory} from 'react-router'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {AppAppBar} from './components'
 
-const AppAppBar = ({authenticated, title, toggleMenu}) => {
+import {APP_TOGGLE_MENU} from '../AppActionTypes'
 
-  return <AppBar position="static">
-    <Toolbar>
-
-      <IconButton color="contrast" aria-label="Menu" onTouchTap={() => toggleMenu()}>
-        <MenuIcon />
-      </IconButton>
-
-      <Typography type="title" color="inherit" style={{flex: 1}}>{title}</Typography>
-
-      {
-        authenticated
-          ? <Button color="contrast" onTouchTap={() => routerHistory.push('/logout')}>Log Out</Button>
-          : <Button color="contrast" onTouchTap={() => routerHistory.push('/login')}>Log In</Button>
-      }
-
-    </Toolbar>
-  </AppBar>
+const mapStateToProps = (state, ownProps) => {
+  return {
+    authenticated: state.user.authenticated,
+  }
 }
 
-AppAppBar.propTypes = {
-  authenticated: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return bindActionCreators({
+    toggleMenu: () => ({type: APP_TOGGLE_MENU})
+  }, dispatch)
 }
 
-AppAppBar.defaultProps = {
-  authenticated: false,
-  title: 'Application',
-  toggleMenu: () => console.log('toggleMenu'),
-}
-
-export default AppAppBar
+export default connect(mapStateToProps, mapDispatchToProps)(AppAppBar)

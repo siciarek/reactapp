@@ -1,4 +1,4 @@
-const menu = [
+export default [
   {
     label: 'Log In',
     icon: 'lock_open',
@@ -9,26 +9,25 @@ const menu = [
     label: 'User Zone',
     icon: 'person',
     private: true,
-    children: [
-      {
-        label: 'Dashboard',
-        icon: 'dashboard',
-        route: '/dashboard',
-        private: true,
-      },
-      {
-        label: 'Profile',
-        icon: 'account_circle',
-        route: '/profile',
-        private: true,
-      },
-      {
-        label: 'Log out',
-        icon: 'power_settings_new',
-        route: '/logout',
-        private: true,
-      },
-    ]
+    children: [], // Jak będą ogarnięte rozwijalne menu przerzucić 3 poniższe pozycje do children.
+  },
+  {
+    label: 'Dashboard',
+    icon: 'dashboard',
+    route: '/dashboard',
+    private: true,
+  },
+  {
+    label: 'Profile',
+    icon: 'account_circle',
+    route: '/profile',
+    private: true,
+  },
+  {
+    label: 'Log out',
+    icon: 'power_settings_new',
+    route: '/logout',
+    private: true,
   },
   null,
   {
@@ -74,5 +73,3 @@ const menu = [
     private: true,
   },
 ]
-
-export default menu

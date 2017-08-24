@@ -14,12 +14,18 @@ import {
 
   USER_SAVE,
   USER_AUTH,
+  USER_AUTH_CHECK,
 } from './User'
 
 import {
   APP_SET_TARGET_ROUTE,
   APP_UNSET_TARGET_ROUTE,
 } from '../app/AppActionTypes'
+
+export const checkIfIsAuthenticated = () => dispatch => dispatch({
+  type: USER_AUTH_CHECK,
+  payload: axios.get(config.pingUrl, getAuthCheckConfig())
+})
 
 export const authenticateUser = data => {
 

@@ -7,25 +7,36 @@ import AppDrawer from './AppDrawer'
 import AppNotification from './AppNotification'
 import '../App.css'
 
-const App = ({children}) => {
+class App extends React.Component {
 
-  return <div>
-    <Helmet>
-      <title>{config.appName}</title>
-    </Helmet>
-    <AppDrawer/>
-    <AppAppBar title={config.appName}/>
-    {children}
-    <AppNotification/>
-  </div>
+  componentWillMount() {
+    this.props.init()
+  }
+
+  render() {
+
+    const {children} = this.props
+
+    return <div>
+      <Helmet>
+        <title>{config.appName}</title>
+      </Helmet>
+      <AppDrawer/>
+      <AppAppBar title={config.appName}/>
+      {children}
+      <AppNotification/>
+    </div>
+  }
 }
 
 App.propTypes = {
   children: PropTypes.any,
+  init: PropTypes.func.isRequired,
 }
 
 App.defaultProps = {
   children: null,
+  init: () => {},
 }
 
 export default App

@@ -26,8 +26,25 @@ storiesOf('Dialogs and notifications', module)
 .addWithInfo('Notification - no params', () => <AppNotification/>)
 .addWithInfo('Notification - interactive', () => {
   return <AppNotification
-    notification={{code: select('code', [null, 200, 401, 500], 200), message: select('message', [null, 'Operation succeed', 'Bad credentials', 'A little bit longer notification message with an exclamation mark! A little bit longer notification message with an exclamation mark!'], 'Operation succeed')}}
-    notificationType={select('notificationType', ['notification', 'error'], 'notification')}
+    notification={{
+      code: select('code', [
+        null,
+        200,
+        401,
+        500
+      ], 200),
+      message: select('message', [
+        null,
+        'Operation succeed',
+        'Bad credentials',
+        'A little bit longer notification message with an exclamation mark! A little bit longer notification message with an exclamation mark!'
+      ], 'Operation succeed')}}
+    notificationType={select('notificationType',
+      [
+        null,
+        'notification',
+        'error'
+      ], 'notification')}
     hide={action('hide notification')}
   />
 })

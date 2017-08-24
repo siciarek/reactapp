@@ -10,17 +10,6 @@ describe('AppAppBar', () => {
   })
 
   it('can render without error', () => {
-
     expect(() =>  { const component = renderComponent(element)}).not.toThrow()
-  })
-
-  it('has default props set up', () => {
-
-    const component = renderComponent(element)
-    const props = getProps(component)
-
-    Object.keys(AppAppBar.defaultProps).map(key => {
-      expect(props[key]).toBe(AppAppBar.defaultProps[key])
-    })
   })
 })

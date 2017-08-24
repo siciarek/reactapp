@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    toggleMenu: () => ({type: APP_TOGGLE_MENU}),
+    toggleVisibility: () => ({type: APP_TOGGLE_MENU}),
   }, dispatch)
 }
 

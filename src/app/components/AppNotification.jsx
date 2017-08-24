@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {
   APP_NOTIFICATION_HIDE,
 } from '../AppActionTypes'
-import AppNotification from './components/AppNotification'
+import {AppNotification} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {
