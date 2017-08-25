@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {authenticateUser} from './UserActions'
-import Login from './components/Login'
+import {Login} from './components'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 

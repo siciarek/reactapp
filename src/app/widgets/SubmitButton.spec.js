@@ -1,5 +1,5 @@
 /**
- * DashboardComponent.spec.js
+ * SubmitButton.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
@@ -7,14 +7,14 @@ import {lorem} from 'faker'
 import {expect} from 'chai'
 import {map} from 'lodash'
 
-import DashboardComponent from './DashboardComponent'
+import SubmitButton from './SubmitButton'
 
-describe('DashboardComponent', () => {
+describe('SubmitButton', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <DashboardComponent/>
+    element = <SubmitButton/>
   })
 
   it('can render without error', () => {

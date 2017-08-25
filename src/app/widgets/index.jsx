@@ -11,6 +11,7 @@ import AppSortableList from './AppSortableList'
 import AppSimpleAutoloadingList from './AppSimpleAutoloadingList'
 import AppSimpleItem from './AppSimpleItem'
 import AppSimpleAutoloadingItem from './AppSimpleAutoloadingItem'
+import SubmitButton from './SubmitButton'
 
 export {
   AppSimpleList,
@@ -26,5 +27,6 @@ export {
   AppListItem,
   AppFloatingActionButton,
   AppGenderSelectField,
+  SubmitButton,
 }
 

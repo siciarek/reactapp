@@ -6,7 +6,7 @@ import App from './widgets/App'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return bindActionCreators({
-    init: checkIfIsAuthenticated,
+    init: () => checkIfIsAuthenticated,
   }, dispatch)
 }
 

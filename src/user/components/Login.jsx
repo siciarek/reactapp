@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {AppHeader, AppSpinner} from '../../app/widgets'
-import LoginForm from './LoginForm'
+import {LoginForm} from '../components'
 import {ENV_PROD} from '../../app/config'
 
 const Login = ({title, onSubmit, initialValues}) => {

@@ -7,13 +7,16 @@ import {
 test('userReducer USER_UPDATE action', () => {
 
   const payload = {
-    id: 1,
-    gender: 'male',
-    firstName: 'Czesław',
-    lastName: 'Olak',
-    username: 'colak',
-    email: 'colak@gmail.com',
-    level: 24,
+    authenticated: true,
+    data: {
+      id: 1,
+      gender: 'male',
+      firstName: 'Czesław',
+      lastName: 'Olak',
+      username: 'colak',
+      email: 'colak@gmail.com',
+      level: 24,
+    }
   }
 
   const previousState = {...USER_DEFAULT_STATE}

@@ -2,11 +2,11 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchUserProfile, saveUser} from './UserActions'
-import Profile from './components/Profile'
+import {Profile} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    item: state.user,
+    item: state.user.data,
   }
 }
 

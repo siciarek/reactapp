@@ -2,22 +2,19 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {fetchUserDashboardData} from './UserActions'
-import Dashboard from './components/Dashboard'
+import {Dashboard} from './components'
 
 const mapStateToProps = state => {
 
   return {
-    redirectTo: state.app.targetRoute,
-    user: state.user,
-    authenticated: state.user.authenticated,
+    item: state.user.data
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
-  return bindActionCreators({
-    init: () => fetchUserDashboardData(ownProps),
-  }, dispatch)
+  return {
+    init: bindActionCreators(fetchUserDashboardData, dispatch),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

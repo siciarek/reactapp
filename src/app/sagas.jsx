@@ -30,8 +30,8 @@ export function* stopTheSpinner() {
 }
 
 export function* watchTheSpinner() {
-  yield takeEvery(({type}) =>  type.endsWith(PENDING), runTheSpinner)
-  yield takeLatest(({type}) =>  type.endsWith(FULFILLED) || type.endsWith(REJECTED), stopTheSpinner)
+  yield takeEvery(({type}) =>  type.startsWith(USER_AUTH_CHECK) === false && type.endsWith(PENDING) === true, runTheSpinner)
+  yield takeLatest(({type}) => type.startsWith(USER_AUTH_CHECK) === false && (type.endsWith(FULFILLED) || type.endsWith(REJECTED)), stopTheSpinner)
 }
 
 // Error notification
@@ -51,7 +51,7 @@ export function* showErrorNotification(action) {
 }
 
 export function* watchErrorNotifications() {
-  yield takeEvery(({type}) => true === type.endsWith(REJECTED) && false === type.startsWith(USER_AUTH_CHECK) , showErrorNotification)
+  yield takeEvery(({type}) =>  type.startsWith(USER_AUTH_CHECK) === false && type.endsWith(REJECTED), showErrorNotification)
 }
 
 // Notification

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {AppHeader, AppSpinner} from '../../app/widgets'
-import ProfileForm from './ProfileForm'
+import {ProfileForm} from '../components'
 
 class Profile extends React.Component {
 
@@ -13,13 +13,12 @@ class Profile extends React.Component {
 
     const {item, submit} = this.props
 
-    if (item.id === null) {
-      return null
+    if(!item.id) {
+      return <AppSpinner/>
     }
 
     return <div>
       <AppHeader title={`User #${item.id} profile`}/>
-      <AppSpinner/>
       <br/>
       <ProfileForm
         onSubmit={submit}

@@ -8,17 +8,7 @@ export {Login, Logout, Dashboard, Profile}
 export const
   USER_DEFAULT_STATE = {
     authenticated: false,
-    id: null,
-    dateOfBirth: null,
-    gender: null,
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    level: 0,
-    description: null,
-    info: null,
-    profileVisibleToThePublic: false,
+    data: {}
   },
 
   USER_AUTH_CHECK = 'USER_AUTH_CHECK',
