@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {map} from 'lodash'
 import List from 'material-ui/List'
 import config from '../config'
-import {AppHeader, AppListItem} from '../components'
+import {AppHeader, AppListItem} from '../widgets'
 
 const ConfigInfo = ({title}) => <div>
   <AppHeader title={title}/>

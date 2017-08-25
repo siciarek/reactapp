@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import AppSpinnerComponent from './AppSpinnerComponent'
+import {AppSpinner} from './components'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -7,4 +7,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(AppSpinnerComponent)
+export default connect(mapStateToProps)(AppSpinner)

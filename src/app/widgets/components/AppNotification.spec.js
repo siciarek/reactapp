@@ -6,8 +6,7 @@ import {renderComponent, renderShallowComponent, getProps} from '../../../utils/
 import {lorem} from 'faker'
 import {expect} from 'chai'
 import {map} from 'lodash'
-
-import AppNotification from './AppNotification'
+import {AppNotification} from '../components'
 
 describe('AppNotification (component)', () => {
 

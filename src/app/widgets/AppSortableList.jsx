@@ -1,7 +1,7 @@
 import React from 'react'
 import {List, ListItem, ListItemIcon, ListItemText} from 'material-ui'
 import {SortableContainer, SortableElement} from 'react-sortable-hoc'
-import {AppHeader, AppSpinner, AppSimpleList} from '../components'
+import {AppHeader, AppSpinner, AppSimpleList} from '../widgets'
 
 const SortableItem = SortableElement(({data, icon, index}) => {
 

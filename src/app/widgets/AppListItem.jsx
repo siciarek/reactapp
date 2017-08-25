@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import IconButton from 'material-ui/IconButton'
 import Avatar from 'material-ui/Avatar'
-import {ListItem, ListItemAvatar, ListItemText} from 'material-ui/List'
+import {ListItem, ListItemText} from 'material-ui/List'
 import ShowIcon from 'material-ui-icons/Visibility'
 import EditIcon from 'material-ui-icons/ModeEdit'
 import RemoveIcon from 'material-ui-icons/Delete'
+
+const icons = {
+  show: (<ShowIcon/>),
+  edit: (<EditIcon/>),
+  remove: (<RemoveIcon/>),
+}
 
 import './AppListItem.css'
 
@@ -28,22 +34,9 @@ class AppListItem extends React.Component {
 
   render() {
 
-    const icons = {
-      show: (<ShowIcon/>),
-      edit: (<EditIcon/>),
-      remove: (<RemoveIcon/>),
-    }
-
     const {editable, toolbarVisible, primaryText, secondaryText} = this.props
 
     const actions = editable === true && toolbarVisible === true ? {...this.props.actions} : {}
-
-    let props = {...this.props}
-
-    // Remove props unsupported by ListItem
-    Object.keys(AppListItem.propTypes).map((key) => {
-      return delete(props[key])
-    })
 
     const buttons = Object.keys(actions).map((key, index) => {
       return <IconButton
@@ -82,10 +75,10 @@ AppListItem.propTypes = {
 }
 
 AppListItem.defaultProps = {
-  editable: false,
   actions: {},
   toolbarVisible: false,
-  selectFunction: event => console.log(event)
+  editable: false,
+  selectFunction: event => {}
 }
 
 export default AppListItem

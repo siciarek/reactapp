@@ -1,6 +1,6 @@
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
-import {AppSimpleAutoloadingList} from '../components'
+import {AppSimpleAutoloadingList} from '../widgets'
 import {lorem} from 'faker'
 import {map} from 'lodash'
 import {expect} from 'chai'

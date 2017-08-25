@@ -1,12 +1,12 @@
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../../utils/testHelper'
-import {AppAppBar} from '../components'
+import {AppDrawer} from '../components'
 
-describe('AppAppBar', () => {
+describe('AppDrawer (component)', () => {
   let element = null
 
   beforeEach(() => {
-    element = <AppAppBar/>
+    element = <AppDrawer/>
   })
 
   it('can render without error', () => {
@@ -19,8 +19,8 @@ describe('AppAppBar', () => {
     const component = renderComponent(element)
     const props = getProps(component)
 
-    Object.keys(AppAppBar.defaultProps).map(key => {
-      expect(props[key]).toBe(AppAppBar.defaultProps[key])
+    Object.keys(AppDrawer.defaultProps).map(key => {
+      expect(props[key]).toBe(AppDrawer.defaultProps[key])
     })
   })
 })

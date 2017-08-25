@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {CircularProgress} from 'material-ui/Progress'
 
-class AppSpinnerComponent extends React.Component {
+class AppSpinner extends React.Component {
 
   constructor(props) {
     super(props)
@@ -42,14 +42,14 @@ class AppSpinnerComponent extends React.Component {
   }
 }
 
-AppSpinnerComponent.propTypes = {
+AppSpinner.propTypes = {
   size: PropTypes.number.isRequired,
   show: PropTypes.bool.isRequired,
 }
 
-AppSpinnerComponent.defaultProps = {
+AppSpinner.defaultProps = {
   size: 60,
   show: false,
 }
 
-export default AppSpinnerComponent
+export default AppSpinner

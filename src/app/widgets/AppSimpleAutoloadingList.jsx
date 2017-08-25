@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {AppSimpleList} from '../components'
+import {AppSimpleList} from '../widgets'
 
 class AppSimpleAutoloadingList extends React.Component {
 

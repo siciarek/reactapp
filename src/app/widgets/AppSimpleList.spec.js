@@ -1,6 +1,6 @@
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
-import {AppSimpleList} from '../components'
+import {AppSimpleList} from '../widgets'
 import {lorem} from 'faker'
 
 describe('AppSimpleList', () => {

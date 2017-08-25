@@ -1,6 +1,6 @@
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
-import AppDrawer from './AppDrawer'
+import {AppDrawer} from '../widgets'
 
 describe('AppDrawer', () => {
   let element = null

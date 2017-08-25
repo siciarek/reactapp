@@ -1,49 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {browserHistory as routerHistory} from 'react-router'
 import Button from 'material-ui/Button'
 import IconKeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft'
 
-// const AppFloatingActionButton = ({icon, color, route}) =>
-//   <Button fab
-//           className="app-floating-action-button"
-//           style={{
-//             margin: 0,
-//             zIndex: 2147483647,
-//             position: 'fixed',
-//             top: 'auto',
-//             right: 20,
-//             bottom: 20,
-//             left: 'auto',
-//           }}
-//           color={color}
-//           onTouchTap={() => this.props.action()}
-//   >
-//     {icon}
-//   </Button>
-
-class AppFloatingActionButton extends React.Component {
-
-  render() {
-
-    const {icon, color, route} = this.props
+const AppFloatingActionButton = ({icon, color, action}) => {
 
     return <Button fab
                    style={{
-                     margin: 0,
-                     zIndex: 2147483647,
                      position: 'fixed',
                      top: 'auto',
                      right: 20,
                      bottom: 20,
                      left: 'auto',
+                     margin: 0,
+                     zIndex: 2147483647,
                    }}
                    color={color}
-                   onTouchTap={() => this.props.action() }
+                   onTouchTap={action}
     >
       {icon}
     </Button>
-  }
 }
 
 AppFloatingActionButton.propTypes = {

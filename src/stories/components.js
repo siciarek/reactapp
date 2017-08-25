@@ -22,12 +22,15 @@ import '../app/App.css'
 import '../app/widgets/AppHeader.css'
 import {
   AppHeader,
-  AppDrawerComponent,
   AppSimpleList,
   AppSimpleItem,
   AppFloatingActionButton,
-  AppSpinnerComponent,
 } from '../app/widgets'
+
+import {
+  AppDrawer,
+  AppSpinner,
+} from '../app/widgets/components'
 
 import IconAdd from 'material-ui-icons/Add'
 import IconCheck from 'material-ui-icons/Check'
@@ -84,9 +87,9 @@ const items = [
   },
 ]
 
-storiesOf('AppSpinnerComponent', module)
-.addWithInfo('with no params (hidden)', () => <AppSpinnerComponent/>)
-.addWithInfo('with show param (interactive)', () => <AppSpinnerComponent show={boolean('show', true)}/>)
+storiesOf('AppSpinner', module)
+.addWithInfo('with no params (hidden)', () => <AppSpinner/>)
+.addWithInfo('with show param (interactive)', () => <AppSpinner show={boolean('show', true)}/>)
 
 storiesOf('AppHeader', module)
 .addWithInfo('with no params',
@@ -113,12 +116,12 @@ storiesOf('AppFloatingActionButton', module)
     return <AppFloatingActionButton icon={icon} color={color}/>
   })
 
-storiesOf('AppDrawerComponent', module)
-.addWithInfo('with no params (closed)', () => <AppDrawerComponent/>)
-.addWithInfo('opened and not authenticated', () => <AppDrawerComponent opened={boolean('opened', true)}
+storiesOf('AppDrawer', module)
+.addWithInfo('with no params (closed)', () => <AppDrawer/>)
+.addWithInfo('opened and not authenticated', () => <AppDrawer opened={boolean('opened', true)}
                                                                        authenticated={boolean('authenticated', false)}
                                                                        toggleVisibility={action('toggleVisibility')}/>)
-.addWithInfo('opened and authenticated', () => <AppDrawerComponent opened={boolean('opened', true)}
+.addWithInfo('opened and authenticated', () => <AppDrawer opened={boolean('opened', true)}
                                                                    authenticated={boolean('authenticated', true)}
                                                                    toggleVisibility={action('toggleVisibility')}/>)
 storiesOf('AppSimpleList', module)

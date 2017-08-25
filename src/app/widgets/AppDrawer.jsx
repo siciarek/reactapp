@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import AppDrawerComponent from './AppDrawerComponent'
 import {APP_TOGGLE_MENU} from '../AppActionTypes'
+import {AppDrawer} from './components'
 
 const mapStateToProps = (state) => {
   return {
@@ -16,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppDrawerComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(AppDrawer)

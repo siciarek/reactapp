@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import DefaultListItemIcon from 'material-ui-icons/FiberManualRecord'
 import List, {ListItem, ListItemText, ListItemIcon} from 'material-ui/List'
-import {AppHeader, AppSpinner} from '../components'
+import {AppHeader, AppSpinner} from '../widgets'
 
 const AppSimpleList = ({title, icon, items, goto = (id) => console.log(id)}) => {
 

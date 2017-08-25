@@ -5,11 +5,17 @@ export default [
     route: '/login',
     private: false,
   },
+  // {
+  //   label: 'User Zone',
+  //   icon: 'person',
+  //   private: true,
+  //   children: [], // Jak będą ogarnięte rozwijalne menu przerzucić 3 poniższe pozycje do children.
+  // },
   {
-    label: 'User Zone',
-    icon: 'person',
+    label: 'Log out',
+    icon: 'power_settings_new',
+    route: '/logout',
     private: true,
-    children: [], // Jak będą ogarnięte rozwijalne menu przerzucić 3 poniższe pozycje do children.
   },
   {
     label: 'Dashboard',
@@ -21,12 +27,6 @@ export default [
     label: 'Profile',
     icon: 'account_circle',
     route: '/profile',
-    private: true,
-  },
-  {
-    label: 'Log out',
-    icon: 'power_settings_new',
-    route: '/logout',
     private: true,
   },
   null,

@@ -28,8 +28,8 @@ import IconVolumeUp from 'material-ui-icons/VolumeUp'
 import IconTheaters from 'material-ui-icons/Theaters'
 import IconDiscFull from 'material-ui-icons/DiscFull'
 
-import config from '../config'
-import menu from '../menu'
+import config from '../../config'
+import menu from '../../menu'
 
 const icons = {
   check: <IconCheck/>,
@@ -48,7 +48,7 @@ const icons = {
   disc_full: <IconDiscFull/>,
 }
 
-const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
+const AppDrawer = ({opened, authenticated, toggleVisibility}) => {
 
   const matchedRoute = router.getCurrentLocation().pathname
 
@@ -103,16 +103,16 @@ const AppDrawerComponent = ({opened, authenticated, toggleVisibility}) => {
   </Drawer>
 }
 
-AppDrawerComponent.propTypes = {
+AppDrawer.propTypes = {
   opened: PropTypes.bool.isRequired,
   authenticated: PropTypes.bool.isRequired,
   toggleVisibility: PropTypes.func.isRequired,
 }
 
-AppDrawerComponent.defaultProps = {
+AppDrawer.defaultProps = {
   opened: false,
   authenticated: false,
   toggleVisibility: () => {}
 }
 
-export default AppDrawerComponent
+export default AppDrawer
