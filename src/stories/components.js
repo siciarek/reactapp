@@ -101,7 +101,7 @@ storiesOf('AppFloatingActionButton', module)
 .addWithInfo('with no params',
   `Only default param values are applied.`,
   () => <AppFloatingActionButton/>)
-.addWithInfo('with customized icon and route',
+.addWithInfo('with customized icon and action',
   `Params can be customized.`,
   () => {
     const icon = icons[select('icon', [
@@ -113,7 +113,7 @@ storiesOf('AppFloatingActionButton', module)
     ], 'home')]
     const color = select('color', ['primary', 'accent', 'default'], 'primary')
 
-    return <AppFloatingActionButton icon={icon} color={color}/>
+    return <AppFloatingActionButton icon={icon} color={color} action={action('Button pressed')}/>
   })
 
 storiesOf('AppDrawer', module)
