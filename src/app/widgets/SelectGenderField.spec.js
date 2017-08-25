@@ -1,5 +1,5 @@
 /**
- * ProfileForm.spec.js
+ * SelectGenderField.spec.js
  */
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps, LocalStorageMock} from '../../utils/testHelper'
@@ -7,16 +7,16 @@ import {lorem} from 'faker'
 import {expect} from 'chai'
 import {map} from 'lodash'
 
-import ProfileForm from './ProfileForm'
-
 global.localStorage = new LocalStorageMock
 
-describe('ProfileForm', () => {
+import {SelectGenderField} from '../widgets'
+
+describe('SelectGenderField', () => {
 
   let element = null
 
   beforeEach(() => {
-    element = <ProfileForm/>
+    element = <SelectGenderField/>
   })
 
   it('can render without error', () => {

@@ -8,6 +8,28 @@ injectTapEventPlugin()
 
 import store from '../app/store'
 
+class LocalStorageMock {
+  constructor() {
+    this.store = {}
+  }
+
+  clear() {
+    this.store = {}
+  }
+
+  getItem(key) {
+    return this.store[key] || null
+  }
+
+  setItem(key, value) {
+    this.store[key] = value
+  }
+
+  removeItem(key) {
+    delete this.store[key]
+  }
+}
+
 const simulateClick = component => {
   ReactTestUtils.Simulate.click(component);
 }
@@ -32,4 +54,4 @@ const getProps = component => {
   return component.props.children.props.children.props
 }
 
-export {renderComponent, renderShallowComponent, getProps, simulateClick}
+export {renderComponent, LocalStorageMock, renderShallowComponent, getProps, simulateClick}
