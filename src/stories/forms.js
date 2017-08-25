@@ -18,13 +18,21 @@ addDecorator(withKnobs)
 
 // ------------------------------------------------------------------
 
-import {SubmitButton} from '../utils/formHelpers'
-import LoginForm from '../user/components/LoginForm'
-import SignUpForm from '../user/components/SignUpForm'
-import GenreForm from '../genre/components/GenreForm'
-import SongEditorForm from '../song/components/SongEditorForm'
+import {SubmitButton, SelectGenderField} from '../app/widgets'
+import {LoginForm} from '../user/components'
+import {SignUpForm} from '../user/components'
+import {GenreForm} from '../genre/components'
+import {SongEditorForm} from '../song/components'
+import {ProfileForm} from '../user/components'
 
 storiesOf('Forms', module)
+
+.addWithInfo('SelectGenderField', () => <SelectGenderField
+  label={text('label', SelectGenderField.defaultProps.label)}
+  value={select('value', ['u', 'f', 'm'], SelectGenderField.defaultProps.value)}
+  name={text('name', SelectGenderField.defaultProps.name)}
+/>)
+
 .addWithInfo('SubmitButton - no params', () => <SubmitButton/>)
 .addWithInfo('SubmitButton - params (interactive)', () => <SubmitButton
   caption={text('caption', SubmitButton.defaultProps.caption)}
@@ -32,12 +40,15 @@ storiesOf('Forms', module)
   enabled={boolean('enabled', SubmitButton.defaultProps.enabled)}
 />)
 
+.addWithInfo('ProfileForm', () => <ProfileForm onSubmit={action('ProfileForm submited')}/>)
+
 .addWithInfo('LoginForm', () => <LoginForm onSubmit={action('onSubmit')}/>)
-.addWithInfo('LoginForm with inital values', () => <LoginForm onSubmit={action('LoginForm.onSubmit')}
-                                                                            initialValues={{
-                                                                              username: 'colak',
-                                                                              password: 'helloworld'
-                                                                            }}/>)
+.addWithInfo('LoginForm with inital values', () => <LoginForm
+  onSubmit={action('LoginForm.onSubmit')}
+  initialValues={{
+    username: 'colak',
+    password: 'helloworld'
+  }}/>)
 
 .addWithInfo('SignUpForm', () => <SignUpForm onSubmit={action('SongEditorForm.onSubmit')}/>)
 

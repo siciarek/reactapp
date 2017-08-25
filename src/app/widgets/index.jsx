@@ -5,7 +5,7 @@ import AppAppBar from './AppAppBar'
 import AppList from './AppList'
 import AppListItem from './AppListItem'
 import AppFloatingActionButton from './AppFloatingActionButton'
-import AppGenderSelectField from './AppGenderSelectField'
+import SelectGenderField from './SelectGenderField'
 import AppSimpleList from './AppSimpleList'
 import AppSortableList from './AppSortableList'
 import AppSimpleAutoloadingList from './AppSimpleAutoloadingList'
@@ -26,7 +26,7 @@ export {
   AppList,
   AppListItem,
   AppFloatingActionButton,
-  AppGenderSelectField,
+  SelectGenderField,
   SubmitButton,
 }
 

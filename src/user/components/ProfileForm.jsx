@@ -2,11 +2,22 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {renderTextField, SubmitButton} from '../../utils/formHelpers'
 import {required, email, minLength3, maxLength32} from '../../utils/formValidators'
+import {SelectGenderField} from '../../app/widgets'
 
 const ProfileForm = ({handleSubmit}) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div>
+        <Field name="gender"
+               component={({input, meta: {touched, error, warning}, ...custom}) => {
+                 return <SelectGenderField
+                   onChange={(event, value) => input.onChange(value)}
+                   {...input}
+                   {...custom}
+                 />
+               }}/>
+      </div>
       <div>
         <Field name="firstName" label="First name" validate={[required, minLength3, maxLength32]}
                component={renderTextField}/>
