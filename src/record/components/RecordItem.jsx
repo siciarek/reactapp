@@ -1,7 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {AppHeader, AppSpinner, AppFloatingActionButton} from '../../app/widgets'
 import {uniq} from 'lodash'
+import {grey} from 'material-ui/colors'
+import {
+  AppHeader,
+  AppSpinner,
+  AppFloatingActionButton
+} from '../../app/widgets'
+
+const coverStyle = {
+  backgroundColor: grey[400],
+  display: 'block',
+  width: 300,
+  height: 300,
+  marginTop: 16,
+  marginBottom: 16
+}
 
 class RecordItem extends React.Component {
 
@@ -16,19 +30,19 @@ class RecordItem extends React.Component {
 
 
     if (!artists) {
-      return null
+      return <AppSpinner/>
     }
 
 
     const sides = uniq(tracks.map(e => e.side))
 
     let side = 0
-    let sideRow = ''
+    let sideRow = null
 
     let tracksPerSide = tracks.map(e => {
-      sideRow = ''
+      sideRow = null
 
-      if(sides.length > 1 && e.side !== side) {
+      if (sides.length > 1 && e.side !== side) {
         side = e.side
         sideRow = <div><br/><strong>Side {e.side}</strong></div>
       }
@@ -42,28 +56,19 @@ class RecordItem extends React.Component {
 
 
     return <div>
+      <AppFloatingActionButton action={() => this.props.router.push(`/records`)}/>
       <AppHeader title={title}/>
-
       <br/>
-
       <div style={{padding: 16}}>
         <h2>{artists.map(e => e.name).join(', ')}</h2>
-
-        <img src={cover} alt={title} style={{width: 300, marginTop: 16, marginBottom: 16}}/>
-
+        <img src={cover} alt={title} style={coverStyle}/>
         <ul style={{margin: 0, padding: 0, listStyleType: 'none'}}>
           {tracksPerSide}
         </ul>
-
-
         <br/>
         <br/>
         <br/>
-
       </div>
-
-      <AppFloatingActionButton action={() => this.props.router.push(`/records`)}/>
-      <AppSpinner/>
     </div>
   }
 }

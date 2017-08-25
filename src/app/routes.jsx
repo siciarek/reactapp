@@ -54,7 +54,7 @@ export default (
     <Route path="genre/:id/show" component={GenreItem}/>
     <Route path="genre/:id/edit" component={GenreEditor}/>
 
-    <Route path="records" component={Secure(RecordList)}/>
+    <Route path="records" component={RecordList}/>
     <Route path="records/:id" component={Secure(RecordItem)}/>
 
     <Route path="config-info" component={ConfigInfo}/>

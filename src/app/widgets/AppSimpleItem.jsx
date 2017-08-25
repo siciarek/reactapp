@@ -24,7 +24,7 @@ AppSimpleItem.propTypes = {
 }
 
 AppSimpleItem.defaultProps = {
-  description: 'Item',
+  description: '…',
   info: null,
   returnRoute: null,
 }

@@ -40,7 +40,25 @@ storiesOf('Forms', module)
   enabled={boolean('enabled', SubmitButton.defaultProps.enabled)}
 />)
 
-.addWithInfo('ProfileForm', () => <ProfileForm onSubmit={action('ProfileForm submited')}/>)
+.addWithInfo('ProfileForm', () => <ProfileForm
+  initialValues={{
+    gender: 'm',
+    firstName: 'Chuck',
+    lastName: 'Norris',
+    email: 'gmail@chucknorris.com',
+    description: 'American martial artist, actor and film producer',
+    info: `Norris appeared in a number of action films, such as Way of the Dragon,
+in which he starred alongside Bruce Lee, and was
+The Cannon Group's leading star in the 1980s.
+
+He played the starring role in the television series Walker,
+Texas Ranger from 1993 until 2001.
+
+Norris is a devout Christian and politically conservative.
+He has written several books on Christianity and donated to a number of Republican candidates and causes. In 2007 and 2008, he campaigned for former Arkansas Governor Mike Huckabee, who was running for the Republican nomination for president in 2008.[5] Norris also writes a column for the conservative website WorldNetDaily.[6] Since 2005 Norris has been widely associated with an internet meme which documents fictional and often absurd feats associated with him.
+    `,
+  }}
+  onSubmit={action('ProfileForm submited')}/>)
 
 .addWithInfo('LoginForm', () => <LoginForm onSubmit={action('onSubmit')}/>)
 .addWithInfo('LoginForm with inital values', () => <LoginForm

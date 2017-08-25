@@ -1,4 +1,5 @@
 import React from 'react'
+import {bindActionCreators} from 'redux'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {APP_ERROR_OCCURRED} from './AppActionTypes'
