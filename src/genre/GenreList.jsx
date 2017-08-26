@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     title: 'Genres',
     items: state.genre.items,
-    totalPages: 82,
+    totalPages: state.genre.meta.totalPages,
+    totalItemCount: state.genre.meta.totalItemCount,
   }
 }
 

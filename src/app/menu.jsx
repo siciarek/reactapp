@@ -9,7 +9,26 @@ export default [
   //   label: 'User Zone',
   //   icon: 'person',
   //   private: true,
-  //   children: [], // Jak będą ogarnięte rozwijalne menu przerzucić 3 poniższe pozycje do children.
+  //   children: [
+  //     {
+  //       label: 'Log out',
+  //       icon: 'power_settings_new',
+  //       route: '/logout',
+  //       private: true,
+  //     },
+  //     {
+  //       label: 'Dashboard',
+  //       icon: 'dashboard',
+  //       route: '/dashboard',
+  //       private: true,
+  //     },
+  //     {
+  //       label: 'Profile',
+  //       icon: 'account_circle',
+  //       route: '/profile',
+  //       private: true,
+  //     },
+  //   ],
   // },
   {
     label: 'Log out',

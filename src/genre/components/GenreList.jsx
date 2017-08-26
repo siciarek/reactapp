@@ -18,10 +18,11 @@ class GenreList extends React.Component {
       title,
       location: {query: {page = 1}},
       totalPages,
+      totalItemCount,
       gotoNextPage,
       gotoPrevPage} = this.props
 
-    if(typeof items.map !== 'function') {
+    if(!totalPages) {
       return null
     }
 
@@ -32,7 +33,7 @@ class GenreList extends React.Component {
       </ListItem>)
 
     return <div>
-      <AppHeader title={title}/>
+      <AppHeader title={`${title} (${totalItemCount})`}/>
       <AppFloatingActionButton icon={<IconAdd/>} action={() => router.push('/genre/new')}/>
       <AppSpinner/>
       <Pager page={parseInt(page)}

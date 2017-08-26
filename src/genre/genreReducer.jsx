@@ -29,38 +29,19 @@ const DEFAULT_STATE = {
       name: 'Unknown',
     }
   },
+  meta: {},
   items: [],
   itemsEnabled: [],
-  fetching: false,
-  fetched: false,
-  error: null,
-  message: null,
 }
 
 export default (state = DEFAULT_STATE, action) => {
 
   switch (action.type) {
 
-    case GENRE_ITEM_UPDATE: {
-
-      return {
-        ...state,
-        current: {...action.payload},
-      }
-    }
-    case GENRE_ITEM_ADD:
-    case GENRE_ITEM_SAVE: {
-      return {
-        ...state,
-        fetching: true,
-      }
-    }
     case GENRE_ITEM_ADD_FULFILLED:
     case GENRE_ITEM_SAVE_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         items: action.payload,
         message: 'Operation succeed.',
       }
@@ -74,8 +55,6 @@ export default (state = DEFAULT_STATE, action) => {
     case GENRE_ITEM_REMOVE_FULFILLED: {
       return {
         ...state,
-        fetching: false,
-        fetched: true,
       }
     }
 
@@ -89,15 +68,18 @@ export default (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         current: {},
-        fetching: true
       }
     }
     case GENRE_LIST_FETCH_FULFILLED: {
+
+      const resp = action.payload
+      const items = resp.data
+      const meta = JSON.parse(resp.headers['x-meta-data'])
+
       return {
         ...state,
-        fetching: false,
-        fetched: true,
-        items: action.payload.data
+        meta,
+        items,
       }
     }
     case GENRE_ITEM_FETCH_FULFILLED: {
@@ -106,8 +88,6 @@ export default (state = DEFAULT_STATE, action) => {
         : action.payload
       return {
         ...state,
-        fetching: false,
-        fetched: true,
         current: {...current}
       }
     }
@@ -119,7 +99,6 @@ export default (state = DEFAULT_STATE, action) => {
 
     return {
         ...state,
-        fetching: false,
         error: action.payload
       }
     }
