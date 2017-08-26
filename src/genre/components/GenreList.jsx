@@ -13,13 +13,23 @@ class GenreList extends React.Component {
 
   render() {
 
-    const {items, title, location: {query: {page = 1}},
+    const {
+      items,
+      title,
+      location: {query: {page = 1}},
       totalPages,
-      gotoNextPage, gotoPrevPage} = this.props
+      gotoNextPage,
+      gotoPrevPage} = this.props
 
     if(typeof items.map !== 'function') {
       return null
     }
+
+    const listItems = items.map(({id, name, category}) =>
+      <ListItem button key={id} classes={{}} onTouchTap={() => router.push(`/genre/${id}/show`)}>
+        <ListItemIcon classes={{}}><IconStars/></ListItemIcon>
+        <ListItemText classes={{}} primary={name} secondary={`${category.name}`}/>
+      </ListItem>)
 
     return <div>
       <AppHeader title={title}/>
@@ -31,13 +41,7 @@ class GenreList extends React.Component {
              handleNext={gotoNextPage}
       />
       <List>
-        {
-          items.map(({id, name, category}) =>
-            <ListItem button key={id} classes={{}} onTouchTap={() => router.push(`/genre/${id}/show`)}>
-              <ListItemIcon classes={{}}><IconStars/></ListItemIcon>
-              <ListItemText classes={{}} primary={name} secondary={`${category.name}`}/>
-            </ListItem>)
-        }
+        {listItems}
       </List>
     </div>
   }
