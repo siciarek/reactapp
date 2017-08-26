@@ -7,12 +7,19 @@ const mapStateToProps = (state, ownProps) => {
   return {
     title: 'Genres',
     items: state.genre.items,
+    totalPages: 4,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const {location: {query: {page = 1}}, router} = ownProps
+  const prevPage = parseInt(page) > 1 ? parseInt(page) - 1 : 1
+  const nextPage = parseInt(page) + 1
+
   return bindActionCreators({
-    init: fetchListGenre,
+    init: () => fetchListGenre(page),
+    gotoNextPage: () => location.assign(`/genre/list?page=${nextPage}`),
+    gotoPrevPage: () => location.assign(`/genre/list?page=${prevPage}`),
   }, dispatch)
 }
 

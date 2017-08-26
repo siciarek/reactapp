@@ -7,7 +7,7 @@ import Grid from 'material-ui/Grid';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    marginTop: 30,
+    marginTop: 0,
     padding: 16,
   },
   image: {
@@ -18,7 +18,9 @@ const styles = theme => ({
 const Home = (props) => {
 
   const {appName, appDescription, appPicture} = config
-  const {classes} = props;
+  const {classes, location: {query: {page = 1}}} = props;
+
+  console.log(page)
 
   return  <div className={classes.root}>
     <Grid container spacing={24}>

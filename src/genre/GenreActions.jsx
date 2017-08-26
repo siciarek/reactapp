@@ -23,25 +23,12 @@ import {
   GENRE_ITEM_REMOVE_REJECTED,
 } from './Genre'
 
+export const fetchListGenre = (page = 1, onlyEnabled = false) => ({
+  type: GENRE_LIST_FETCH,
+  payload: axios.get(`${config.genreUrl}?page=${page}&enabled=${onlyEnabled ? 1 : 0}`)
+})
 
-export const fetchListGenre = (onlyEnabled = false) => {
-
-  const url = onlyEnabled === true ? `${config.genreUrl}?enabled=1` : config.genreUrl
-
-  return dispatch => {
-    dispatch({type: GENRE_LIST_FETCH})
-
-    axios.get(url)
-    .then((response) => {
-      dispatch({type: GENRE_LIST_FETCH_FULFILLED, payload: response.data})
-    })
-    .catch((err) => {
-      dispatch({type: GENRE_LIST_FETCH_REJECTED, payload: err})
-    })
-  }
-}
-
-export const fetchItemGenre = (id) => {
+export const fetchItemGenre = id => {
 
   return dispatch => {
     dispatch({type: GENRE_ITEM_FETCH})

@@ -18,20 +18,6 @@ addDecorator(withKnobs)
 
 // ------------------------------------------------------------------
 
-import '../app/App.css'
-import '../app/widgets/AppHeader.css'
-import {
-  AppHeader,
-  AppSimpleList,
-  AppSimpleItem,
-  AppFloatingActionButton,
-} from '../app/widgets'
-
-import {
-  AppDrawer,
-  AppSpinner,
-} from '../app/widgets/components'
-
 import IconAdd from 'material-ui-icons/Add'
 import IconCheck from 'material-ui-icons/Check'
 import IconLockOpen from 'material-ui-icons/LockOpen'
@@ -86,6 +72,30 @@ const items = [
     description: 'Ringo Starr',
   },
 ]
+
+import '../app/App.css'
+import '../app/widgets/AppHeader.css'
+import {
+  Pager,
+  AppHeader,
+  AppSimpleList,
+  AppSimpleItem,
+  AppFloatingActionButton,
+} from '../app/widgets'
+
+import {
+  AppDrawer,
+  AppSpinner,
+} from '../app/widgets/components'
+
+storiesOf('Pager', module)
+.addWithInfo('with no params', () => <Pager/>)
+.addWithInfo('interactive', () => <Pager
+    page={number('page', 1)}
+    totalPages={number('totalPages', 1)}
+    handleBack={action('Pager handle back')}
+    handleNext={action('Pager handle next')}
+  />)
 
 storiesOf('AppSpinner', module)
 .addWithInfo('with no params (hidden)', () => <AppSpinner/>)

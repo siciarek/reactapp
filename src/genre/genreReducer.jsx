@@ -1,5 +1,6 @@
 import {
   GENRE_LIST_FETCH,
+  GENRE_LIST_FETCH_PENDING,
   GENRE_LIST_FETCH_FULFILLED,
   GENRE_LIST_FETCH_REJECTED,
   GENRE_ITEM_FETCH,
@@ -81,7 +82,7 @@ export default (state = DEFAULT_STATE, action) => {
     case GENRE_LIST_FETCH: {
       return {
         ...state,
-        fetching: true
+        items: [],
       }
     }
     case GENRE_ITEM_FETCH: {
@@ -96,7 +97,7 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        items: action.payload
+        items: action.payload.data
       }
     }
     case GENRE_ITEM_FETCH_FULFILLED: {

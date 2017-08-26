@@ -1,3 +1,4 @@
+import Pager from './Pager'
 import AppDrawer from './AppDrawer'
 import AppSpinner from './AppSpinner'
 import AppHeader from './AppHeader'
@@ -14,6 +15,7 @@ import AppSimpleAutoloadingItem from './AppSimpleAutoloadingItem'
 import SubmitButton from './SubmitButton'
 
 export {
+  Pager,
   AppSimpleList,
   AppSimpleAutoloadingList,
   AppSimpleItem,
