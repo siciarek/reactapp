@@ -56,7 +56,7 @@
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run clean && npm run build-css && react-scripts build",
+    "build": "npm run build-css && react-scripts build",
     "postbuild": "rm -rvf build/*/*/*.map",
     "clean": "rm -rvf build coverage jest*",
     "test": "react-scripts test --env=jsdom",
