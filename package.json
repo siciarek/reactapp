@@ -56,10 +56,11 @@
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
+    "build": "npm run clean && npm run build-css && react-scripts build",
     "postbuild": "rm -rvf build/*/*/*.map",
-    "clean": "rm -rvf build",
+    "clean": "rm -rvf build coverage jest*",
     "test": "react-scripts test --env=jsdom",
+    "testc": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
