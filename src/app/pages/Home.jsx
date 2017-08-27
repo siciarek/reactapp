@@ -18,9 +18,7 @@ const styles = theme => ({
 const Home = (props) => {
 
   const {appName, appDescription, appPicture} = config
-  const {classes, location: {query: {page = 1}}} = props;
-
-  console.log(page)
+  const {classes} = props;
 
   return  <div className={classes.root}>
     <Grid container spacing={24}>

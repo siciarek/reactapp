@@ -1,6 +1,6 @@
 import React from 'react'
 import {renderComponent, renderShallowComponent, getProps} from '../../utils/testHelper'
-import Home from './Home'
+import {Home} from '../pages'
 
 describe('Home', () => {
   let element = null
@@ -17,6 +17,11 @@ describe('Home', () => {
 
     const component = renderComponent(element)
     const props = getProps(component)
+
+    if(Home.defaultProps === undefined) {
+      console.warn('Home.defaultProps is undefined')
+      return
+    }
 
     Object.keys(Home.defaultProps).map(key => {
       expect(props[key]).toBe(Home.defaultProps[key])
