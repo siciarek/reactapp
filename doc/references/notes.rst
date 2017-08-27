@@ -1,3 +1,15 @@
+Bootstrap na wypasie (tylko CSS)
+================================
+
+http://bulma.io/
+
+
+Nazwy modułowe
+==============
+
+https://www.npmjs.com/package/babel-plugin-module-resolver
+
+
 Testowanie rx online
 ====================
 
