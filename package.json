@@ -58,7 +58,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "postbuild": "rm -rvf build/*/*/*.map",
-    "clean": "rm -rvf build coverage jest*",
+    "clean": "rm -rvf build coverage jest* src/*/*/*.css  src/*/*.css  src/*.css",
     "test": "react-scripts test --env=jsdom",
     "testc": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
