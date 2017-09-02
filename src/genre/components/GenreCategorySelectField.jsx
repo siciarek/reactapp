@@ -1,7 +1,7 @@
-  import React from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import {SelectField, MenuItem} from 'material-ui'
+import {MenuItem} from 'material-ui'
 import config from '../../app/config'
 
 class GenreCategorySelectField extends React.Component {
@@ -18,7 +18,7 @@ class GenreCategorySelectField extends React.Component {
     const key = 'genrecategory'
     const storage = localStorage
 
-    if(storage.getItem(key) === null) {
+    if (storage.getItem(key) === null) {
       axios.get(config.genrecategoryUrl)
       .then((response) => {
         storage.setItem(key, JSON.stringify(response.data))
@@ -28,7 +28,7 @@ class GenreCategorySelectField extends React.Component {
       })
     }
     else {
-     this.setState({items: JSON.parse(storage.getItem(key))})
+      this.setState({items: JSON.parse(storage.getItem(key))})
     }
   }
 
@@ -43,28 +43,11 @@ class GenreCategorySelectField extends React.Component {
 
   render() {
 
-    if(typeof this.state.items.map !== 'function') {
+    if (typeof this.state.items.map !== 'function') {
       return null
     }
 
-    return <SelectField
-      floatingLabelText="Category"
-      errorText={this.props.errorText}
-      fullWidth={this.props.fullWidth}
-      value={this.props.value}
-      onChange={this.onChange}
-    >
-      {
-        this.state.items.map(item => {
-          return <MenuItem
-            key={item.id}
-            value={item.id}
-            primaryText={item.name}
-          />
-        })
-      }
-    </SelectField>
-
+    return null
   }
 }
 

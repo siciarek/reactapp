@@ -1,5 +1,9 @@
 import React from 'react';
-import {storiesOf, action, linkTo, addDecorator} from '@kadira/storybook';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { action, decorateAction } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
+import { linkTo } from '@storybook/addon-links';
+import { withNotes } from '@storybook/addon-notes';
 import {
   withKnobs,
   boolean,
@@ -10,7 +14,7 @@ import {
   color,
   date,
   select,
-} from '@kadira/storybook-addon-knobs'
+} from '@storybook/addon-knobs'
 import {Decorator} from './Decorator'
 
 addDecorator(Decorator)
@@ -89,8 +93,8 @@ import {
 } from '../app/widgets/components'
 
 storiesOf('Pager', module)
-.addWithInfo('with no params', () => <Pager/>)
-.addWithInfo('interactive', () => <Pager
+.add('with no params', () => <Pager/>)
+.add('interactive', () => <Pager
     page={number('page', 1)}
     totalPages={number('totalPages', 1)}
     handleBack={action('Pager handle back')}
@@ -98,20 +102,20 @@ storiesOf('Pager', module)
   />)
 
 storiesOf('AppSpinner', module)
-.addWithInfo('with no params (hidden)', () => <AppSpinner/>)
-.addWithInfo('with show param (interactive)', () => <AppSpinner show={boolean('show', true)}/>)
+.add('with no params (hidden)', withInfo()(() => <AppSpinner/>))
+.add('with show param (interactive)', withInfo()(() => <AppSpinner show={boolean('show', true)}/>))
 
 storiesOf('AppHeader', module)
-.addWithInfo('with no params',
+.add('with no params',
   `This is test description.`,
   () => <AppHeader/>)
-.addWithInfo('with title', () => <AppHeader title={text('title', 'Zażółć gęślą jaźń!')}/>)
+.add('with title', () => <AppHeader title={text('title', 'Zażółć gęślą jaźń!')}/>)
 
 storiesOf('AppFloatingActionButton', module)
-.addWithInfo('with no params',
+.add('with no params',
   `Only default param values are applied.`,
   () => <AppFloatingActionButton/>)
-.addWithInfo('with customized icon and action',
+.add('with customized icon and action',
   `Params can be customized.`,
   () => {
     const icon = icons[select('icon', [
@@ -127,18 +131,18 @@ storiesOf('AppFloatingActionButton', module)
   })
 
 storiesOf('AppDrawer', module)
-.addWithInfo('with no params (closed)', () => <AppDrawer/>)
-.addWithInfo('opened and not authenticated', () => <AppDrawer opened={boolean('opened', true)}
+.add('with no params (closed)', () => <AppDrawer/>)
+.add('opened and not authenticated', () => <AppDrawer opened={boolean('opened', true)}
                                                                        authenticated={boolean('authenticated', false)}
                                                                        toggleVisibility={action('toggleVisibility')}/>)
-.addWithInfo('opened and authenticated', () => <AppDrawer opened={boolean('opened', true)}
+.add('opened and authenticated', () => <AppDrawer opened={boolean('opened', true)}
                                                                    authenticated={boolean('authenticated', true)}
                                                                    toggleVisibility={action('toggleVisibility')}/>)
 storiesOf('AppSimpleList', module)
-.addWithInfo('with no params', () => <AppSimpleList/>)
-.addWithInfo('with items', () => <AppSimpleList items={items}/>)
-.addWithInfo('with items and title', () => <AppSimpleList title={text('title', 'The Beatles')} items={items}/>)
-.addWithInfo('with items, title and icon', () => {
+.add('with no params', () => <AppSimpleList/>)
+.add('with items', () => <AppSimpleList items={items}/>)
+.add('with items and title', () => <AppSimpleList title={text('title', 'The Beatles')} items={items}/>)
+.add('with items, title and icon', () => {
   const choice = select('icon', [
       'check',
       'lock_open',
@@ -169,12 +173,12 @@ storiesOf('AppSimpleList', module)
     title={select('title', ['The Beatles', 'Rolling Stones', 'Led Zeppelin'], 'The Beatles')}
     icon={icon} items={_items}/>
 })
-.addWithInfo('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
+.add('with items, title, icon and action', () => <AppSimpleList title={text('title', 'The Beatles')}
                                                                         icon={icons.stars} items={items}
                                                                         goto={action('goto')}/>)
 storiesOf('AppSimpleItem', module)
-.addWithInfo('with no params', () => <AppSimpleItem/>)
-.addWithInfo('with description, info and returnRoute', () => <AppSimpleItem
+.add('with no params', () => <AppSimpleItem/>)
+.add('with description, info and returnRoute', () => <AppSimpleItem
   description={text('description', 'Lady Gaga')}
   info={text('info', 'Stefani Joanne Angelina Germanotta (born March 28, 1986), known professionally as Lady Gaga, is an American singer, songwriter, and actress. At the beginning of her career, Gaga became known for her unconventionality and provocative work. A popular contemporary recording artist, she is noted for constantly experimenting with new musical ideas and images.')}
   returnRoute={select('route', [null, '/artists'], null)}

@@ -1,5 +1,8 @@
 import React from 'react';
-import {storiesOf, action, linkTo, addDecorator} from '@kadira/storybook';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { action, decorateAction } from '@storybook/addon-actions';
+import { linkTo } from '@storybook/addon-links';
+import { withNotes } from '@storybook/addon-notes';
 import {
   withKnobs,
   boolean,
@@ -10,7 +13,9 @@ import {
   color,
   date,
   select,
-} from '@kadira/storybook-addon-knobs'
+} from '@storybook/addon-knobs'
+import { withInfo } from '@storybook/addon-info';
+
 import {Decorator} from './Decorator'
 
 addDecorator(Decorator)
@@ -23,8 +28,8 @@ import AppNotification from '../app/widgets/components/AppNotification'
 
 
 storiesOf('Dialogs and notifications', module)
-.addWithInfo('Notification - no params', () => <AppNotification/>)
-.addWithInfo('Notification - interactive', () => {
+.add('Notification - no params', withInfo()(() => <AppNotification/>))
+.add('Notification - interactive', () => {
   return <AppNotification
     notification={{
       code: select('code', [
@@ -48,8 +53,8 @@ storiesOf('Dialogs and notifications', module)
     hide={action('hide notification')}
   />
 })
-.addWithInfo('Confirmation - no params', () => <ConfirmationDialog/>)
-.addWithInfo('Confirmation - default params no actions handling', () => {
+.add('Confirmation - no params', () => <ConfirmationDialog/>)
+.add('Confirmation - default params no actions handling', () => {
     const opened = boolean('opened', true)
 
     return <ConfirmationDialog
@@ -59,7 +64,7 @@ storiesOf('Dialogs and notifications', module)
     />
   }
 )
-.addWithInfo('Confirmation - default params, actions handling', () => {
+.add('Confirmation - default params, actions handling', () => {
     const opened = boolean('opened', true)
 
     return <ConfirmationDialog

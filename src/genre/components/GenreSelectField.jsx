@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {SelectField, MenuItem} from 'material-ui'
+import {MenuItem} from 'material-ui'
 import {fetchListGenre} from '../GenreActions'
 
 class GenreSelectField extends React.Component {
@@ -25,20 +25,7 @@ class GenreSelectField extends React.Component {
       return null
     }
 
-    return <SelectField
-      id="genre"
-      floatingLabelText="Genre"
-      fullWidth={true}
-      value={this.props.value.id}
-      errorText={this.props.errorText}
-      onChange={this.onChange}
-    >
-      {
-        this.props.list.map(item => {
-          return <MenuItem key={item.id} value={item.id} primaryText={item.name} />
-        })
-      }
-    </SelectField>
+    return null
 
   }
 }

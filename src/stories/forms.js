@@ -1,5 +1,8 @@
 import React from 'react';
-import {storiesOf, action, linkTo, addDecorator} from '@kadira/storybook';
+import { storiesOf, addDecorator } from '@storybook/react';
+import { action, decorateAction } from '@storybook/addon-actions';
+import { linkTo } from '@storybook/addon-links';
+import { withNotes } from '@storybook/addon-notes';
 import {
   withKnobs,
   boolean,
@@ -10,7 +13,7 @@ import {
   color,
   date,
   select,
-} from '@kadira/storybook-addon-knobs'
+} from '@storybook/addon-knobs'
 import {Decorator} from './Decorator'
 
 addDecorator(Decorator)
@@ -27,20 +30,20 @@ import {ProfileForm} from '../user/components'
 
 storiesOf('Forms', module)
 
-.addWithInfo('SelectGenderField', () => <SelectGenderField
+.add('SelectGenderField', () => <SelectGenderField
   label={text('label', SelectGenderField.defaultProps.label)}
   value={select('value', ['u', 'f', 'm'], SelectGenderField.defaultProps.value)}
   name={text('name', SelectGenderField.defaultProps.name)}
 />)
 
-.addWithInfo('SubmitButton - no params', () => <SubmitButton/>)
-.addWithInfo('SubmitButton - params (interactive)', () => <SubmitButton
+.add('SubmitButton - no params', () => <SubmitButton/>)
+.add('SubmitButton - params (interactive)', () => <SubmitButton
   caption={text('caption', SubmitButton.defaultProps.caption)}
   color={select('color', ['primary', 'accent', 'default'], SubmitButton.defaultProps.color)}
   enabled={boolean('enabled', SubmitButton.defaultProps.enabled)}
 />)
 
-.addWithInfo('ProfileForm', () => <ProfileForm
+.add('ProfileForm', () => <ProfileForm
   initialValues={{
     gender: 'm',
     firstName: 'Chuck',
@@ -60,16 +63,16 @@ He has written several books on Christianity and donated to a number of Republic
   }}
   onSubmit={action('ProfileForm submited')}/>)
 
-.addWithInfo('LoginForm', () => <LoginForm onSubmit={action('onSubmit')}/>)
-.addWithInfo('LoginForm with inital values', () => <LoginForm
+.add('LoginForm', () => <LoginForm onSubmit={action('onSubmit')}/>)
+.add('LoginForm with inital values', () => <LoginForm
   onSubmit={action('LoginForm.onSubmit')}
   initialValues={{
     username: 'colak',
     password: 'helloworld'
   }}/>)
 
-.addWithInfo('SignUpForm', () => <SignUpForm onSubmit={action('SongEditorForm.onSubmit')}/>)
+.add('SignUpForm', () => <SignUpForm onSubmit={action('SongEditorForm.onSubmit')}/>)
 
-.addWithInfo('GenreForm', () => <GenreForm onSubmit={action('SongEditorForm.onSubmit')}/>)
+.add('GenreForm', () => <GenreForm onSubmit={action('SongEditorForm.onSubmit')}/>)
 
-.addWithInfo('SongEditorForm', () => <SongEditorForm onSubmit={action('SongEditorForm.onSubmit')}/>)
+.add('SongEditorForm', () => <SongEditorForm onSubmit={action('SongEditorForm.onSubmit')}/>)
