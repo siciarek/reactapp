@@ -5,14 +5,10 @@ Należy uaktualnić do najnowszej wersji ``nodejs``.
 
 .. code-block:: bash
 
-    $ wget -qO- https://deb.nodesource.com/setup_7.x | sudo bash -
-    $ sudo apt-get install -y nodejs
-
-Należy uaktualnić do najnowszej wersji ``npm``.
-
-.. code-block:: bash
-
-    $ sudo npm install -g npm
+    $ wget -qO- https://deb.nodesource.com/setup_8.x | sudo bash - # w miejscu 8 wstawiamy nr najnowszej wersji
+    $ sudo apt-get install -y nodejs                               # instalacja nodejs
+    $ sudo npm rebuild node-sass --force                           # przebudowa node-sass do nowej wersji nodejs
+    $ sudo npm install -g npm                                      # uaktualnienie npm
 
 Zainstalować aplikację do tworzenia aplikacji react.
 

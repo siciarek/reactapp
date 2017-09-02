@@ -61,7 +61,6 @@
     "clean": "rm -rvf build coverage jest* src/*/*/*.css  src/*/*.css  src/*.css",
     "test": "react-scripts test --env=jsdom",
     "testc": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   }
