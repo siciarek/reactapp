@@ -5,6 +5,12 @@ Należy uaktualnić do najnowszej wersji ``nodejs``.
 
 .. code-block:: bash
 
+
+    $ wget -qO- https://deb.nodesource.com/setup_8.x | sudo bash - # w miejscu 8 wstawiamy nr najnowszej wersji
+    $ sudo apt-get install -y nodejs                               # instalacja nodejs
+    $ sudo npm install -g npm                                      # uaktualnienie npm
+
+
     $ wget -qO- https://deb.nodesource.com/setup_8.x | sudo bash - # w miejscu 8 wstawiamy nr najnowszej wersji
     $ sudo apt-get install -y nodejs                               # instalacja nodejs
     $ sudo npm rebuild node-sass --force                           # przebudowa node-sass do nowej wersji nodejs
