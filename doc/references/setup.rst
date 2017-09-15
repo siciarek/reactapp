@@ -5,7 +5,7 @@ Należy uaktualnić do najnowszej wersji ``nodejs``.
 
 .. code-block:: bash
 
-    $ wget -qO- https://deb.nodesource.com/setup_7.x | sudo bash -
+    $ wget -qO- https://deb.nodesource.com/setup_8.x | sudo bash -
     $ sudo apt-get install -y nodejs
 
 Należy uaktualnić do najnowszej wersji ``npm``.
