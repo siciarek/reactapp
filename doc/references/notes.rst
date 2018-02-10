@@ -9,6 +9,10 @@ Nazwy modułowe
 
 https://www.npmjs.com/package/babel-plugin-module-resolver
 
+można zastąpić zmienną NODE_PATH=./src
+
+https://medium.com/@ktruong008/absolute-imports-with-create-react-app-4338fbca7e3d
+
 
 Testowanie rx online
 ====================
@@ -223,7 +227,6 @@ Redux middleware
 
     /**
      * Sample middleware
-     *
      * Vanilla JS
      */
     function simpleLogger(store) {
@@ -233,7 +236,7 @@ Redux middleware
 
                 // console.group(action.type)
                 // console.info('dispatching', action)
-                let result = next(action)
+                var result = next(action)
                 // console.log('next state', store.getState())
                 // console.groupEnd(action.type)
 
@@ -242,6 +245,26 @@ Redux middleware
         }
     }
 
+    /**
+     * Sample middleware
+     * ES6.
+     *
+     * @param store
+     * @returns {function(*): function(*=)}
+     */
+    const sampleMiddleware = store => next => action => {
+      console.group(action.type)
+
+      console.info('dispatching', action)
+      let result = next(action)
+      console.log('next state', store.getState())
+
+      console.groupEnd(action.type)
+
+      return result
+    }
+
+export default sampleMiddleware
 Własne walidatory PropType
 ==========================
 

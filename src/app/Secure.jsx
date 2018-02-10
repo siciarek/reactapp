@@ -6,39 +6,37 @@ import {APP_ERROR_OCCURRED} from './AppActionTypes'
 
 const redirectRoute = '/login'
 
-const error =  {
+const error = {
   code: 401,
   message: 'Bad credentials'
 }
 
-export default ComposedComponent => {
+export default Component => {
 
   class Secure extends React.Component {
 
     componentWillMount() {
-      if(this.props.granted === false) {
+      if (this.props.granted === false) {
         this.props.dispatch({type: APP_ERROR_OCCURRED, payload: error})
         this.props.router.push(redirectRoute)
       }
     }
 
     componentWillUpdate(nextProps) {
-      if(nextProps.granted === false) {
+      if (nextProps.granted === false) {
         this.props.dispatch({type: APP_ERROR_OCCURRED, payload: error})
         this.props.router.push(redirectRoute)
       }
     }
 
     render() {
-      return <ComposedComponent {...this.props}/>
+      return <Component {...this.props}/>
     }
   }
 
-  const mapStateToProps = (state) => {
-    return {
-     granted: state.user.authenticated,
-    }
-  }
+  const mapStateToProps = state => ({
+    granted: state.user.authenticated,
+  })
 
   return connect(mapStateToProps)(Secure)
 }

@@ -5,14 +5,14 @@
   "dependencies": {
     "axios": "^0.16.1",
     "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.8",
-    "material-ui-icons": "^1.0.0-alpha.19",
+    "material-ui": "^1.0.0-beta.11",
+    "material-ui-icons": "^1.0.0-beta.10",
     "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
     "prop-types": "^15.5.8",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
-    "react-cookie": "^2.1.0",
+    "react-cookie": "^2.1.1",
     "react-dom": "^15.6.1",
     "react-google-maps": "^7.3.0",
     "react-helmet": "^5.0.3",
@@ -29,7 +29,7 @@
     "redux-promise-middleware": "^4.2.1",
     "redux-saga": "^0.15.0",
     "redux-thunk": "^2.2.0",
-    "video-react": "^0.8.5",
+    "video-react": "^0.8.8",
     "youtube-api-search": "0.0.5"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4",
     "redux-devtools": "^3.4.0",
-    "redux-devtools-extension": "^2.13.2",
+    "redux-devtools-extension": "^2.15.0",
     "sinon": "^2.4.1"
   },
   "scripts": {
